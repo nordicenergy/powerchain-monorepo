@@ -1,6 +1,6 @@
 /*
 
-  Copyright 2019 ZeroEx Intl.
+  Copyright 2020 Nordic Energy. Ltd.
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -131,18 +131,18 @@ contract UnlimitedAllowanceToken is ERC20Token {
 }
 
 
-contract ZRXToken is 
+contract NETToken is 
     UnlimitedAllowanceToken
 {
 
     // solhint-disable const-name-snakecase
     uint8 constant public decimals = 18;
     uint256 public totalSupply = 10**27; // 1 billion tokens, 18 decimal places
-    string constant public name = "0x Protocol Token";
-    string constant public symbol = "ZRX";
+    string constant public name = "Nordic Energy Token";
+    string constant public symbol = "NET";
     // solhint-enableconst-name-snakecase
 
-    function ZRXToken()
+    function NETToken()
         public
     {
         balances[msg.sender] = totalSupply;
