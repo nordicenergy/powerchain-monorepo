@@ -1,13 +1,16 @@
-c
+<img src="https://github.com/nordicenergy/powerchain/docs/branding/powerchain-Logo.png" width="150px">
 
-[![CircleCI](https://circleci.com/gh/powerchainProject/powerchain-monorepo.svg?style=svg&circle-token=61bf7cd8c9b4e11b132089dfcffdd1be277d1e0c)](https://circleci.com/gh/powerchainProject/powerchain-monorepo)
-[![Coverage Status](https://coveralls.io/repos/github/powerchainProject/powerchain-monorepo/badge.svg?branch=development)](https://coveralls.io/github/powerchainProject/powerchain-monorepo?branch=development)
-[![Discord](https://img.shields.io/badge/chat-discord.chat-yellow.svg?style=flat)](https://discordapp.com/invite/d3FTX3M)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## Packages
+# PowerChain Protocol Development-kit
 
-Visit our [developer portal](https://powerchain.org/docs/tools/order-utils) for a comprehensive list of core & community maintained packages. All packages maintained with this monorepo are listed below.
+#### PowerChain protocol reposity - includes our smart contracts and many developer tools
+---
+
+[PowerChain][website-url] is an open protocol that facilitates trustless, low friction exchange of Ethereum-based assets. For more information on how it works, check out the [powerchain protocol specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
+
+This repository is a monorepo including the powerchain protocol smart contracts and numerous developer tools. Each public sub-package is independently published to NPM.
+
+[website-url]: https://powerchain.nordicenergy.io/protocol/
 
 ### Python Packages
 
