@@ -11,7 +11,7 @@
 
 This repository is a monorepo including the powerchain protocol smart contracts and numerous developer tools. Each public sub-package is independently published to NPM.
 
-[website-url]: https://powerchain.org
+[website-url]: https://powerchain.nordicenergy.io/protocol/
 
 [![CircleCI](https://circleci.com/gh/powerchainProject/powerchain-monorepo.svg?style=svg&circle-token=61bf7cd8c9b4e11b132089dfcffdd1be277d1e0c)](https://circleci.com/gh/powerchainProject/powerchain-monorepo)
 [![Coverage Status](https://coveralls.io/repos/github/powerchainProject/powerchain-monorepo/badge.svg?branch=development)](https://coveralls.io/github/powerchainProject/powerchain-monorepo?branch=development)
