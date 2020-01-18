@@ -1,5 +1,5 @@
 
-<img src="https://github.com/nordicenergy/powerchain-infrastructure/docs/branding/powerchain-Logo.png" width="150px">
+<img src="https://github.com/nordicenergy/powerchain-infrastructure/docs/branding/logo/powerchain-Logo.png" width="150px">
 
 # PowerChain Protocol Development-kit
 
