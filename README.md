@@ -1,4 +1,4 @@
-<img src="https://github.com/powerchainProject/branding/blob/master/powerchain%20Logo/PNG/powerchain-Logo-Black.png" width="150px" >
+<img src="https://github.com/nordicenergy/powerchain-infrastructure/docs/branding/logo/powerchain-logo.png/" width="150px" >
 
 ---
 
