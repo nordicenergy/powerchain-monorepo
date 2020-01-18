@@ -1,16 +1,16 @@
 # Run Launch Kit Backend with Ganache and Mesh instances backing it.
-version: '3'
+version: '1'
 services:
     ganache:
-        image: "0xorg/ganache-cli"
+        image: "nordicenergy/ganache-cli"
         ports:
-            - "8545:8545"
+            - "8700:8700"
     mesh:
-        image: 0xorg/mesh:0xV3
+        image: nordicenergy/mesh:powerchainV1
         depends_on:
             - ganache
         environment:
-            ETHEREUM_RPC_URL: 'http://localhost:8545'
+            ETHEREUM_RPC_URL: 'http://localhost:8700'
             ETHEREUM_CHAIN_ID: '1337'
             VERBOSITY: 5
             BLOCK_POLLING_INTERVAL: '5s'
@@ -18,9 +18,9 @@ services:
             - '60557:60557'
         network_mode: "host" # to connect to ganache
         command: |
-            sh -c "waitForGanache () { until printf 'POST /\r\nContent-Length: 26\r\n\r\n{\"method\":\"net_listening\"}' | nc localhost 8545 | grep true; do continue; done }; waitForGanache && ./mesh"
+            sh -c "waitForGanache () { until printf 'POST /\r\nContent-Length: 26\r\n\r\n{\"method\":\"net_listening\"}' | nc localhost 8700 | grep true; do continue; done }; waitForGanache && ./mesh"
     launch-kit-backend:
-        image: "0xorg/launch-kit-backend:v3"
+        image: "nordicenergy/launch-kit-backend:v3"
         depends_on:
             - ganache
             - mesh
@@ -29,9 +29,9 @@ services:
         network_mode: "host" # to connect to ganache
         environment:
             - CHAIN_ID=1337
-            - RPC_URL=http://localhost:8545
+            - RPC_URL=http://localhost:8700
             - WHITELIST_ALL_TOKENS=True
-            - FEE_RECIPIENT=0x0000000000000000000000000000000000000001
+            - FEE_RECIPIENT=powerchain0000000000000000000000000000000000000001
             - MAKER_FEE_UNIT_AMOUNT=0
             - TAKER_FEE_UNIT_AMOUNT=0
             - MESH_ENDPOINT=ws://localhost:60557
