@@ -1,7 +1,9 @@
+
 # PowerChain Protocol Development-kit
 
 #### PowerChain protocol reposity - includes our smart contracts and many developer tools
-<img src="https://github.com/powerchainProject/branding/blob/master/powerchain%20Logo/PNG/powerchain-Logo-Black.png" width="150px" >
+
+<img src="https://github.com/nordicenergy/powerchain/docs/branding/powerchain-Logo.png" width="150px" >
 
 ---
 
