@@ -1,14 +1,14 @@
-import { HttpClient } from '@0x/connect';
+import {HttpClient} from '@powerchain/connect';
 import * as sinon from 'sinon';
 
-import { Orderbook } from '../src';
+import {Orderbook} from '../src';
 
-import { createOrder } from './utils';
+import {createOrder} from './utils';
 
 describe('Orderbook', () => {
     const httpEndpoint = 'https://localhost';
-    const makerAssetData = '0xf47261b000000000000000000000000089d24a6b4ccb1b6faa2625fe562bdd9a23260359';
-    const takerAssetData = '0xf47261b0000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
+    const makerAssetData = 'powerchainf47261b000000000000000000000000089d24a6b4ccb1b6faa2625fe562bdd9a23260359';
+    const takerAssetData = 'powerchainf47261b0000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
     const stubs: sinon.SinonStub[] = [];
     afterEach(() => {
         stubs.forEach(s => s.restore());

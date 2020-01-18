@@ -1,14 +1,13 @@
-import { blockchainTests, expect, filterLogsToArguments } from '@0x/contracts-test-utils';
-import { AuthorizableRevertErrors } from '@0x/contracts-utils';
-import { BigNumber } from '@0x/utils';
-import { TransactionReceiptWithDecodedLogs } from 'ethereum-types';
-import * as _ from 'lodash';
+import {blockchainTests, expect, filterLogsToArguments} from '@powerchain/contracts-test-utils';
+import {AuthorizableRevertErrors} from '@powerchain/contracts-utils';
+import {BigNumber} from '@powerchain/utils';
+import {TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { artifacts } from '../artifacts';
-import { IStakingEventsParamsSetEventArgs, TestMixinParamsContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {IStakingEventsParamsSetEventArgs, TestMixinParamsContract} from '../wrappers';
 
-import { constants as stakingConstants } from '../../src/constants';
-import { StakingParams } from '../../src/types';
+import {constants as stakingConstants} from '../../src/constants';
+import {StakingParams} from '../../src/types';
 
 blockchainTests('Configurable Parameters unit tests', env => {
     let testContract: TestMixinParamsContract;
@@ -17,7 +16,7 @@ blockchainTests('Configurable Parameters unit tests', env => {
 
     before(async () => {
         [authorizedAddress, notAuthorizedAddress] = await env.getAccountAddressesAsync();
-        testContract = await TestMixinParamsContract.deployFrom0xArtifactAsync(
+        testContract = await TestMixinParamsContract.deployFrompowerchainArtifactAsync(
             artifacts.TestMixinParams,
             env.provider,
             env.txDefaults,

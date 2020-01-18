@@ -8,11 +8,11 @@ import {
     Numberish,
     randomAddress,
     toBaseUnitAmount,
-} from '@0x/contracts-test-utils';
-import { BigNumber, hexUtils } from '@0x/utils';
-import { LogEntry } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber, hexUtils} from '@powerchain/utils';
+import {LogEntry} from 'ethereum-types';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 
 import {
     TestDelegatorRewardsContract,
@@ -24,7 +24,7 @@ blockchainTests.resets('Delegator rewards unit tests', env => {
     let testContract: TestDelegatorRewardsContract;
 
     before(async () => {
-        testContract = await TestDelegatorRewardsContract.deployFrom0xArtifactAsync(
+        testContract = await TestDelegatorRewardsContract.deployFrompowerchainArtifactAsync(
             artifacts.TestDelegatorRewards,
             env.provider,
             env.txDefaults,

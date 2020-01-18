@@ -1,14 +1,13 @@
-import { Compiler, CompilerOptions } from '@0x/sol-compiler';
+import {Compiler, CompilerOptions} from '@powerchain/sol-compiler';
 import * as fs from 'fs';
 import * as glob from 'glob';
-import * as _ from 'lodash';
 import * as path from 'path';
 import * as solc from 'solc';
 
-import { ContractData } from '../types';
+import {ContractData} from '../types';
 
-import { AbstractArtifactAdapter } from './abstract_artifact_adapter';
-import { SolCompilerArtifactAdapter } from './sol_compiler_artifact_adapter';
+import {AbstractArtifactAdapter} from './abstract_artifact_adapter';
+import {SolCompilerArtifactAdapter} from './sol_compiler_artifact_adapter';
 
 const DEFAULT_TRUFFLE_ARTIFACTS_DIR = './build/contracts';
 
@@ -38,7 +37,7 @@ export class TruffleArtifactAdapter extends AbstractArtifactAdapter {
         this._projectRoot = projectRoot;
     }
     public async collectContractsDataAsync(): Promise<ContractData[]> {
-        const artifactsDir = '.0x-artifacts';
+        const artifactsDir = '.powerchain-artifacts';
         const contractsDir = path.join(this._projectRoot, 'contracts');
         const truffleConfig = this._getTruffleConfig();
         const solcConfig = this._getTruffleSolcSettings();
@@ -61,8 +60,8 @@ export class TruffleArtifactAdapter extends AbstractArtifactAdapter {
         const compiler = new Compiler(compilerOptions);
         await compiler.compileAsync();
         const solCompilerArtifactAdapter = new SolCompilerArtifactAdapter(artifactsDir, contractsDir);
-        const contractsDataFrom0xArtifacts = await solCompilerArtifactAdapter.collectContractsDataAsync();
-        return contractsDataFrom0xArtifacts;
+        const contractsDataFrompowerchainArtifacts = await solCompilerArtifactAdapter.collectContractsDataAsync();
+        return contractsDataFrompowerchainArtifacts;
     }
     private _getTruffleConfig(): TruffleConfig {
         const truffleConfigFileShort = path.resolve(path.join(this._projectRoot, 'truffle.js'));

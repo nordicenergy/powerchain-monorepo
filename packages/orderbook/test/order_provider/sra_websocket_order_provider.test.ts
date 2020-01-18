@@ -1,11 +1,11 @@
-import { APIOrder, HttpClient, ordersChannelFactory, OrdersChannelHandler } from '@0x/connect';
+import {APIOrder, HttpClient, ordersChannelFactory, OrdersChannelHandler} from '@powerchain/connect';
 import * as sinon from 'sinon';
 
-import { SRAWebsocketOrderProvider } from '../../src';
-import { BaseOrderProvider } from '../../src/order_provider/base_order_provider';
-import { OrderStore } from '../../src/order_store';
-import { utils } from '../../src/utils';
-import { createOrder } from '../utils';
+import {SRAWebsocketOrderProvider} from '../../src';
+import {BaseOrderProvider} from '../../src/order_provider/base_order_provider';
+import {OrderStore} from '../../src/order_store';
+import {utils} from '../../src/utils';
+import {createOrder} from '../utils';
 
 // tslint:disable-next-line:no-empty
 const NOOP = () => {};
@@ -15,8 +15,8 @@ describe('SRAWebsocketOrderProvider', () => {
     let provider: BaseOrderProvider;
     const httpEndpoint = 'https://localhost';
     const websocketEndpoint = 'wss://localhost';
-    const makerAssetData = '0xf47261b000000000000000000000000089d24a6b4ccb1b6faa2625fe562bdd9a23260359';
-    const takerAssetData = '0xf47261b0000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
+    const makerAssetData = 'powerchainf47261b000000000000000000000000089d24a6b4ccb1b6faa2625fe562bdd9a23260359';
+    const takerAssetData = 'powerchainf47261b0000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
     const stubs: sinon.SinonStub[] = [];
     afterEach(() => {
         void provider.destroyAsync();

@@ -1,16 +1,16 @@
-import { blockchainTests, constants, expect, randomAddress } from '@0x/contracts-test-utils';
-import { BigNumber, signTypedDataUtils } from '@0x/utils';
+import {blockchainTests, constants, expect, randomAddress} from '@powerchain/contracts-test-utils';
+import {BigNumber, signTypedDataUtils} from '@powerchain/utils';
 import * as ethUtil from 'ethereumjs-util';
 
-import { TestLibEIP712ExchangeDomainContract } from './wrappers';
+import {TestLibEIP712ExchangeDomainContract} from './wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 blockchainTests('LibEIP712ExchangeDomain', env => {
     describe('constructor', () => {
         it('should calculate the correct domain hash when verifyingContractAddressIfExists is set to null', async () => {
             const chainId = 1;
-            const libEIP712ExchangeDomainContract = await TestLibEIP712ExchangeDomainContract.deployFrom0xArtifactAsync(
+            const libEIP712ExchangeDomainContract = await TestLibEIP712ExchangeDomainContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestLibEIP712ExchangeDomain,
                 env.provider,
                 env.txDefaults,
@@ -31,7 +31,7 @@ blockchainTests('LibEIP712ExchangeDomain', env => {
         it('should calculate the correct domain hash when verifyingContractAddressIfExists is set to a non-null address', async () => {
             const chainId = 1;
             const verifyingContract = randomAddress();
-            const libEIP712ExchangeDomainContract = await TestLibEIP712ExchangeDomainContract.deployFrom0xArtifactAsync(
+            const libEIP712ExchangeDomainContract = await TestLibEIP712ExchangeDomainContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestLibEIP712ExchangeDomain,
                 env.provider,
                 env.txDefaults,

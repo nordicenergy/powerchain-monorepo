@@ -5,7 +5,7 @@ Edit the package's CHANGELOG.json file only.
 
 CHANGELOG
 
-## v3.1.0 - _January 6, 2020_
+## v1.0.1- _January 6, 2020_
 
     * Integration tests for DydxBridge with ERC20BridgeProxy. (#2401)
     * Fix `UniswapBridge` token -> token transfer call. (#2412)
@@ -19,7 +19,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _December 2, 2019_
+## v1.0.0 - _December 2, 2019_
 
     * Implement `KyberBridge`. (#2352)
     * Drastically reduced bundle size by adding .npmignore, only exporting specific artifacts/wrappers/utils (#2330)
@@ -79,7 +79,7 @@ CHANGELOG
 
 ## v2.2.4 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies. (#1995)
 
 ## v2.2.3 - _July 24, 2019_
 

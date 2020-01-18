@@ -114,9 +114,9 @@ CHANGELOG
 
 ## v3.0.4 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies. (#1995)
 
-## v3.0.3 - _July 24, 2019_
+## v1.0.1 - _July 24, 2019_
 
     * Dependencies updated
 
@@ -128,7 +128,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _July 13, 2019_
+## v1.0.0 - _July 13, 2019_
 
     * Move `LibTransactionDecoder` to contracts/dev-utils package (#1848)
 

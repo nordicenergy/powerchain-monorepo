@@ -1,29 +1,29 @@
-import { Orderbook } from '@0x/orderbook';
-import { Web3ProviderEngine } from '@0x/subproviders';
-import { AssetPairsItem, SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {Orderbook} from '@powerchain/orderbook';
+import {Web3ProviderEngine} from '@powerchain/subproviders';
+import {AssetPairsItem, SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import 'mocha';
 import * as TypeMoq from 'typemoq';
 
-import { SwapQuoter } from '../src';
-import { constants } from '../src/constants';
-import { LiquidityForTakerMakerAssetDataPair, SignedOrderWithFillableAmounts } from '../src/types';
+import {SwapQuoter} from '../src';
+import {constants} from '../src/constants';
+import {LiquidityForTakerMakerAssetDataPair, SignedOrderWithFillableAmounts} from '../src/types';
 
-import { chaiSetup } from './utils/chai_setup';
-import { mockAvailableAssetDatas, mockedSwapQuoterWithFillableAmounts, orderbookMock } from './utils/mocks';
-import { testOrderFactory } from './utils/test_order_factory';
-import { baseUnitAmount } from './utils/utils';
+import {chaiSetup} from './utils/chai_setup';
+import {mockAvailableAssetDatas, mockedSwapQuoterWithFillableAmounts, orderbookMock} from './utils/mocks';
+import {testOrderFactory} from './utils/test_order_factory';
+import {baseUnitAmount} from './utils/utils';
 
 chaiSetup.configure();
 const expect = chai.expect;
 
 const FAKE_SRA_URL = 'https://fakeurl.com';
-const FAKE_TAKER_ASSET_DATA = '0xf47261b00000000000000000000000001dc4c1cefef38a777b15aa20260a54e584b16c48';
-const FAKE_MAKER_ASSET_DATA = '0xf47261b00000000000000000000000009f5B0C7e1623793bF0620569b9749e79DF6D0bC5';
+const FAKE_TAKER_ASSET_DATA = 'powerchainf47261b00000000000000000000000001dc4c1cefef38a777b15aa20260a54e584b16c48';
+const FAKE_MAKER_ASSET_DATA = 'powerchainf47261b00000000000000000000000009f5B0C7e1623793bF0620569b9749e79DF6D0bC5';
 const TOKEN_DECIMALS = 18;
-const DAI_ASSET_DATA = '0xf47261b000000000000000000000000089d24a6b4ccb1b6faa2625fe562bdd9a23260359"';
-const WETH_ASSET_DATA = '0xf47261b0000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
+const DAI_ASSET_DATA = 'powerchainf47261b000000000000000000000000089d24a6b4ccb1b6faa2625fe562bdd9a23260359"';
+const WETH_ASSET_DATA = 'powerchainf47261b0000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
 const WETH_DECIMALS = constants.ETHER_TOKEN_DECIMALS;
 const ZERO = new BigNumber(0);
 

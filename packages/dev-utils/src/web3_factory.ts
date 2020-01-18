@@ -4,13 +4,12 @@ import {
     GanacheSubprovider,
     RPCSubprovider,
     Web3ProviderEngine,
-} from '@0x/subproviders';
-import { providerUtils } from '@0x/utils';
+} from '@powerchain/subproviders';
+import {providerUtils} from '@powerchain/utils';
 import * as fs from 'fs';
-import * as _ from 'lodash';
 
-import { constants } from './constants';
-import { env, EnvVars } from './env';
+import {constants} from './constants';
+import {env, EnvVars} from './env';
 
 export interface Web3Config {
     total_accounts?: number; // default: 10

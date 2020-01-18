@@ -1,12 +1,12 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import 'mocha';
 
-import { marketUtils } from '../src';
-import { constants } from '../src/constants';
+import {marketUtils} from '../src';
+import {constants} from '../src/constants';
 
-import { chaiSetup } from './utils/chai_setup';
-import { testOrderFactory } from './utils/test_order_factory';
+import {chaiSetup} from './utils/chai_setup';
+import {testOrderFactory} from './utils/test_order_factory';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -259,7 +259,7 @@ describe('marketUtils', () => {
         });
     });
     describe('#findFeeOrdersThatCoverFeesForTargetOrders', () => {
-        // generate three signed fee orders each with 10 units of ZRX, 30 total
+        // generate three signed fee orders each with 10 units of NET, 30 total
         const zrxAmount = new BigNumber(10);
         const inputFeeOrders = testOrderFactory.generateTestSignedOrders(
             {

@@ -1,10 +1,10 @@
 {
-    "name": "@0x/json-schemas",
+    "name": "@powerchain/json-schemas",
     "version": "5.0.3",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "0x-related json schemas",
+    "description": "powerchain-related json schemas",
     "main": "lib/src/index.js",
     "types": "lib/src/index.d.ts",
     "scripts": {
@@ -20,7 +20,7 @@
         "run_mocha": "mocha --require source-map-support/register --require make-promises-safe lib/test/**/*_test.js --exit",
         "clean": "shx rm -rf lib test_temp generated_docs",
         "diff_docs": "git diff --exit-code ./docs",
-        "s3:sync_md_docs": "aws s3 sync ./docs s3://docs-markdown/${npm_package_name}/v${npm_package_version} --profile 0xproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
+        "s3:sync_md_docs": "aws s3 sync ./docs s3://docs-markdown/${npm_package_name}/v${npm_package_version} --profile powerchainproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
         "docs:md": "ts-doc-gen --sourceDir='$PROJECT_FILES' --output=$MD_FILE_DIR --fileExtension=mdx --tsconfig=./typedoc-tsconfig.json",
         "docs:json": "typedoc --excludePrivate --excludeExternals --excludeProtected --ignoreCompilerErrors --target ES5 --tsconfig typedoc-tsconfig.json --json $JSON_FILE_PATH $PROJECT_FILES"
     },
@@ -34,24 +34,24 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "author": "",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/json-schemas/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/json-schemas/README.md",
     "dependencies": {
-        "@0x/typescript-typings": "^5.0.1",
+        "@powerchain/typescript-typings": "^5.0.1",
         "@types/node": "*",
         "jsonschema": "^1.2.0",
         "lodash.values": "^4.3.0"
     },
     "devDependencies": {
-        "@0x/ts-doc-gen": "^0.0.22",
-        "@0x/tslint-config": "^4.0.0",
-        "@0x/utils": "^5.1.2",
+        "@powerchain/ts-doc-gen": "^0.0.22",
+        "@powerchain/tslint-config": "^4.0.0",
+        "@powerchain/utils": "^5.1.2",
         "@types/lodash.foreach": "^4.5.3",
         "@types/lodash.values": "^4.3.3",
         "@types/mocha": "^5.2.7",

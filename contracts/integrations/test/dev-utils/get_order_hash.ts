@@ -1,8 +1,8 @@
-import { artifacts, DevUtilsContract } from '@0x/contracts-dev-utils';
-import { artifacts as exchangeArtifacts, ExchangeContract } from '@0x/contracts-exchange';
-import { blockchainTests, constants, expect, orderHashUtils } from '@0x/contracts-test-utils';
-import { Order } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {artifacts, DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {artifacts as exchangeArtifacts, ExchangeContract} from '@powerchain/contracts-exchange';
+import {blockchainTests, constants, expect, orderHashUtils} from '@powerchain/contracts-test-utils';
+import {Order} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
 blockchainTests('DevUtils.getOrderHash', env => {
     let devUtils: DevUtilsContract;
@@ -12,14 +12,14 @@ blockchainTests('DevUtils.getOrderHash', env => {
     before(async () => {
         chainId = await env.getChainIdAsync();
 
-        exchange = await ExchangeContract.deployFrom0xArtifactAsync(
+        exchange = await ExchangeContract.deployFrompowerchainArtifactAsync(
             exchangeArtifacts.Exchange,
             env.provider,
             env.txDefaults,
             exchangeArtifacts,
             new BigNumber(chainId),
         );
-        devUtils = await DevUtilsContract.deployFrom0xArtifactAsync(
+        devUtils = await DevUtilsContract.deployFrompowerchainArtifactAsync(
             artifacts.DevUtils,
             env.provider,
             env.txDefaults,

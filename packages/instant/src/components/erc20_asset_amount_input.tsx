@@ -1,18 +1,17 @@
-import { BigNumber } from '@0x/utils';
-import * as _ from 'lodash';
+import {BigNumber} from '@powerchain/utils';
 import * as React from 'react';
 
-import { ColorOption, transparentWhite } from '../style/theme';
-import { ERC20Asset, SimpleHandler } from '../types';
-import { assetUtils } from '../util/asset';
-import { util } from '../util/util';
+import {ColorOption, transparentWhite} from '../style/theme';
+import {ERC20Asset, SimpleHandler} from '../types';
+import {assetUtils} from '../util/asset';
+import {util} from '../util/util';
 
-import { ScalingAmountInput } from './scaling_amount_input';
+import {ScalingAmountInput} from './scaling_amount_input';
 
-import { Container } from './ui/container';
-import { Flex } from './ui/flex';
-import { Icon } from './ui/icon';
-import { Text } from './ui/text';
+import {Container} from './ui/container';
+import {Flex} from './ui/flex';
+import {Icon} from './ui/icon';
+import {Text} from './ui/text';
 
 // Asset amounts only apply to ERC20 assets
 export interface ERC20AssetAmountInputProps {

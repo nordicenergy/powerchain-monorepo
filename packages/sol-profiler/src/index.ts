@@ -5,7 +5,7 @@ export {
     ContractData,
     SourceCodes,
     Sources,
-} from '@0x/sol-tracing-utils';
+} from '@powerchain/sol-tracing-utils';
 
 // HACK: ProfilerSubprovider is a hacky way to do profiling using coverage tools. Not production ready
 export { ProfilerSubprovider } from './profiler_subprovider';
@@ -18,6 +18,6 @@ export {
     ErrorCallback,
     OnNextCompleted,
     Callback,
-} from '@0x/subproviders';
+} from '@powerchain/subproviders';
 
 export import Web3ProviderEngine = require('web3-provider-engine');

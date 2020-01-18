@@ -1,6 +1,5 @@
-import { logUtils } from '@0x/utils';
-import { NodeType, Web3Wrapper } from '@0x/web3-wrapper';
-import * as _ from 'lodash';
+import {logUtils} from '@powerchain/utils';
+import {NodeType, Web3Wrapper} from '@powerchain/web3-wrapper';
 
 // HACK(albrow): 🐉 We have to do this so that debug.setHead works correctly.
 // (Geth does not seem to like debug.setHead(0), so by sending some transactions

@@ -149,7 +149,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _January 11, 2019_
+## v1.0.0 - _January 11, 2019_
 
     * Make `promisify` resolve when the callback error is undefined. (#1501)
 
@@ -298,7 +298,7 @@ CHANGELOG
 
 ## v0.4.2 - _March 17, 2018_
 
-    * Consolidate all `console.log` calls into `logUtils` in the `@0xproject/utils` package (#452)
+    * Consolidate all `console.log` calls into `logUtils` in the `@powerchainproject/utils` package (#452)
 
 ## v0.4.0 - _March 3, 2018_
 

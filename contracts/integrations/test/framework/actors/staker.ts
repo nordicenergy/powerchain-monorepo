@@ -1,29 +1,29 @@
-import { OwnerStakeByStatus, StakeInfo, StakeStatus, StoredBalance } from '@0x/contracts-staking';
-import { constants } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+import {OwnerStakeByStatus, StakeInfo, StakeStatus, StoredBalance} from '@powerchain/contracts-staking';
+import {constants} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 import '@azure/core-asynciterator-polyfill';
 import * as _ from 'lodash';
 
-import { AssertionResult } from '../assertions/function_assertion';
-import { assetProxyTransferFailedAssertion } from '../assertions/generic_assertions';
-import { moveStakeNonexistentPoolAssertion, validMoveStakeAssertion } from '../assertions/moveStake';
-import { validStakeAssertion } from '../assertions/stake';
-import { invalidUnstakeAssertion, validUnstakeAssertion } from '../assertions/unstake';
+import {AssertionResult} from '../assertions/function_assertion';
+import {assetProxyTransferFailedAssertion} from '../assertions/generic_assertions';
+import {moveStakeNonexistentPoolAssertion, validMoveStakeAssertion} from '../assertions/moveStake';
+import {validStakeAssertion} from '../assertions/stake';
+import {invalidUnstakeAssertion, validUnstakeAssertion} from '../assertions/unstake';
 import {
     invalidWithdrawDelegatorRewardsAssertion,
     validWithdrawDelegatorRewardsAssertion,
 } from '../assertions/withdrawDelegatorRewards';
-import { Pseudorandom } from '../utils/pseudorandom';
+import {Pseudorandom} from '../utils/pseudorandom';
 
-import { Actor, Constructor } from './base';
+import {Actor, Constructor} from './base';
 
 export interface StakerInterface {
     stakeAsync: (amount: BigNumber, poolId?: string) => Promise<void>;
 }
 
 /**
- * This mixin encapsulates functionality associated with stakers within the 0x ecosystem.
- * This includes staking ZRX (and optionally delegating it to a specific pool).
+ * This mixin encapsulates functionality associated with stakers within the powerchain ecosystem.
+ * This includes staking NET (and optionally delegating it to a specific pool).
  */
 export function StakerMixin<TBase extends Constructor>(Base: TBase): TBase & Constructor<StakerInterface> {
     return class extends Base {
@@ -61,8 +61,8 @@ export function StakerMixin<TBase extends Constructor>(Base: TBase): TBase & Con
         }
 
         /**
-         * Stakes the given amount of ZRX. If `poolId` is provided, subsequently delegates the newly
-         * staked ZRX with that pool.
+         * Stakes the given amount of NET. If `poolId` is provided, subsequently delegates the newly
+         * staked NET with that pool.
          */
         public async stakeAsync(amount: BigNumber, poolId?: string): Promise<void> {
             const { stakingWrapper } = this.actor.deployment.staking;

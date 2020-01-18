@@ -1,6 +1,6 @@
-import { assert } from '@0x/assert';
-import { DevUtilsContract } from '@0x/contract-wrappers';
-import { schemas } from '@0x/json-schemas';
+import {assert} from '@powerchain/assert';
+import {DevUtilsContract} from '@powerchain/contract-wrappers';
+import {schemas} from '@powerchain/json-schemas';
 import {
     EIP712DomainWithDefaultSchema,
     EIP712Object,
@@ -9,15 +9,15 @@ import {
     Order,
     SignedZeroExTransaction,
     ZeroExTransaction,
-} from '@0x/types';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { constants } from './constants';
+import {constants} from './constants';
 
 export const eip712Utils = {
     /**
-     * Creates a EIP712TypedData object specific to the 0x protocol for use with signTypedData.
+     * Creates a EIP712TypedData object specific to the powerchain protocol for use with signTypedData.
      * @param   primaryType The primary type found in message
      * @param   types The additional types for the data in message
      * @param   message The contents of the message
@@ -75,8 +75,8 @@ export const eip712Utils = {
     },
     /**
      * Creates an ExecuteTransaction EIP712TypedData object for use with signTypedData and
-     * 0x Exchange executeTransaction.
-     * @param   zeroExTransaction the 0x transaction
+     * powerchain Exchange executeTransaction.
+     * @param   zeroExTransaction the powerchain transaction
      * @return  A typed data object
      */
     createZeroExTransactionTypedData: (zeroExTransaction: ZeroExTransaction): EIP712TypedData => {
@@ -96,9 +96,9 @@ export const eip712Utils = {
     },
     /**
      * Creates an Coordinator typedData EIP712TypedData object for use with the Coordinator extension contract
-     * @param   transaction A 0x transaction
+     * @param   transaction A powerchain transaction
      * @param   verifyingContract The coordinator extension contract address that will be verifying the typedData
-     * @param   txOrigin The desired `tx.origin` that should be able to submit an Ethereum txn involving this 0x transaction
+     * @param   txOrigin The desired `tx.origin` that should be able to submit an Ethereum txn involving this powerchain transaction
      * @return  A typed data object
      */
     async createCoordinatorApprovalTypedDataAsync(

@@ -1,10 +1,10 @@
-import { BigNumber } from '@0x/utils';
-import { JSONRPCRequestPayload } from 'ethereum-types';
+import {BigNumber} from '@powerchain/utils';
+import {JSONRPCRequestPayload} from 'ethereum-types';
+
+import {Callback, ErrorCallback} from '../types';
+
+import {Subprovider} from './subprovider';
 import EthereumTx = require('ethereumjs-tx');
-
-import { Callback, ErrorCallback } from '../types';
-
-import { Subprovider } from './subprovider';
 
 const HEX_BASE = 16;
 
@@ -39,7 +39,7 @@ export class DebugSubprovider extends Subprovider {
             gasPrice: hexBufferToString(txn.gasPrice),
             nonce: hexBufferToString(txn.nonce),
             value: hexBufferToString(txn.value),
-            to: `0x${txn.to.toString('hex')}`,
+            to: `powerchain${txn.to.toString('hex')}`,
         };
     }
 

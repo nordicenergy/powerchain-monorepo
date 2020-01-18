@@ -1,5 +1,5 @@
-import { artifacts as erc20Artifacts, DummyERC20TokenContract } from '@0x/contracts-erc20';
-import { ForwarderContract, IExchangeV2Contract } from '@0x/contracts-exchange-forwarder';
+import {artifacts as erc20Artifacts, DummyERC20TokenContract} from '@powerchain/contracts-erc20';
+import {ForwarderContract, IExchangeV2Contract} from '@powerchain/contracts-exchange-forwarder';
 import {
     blockchainTests,
     constants,
@@ -7,22 +7,22 @@ import {
     getLatestBlockTimestampAsync,
     orderHashUtils,
     signingUtils,
-} from '@0x/contracts-test-utils';
-import { assetDataUtils, generatePseudoRandomSalt } from '@0x/order-utils';
-import { Order, SignatureType, SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+} from '@powerchain/contracts-test-utils';
+import {assetDataUtils, generatePseudoRandomSalt} from '@powerchain/order-utils';
+import {Order, SignatureType, SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as ethUtil from 'ethereumjs-util';
 
-import { contractAddresses } from '../mainnet_fork_utils';
+import {contractAddresses} from '../mainnet_fork_utils';
 
-import { SignedV2Order } from './types';
+import {SignedV2Order} from './types';
 
 blockchainTests.fork.resets('Forwarder mainnet tests', env => {
     const forwarder = new ForwarderContract(contractAddresses.forwarder, env.provider, env.txDefaults);
     const exchangeV2 = new IExchangeV2Contract(contractAddresses.exchangeV2, env.provider, env.txDefaults);
     const wethAssetData = assetDataUtils.encodeERC20AssetData(contractAddresses.etherToken);
-    const v2OrderId = '0x770501f8';
+    const v2OrderId = 'powerchain770501f8';
     let makerAddress: string;
     let takerAddress: string;
     let makerAssetData: string;
@@ -31,7 +31,7 @@ blockchainTests.fork.resets('Forwarder mainnet tests', env => {
 
     before(async () => {
         [makerAddress, takerAddress] = await env.web3Wrapper.getAvailableAddressesAsync();
-        makerToken = await DummyERC20TokenContract.deployFrom0xArtifactAsync(
+        makerToken = await DummyERC20TokenContract.deployFrompowerchainArtifactAsync(
             erc20Artifacts.DummyERC20Token,
             env.provider,
             env.txDefaults,
@@ -75,7 +75,7 @@ blockchainTests.fork.resets('Forwarder mainnet tests', env => {
             order.makerFeeAssetData === v2OrderId
                 ? (await exchangeV2.getOrderInfo(order).callAsync()).orderHash
                 : orderHashUtils.getOrderHashHex(order);
-        const signature = `0x${signingUtils
+        const signature = `powerchain${signingUtils
             .signMessage(ethUtil.toBuffer(orderHashHex), makerPrivateKey, SignatureType.EthSign)
             .toString('hex')}`;
         return {

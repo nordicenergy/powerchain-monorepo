@@ -1,5 +1,5 @@
-import { Order, SignedOrder, SignedZeroExTransaction } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {Order, SignedOrder, SignedZeroExTransaction} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
 export interface CoordinatorServerApprovalResponse {
     signatures: string[];

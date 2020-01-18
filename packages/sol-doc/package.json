@@ -1,5 +1,5 @@
 {
-    "name": "@0x/sol-doc",
+    "name": "@powerchain/sol-doc",
     "version": "3.1.0",
     "description": "Solidity documentation generator",
     "main": "lib/src/index.js",
@@ -15,34 +15,34 @@
         "lint": "tslint --format stylish --project .",
         "fix": "tslint --fix --format stylish --project .",
         "clean": "shx rm -rf lib docs",
-        "generate-protocol-docs": "COMMIT=`git rev-parse --short HEAD`; mkdir -p ${npm_package_config_outputDir}; yarn start `echo ${npm_package_config_sources} | sed -r 's/(\\S+?)\\b/--source \\1/g'` --root ../../ --root ../../node_modules/@0x/contracts-=contracts/ `echo ${npm_package_config_contracts} | sed -r 's/(\\w+?)\\b/--contract \\1/g'` --md ${npm_package_config_outputDir}/reference.mdx --md-url-prefix \"${npm_package_config_repoBlobRoot}/${COMMIT}\"",
-        "s3:sync_md_docs": "aws s3 sync ${npm_package_config_outputDir} s3://docs-markdown/${npm_package_config_s3DocsPath} --profile 0xproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers"
+        "generate-protocol-docs": "COMMIT=`git rev-parse --short HEAD`; mkdir -p ${npm_package_config_outputDir}; yarn start `echo ${npm_package_config_sources} | sed -r 's/(\\S+?)\\b/--source \\1/g'` --root ../../ --root ../../node_modules/@powerchain/contracts-=contracts/ `echo ${npm_package_config_contracts} | sed -r 's/(\\w+?)\\b/--contract \\1/g'` --md ${npm_package_config_outputDir}/reference.mdx --md-url-prefix \"${npm_package_config_repoBlobRoot}/${COMMIT}\"",
+        "s3:sync_md_docs": "aws s3 sync ${npm_package_config_outputDir} s3://docs-markdown/${npm_package_config_s3DocsPath} --profile powerchainproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers"
     },
     "config": {
         "outputDir": "./docs",
-        "repoBlobRoot": "https://github.com/0xProject/0x-monorepo/blob",
+        "repoBlobRoot": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/blob",
         "sources": "../../contracts/exchange/contracts/src/Exchange.sol ../../contracts/exchange-forwarder/contracts/src/Forwarder.sol ../../contracts/staking/contracts/src/Staking.sol ../../contracts/coordinator/contracts/src/Coordinator.sol",
         "contracts": "Exchange Forwarder Staking Coordinator",
-        "s3DocsPath": "@0x/contracts-docs/v3.0.0"
+        "s3DocsPath": "@powerchain/contracts-docs/v1.0.0"
     },
     "bin": {
         "sol-doc": "bin/sol-doc.js"
     },
-    "repository": "https://github.com/0xProject/0x-monorepo.git",
+    "repository": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git",
     "author": "F. Eugene Aumson",
     "license": "Apache-2.0",
     "dependencies": {
-        "@0x/sol-compiler": "^4.0.3",
-        "@0x/types": "^3.1.1",
-        "@0x/utils": "^5.1.2",
+        "@powerchain/sol-compiler": "^4.0.3",
+        "@powerchain/types": "^3.1.1",
+        "@powerchain/utils": "^5.1.2",
         "ethereum-types": "^3.0.0",
         "ethereumjs-util": "^5.1.1",
         "glob": "^7.1.2",
         "yargs": "^10.0.3"
     },
     "devDependencies": {
-        "@0x/dev-utils": "^3.1.0",
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/dev-utils": "^3.1.0",
+        "@powerchain/tslint-config": "^4.0.0",
         "@types/mocha": "^5.2.7",
         "chai": "^4.0.1",
         "chai-as-promised": "^7.1.0",

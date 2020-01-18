@@ -1,6 +1,6 @@
-import { coverage, profiler, provider } from '@0x/contracts-test-utils';
-import { env, EnvVars } from '@0x/dev-utils';
-import { providerUtils } from '@0x/utils';
+import {coverage, profiler, provider} from '@powerchain/contracts-test-utils';
+import {env, EnvVars} from '@powerchain/dev-utils';
+import {providerUtils} from '@powerchain/utils';
 
 before('start web3 provider', () => {
     providerUtils.startProviderEngine(provider);

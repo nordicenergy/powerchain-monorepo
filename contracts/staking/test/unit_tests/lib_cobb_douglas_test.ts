@@ -5,12 +5,12 @@ import {
     getRandomPortion,
     Numberish,
     toDecimal,
-} from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { artifacts } from '../artifacts';
-import { TestCobbDouglasContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {TestCobbDouglasContract} from '../wrappers';
 
 // tslint:disable: no-unnecessary-type-assertion
 blockchainTests('LibCobbDouglas unit tests', env => {
@@ -23,7 +23,7 @@ blockchainTests('LibCobbDouglas unit tests', env => {
 
     before(async () => {
         [ownerAddress, notOwnerAddress] = await env.getAccountAddressesAsync();
-        testContract = await TestCobbDouglasContract.deployFrom0xArtifactAsync(
+        testContract = await TestCobbDouglasContract.deployFrompowerchainArtifactAsync(
             artifacts.TestCobbDouglas,
             env.provider,
             env.txDefaults,

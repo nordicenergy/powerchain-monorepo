@@ -1,13 +1,13 @@
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { artifacts as erc20Artifacts, DummyERC20TokenContract } from '@0x/contracts-erc20';
-import { constants, ERC20BalancesByOwner, txDefaults } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { ZeroExProvider } from 'ethereum-types';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {artifacts as erc20Artifacts, DummyERC20TokenContract} from '@powerchain/contracts-erc20';
+import {constants, ERC20BalancesByOwner, txDefaults} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {ZeroExProvider} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { ERC20ProxyContract } from './wrappers';
+import {ERC20ProxyContract} from './wrappers';
 
 export class ERC20Wrapper {
     private readonly _tokenOwnerAddresses: string[];
@@ -37,7 +37,7 @@ export class ERC20Wrapper {
     ): Promise<DummyERC20TokenContract[]> {
         for (let i = 0; i < numberToDeploy; i++) {
             this._dummyTokenContracts.push(
-                await DummyERC20TokenContract.deployFrom0xArtifactAsync(
+                await DummyERC20TokenContract.deployFrompowerchainArtifactAsync(
                     erc20Artifacts.DummyERC20Token,
                     this._provider,
                     txDefaults,
@@ -52,7 +52,7 @@ export class ERC20Wrapper {
         return this._dummyTokenContracts;
     }
     public async deployProxyAsync(): Promise<ERC20ProxyContract> {
-        this._proxyContract = await ERC20ProxyContract.deployFrom0xArtifactAsync(
+        this._proxyContract = await ERC20ProxyContract.deployFrompowerchainArtifactAsync(
             artifacts.ERC20Proxy,
             this._provider,
             txDefaults,

@@ -1,4 +1,4 @@
-import { DocGenConfigs } from './types';
+import {DocGenConfigs} from './types';
 
 export const docGenConfigs: DocGenConfigs = {
     // Versions our doc JSON format so we can handle breaking changes  intelligently
@@ -70,5 +70,5 @@ export const docGenConfigs: DocGenConfigs = {
     ],
     // Some libraries only export types. In those cases, we cannot check if the exported types are part of the
     // "exported public interface". Thus we add them here and skip those checks.
-    TYPES_ONLY_LIBRARIES: ['ethereum-types', '@0x/types'],
+    TYPES_ONLY_LIBRARIES: ['ethereum-types', '@powerchain/types'],
 };

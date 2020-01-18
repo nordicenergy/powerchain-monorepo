@@ -10,11 +10,11 @@ def test_get_order_hash_hex__empty_order():
     )
     actual_hash_hex = generate_order_hash_hex(
         {
-            "makerAddress": "0x0000000000000000000000000000000000000000",
-            "takerAddress": "0x0000000000000000000000000000000000000000",
-            "senderAddress": "0x0000000000000000000000000000000000000000",
+            "makerAddress": "powerchain0000000000000000000000000000000000000000",
+            "takerAddress": "powerchain0000000000000000000000000000000000000000",
+            "senderAddress": "powerchain0000000000000000000000000000000000000000",
             "feeRecipientAddress": (
-                "0x0000000000000000000000000000000000000000"
+                "powerchain0000000000000000000000000000000000000000"
             ),
             "makerAssetData": (b"\x00") * 20,
             "takerAssetData": (b"\x00") * 20,
@@ -27,7 +27,7 @@ def test_get_order_hash_hex__empty_order():
             "takerAssetAmount": 0,
             "expirationTimeSeconds": 0,
         },
-        "0x1dc4c1cefef38a777b15aa20260a54e584b16c48",
+        "powerchain1dc4c1cefef38a777b15aa20260a54e584b16c48",
         50,
     )
     assert actual_hash_hex == expected_hash_hex

@@ -1,5 +1,5 @@
-import { WETH9Events, WETH9TransferEventArgs } from '@0x/contracts-erc20';
-import { ReferenceFunctions } from '@0x/contracts-exchange-libs';
+import {WETH9Events, WETH9TransferEventArgs} from '@powerchain/contracts-erc20';
+import {ReferenceFunctions} from '@powerchain/contracts-exchange-libs';
 import {
     AggregatedStats,
     constants as stakingConstants,
@@ -7,7 +7,7 @@ import {
     StakingEpochFinalizedEventArgs,
     StakingEvents,
     StakingRewardsPaidEventArgs,
-} from '@0x/contracts-staking';
+} from '@powerchain/contracts-staking';
 import {
     assertRoughlyEquals,
     constants,
@@ -15,13 +15,13 @@ import {
     filterLogsToArguments,
     toDecimal,
     verifyEventsFromLogs,
-} from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { DeploymentManager } from '../deployment_manager';
-import { SimulationEnvironment } from '../simulation';
+import {DeploymentManager} from '../deployment_manager';
+import {SimulationEnvironment} from '../simulation';
 
-import { FunctionAssertion, FunctionResult } from './function_assertion';
+import {FunctionAssertion, FunctionResult} from './function_assertion';
 
 const PRECISION = 15;
 const COBB_DOUGLAS_ALPHA = toDecimal(stakingConstants.DEFAULT_PARAMS.cobbDouglasAlphaNumerator).dividedBy(

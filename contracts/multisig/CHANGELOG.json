@@ -122,7 +122,7 @@
         "version": "3.1.10",
         "changes": [
             {
-                "note": "Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies.",
+                "note": "Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies.",
                 "pr": 1995
             }
         ],

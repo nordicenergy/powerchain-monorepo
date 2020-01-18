@@ -1,10 +1,10 @@
-import { StakingEvents, StakingMakerStakingPoolSetEventArgs } from '@0x/contracts-staking';
-import { expect, filterLogsToArguments } from '@0x/contracts-test-utils';
-import { TxData } from 'ethereum-types';
+import {StakingEvents, StakingMakerStakingPoolSetEventArgs} from '@powerchain/contracts-staking';
+import {expect, filterLogsToArguments} from '@powerchain/contracts-test-utils';
+import {TxData} from 'ethereum-types';
 
-import { DeploymentManager } from '../deployment_manager';
+import {DeploymentManager} from '../deployment_manager';
 
-import { FunctionAssertion, FunctionResult } from './function_assertion';
+import {FunctionAssertion, FunctionResult} from './function_assertion';
 
 /**
  * Returns a function assertion that verifies valid pool joining.

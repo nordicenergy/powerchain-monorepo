@@ -5,10 +5,11 @@ export { env, EnvVars } from './env';
 export { callbackErrorReporter } from './callback_error_reporter';
 export { chaiSetup } from './chai_setup';
 export { tokenUtils } from './token_utils';
-export { Web3Wrapper, NodeType } from '@0x/web3-wrapper';
+export { Web3Wrapper, NodeType } from '@powerchain/web3-wrapper';
 export import Web3ProviderEngine = require('web3-provider-engine');
-export { DoneCallback } from '@0x/types';
-export { AbiDecoder, DecodedCalldata } from '@0x/utils';
+
+export { DoneCallback } from '@powerchain/types';
+export { AbiDecoder, DecodedCalldata } from '@powerchain/utils';
 export {
     SupportedProvider,
     CallData,

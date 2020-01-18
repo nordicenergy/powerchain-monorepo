@@ -1,5 +1,5 @@
 {
-    "extends": ["@0x/tslint-config"],
+    "extends": ["@powerchain/tslint-config"],
     "rules": {
         "custom-no-magic-numbers": false,
         "restrict-plus-operands": false

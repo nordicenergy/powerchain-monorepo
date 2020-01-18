@@ -1,8 +1,8 @@
-import { constants as stakingConstants } from '@0x/contracts-staking';
-import { blockchainTests, expect } from '@0x/contracts-test-utils';
+import {constants as stakingConstants} from '@powerchain/contracts-staking';
+import {blockchainTests, expect} from '@powerchain/contracts-test-utils';
 
-import { DeploymentManager } from '../deployment_manager';
-import { Authorizable, Ownable } from '../utils/wrapper_interfaces';
+import {DeploymentManager} from '../deployment_manager';
+import {Authorizable, Ownable} from '../utils/wrapper_interfaces';
 
 blockchainTests('Deployment Manager', env => {
     let owner: string;
@@ -158,7 +158,7 @@ blockchainTests('Deployment Manager', env => {
         });
 
         it('should have registered the zrx vault in the staking contract', async () => {
-            const zrxVault = await deploymentManager.staking.stakingWrapper.testZrxVaultAddress().callAsync();
+            const zrxVault = await deploymentManager.staking.stakingWrapper.testNetVaultAddress().callAsync();
             expect(zrxVault).to.be.eq(deploymentManager.staking.zrxVault.address);
         });
 

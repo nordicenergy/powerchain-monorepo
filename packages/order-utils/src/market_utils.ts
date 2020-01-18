@@ -1,10 +1,10 @@
-import { schemas } from '@0x/json-schemas';
-import { MarketOperation, Order } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {schemas} from '@powerchain/json-schemas';
+import {MarketOperation, Order} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { assert } from './assert';
-import { constants } from './constants';
+import {assert} from './assert';
+import {constants} from './constants';
 import {
     FeeOrdersAndRemainingFeeAmount,
     FindFeeOrdersThatCoverFeesForTargetOrdersOpts,
@@ -50,13 +50,13 @@ export const marketUtils = {
         ) as OrdersAndRemainingMakerFillAmount<T>;
     },
     /**
-     * Takes an array of orders and an array of feeOrders. Returns a subset of the feeOrders that has enough ZRX
+     * Takes an array of orders and an array of feeOrders. Returns a subset of the feeOrders that has enough NET
      * in order to fill the takerFees required by orders plus a slippageBufferAmount.
      * Iterates from first feeOrder to last. Sort the feeOrders by ascending rate in order to get the subset of
      * feeOrders that will cost the least ETH.
-     * @param   orders      An array of objects that extend the Order interface. All orders should specify ZRX as
+     * @param   orders      An array of objects that extend the Order interface. All orders should specify NET as
      *                      the makerAsset and WETH as the takerAsset.
-     * @param   feeOrders   An array of objects that extend the Order interface. All orders should specify ZRX as
+     * @param   feeOrders   An array of objects that extend the Order interface. All orders should specify NET as
      *                      the makerAsset and WETH as the takerAsset.
      * @param   opts        Optional arguments this function accepts.
      * @return  Resulting orders and remaining fee amount that could not be covered by the input.
@@ -97,7 +97,7 @@ export const marketUtils = {
         // try to get slippageBufferAmount from opts, if it's not there, default to 0
         const slippageBufferAmount = _.get(opts, 'slippageBufferAmount', constants.ZERO_AMOUNT) as BigNumber;
         assert.isValidBaseUnitAmount('opts.slippageBufferAmount', slippageBufferAmount);
-        // calculate total amount of ZRX needed to fill orders
+        // calculate total amount of NET needed to fill orders
         const totalFeeAmount = _.reduce(
             orders,
             (accFees, order, index) => {
@@ -123,7 +123,7 @@ export const marketUtils = {
             feeOrdersRemainingFillableMakerAssetAmounts: ordersRemainingFillableMakerAssetAmounts,
         };
         // TODO: add more orders here to cover rounding
-        // https://github.com/0xProject/0x-protocol-specification/blob/master/v2/forwarding-contract-specification.md#over-buying-zrx
+        // https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/forwarding-contract-specification.md#over-buying-zrx
     },
 };
 

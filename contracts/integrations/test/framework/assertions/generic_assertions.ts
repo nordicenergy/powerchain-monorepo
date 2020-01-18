@@ -1,9 +1,9 @@
-import { BaseContract } from '@0x/base-contract';
-import { expect } from '@0x/contracts-test-utils';
-import { RevertReason } from '@0x/types';
-import { StringRevertError } from '@0x/utils';
+import {BaseContract} from '@powerchain/base-contract';
+import {expect} from '@powerchain/contracts-test-utils';
+import {RevertReason} from '@powerchain/types';
+import {StringRevertError} from '@powerchain/utils';
 
-import { FunctionAssertion, FunctionResult } from './function_assertion';
+import {FunctionAssertion, FunctionResult} from './function_assertion';
 
 /**
  * Returns a generic FunctionAssertion for the given contract function, asserting that the

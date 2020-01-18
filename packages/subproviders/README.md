@@ -1,22 +1,22 @@
-## @0x/subproviders
+## @powerchain/subproviders
 
 A few useful web3 subproviders including a LedgerSubprovider useful for adding Ledger Nano S support.
 
-We have written up a [guide](https://0x.org/docs/guides/web3-provider-explained#web3-provider-examples) article detailing some use cases of this subprovider package.
+We have written up a [guide](https://powerchain.org/docs/guides/web3-provider-explained#web3-provider-examples) article detailing some use cases of this subprovider package.
 
-### Read the [Documentation](https://0x.org/docs/tools/subproviders).
+### Read the [Documentation](https://powerchain.org/docs/tools/subproviders).
 
 ## Installation
 
 ```
-yarn add @0x/subproviders
+yarn add @powerchain/subproviders
 ```
 
 If your project is in [TypeScript](https://www.typescriptlang.org/), add the following to your `tsconfig.json`:
 
 ```json
 "compilerOptions": {
-    "typeRoots": ["node_modules/@0x/typescript-typings/types", "node_modules/@types"],
+    "typeRoots": ["node_modules/@powerchain/typescript-typings/types", "node_modules/@types"],
 }
 ```
 
@@ -45,13 +45,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/subproviders yarn build
+PKG=@powerchain/subproviders yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/subproviders yarn watch
+PKG=@powerchain/subproviders yarn watch
 ```
 
 ### Clean
@@ -91,7 +91,7 @@ Then run:
 yarn test:integration
 ```
 
-**Note:** We assume a derivation path of `m/44'/60'/0'/0` which is already configured in the tests. With this setup and derivation path, your first account should be `0x5409ed021d9299bf6814279a6a1411a7e866a631`, exactly like TestRPC.
+**Note:** We assume a derivation path of `m/44'/60'/0'/0` which is already configured in the tests. With this setup and derivation path, your first account should be `powerchain5409ed021d9299bf6814279a6a1411a7e866a631`, exactly like TestRPC.
 
 #### All tests
 

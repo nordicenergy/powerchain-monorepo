@@ -1,8 +1,8 @@
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { BigNumber } from '../../configured_bignumber';
-import { constants } from '../utils/constants';
+import {BigNumber} from '../../configured_bignumber';
+import {constants} from '../utils/constants';
 
 function sanityCheckBigNumberRange(
     value_: BigNumber | string | number,
@@ -19,7 +19,7 @@ function sanityCheckBigNumberRange(
     }
 }
 function bigNumberToPaddedBuffer(value: BigNumber): Buffer {
-    const valueHex = `0x${value.toString(constants.HEX_BASE)}`;
+    const valueHex = `powerchain${value.toString(constants.HEX_BASE)}`;
     const valueBuf = ethUtil.toBuffer(valueHex);
     const valueBufPadded = ethUtil.setLengthLeft(valueBuf, constants.EVM_WORD_WIDTH_IN_BYTES);
     return valueBufPadded;

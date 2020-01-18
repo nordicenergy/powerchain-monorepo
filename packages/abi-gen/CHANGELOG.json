@@ -43,7 +43,7 @@
         "version": "5.0.0",
         "changes": [
             {
-                "note": "Refactored TS wrapper templates to result in a more succint interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details.",
+                "note": "Refactored TS wrapper templates to result in a more succint interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details.",
                 "pr": 2284
             },
             {
@@ -127,7 +127,7 @@
         "version": "4.4.0-beta.2",
         "changes": [
             {
-                "note": "Refactored TS wrapper templates to result in a more succint interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details.",
+                "note": "Refactored TS wrapper templates to result in a more succint interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details.",
                 "pr": 2284
             },
             {
@@ -780,7 +780,7 @@
         "version": "0.2.5",
         "changes": [
             {
-                "note": "Consolidate all `console.log` calls into `logUtils` in the `@0xproject/utils` package",
+                "note": "Consolidate all `console.log` calls into `logUtils` in the `@powerchainproject/utils` package",
                 "pr": 452
             }
         ],
@@ -822,7 +822,7 @@
                 "pr": 346
             },
             {
-                "note": "Added CLI option to specify networkId, adding support for the JSON artifact format found in @0xproject/contracts",
+                "note": "Added CLI option to specify networkId, adding support for the JSON artifact format found in @powerchainproject/contracts",
                 "pr": 388
             }
         ],

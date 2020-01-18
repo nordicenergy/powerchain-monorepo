@@ -1,14 +1,14 @@
-import { blockchainTests, expect, verifyEvents } from '@0x/contracts-test-utils';
+import {blockchainTests, expect, verifyEvents} from '@powerchain/contracts-test-utils';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { CoordinatorRegistryContract, CoordinatorRegistryCoordinatorEndpointSetEventArgs } from './wrappers';
+import {CoordinatorRegistryContract, CoordinatorRegistryCoordinatorEndpointSetEventArgs} from './wrappers';
 
 // tslint:disable:no-unnecessary-type-assertion
 blockchainTests.resets('Coordinator Registry tests', env => {
     let coordinatorRegistry: CoordinatorRegistryContract;
     let coordinatorOperator: string;
-    const coordinatorEndpoint = 'http://sometec.0x.org';
+    const coordinatorEndpoint = 'http://sometec.powerchain.org';
     const nilCoordinatorEndpoint = '';
     // tests
     before(async () => {
@@ -16,7 +16,7 @@ blockchainTests.resets('Coordinator Registry tests', env => {
         const accounts = await env.getAccountAddressesAsync();
         [, coordinatorOperator] = accounts;
         // deploy coordinator registry
-        coordinatorRegistry = await CoordinatorRegistryContract.deployFrom0xArtifactAsync(
+        coordinatorRegistry = await CoordinatorRegistryContract.deployFrompowerchainArtifactAsync(
             artifacts.CoordinatorRegistry,
             env.provider,
             env.txDefaults,

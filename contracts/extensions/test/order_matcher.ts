@@ -3,11 +3,11 @@ import {
     ERC20ProxyContract,
     ERC20Wrapper,
     ERC721ProxyContract,
-} from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { DummyERC20TokenContract } from '@0x/contracts-erc20';
-import { artifacts as erc721Artifacts, DummyERC721TokenContract } from '@0x/contracts-erc721';
-import { ExchangeContract, ExchangeRevertErrors } from '@0x/contracts-exchange';
+} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {DummyERC20TokenContract} from '@powerchain/contracts-erc20';
+import {artifacts as erc721Artifacts, DummyERC721TokenContract} from '@powerchain/contracts-erc721';
+import {ExchangeContract, ExchangeRevertErrors} from '@powerchain/contracts-exchange';
 import {
     chaiSetup,
     constants,
@@ -20,18 +20,18 @@ import {
     sendTransactionResult,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { RevertReason } from '@0x/types';
-import { BigNumber, providerUtils } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {RevertReason} from '@powerchain/types';
+import {BigNumber, providerUtils} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as chai from 'chai';
-import { LogWithDecodedArgs } from 'ethereum-types';
+import {LogWithDecodedArgs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { ExchangeFillEventArgs, OrderMatcherContract } from './wrappers';
+import {ExchangeFillEventArgs, OrderMatcherContract} from './wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 const blockchainLifecycle = new BlockchainLifecycle(web3Wrapper);
 chaiSetup.configure();
@@ -48,7 +48,7 @@ describe('OrderMatcher', () => {
 
     let erc20TokenA: DummyERC20TokenContract;
     let erc20TokenB: DummyERC20TokenContract;
-    let zrxToken: DummyERC20TokenContract;
+    let netToken: DummyERC20TokenContract;
     let exchange: ExchangeContract;
     let erc20Proxy: ERC20ProxyContract;
     let erc721Proxy: ERC721ProxyContract;
@@ -96,26 +96,26 @@ describe('OrderMatcher', () => {
         erc20Wrapper = new ERC20Wrapper(provider, usedAddresses, owner);
         // Deploy ERC20 token & ERC20 proxy
         const numDummyErc20ToDeploy = 3;
-        [erc20TokenA, erc20TokenB, zrxToken] = await erc20Wrapper.deployDummyTokensAsync(
+        [erc20TokenA, erc20TokenB, netToken] = await erc20Wrapper.deployDummyTokensAsync(
             numDummyErc20ToDeploy,
             constants.DUMMY_TOKEN_DECIMALS,
         );
         erc20Proxy = await erc20Wrapper.deployProxyAsync();
         await erc20Wrapper.setBalancesAndAllowancesAsync();
         // Deploy ERC721 proxy
-        erc721Proxy = await ERC721ProxyContract.deployFrom0xArtifactAsync(
+        erc721Proxy = await ERC721ProxyContract.deployFrompowerchainArtifactAsync(
             proxyArtifacts.ERC721Proxy,
             provider,
             txDefaults,
             artifacts,
         );
         // Depoy exchange
-        exchange = await ExchangeContract.deployFrom0xArtifactAsync(
+        exchange = await ExchangeContract.deployFrompowerchainArtifactAsync(
             artifacts.Exchange,
             provider,
             txDefaults,
             artifacts,
-            await devUtils.encodeERC20AssetData(zrxToken.address).callAsync(),
+            await devUtils.encodeERC20AssetData(netToken.address).callAsync(),
             new BigNumber(chainId),
         );
         await exchange.registerAssetProxy(erc20Proxy.address).awaitTransactionSuccessAsync({
@@ -131,7 +131,7 @@ describe('OrderMatcher', () => {
             constants.AWAIT_TRANSACTION_MINED_MS,
         );
         // Deploy OrderMatcher
-        orderMatcher = await OrderMatcherContract.deployFrom0xArtifactAsync(
+        orderMatcher = await OrderMatcherContract.deployFrompowerchainArtifactAsync(
             artifacts.OrderMatcher,
             provider,
             txDefaults,
@@ -196,7 +196,7 @@ describe('OrderMatcher', () => {
     });
     describe('constructor', () => {
         it('should revert if assetProxy is unregistered', async () => {
-            const exchangeInstance = await ExchangeContract.deployFrom0xArtifactAsync(
+            const exchangeInstance = await ExchangeContract.deployFrompowerchainArtifactAsync(
                 artifacts.Exchange,
                 provider,
                 txDefaults,
@@ -205,7 +205,7 @@ describe('OrderMatcher', () => {
                 new BigNumber(chainId),
             );
             return expectContractCreationFailedAsync(
-                (OrderMatcherContract.deployFrom0xArtifactAsync(
+                (OrderMatcherContract.deployFrompowerchainArtifactAsync(
                     artifacts.OrderMatcher,
                     provider,
                     txDefaults,
@@ -640,7 +640,7 @@ describe('OrderMatcher', () => {
                 makerAssetAmount: Web3Wrapper.toBaseUnitAmount(new BigNumber(10), 18),
                 takerAssetAmount: Web3Wrapper.toBaseUnitAmount(new BigNumber(5), 18),
             });
-            signedOrderRight.signature = `0xff${signedOrderRight.signature.slice(4)}`;
+            signedOrderRight.signature = `powerchainff${signedOrderRight.signature.slice(4)}`;
             const data = exchange
                 .matchOrders(signedOrderLeft, signedOrderRight, signedOrderLeft.signature, signedOrderRight.signature)
                 .getABIEncodedTransactionData();
@@ -696,7 +696,7 @@ describe('OrderMatcher', () => {
             expect(newBalance).to.be.bignumber.equal(constants.ZERO_AMOUNT);
         });
         it('should allow owner to withdraw ERC721 tokens', async () => {
-            const erc721Token = await DummyERC721TokenContract.deployFrom0xArtifactAsync(
+            const erc721Token = await DummyERC721TokenContract.deployFrompowerchainArtifactAsync(
                 erc721Artifacts.DummyERC721Token,
                 provider,
                 txDefaults,
@@ -740,7 +740,7 @@ describe('OrderMatcher', () => {
             expect(newAllowance).to.be.bignumber.equal(allowance);
         });
         it('should be able to approve an ERC721 token by passing in allowance = 1', async () => {
-            const erc721Token = await DummyERC721TokenContract.deployFrom0xArtifactAsync(
+            const erc721Token = await DummyERC721TokenContract.deployFrompowerchainArtifactAsync(
                 erc721Artifacts.DummyERC721Token,
                 provider,
                 txDefaults,
@@ -762,7 +762,7 @@ describe('OrderMatcher', () => {
             expect(isApproved).to.be.equal(true);
         });
         it('should be able to approve an ERC721 token by passing in allowance > 1', async () => {
-            const erc721Token = await DummyERC721TokenContract.deployFrom0xArtifactAsync(
+            const erc721Token = await DummyERC721TokenContract.deployFrompowerchainArtifactAsync(
                 erc721Artifacts.DummyERC721Token,
                 provider,
                 txDefaults,

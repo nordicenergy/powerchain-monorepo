@@ -1,17 +1,17 @@
-import { MarketBuySwapQuote, SwapQuoteConsumer, SwapQuoteConsumerError, SwapQuoter } from '@0x/asset-swapper';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {MarketBuySwapQuote, SwapQuoteConsumer, SwapQuoteConsumerError, SwapQuoter} from '@powerchain/asset-swapper';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as React from 'react';
 
-import { ColorOption } from '../style/theme';
-import { AffiliateInfo, Asset, OrderProcessState, ZeroExInstantError } from '../types';
+import {ColorOption} from '../style/theme';
+import {AffiliateInfo, Asset, OrderProcessState, ZeroExInstantError} from '../types';
 
-import { BuyButton } from './buy_button';
-import { PlacingOrderButton } from './placing_order_button';
-import { SecondaryButton } from './secondary_button';
+import {BuyButton} from './buy_button';
+import {PlacingOrderButton} from './placing_order_button';
+import {SecondaryButton} from './secondary_button';
 
-import { Button } from './ui/button';
-import { Flex } from './ui/flex';
+import {Button} from './ui/button';
+import {Flex} from './ui/flex';
 
 export interface BuyOrderStateButtonProps {
     accountAddress?: string;

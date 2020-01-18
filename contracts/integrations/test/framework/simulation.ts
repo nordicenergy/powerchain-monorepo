@@ -4,14 +4,14 @@ import {
     StakeStatus,
     StakingPoolById,
     StoredBalance,
-} from '@0x/contracts-staking';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-staking';
+import {BigNumber} from '@powerchain/utils';
 
-import { Actor } from './actors/base';
-import { AssertionResult } from './assertions/function_assertion';
-import { BlockchainBalanceStore } from './balances/blockchain_balance_store';
-import { DeploymentManager } from './deployment_manager';
-import { logger } from './utils/logger';
+import {Actor} from './actors/base';
+import {AssertionResult} from './assertions/function_assertion';
+import {BlockchainBalanceStore} from './balances/blockchain_balance_store';
+import {DeploymentManager} from './deployment_manager';
+import {logger} from './utils/logger';
 
 // tslint:disable:max-classes-per-file
 

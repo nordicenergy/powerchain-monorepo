@@ -1,11 +1,11 @@
-import { Asset, AssetPairsItem, SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {Asset, AssetPairsItem, SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { OrderStore } from '../order_store';
-import { AcceptedRejectedOrders } from '../types';
-import { utils } from '../utils';
+import {OrderStore} from '../order_store';
+import {AcceptedRejectedOrders} from '../types';
+import {utils} from '../utils';
 
-import { BaseOrderProvider, DEFAULT_TOKEN_PRECISION } from './base_order_provider';
+import {BaseOrderProvider, DEFAULT_TOKEN_PRECISION} from './base_order_provider';
 
 export class CustomOrderProvider extends BaseOrderProvider {
     constructor(orders: SignedOrder[], orderStore: OrderStore) {

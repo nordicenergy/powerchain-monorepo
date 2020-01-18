@@ -1,4 +1,4 @@
-import { ChainId, ContractAddresses, getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
+import {ChainId, ContractAddresses, getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
 
 /**
  * Returns the default contract addresses for the given chainId or throws with

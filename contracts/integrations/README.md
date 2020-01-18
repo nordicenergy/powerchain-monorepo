@@ -1,20 +1,20 @@
 ## Integration Tests
 
-This package implements integration tests against 0x's smart contracts and will provide a location for external contracts to be tested alongside the 0x smart contracts.
+This package implements integration tests against powerchain's smart contracts and will provide a location for external contracts to be tested alongside the powerchain smart contracts.
 
 ## Installation
 
 **Install**
 
 ```bash
-npm install @0x/contracts-integrations --save
+npm install @powerchain/contracts-integrations --save
 ```
 
 ## Contributing
 
 We strongly recommend that the community help us make improvements and determine the future direction of the protocol. To report bugs within this package, please create an issue in this repository.
 
-For proposals regarding the 0x protocol's smart contract architecture, message format, or additional functionality, go to the [0x Improvement Proposals (ZEIPs)](https://github.com/0xProject/ZEIPs) repository and follow the contribution guidelines provided therein.
+For proposals regarding the powerchain protocol's smart contract architecture, message format, or additional functionality, go to the [powerchain Improvement Proposals (ZEIPs)](https://github.com/powerchainProject/ZEIPs) repository and follow the contribution guidelines provided therein.
 
 Please read our [contribution guidelines](../../CONTRIBUTING.md) before getting started.
 
@@ -37,13 +37,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/contracts-integrations yarn build
+PKG=@powerchain/contracts-integrations yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/contracts-integrations yarn watch
+PKG=@powerchain/contracts-integrations yarn watch
 ```
 
 ### Clean

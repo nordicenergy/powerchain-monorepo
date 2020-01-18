@@ -1,8 +1,7 @@
-import { MarketBuySwapQuote } from '@0x/asset-swapper';
-import { BigNumber } from '@0x/utils';
-import * as _ from 'lodash';
+import {MarketBuySwapQuote} from '@powerchain/asset-swapper';
+import {BigNumber} from '@powerchain/utils';
 
-import { GIT_SHA, HEAP_ENABLED, INSTANT_DISCHARGE_TARGET, NODE_ENV, NPM_PACKAGE_VERSION } from '../constants';
+import {GIT_SHA, HEAP_ENABLED, INSTANT_DISCHARGE_TARGET, NODE_ENV, NPM_PACKAGE_VERSION} from '../constants';
 import {
     AffiliateInfo,
     Asset,
@@ -15,7 +14,7 @@ import {
     WalletSuggestion,
 } from '../types';
 
-import { EventProperties, heapUtil } from './heap';
+import {EventProperties, heapUtil} from './heap';
 
 let isDisabledViaConfig = false;
 export const disableAnalytics = (shouldDisableAnalytics: boolean) => {

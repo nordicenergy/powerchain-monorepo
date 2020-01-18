@@ -7,5 +7,5 @@ export const configs = {
     IS_LOCAL_PUBLISH,
     DIST_TAG,
     NPM_REGISTRY_URL: IS_LOCAL_PUBLISH ? LOCAL_NPM_REGISTRY_URL : REMOTE_NPM_REGISTRY_URL,
-    DOCKER_HUB_ORG: '0xorg',
+    DOCKER_HUB_ORG: 'nordicenergy',
 };

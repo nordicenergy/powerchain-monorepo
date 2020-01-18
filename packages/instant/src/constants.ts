@@ -1,20 +1,20 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { AccountNotReady, AccountState, Network, ProviderType } from './types';
+import {AccountNotReady, AccountState, Network, ProviderType} from './types';
 
 // TODO(dave4506) until we have /prices endpoint ready, we will use this whitelist for bridge order liquidity assets
 export const SUPPORTED_TOKEN_ASSET_DATA_WITH_BRIDGE_ORDERS = [
-    '0xf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498', // ZRX
-    '0xf47261b0000000000000000000000000960b236a07cf122663c4303350609a66a7b288c0', // ANT
-    '0xf47261b00000000000000000000000000d8775f648430679a709e98d2b0cb6250d2887ef', // BAT
-    '0xf47261b0000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
-    '0xf47261b00000000000000000000000006b175474e89094c44da98b954eedeac495271d0f', // DAI
-    '0xf47261b000000000000000000000000005f4a42e251f2d52b8ed15e9fedaacfcef1fad27', // ZIL
-    '0xf47261b000000000000000000000000058b6a8a3302369daec383334672404ee733ab239', // LPT
-    '0xf47261b00000000000000000000000009f8f72aa9304c8b593d555f12ef6589cc3a579a2', // MKR
-    '0xf47261b0000000000000000000000000d26114cd6ee289accf82350c8d8487fedb8a0c07', // OMG
-    '0xf47261b0000000000000000000000000514910771af9ca656af840dff83e8264ecf986ca', // LINK
-    '0xf47261b00000000000000000000000001985365e9f78359a9b6ad760e32412f4a445e862', // REP
+    'powerchainf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498', // NET
+    'powerchainf47261b0000000000000000000000000960b236a07cf122663c4303350609a66a7b288c0', // ANT
+    'powerchainf47261b00000000000000000000000000d8775f648430679a709e98d2b0cb6250d2887ef', // BAT
+    'powerchainf47261b0000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
+    'powerchainf47261b00000000000000000000000006b175474e89094c44da98b954eedeac495271d0f', // DAI
+    'powerchainf47261b000000000000000000000000005f4a42e251f2d52b8ed15e9fedaacfcef1fad27', // ZIL
+    'powerchainf47261b000000000000000000000000058b6a8a3302369daec383334672404ee733ab239', // LPT
+    'powerchainf47261b00000000000000000000000009f8f72aa9304c8b593d555f12ef6589cc3a579a2', // MKR
+    'powerchainf47261b0000000000000000000000000d26114cd6ee289accf82350c8d8487fedb8a0c07', // OMG
+    'powerchainf47261b0000000000000000000000000514910771af9ca656af840dff83e8264ecf986ca', // LINK
+    'powerchainf47261b00000000000000000000000001985365e9f78359a9b6ad760e32412f4a445e862', // PWRC
 ];
 export const BIG_NUMBER_ZERO = new BigNumber(0);
 export const ETH_DECIMALS = 18;
@@ -47,10 +47,10 @@ export const COINBASE_API_BASE_URL = 'https://api.coinbase.com/v2';
 export const PROGRESS_STALL_AT_WIDTH = '95%';
 export const PROGRESS_FINISH_ANIMATION_TIME_MS = 200;
 export const HOST_DOMAINS_EXTERNAL = [
-    '0x-instant-staging.s3-website-us-east-1.amazonaws.com',
-    '0x-instant-dogfood.s3-website-us-east-1.amazonaws.com',
-    'instant.0xproject.com',
-    'instant.0x.org',
+    'powerchain-instant-staging.s3-website-us-east-1.amazonaws.com',
+    'powerchain-instant-dogfood.s3-website-us-east-1.amazonaws.com',
+    'instant.powerchainproject.com',
+    'instant.powerchain.org',
 ];
 export const HOST_DOMAINS_LOCAL = ['localhost', '127.0.0.1', '0.0.0.0'];
 export const ROLLBAR_CLIENT_TOKEN = process.env.ROLLBAR_CLIENT_TOKEN;
@@ -72,7 +72,7 @@ export const ETHEREUM_NODE_URL_BY_NETWORK = {
     [Network.Mainnet]: `https://mainnet.infura.io/v3/${process.env.INSTANT_INFURA_PROJECT_ID}`,
     [Network.Kovan]: `https://kovan.infura.io/v3/${process.env.INSTANT_INFURA_PROJECT_ID}`,
 };
-export const ZERO_EX_SITE_URL = 'https://www.0x.org/';
+export const ZERO_EX_SITE_URL = 'https://www.powerchain.org/';
 export const BLOCK_POLLING_INTERVAL_MS = 10000; // 10s
 export const NO_ACCOUNT: AccountNotReady = {
     state: AccountState.None,

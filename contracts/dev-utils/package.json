@@ -1,15 +1,15 @@
 {
-    "name": "@0x/contracts-dev-utils",
+    "name": "@powerchain/contracts-dev-utils",
     "version": "1.0.3",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "0x protocol specific utility contracts",
+    "description": "powerchain protocol specific utility contracts",
     "main": "lib/src/index.js",
     "scripts": {
         "build": "yarn pre_build && tsc -b",
-        "test": "yarn assert_deployable && echo !!! Tests are run via @0x/contracts-integrations !!!",
-        "assert_deployable": "node -e \"const bytecodeLen = (require('./generated-artifacts/DevUtils.json').compilerOutput.evm.bytecode.object.length-2)/2; assert(bytecodeLen<=0x6000,'DevUtils contract is too big to deploy, per EIP-170. '+bytecodeLen+'>'+0x6000)\"",
+        "test": "yarn assert_deployable && echo !!! Tests are run via @powerchain/contracts-integrations !!!",
+        "assert_deployable": "node -e \"const bytecodeLen = (require('./generated-artifacts/DevUtils.json').compilerOutput.evm.bytecode.object.length-2)/2; assert(bytecodeLen<=powerchain6000,'DevUtils contract is too big to deploy, per EIP-170. '+bytecodeLen+'>'+powerchain6000)\"",
         "build:ci": "yarn build",
         "pre_build": "run-s compile quantify_bytecode contracts:gen generate_contract_wrappers contracts:copy",
         "compile": "sol-compiler",
@@ -33,20 +33,20 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/contracts/dev-utils/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/contracts/dev-utils/README.md",
     "devDependencies": {
-        "@0x/abi-gen": "^5.0.3",
-        "@0x/assert": "^3.0.3",
-        "@0x/contracts-gen": "^2.0.3",
-        "@0x/sol-compiler": "^4.0.3",
-        "@0x/ts-doc-gen": "^0.0.22",
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/abi-gen": "^5.0.3",
+        "@powerchain/assert": "^3.0.3",
+        "@powerchain/contracts-gen": "^2.0.3",
+        "@powerchain/sol-compiler": "^4.0.3",
+        "@powerchain/ts-doc-gen": "^0.0.22",
+        "@powerchain/tslint-config": "^4.0.0",
         "@types/node": "*",
         "ethereum-types": "^3.0.0",
         "ethers": "~4.0.4",
@@ -59,7 +59,7 @@
         "typescript": "3.0.1"
     },
     "dependencies": {
-        "@0x/base-contract": "^6.0.3"
+        "@powerchain/base-contract": "^6.0.3"
     },
     "publishConfig": {
         "access": "public"

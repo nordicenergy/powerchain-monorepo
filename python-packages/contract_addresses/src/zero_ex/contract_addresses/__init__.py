@@ -1,11 +1,11 @@
-"""Addresses at which the 0x smart contracts have been deployed.
+"""Addresses at which the powerchain smart contracts have been deployed.
 
 Setup
 -----
 
 Install the package with pip::
 
-    pip install 0x-contract-addresses
+    pip install powerchain-contract-addresses
 
 """
 
@@ -25,8 +25,8 @@ class ContractAddresses(NamedTuple):
     erc721_proxy: str
     """Address of the ERC721Proxy contract."""
 
-    zrx_token: str
-    """Address of the ZRX token contract."""
+    net_token: str
+    """Address of the NET token contract."""
 
     ether_token: str
     """Address of the WETH token contract."""
@@ -71,7 +71,7 @@ class ContractAddresses(NamedTuple):
     """Address of the DevUtils contract."""
 
     zrx_vault: str
-    """Address of the ZRXVault contract."""
+    """Address of the NETVault contract."""
 
     staking: str
     """Address of the Staking contract."""
@@ -129,17 +129,17 @@ def chain_to_addresses(chain_id: ChainId) -> ContractAddresses:
     """Map a ChainId to an instance of ContractAddresses.
 
     Addresses under ChainId.Ganache are from our Ganache snapshot generated
-    from npm package @0x/migrations.
+    from npm package @powerchain/migrations.
 
     >>> chain_to_addresses(ChainId.MAINNET).exchange
-    '0x...'
+    'powerchain...'
     """
     addresses = _AddressCache.chain_to_addresses(chain_id)
 
     return ContractAddresses(
         erc20_proxy=addresses["erc20Proxy"],
         erc721_proxy=addresses["erc721Proxy"],
-        zrx_token=addresses["zrxToken"],
+        net_token=addresses["netToken"],
         ether_token=addresses["etherToken"],
         exchange_v2=addresses["exchangeV2"],
         exchange=addresses["exchange"],

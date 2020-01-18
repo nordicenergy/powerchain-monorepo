@@ -60,7 +60,7 @@ CHANGELOG
 
 ## v4.0.4 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies. (#1995)
 
 ## v4.0.3 - _July 24, 2019_
 
@@ -101,11 +101,11 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.1.0 - _March 21, 2019_
+## v1.0.1- _March 21, 2019_
 
     * Run Web3ProviderEngine without excess block polling (#1695)
 
-## v3.0.0 - _March 20, 2019_
+## v1.0.0 - _March 20, 2019_
 
     * Do not reexport external dependencies (#1682)
     * Upgrade contracts to Solidity 0.5.5 (#1682)

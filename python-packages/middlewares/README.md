@@ -1,13 +1,13 @@
-## 0x-middlewares
+## powerchain-middlewares
 
-Web3 middlewares for 0x applications.
+Web3 middlewares for powerchain applications.
 
-Read the [documentation](http://0x-middlewares-py.s3-website-us-east-1.amazonaws.com/)
+Read the [documentation](http://powerchain-middlewares-py.s3-website-us-east-1.amazonaws.com/)
 
 ## Installing
 
 ```bash
-pip install 0x-middlewares
+pip install powerchain-middlewares
 ```
 
 ## Contributing

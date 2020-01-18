@@ -1,7 +1,7 @@
-import { coverage, profiler, provider } from '@0x/contracts-test-utils';
-import { env, EnvVars } from '@0x/dev-utils';
-import { prependSubprovider } from '@0x/subproviders';
-import { providerUtils } from '@0x/utils';
+import {coverage, profiler, provider} from '@powerchain/contracts-test-utils';
+import {env, EnvVars} from '@powerchain/dev-utils';
+import {prependSubprovider} from '@powerchain/subproviders';
+import {providerUtils} from '@powerchain/utils';
 
 const coverageSubprovider = coverage.getCoverageSubproviderSingleton();
 const profilerSubprovider = profiler.getProfilerSubproviderSingleton();

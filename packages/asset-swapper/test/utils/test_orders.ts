@@ -1,12 +1,12 @@
-import { SignedOrderWithFillableAmounts } from '../../src/types';
+import {SignedOrderWithFillableAmounts} from '../../src/types';
 
-import { testOrderFactory } from './test_order_factory';
-import { baseUnitAmount } from './utils';
+import {testOrderFactory} from './test_order_factory';
+import {baseUnitAmount} from './utils';
 
 // tslint:disable:custom-no-magic-numbers
 
-const FAKE_ERC20_TAKER_ASSET_DATA = '0xf47261b02222222222222222222222222222222222222222222222222222222222222222';
-const FAKE_ERC20_MAKER_ASSET_DATA = '0xf47261b01111111111111111111111111111111111111111111111111111111111111111';
+const FAKE_ERC20_TAKER_ASSET_DATA = 'powerchainf47261b02222222222222222222222222222222222222222222222222222222222222222';
+const FAKE_ERC20_MAKER_ASSET_DATA = 'powerchainf47261b01111111111111111111111111111111111111111111111111111111111111111';
 
 const PARTIAL_ORDER: Partial<SignedOrderWithFillableAmounts> = {
     takerAssetData: FAKE_ERC20_TAKER_ASSET_DATA,

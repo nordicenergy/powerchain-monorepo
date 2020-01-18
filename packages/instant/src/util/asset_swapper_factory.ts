@@ -1,8 +1,8 @@
-import { SwapQuoteConsumer, SwapQuoter, SwapQuoterOpts } from '@0x/asset-swapper';
-import { SupportedProvider } from 'ethereum-types';
+import {SwapQuoteConsumer, SwapQuoter, SwapQuoterOpts} from '@powerchain/asset-swapper';
+import {SupportedProvider} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { Network, OrderSource } from '../types';
+import {Network, OrderSource} from '../types';
 
 export const assetSwapperFactory = {
     getSwapQuoter: (supportedProvider: SupportedProvider, orderSource: OrderSource, network: Network): SwapQuoter => {

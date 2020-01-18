@@ -1,13 +1,13 @@
-import { DummyERC20TokenContract } from '@0x/contracts-erc20';
-import { constants, OrderFactory } from '@0x/contracts-test-utils';
-import { Order, SignedOrder } from '@0x/types';
-import { TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+import {DummyERC20TokenContract} from '@powerchain/contracts-erc20';
+import {constants, OrderFactory} from '@powerchain/contracts-test-utils';
+import {Order, SignedOrder} from '@powerchain/types';
+import {TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { AssertionResult } from '../assertions/function_assertion';
-import { validJoinStakingPoolAssertion } from '../assertions/joinStakingPool';
-import { Pseudorandom } from '../utils/pseudorandom';
+import {AssertionResult} from '../assertions/function_assertion';
+import {validJoinStakingPoolAssertion} from '../assertions/joinStakingPool';
+import {Pseudorandom} from '../utils/pseudorandom';
 
-import { Actor, ActorConfig, Constructor } from './base';
+import {Actor, ActorConfig, Constructor} from './base';
 
 interface MakerConfig extends ActorConfig {
     orderConfig: Partial<Order>;
@@ -24,7 +24,7 @@ export interface MakerInterface {
 }
 
 /**
- * This mixin encapsulates functionality associated with makers within the 0x ecosystem.
+ * This mixin encapsulates functionality associated with makers within the powerchain ecosystem.
  * This includes signing and canceling orders, as well as joining a staking pool as a maker.
  */
 export function MakerMixin<TBase extends Constructor>(Base: TBase): TBase & Constructor<MakerInterface> {

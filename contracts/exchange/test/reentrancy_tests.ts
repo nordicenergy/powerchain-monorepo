@@ -1,12 +1,12 @@
-import { blockchainTests, constants, describe, expect } from '@0x/contracts-test-utils';
-import { BigNumber, hexUtils } from '@0x/utils';
-import { DataItem, MethodAbi, TupleDataItem } from 'ethereum-types';
+import {blockchainTests, constants, describe, expect} from '@powerchain/contracts-test-utils';
+import {BigNumber, hexUtils} from '@powerchain/utils';
+import {DataItem, MethodAbi, TupleDataItem} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
-import { ReentrancyTesterContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {ReentrancyTesterContract} from './wrappers';
 
-import { constants as TestConstants } from './utils/constants';
+import {constants as TestConstants} from './utils/constants';
 
 blockchainTests.resets('Reentrancy Tests', env => {
     const { ONE_ETHER } = constants;
@@ -90,7 +90,7 @@ blockchainTests.resets('Reentrancy Tests', env => {
     }
 
     before(async () => {
-        testerContract = await ReentrancyTesterContract.deployFrom0xArtifactAsync(
+        testerContract = await ReentrancyTesterContract.deployFrompowerchainArtifactAsync(
             artifacts.ReentrancyTester,
             env.provider,
             env.txDefaults,

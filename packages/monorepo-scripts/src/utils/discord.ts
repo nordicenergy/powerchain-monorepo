@@ -1,8 +1,8 @@
-import { fetchAsync } from '@0x/utils';
+import {fetchAsync} from '@powerchain/utils';
 
-import { constants } from '../constants';
+import {constants} from '../constants';
 
-import { utils } from './utils';
+import {utils} from './utils';
 
 export const alertDiscordAsync = async (releaseNotes: string): Promise<void> => {
     const webhookUrl = constants.discordAlertWebhookUrl;

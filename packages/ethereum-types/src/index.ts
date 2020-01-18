@@ -1,10 +1,10 @@
-import { BigNumber } from 'bignumber.js';
+import {BigNumber} from 'bignumber.js';
 
 export type JSONRPCErrorCallback = (err: Error | null, result?: JSONRPCResponsePayload) => void;
 
 /**
  * Do not create your own provider. Use an existing provider from a Web3 or ProviderEngine library
- * Read more about Providers in the guides section of the 0x docs.
+ * Read more about Providers in the guides section of the powerchain docs.
  */
 export type SupportedProvider = Web3JsProvider | GanacheProvider | EIP1193Provider | ZeroExProvider;
 
@@ -21,7 +21,7 @@ export interface Provider {
 }
 
 /**
- * The interface for the provider used internally by 0x libraries
+ * The interface for the provider used internally by powerchain libraries
  * Any property we use from any SupportedProvider should we explicitly
  * add here
  */

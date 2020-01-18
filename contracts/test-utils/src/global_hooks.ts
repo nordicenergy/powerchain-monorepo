@@ -1,7 +1,7 @@
-import { env, EnvVars } from '@0x/dev-utils';
+import {env, EnvVars} from '@powerchain/dev-utils';
 
-import { coverage } from './coverage';
-import { profiler } from './profiler';
+import {coverage} from './coverage';
+import {profiler} from './profiler';
 
 after('generate coverage report', async () => {
     if (env.parseBoolean(EnvVars.SolidityCoverage)) {

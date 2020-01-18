@@ -5,13 +5,13 @@ import {
     getRandomInteger,
     getRandomPortion,
     randomAddress,
-} from '@0x/contracts-test-utils';
-import { Order } from '@0x/types';
-import { BigNumber, hexUtils } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {Order} from '@powerchain/types';
+import {BigNumber, hexUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
-import { TestERC20BridgeSamplerContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestERC20BridgeSamplerContract} from './wrappers';
 
 blockchainTests('erc20-bridge-sampler', env => {
     let testContract: TestERC20BridgeSamplerContract;
@@ -21,12 +21,12 @@ blockchainTests('erc20-bridge-sampler', env => {
     const MAX_RATE = new BigNumber('100');
     const MIN_DECIMALS = 4;
     const MAX_DECIMALS = 20;
-    const WETH_ADDRESS = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2';
-    const KYBER_SALT = '0x0ff3ca9d46195c39f9a12afb74207b4970349fb3cfb1e459bbf170298d326bc7';
-    const ETH2DAI_SALT = '0xb713b61bb9bb2958a0f5d1534b21e94fc68c4c0c034b0902ed844f2f6cd1b4f7';
-    const UNISWAP_BASE_SALT = '0x1d6a6a0506b0b4a554b907a4c29d9f4674e461989d9c1921feb17b26716385ab';
-    const ERC20_PROXY_ID = '0xf47261b0';
-    const INVALID_ASSET_PROXY_ASSET_DATA = hexUtils.concat('0xf47261b1', hexUtils.leftPad(randomAddress()));
+    const WETH_ADDRESS = 'powerchainC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2';
+    const KYBER_SALT = 'powerchain0ff3ca9d46195c39f9a12afb74207b4970349fb3cfb1e459bbf170298d326bc7';
+    const ETH2DAI_SALT = 'powerchainb713b61bb9bb2958a0f5d1534b21e94fc68c4c0c034b0902ed844f2f6cd1b4f7';
+    const UNISWAP_BASE_SALT = 'powerchain1d6a6a0506b0b4a554b907a4c29d9f4674e461989d9c1921feb17b26716385ab';
+    const ERC20_PROXY_ID = 'powerchainf47261b0';
+    const INVALID_ASSET_PROXY_ASSET_DATA = hexUtils.concat('powerchainf47261b1', hexUtils.leftPad(randomAddress()));
     const INVALID_ASSET_DATA = hexUtils.random(37);
     const SELL_SOURCES = ['Eth2Dai', 'Kyber', 'Uniswap'];
     const BUY_SOURCES = ['Eth2Dai', 'Uniswap'];
@@ -39,7 +39,7 @@ blockchainTests('erc20-bridge-sampler', env => {
     const TAKER_TOKEN = randomAddress();
 
     before(async () => {
-        testContract = await TestERC20BridgeSamplerContract.deployFrom0xArtifactAsync(
+        testContract = await TestERC20BridgeSamplerContract.deployFrompowerchainArtifactAsync(
             artifacts.TestERC20BridgeSampler,
             env.provider,
             env.txDefaults,

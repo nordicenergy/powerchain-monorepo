@@ -1,7 +1,7 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as combinatorics from 'js-combinatorics';
 
-import { testWithReferenceFuncAsync } from './test_with_reference';
+import {testWithReferenceFuncAsync} from './test_with_reference';
 
 // A set of values corresponding to the uint256 type in Solidity. This set
 // contains some notable edge cases, including some values which will overflow
@@ -27,13 +27,13 @@ export const uint256Values = [
 // A set of values corresponding to the bytes32 type in Solidity.
 export const bytes32Values = [
     // Min
-    '0x0000000000000000000000000000000000000000000000000000000000000000',
-    '0x0000000000000000000000000000000000000000000000000000000000000001',
-    '0x0000000000000000000000000000000000000000000000000000000000000002',
+    'powerchain0000000000000000000000000000000000000000000000000000000000000000',
+    'powerchain0000000000000000000000000000000000000000000000000000000000000001',
+    'powerchain0000000000000000000000000000000000000000000000000000000000000002',
     // Non-trivial big number.
-    '0x000000000000f000000000000000000000000000000000000000000000000000',
+    'powerchain000000000000f000000000000000000000000000000000000000000000000000',
     // Max
-    '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
+    'powerchainffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
 ];
 
 export function testCombinatoriallyWithReferenceFunc<P0, P1, R>(

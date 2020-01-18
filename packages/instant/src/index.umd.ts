@@ -1,7 +1,7 @@
-import { BigNumber, SwapQuoter } from '@0x/asset-swapper';
-import { AssetProxyId } from '@0x/types';
-import { providerUtils } from '@0x/utils';
-import { SupportedProvider, ZeroExProvider } from 'ethereum-types';
+import {BigNumber, SwapQuoter} from '@powerchain/asset-swapper';
+import {AssetProxyId} from '@powerchain/types';
+import {providerUtils} from '@powerchain/utils';
+import {SupportedProvider, ZeroExProvider} from 'ethereum-types';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -13,15 +13,15 @@ import {
     INJECTED_DIV_ID,
     NPM_PACKAGE_VERSION,
 } from './constants';
-import { assetMetaDataMap } from './data/asset_meta_data_map';
-import { ZeroExInstantOverlay, ZeroExInstantOverlayProps } from './index';
-import { Network, OrderSource } from './types';
-import { analytics } from './util/analytics';
-import { assert } from './util/assert';
-import { assetDataEncoder } from './util/asset_data_encoder';
-import { orderCoercionUtil } from './util/order_coercion';
-import { providerFactory } from './util/provider_factory';
-import { util } from './util/util';
+import {assetMetaDataMap} from './data/asset_meta_data_map';
+import {ZeroExInstantOverlay, ZeroExInstantOverlayProps} from './index';
+import {Network, OrderSource} from './types';
+import {analytics} from './util/analytics';
+import {assert} from './util/assert';
+import {assetDataEncoder} from './util/asset_data_encoder';
+import {orderCoercionUtil} from './util/order_coercion';
+import {providerFactory} from './util/provider_factory';
+import {util} from './util/util';
 
 const isInstantRendered = (): boolean => !!document.getElementById(INJECTED_DIV_ID);
 
@@ -109,7 +109,7 @@ export interface ZeroExInstantConfig extends ZeroExInstantOverlayProps {
 }
 
 export const render = (config: ZeroExInstantConfig, selector: string = DEFAULT_ZERO_EX_CONTAINER_SELECTOR) => {
-    // Coerces BigNumber provided in config to version utilized by 0x packages
+    // Coerces BigNumber provided in config to version utilized by powerchain packages
     const coercedConfig = _.assign({}, config, {
         orderSource: _.isArray(config.orderSource)
             ? orderCoercionUtil.coerceOrderArrayFieldsToBigNumber(config.orderSource)
@@ -125,7 +125,7 @@ export const render = (config: ZeroExInstantConfig, selector: string = DEFAULT_Z
         return;
     }
     // Before we render, push to history saying that instant is showing for this part of the history.
-    window.history.pushState({ zeroExInstantShowing: true }, '0x Instant');
+    window.history.pushState({ zeroExInstantShowing: true }, 'powerchain Instant');
     let removeInstant = renderInstant(coercedConfig, selector);
     // If the integrator defined a popstate handler, save it to __zeroExInstantIntegratorsPopStateHandler
     // unless we have already done so on a previous render.

@@ -19,7 +19,7 @@ CHANGELOG
 
 ## v6.0.0 - _December 2, 2019_
 
-    * Removed dependency on @0x/order-utils (#2321)
+    * Removed dependency on @powerchain/order-utils (#2321)
     * All references to network ID have been removed, and references to chain ID have been introduced instead (#2313)
 
 ## v5.1.0-beta.3 - _December 2, 2019_
@@ -28,7 +28,7 @@ CHANGELOG
 
 ## v5.1.0-beta.2 - _November 17, 2019_
 
-    * Removed dependency on @0x/order-utils (#2321)
+    * Removed dependency on @powerchain/order-utils (#2321)
 
 ## v5.1.0-beta.1 - _November 7, 2019_
 
@@ -175,7 +175,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.3 - _November 9, 2018_
+## v1.0.1 - _November 9, 2018_
 
     * Dependencies updated
 
@@ -187,7 +187,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _September 28, 2018_
+## v1.0.0 - _September 28, 2018_
 
     * Change /order_config request to a POST instead of GET (#1091)
 
@@ -197,7 +197,7 @@ CHANGELOG
 
 ## v2.0.3 - _September 25, 2018_
 
-    * Import SRA-related types from @0xproject/types (#1085)
+    * Import SRA-related types from @powerchainproject/types (#1085)
 
 ## v2.0.2 - _September 21, 2018_
 
@@ -290,7 +290,7 @@ CHANGELOG
 
 ## v0.6.4 - _March 17, 2018_
 
-    * Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@0xproject/types` package (#456)
+    * Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@powerchainproject/types` package (#456)
 
 ## v0.6.2 - _February 15, 2018_
 
@@ -324,7 +324,7 @@ CHANGELOG
 
     * Add SignedOrder and TokenTradeInfo to the public interface
     * Add ECSignature and Order to the public interface
-    * Remove dependency on 0x.js
+    * Remove dependency on powerchain.js
 
 ## v0.1.0 - _November 21, 2017_
 

@@ -1,7 +1,7 @@
-import { Order } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {Order} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { constants } from './constants';
+import {constants} from './constants';
 
 export const orderCalculationUtils = {
     /**
@@ -81,8 +81,8 @@ export const orderCalculationUtils = {
         return makerFeeAmount;
     },
     /**
-     * Given a desired amount of ZRX from a fee order, calculate the amount of taker asset required to fill.
-     * Also calculate how much ZRX needs to be purchased in order to fill the desired amount plus the taker fee amount
+     * Given a desired amount of NET from a fee order, calculate the amount of taker asset required to fill.
+     * Also calculate how much NET needs to be purchased in order to fill the desired amount plus the taker fee amount
      * @param order The order
      * @param makerFillAmount the amount of maker asset
      */

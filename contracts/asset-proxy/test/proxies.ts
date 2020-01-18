@@ -1,17 +1,17 @@
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { ERC1155MintableContract, Erc1155Wrapper } from '@0x/contracts-erc1155';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {ERC1155MintableContract, Erc1155Wrapper} from '@powerchain/contracts-erc1155';
 import {
     artifacts as erc20Artifacts,
     DummyERC20TokenContract,
     DummyERC20TokenTransferEventArgs,
     DummyMultipleReturnERC20TokenContract,
     DummyNoReturnERC20TokenContract,
-} from '@0x/contracts-erc20';
+} from '@powerchain/contracts-erc20';
 import {
     artifacts as erc721Artifacts,
     DummyERC721ReceiverContract,
     DummyERC721TokenContract,
-} from '@0x/contracts-erc721';
+} from '@powerchain/contracts-erc721';
 import {
     chaiSetup,
     constants,
@@ -21,21 +21,21 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { AssetProxyId, RevertReason } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {AssetProxyId, RevertReason} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
-import { LogWithDecodedArgs } from 'ethereum-types';
+import {LogWithDecodedArgs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { ERC1155ProxyWrapper } from '../src/erc1155_proxy_wrapper';
-import { ERC20Wrapper } from '../src/erc20_wrapper';
-import { ERC721Wrapper } from '../src/erc721_wrapper';
-import { ERC1155ProxyContract, ERC20ProxyContract, ERC721ProxyContract } from '../src/wrappers';
+import {ERC1155ProxyWrapper} from '../src/erc1155_proxy_wrapper';
+import {ERC20Wrapper} from '../src/erc20_wrapper';
+import {ERC721Wrapper} from '../src/erc721_wrapper';
+import {ERC1155ProxyContract, ERC20ProxyContract, ERC721ProxyContract} from '../src/wrappers';
 
-import { artifacts } from './artifacts';
-import { IAssetDataContract, IAssetProxyContract, MultiAssetProxyContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {IAssetDataContract, IAssetProxyContract, MultiAssetProxyContract} from './wrappers';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -94,7 +94,7 @@ describe('Asset Transfer Proxies', () => {
         // Deploy AssetProxies
         erc20Proxy = await erc20Wrapper.deployProxyAsync();
         erc721Proxy = await erc721Wrapper.deployProxyAsync();
-        multiAssetProxy = await MultiAssetProxyContract.deployFrom0xArtifactAsync(
+        multiAssetProxy = await MultiAssetProxyContract.deployFrompowerchainArtifactAsync(
             artifacts.MultiAssetProxy,
             provider,
             txDefaults,
@@ -127,7 +127,7 @@ describe('Asset Transfer Proxies', () => {
             numDummyErc20ToDeploy,
             constants.DUMMY_TOKEN_DECIMALS,
         );
-        noReturnErc20Token = await DummyNoReturnERC20TokenContract.deployFrom0xArtifactAsync(
+        noReturnErc20Token = await DummyNoReturnERC20TokenContract.deployFrompowerchainArtifactAsync(
             erc20Artifacts.DummyNoReturnERC20Token,
             provider,
             txDefaults,
@@ -137,7 +137,7 @@ describe('Asset Transfer Proxies', () => {
             constants.DUMMY_TOKEN_DECIMALS,
             constants.DUMMY_TOKEN_TOTAL_SUPPLY,
         );
-        multipleReturnErc20Token = await DummyMultipleReturnERC20TokenContract.deployFrom0xArtifactAsync(
+        multipleReturnErc20Token = await DummyMultipleReturnERC20TokenContract.deployFrompowerchainArtifactAsync(
             erc20Artifacts.DummyMultipleReturnERC20Token,
             provider,
             txDefaults,
@@ -166,7 +166,7 @@ describe('Asset Transfer Proxies', () => {
 
         // Deploy and configure ERC721 tokens and receiver
         [erc721TokenA, erc721TokenB] = await erc721Wrapper.deployDummyTokensAsync();
-        erc721Receiver = await DummyERC721ReceiverContract.deployFrom0xArtifactAsync(
+        erc721Receiver = await DummyERC721ReceiverContract.deployFrompowerchainArtifactAsync(
             erc721Artifacts.DummyERC721Receiver,
             provider,
             txDefaults,
@@ -203,7 +203,7 @@ describe('Asset Transfer Proxies', () => {
 
     describe('ERC20Proxy', () => {
         it('should revert if undefined function is called', async () => {
-            const undefinedSelector = '0x01020304';
+            const undefinedSelector = 'powerchain01020304';
             await expectTransactionFailedWithoutReasonAsync(
                 web3Wrapper.sendTransactionAsync({
                     from: owner,
@@ -213,9 +213,9 @@ describe('Asset Transfer Proxies', () => {
                 }),
             );
         });
-        it('should have an id of 0xf47261b0', async () => {
+        it('should have an id of powerchainf47261b0', async () => {
             const proxyId = await erc20Proxy.getProxyId().callAsync();
-            const expectedProxyId = '0xf47261b0';
+            const expectedProxyId = 'powerchainf47261b0';
             expect(proxyId).to.equal(expectedProxyId);
         });
         describe('transferFrom', () => {
@@ -434,7 +434,7 @@ describe('Asset Transfer Proxies', () => {
 
     describe('ERC721Proxy', () => {
         it('should revert if undefined function is called', async () => {
-            const undefinedSelector = '0x01020304';
+            const undefinedSelector = 'powerchain01020304';
             await expectTransactionFailedWithoutReasonAsync(
                 web3Wrapper.sendTransactionAsync({
                     from: owner,
@@ -444,9 +444,9 @@ describe('Asset Transfer Proxies', () => {
                 }),
             );
         });
-        it('should have an id of 0x02571792', async () => {
+        it('should have an id of powerchain02571792', async () => {
             const proxyId = await erc721Proxy.getProxyId().callAsync();
-            const expectedProxyId = '0x02571792';
+            const expectedProxyId = 'powerchain02571792';
             expect(proxyId).to.equal(expectedProxyId);
         });
         describe('transferFrom', () => {
@@ -643,7 +643,7 @@ describe('Asset Transfer Proxies', () => {
     });
     describe('MultiAssetProxy', () => {
         it('should revert if undefined function is called', async () => {
-            const undefinedSelector = '0x01020304';
+            const undefinedSelector = 'powerchain01020304';
             await expectTransactionFailedWithoutReasonAsync(
                 web3Wrapper.sendTransactionAsync({
                     from: owner,
@@ -653,10 +653,10 @@ describe('Asset Transfer Proxies', () => {
                 }),
             );
         });
-        it('should have an id of 0x94cfcdd7', async () => {
+        it('should have an id of powerchain94cfcdd7', async () => {
             const proxyId = await multiAssetProxy.getProxyId().callAsync();
             // first 4 bytes of `keccak256('MultiAsset(uint256[],bytes[])')`
-            const expectedProxyId = '0x94cfcdd7';
+            const expectedProxyId = 'powerchain94cfcdd7';
             expect(proxyId).to.equal(expectedProxyId);
         });
         describe('transferFrom', () => {
@@ -883,7 +883,7 @@ describe('Asset Transfer Proxies', () => {
                 const tokensToTransfer = erc1155FungibleTokens.slice(0, 1);
                 const valuesToTransfer = [new BigNumber(25)];
                 const valueMultiplier = new BigNumber(23);
-                const receiverCallbackData = '0x0102030405';
+                const receiverCallbackData = 'powerchain0102030405';
                 // check balances before transfer
                 const expectedInitialBalances = [
                     // from
@@ -934,7 +934,7 @@ describe('Asset Transfer Proxies', () => {
                 const tokensToTransfer = erc1155FungibleTokens.slice(0, 3);
                 const valuesToTransfer = [new BigNumber(25), new BigNumber(35), new BigNumber(45)];
                 const valueMultiplier = new BigNumber(23);
-                const receiverCallbackData = '0x0102030405';
+                const receiverCallbackData = 'powerchain0102030405';
                 // check balances before transfer
                 const expectedInitialBalances = [
                     // from
@@ -997,7 +997,7 @@ describe('Asset Transfer Proxies', () => {
                 const tokensToTransfer = fungibleTokensToTransfer.concat(nonFungibleTokensToTransfer);
                 const valuesToTransfer = [new BigNumber(25), new BigNumber(1)];
                 const valueMultiplier = new BigNumber(1);
-                const receiverCallbackData = '0x0102030405';
+                const receiverCallbackData = 'powerchain0102030405';
                 // check balances before transfer
                 const nftOwnerBalance = new BigNumber(1);
                 const nftNotOwnerBalance = new BigNumber(0);
@@ -1056,7 +1056,7 @@ describe('Asset Transfer Proxies', () => {
                 const tokensToTransfer = erc1155FungibleTokens.slice(0, 1);
                 const valuesToTransfer = [new BigNumber(25)];
                 const valueMultiplier = new BigNumber(23);
-                const receiverCallbackData = '0x0102030405';
+                const receiverCallbackData = 'powerchain0102030405';
                 // check balances before transfer
                 const expectedInitialBalances = [
                     // from
@@ -1124,7 +1124,7 @@ describe('Asset Transfer Proxies', () => {
                 const erc1155TokensToTransfer = erc1155FungibleTokens.slice(0, 1);
                 const erc1155ValuesToTransfer = [new BigNumber(25)];
                 const erc1155Amount = new BigNumber(23);
-                const erc1155ReceiverCallbackData = '0x0102030405';
+                const erc1155ReceiverCallbackData = 'powerchain0102030405';
                 const erc1155AssetData = await devUtils
                     .encodeERC1155AssetData(
                         erc1155Contract.address,
@@ -1405,7 +1405,7 @@ describe('Asset Transfer Proxies', () => {
                 const erc721AssetData = await devUtils
                     .encodeERC721AssetData(erc721TokenA.address, erc721AFromTokenId)
                     .callAsync();
-                const invalidProxyId = '0x12345678';
+                const invalidProxyId = 'powerchain12345678';
                 const invalidErc721AssetData = `${invalidProxyId}${erc721AssetData.slice(10)}`;
                 const amounts = [erc20Amount, erc721Amount];
                 const nestedAssetData = [erc20AssetData, invalidErc721AssetData];
@@ -1468,7 +1468,7 @@ describe('Asset Transfer Proxies', () => {
                 const erc20Amount = new BigNumber(10);
                 const erc20AssetData = await devUtils.encodeERC20AssetData(erc20TokenA.address).callAsync();
                 const erc721Amount = new BigNumber(1);
-                const erc721AssetData = '0x123456';
+                const erc721AssetData = 'powerchain123456';
                 const amounts = [erc20Amount, erc721Amount];
                 const nestedAssetData = [erc20AssetData, erc721AssetData];
                 const assetData = await devUtils.encodeMultiAssetData(amounts, nestedAssetData).callAsync();
@@ -1521,7 +1521,7 @@ describe('Asset Transfer Proxies', () => {
                 const data = assetProxyInterface
                     .transferFrom(assetData, fromAddress, toAddress, inputAmount)
                     .getABIEncodedTransactionData();
-                // append asset data to end of tx data with a length of 0x300 bytes, which will extend past actual calldata.
+                // append asset data to end of tx data with a length of powerchain300 bytes, which will extend past actual calldata.
                 const offsetToAssetData = '0000000000000000000000000000000000000000000000000000000000000080';
                 const invalidOffsetToAssetData = '00000000000000000000000000000000000000000000000000000000000002a0';
                 const newAssetData = '0000000000000000000000000000000000000000000000000000000000000304';

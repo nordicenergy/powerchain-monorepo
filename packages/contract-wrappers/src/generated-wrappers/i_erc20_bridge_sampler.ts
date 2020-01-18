@@ -1,34 +1,21 @@
 // tslint:disable:no-consecutive-blank-lines ordered-imports align trailing-comma enum-naming
 // tslint:disable:whitespace no-unbound-method no-trailing-whitespace
 // tslint:disable:no-unused-variable
-import {
-    AwaitTransactionSuccessOpts,
-    ContractFunctionObj,
-    ContractTxFunctionObj,
-    SendTransactionOpts,
-    BaseContract,
-    PromiseWithTransactionHash,
-    methodAbiToFunctionSignature,
-} from '@0x/base-contract';
-import { schemas } from '@0x/json-schemas';
+import {BaseContract, ContractFunctionObj, methodAbiToFunctionSignature,} from '@powerchain/base-contract';
+import {schemas} from '@powerchain/json-schemas';
 import {
     BlockParam,
-    BlockParamLiteral,
-    BlockRange,
     CallData,
     ContractAbi,
     ContractArtifact,
-    DecodedLogArgs,
     MethodAbi,
-    TransactionReceiptWithDecodedLogs,
-    TxData,
-    TxDataPayable,
     SupportedProvider,
+    TxData,
 } from 'ethereum-types';
-import { BigNumber, classUtils, logUtils, providerUtils } from '@0x/utils';
-import { EventCallback, IndexedFilterValues, SimpleContractArtifact } from '@0x/types';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { assert } from '@0x/assert';
+import {BigNumber, classUtils, logUtils, providerUtils} from '@powerchain/utils';
+import {SimpleContractArtifact} from '@powerchain/types';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {assert} from '@powerchain/assert';
 import * as ethers from 'ethers';
 // tslint:enable:no-unused-variable
 
@@ -42,7 +29,7 @@ export class IERC20BridgeSamplerContract extends BaseContract {
     public static deployedBytecode: string | undefined;
     public static contractName = 'IERC20BridgeSampler';
     private readonly _methodABIIndex: { [name: string]: number } = {};
-    public static async deployFrom0xArtifactAsync(
+    public static async deployFrompowerchainArtifactAsync(
         artifact: ContractArtifact | SimpleContractArtifact,
         supportedProvider: SupportedProvider,
         txDefaults: Partial<TxData>,

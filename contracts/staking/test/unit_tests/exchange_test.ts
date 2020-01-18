@@ -1,9 +1,9 @@
-import { blockchainTests, expect } from '@0x/contracts-test-utils';
-import { AuthorizableRevertErrors } from '@0x/contracts-utils';
-import { StakingRevertErrors } from '@0x/utils';
-import { LogWithDecodedArgs, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+import {blockchainTests, expect} from '@powerchain/contracts-test-utils';
+import {AuthorizableRevertErrors} from '@powerchain/contracts-utils';
+import {StakingRevertErrors} from '@powerchain/utils';
+import {LogWithDecodedArgs, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 import {
     TestExchangeManagerContract,
     TestExchangeManagerExchangeAddedEventArgs,
@@ -27,7 +27,7 @@ blockchainTests.resets('Exchange Unit Tests', env => {
         [nonOwner, owner, nonExchange, exchange, nonAuthority, authority] = await env.getAccountAddressesAsync();
 
         // Deploy the Exchange Manager contract.
-        exchangeManager = await TestExchangeManagerContract.deployFrom0xArtifactAsync(
+        exchangeManager = await TestExchangeManagerContract.deployFrompowerchainArtifactAsync(
             artifacts.TestExchangeManager,
             env.provider,
             {

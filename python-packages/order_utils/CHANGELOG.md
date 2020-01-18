@@ -5,7 +5,7 @@
 -   Upgraded to protocol version 3.
 -   `is_valid_signature()` now returns just a boolean. (Formerly, it returned a tuple consisting of the boolean and a reason string.)
 -   Allow `sign_hash()` to be called with EITHER a Web3.py `BaseProvider` OR an already-instantiated `Web3` client object.
--   Migrated to new version of `0x-contract-addresses`.
+-   Migrated to new version of `powerchain-contract-addresses`.
 
 ## 3.0.1 - 2019-08-09
 
@@ -24,4 +24,4 @@
 
 ## 1.1.1 - 2019-02-26
 
--   Replaced dependency on web3 with dependency on 0x-web3, to ease coexistence of those two packages.
+-   Replaced dependency on web3 with dependency on powerchain-web3, to ease coexistence of those two packages.

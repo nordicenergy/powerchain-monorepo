@@ -1,13 +1,13 @@
-import { BigNumber, WSClient } from '@0x/mesh-rpc-client';
+import {BigNumber, WSClient} from '@powerchain/mesh-rpc-client';
 import * as sinon from 'sinon';
 
-import { MeshOrderProvider } from '../../src';
-import { BaseOrderProvider } from '../../src/order_provider/base_order_provider';
-import { OrderStore } from '../../src/order_store';
-import { utils } from '../../src/utils';
-import { createOrder } from '../utils';
+import {MeshOrderProvider} from '../../src';
+import {BaseOrderProvider} from '../../src/order_provider/base_order_provider';
+import {OrderStore} from '../../src/order_store';
+import {utils} from '../../src/utils';
+import {createOrder} from '../utils';
 
-import { SERVER_PORT, setupServerAsync, stopServer } from './mock_ws_server';
+import {SERVER_PORT, setupServerAsync, stopServer} from './mock_ws_server';
 
 describe('MeshOrderProvider', () => {
     let orderStore: OrderStore;
@@ -15,8 +15,8 @@ describe('MeshOrderProvider', () => {
     const stubs: sinon.SinonStub[] = [];
 
     const websocketEndpoint = `ws://localhost:${SERVER_PORT}`;
-    const makerAssetData = '0xf47261b000000000000000000000000089d24a6b4ccb1b6faa2625fe562bdd9a23260359';
-    const takerAssetData = '0xf47261b0000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
+    const makerAssetData = 'powerchainf47261b000000000000000000000000089d24a6b4ccb1b6faa2625fe562bdd9a23260359';
+    const takerAssetData = 'powerchainf47261b0000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
     const subscriptionId = 'subscriptionId';
     const addedResponse = {
         jsonrpc: '2.0',
@@ -25,26 +25,26 @@ describe('MeshOrderProvider', () => {
             subscription: subscriptionId,
             result: [
                 {
-                    orderHash: '0xa452cc6e2c7756376f0f2379e7dd81aa9285b26515774d0ad8801a4c243a30a3',
+                    orderHash: 'powerchaina452cc6e2c7756376f0f2379e7dd81aa9285b26515774d0ad8801a4c243a30a3',
                     signedOrder: {
                         chainId: 1337,
-                        exchangeAddress: '0x4eacd0af335451709e1e7b570b8ea68edec8bc97',
-                        makerAddress: '0x8c5c2671b71bad73d8b6fb7e8ef6fe5ec95ff661',
+                        exchangeAddress: 'powerchain4eacd0af335451709e1e7b570b8ea68edec8bc97',
+                        makerAddress: 'powerchain8c5c2671b71bad73d8b6fb7e8ef6fe5ec95ff661',
                         makerAssetData,
-                        makerFeeAssetData: '0x',
+                        makerFeeAssetData: 'powerchain',
                         makerAssetAmount: '19501674723',
                         makerFee: '0',
-                        takerAddress: '0x0000000000000000000000000000000000000000',
+                        takerAddress: 'powerchain0000000000000000000000000000000000000000',
                         takerAssetData,
-                        takerFeeAssetData: '0x',
+                        takerFeeAssetData: 'powerchain',
                         takerAssetAmount: '132880707765170593819',
                         takerFee: '0',
-                        senderAddress: '0x0000000000000000000000000000000000000000',
-                        feeRecipientAddress: '0x0000000000000000000000000000000000000000',
+                        senderAddress: 'powerchain0000000000000000000000000000000000000000',
+                        feeRecipientAddress: 'powerchain0000000000000000000000000000000000000000',
                         expirationTimeSeconds: '1574687060',
                         salt: '1574686820004',
                         signature:
-                            '0x1b64e67271f10832485356d9ef203b7e2c855067c1253b4e66ee06e85cd46427b157fc4c60f86bd637291f971d1443f65f631b76b887b7f82ebb36499f2f9cf10d03',
+                            'powerchain1b64e67271f10832485356d9ef203b7e2c855067c1253b4e66ee06e85cd46427b157fc4c60f86bd637291f971d1443f65f631b76b887b7f82ebb36499f2f9cf10d03',
                     },
                     endState: 'ADDED',
                     fillableTakerAssetAmount: '132880707765170593819',
@@ -128,7 +128,7 @@ describe('MeshOrderProvider', () => {
         test('stores the orders', async () => {
             const order = createOrder(makerAssetData, takerAssetData);
             const orderInfo = {
-                orderHash: '0x00',
+                orderHash: 'powerchain00',
                 signedOrder: order.order,
                 fillableTakerAssetAmount: new BigNumber(1),
             };
@@ -242,7 +242,7 @@ describe('MeshOrderProvider', () => {
         test('stores the orders', async () => {
             const order = createOrder(makerAssetData, takerAssetData);
             const orderInfo = {
-                orderHash: '0x00',
+                orderHash: 'powerchain00',
                 signedOrder: order.order,
                 fillableTakerAssetAmount: new BigNumber(1),
             };

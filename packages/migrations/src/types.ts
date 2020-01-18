@@ -1,4 +1,4 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
 export interface ERC20Token {
     address?: string;
@@ -19,7 +19,7 @@ export enum ContractName {
     TokenRegistry = 'TokenRegistry',
     MultiSigWalletWithTimeLock = 'MultiSigWalletWithTimeLock',
     Exchange = 'Exchange',
-    ZRXToken = 'ZRXToken',
+    NETToken = 'NETToken',
     DummyToken = 'DummyToken',
     WETH9 = 'WETH9',
     MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress = 'MultiSigWalletWithTimeLockExceptRemoveAuthorizedAddress',

@@ -1,4 +1,4 @@
-import { addressUtils } from '@0x/utils';
+import {addressUtils} from '@powerchain/utils';
 import {
     BlockParam,
     BlockParamLiteral,
@@ -12,10 +12,9 @@ import {
     TransactionReceipt,
     TxData,
 } from 'ethereum-types';
-import ethUtil = require('ethereumjs-util');
 import * as _ from 'lodash';
 
-import { utils } from './utils';
+import {utils} from './utils';
 
 import {
     BlockWithoutTransactionDataRPC,
@@ -26,6 +25,7 @@ import {
     TransactionRPC,
     TxDataRPC,
 } from './types';
+import ethUtil = require('ethereumjs-util');
 
 /**
  * Utils to convert ethereum structures from user-space format to RPC format. (marshall/unmarshall)

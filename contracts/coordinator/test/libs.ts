@@ -1,11 +1,17 @@
-import { blockchainTests, constants, expect, randomAddress, transactionHashUtils } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+import {
+    blockchainTests,
+    constants,
+    expect,
+    randomAddress,
+    transactionHashUtils
+} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { hashUtils } from '../src/hash_utils';
+import {hashUtils} from '../src/hash_utils';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { CoordinatorContract } from './wrappers';
+import {CoordinatorContract} from './wrappers';
 
 blockchainTests.resets('Libs tests', env => {
     let coordinatorContract: CoordinatorContract;
@@ -14,7 +20,7 @@ blockchainTests.resets('Libs tests', env => {
 
     before(async () => {
         chainId = await env.getChainIdAsync();
-        coordinatorContract = await CoordinatorContract.deployFrom0xArtifactAsync(
+        coordinatorContract = await CoordinatorContract.deployFrompowerchainArtifactAsync(
             artifacts.Coordinator,
             env.provider,
             env.txDefaults,
@@ -31,8 +37,8 @@ blockchainTests.resets('Libs tests', env => {
                 gasPrice: constants.ZERO_AMOUNT,
                 expirationTimeSeconds: constants.ZERO_AMOUNT,
                 signerAddress: constants.NULL_ADDRESS,
-                data: '0x1234',
-                signature: '0x5678',
+                data: 'powerchain1234',
+                signature: 'powerchain5678',
                 domain: {
                     verifyingContract: exchangeAddress,
                     chainId,

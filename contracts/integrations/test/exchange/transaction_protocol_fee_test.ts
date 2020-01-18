@@ -1,6 +1,6 @@
 // tslint:disable: max-file-line-count
-import { IAssetDataContract } from '@0x/contracts-asset-proxy';
-import { exchangeDataEncoder, ExchangeRevertErrors } from '@0x/contracts-exchange';
+import {IAssetDataContract} from '@powerchain/contracts-asset-proxy';
+import {exchangeDataEncoder, ExchangeRevertErrors} from '@powerchain/contracts-exchange';
 import {
     blockchainTests,
     constants,
@@ -9,18 +9,18 @@ import {
     expect,
     orderHashUtils,
     transactionHashUtils,
-} from '@0x/contracts-test-utils';
-import { SignedOrder, SignedZeroExTransaction } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {SignedOrder, SignedZeroExTransaction} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { Actor } from '../framework/actors/base';
-import { FeeRecipient } from '../framework/actors/fee_recipient';
-import { Maker } from '../framework/actors/maker';
-import { Taker } from '../framework/actors/taker';
-import { actorAddressesByName } from '../framework/actors/utils';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { LocalBalanceStore } from '../framework/balances/local_balance_store';
-import { DeploymentManager } from '../framework/deployment_manager';
+import {Actor} from '../framework/actors/base';
+import {FeeRecipient} from '../framework/actors/fee_recipient';
+import {Maker} from '../framework/actors/maker';
+import {Taker} from '../framework/actors/taker';
+import {actorAddressesByName} from '../framework/actors/utils';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {LocalBalanceStore} from '../framework/balances/local_balance_store';
+import {DeploymentManager} from '../framework/deployment_manager';
 
 // tslint:disable:no-unnecessary-type-assertion
 blockchainTests.resets('Transaction <> protocol fee integration tests', env => {
@@ -121,7 +121,7 @@ blockchainTests.resets('Transaction <> protocol fee integration tests', env => {
             DeploymentManager.protocolFee,
             maker.address,
             wethless.address,
-            '0x',
+            'powerchain',
         ).encode();
         return new ExchangeRevertErrors.TransactionExecutionError(
             transactionHashUtils.getTransactionHashHex(failedTransaction),

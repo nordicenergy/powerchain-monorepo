@@ -1,13 +1,13 @@
-import { ContractAddresses } from '@0x/contract-addresses';
-import { WETH9Contract } from '@0x/contract-wrappers';
-import { assetDataUtils } from '@0x/order-utils';
-import { SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { SupportedProvider, Web3Wrapper } from '@0x/web3-wrapper';
-import { Provider } from 'ethereum-types';
+import {ContractAddresses} from '@powerchain/contract-addresses';
+import {WETH9Contract} from '@powerchain/contract-wrappers';
+import {assetDataUtils} from '@powerchain/order-utils';
+import {SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {SupportedProvider, Web3Wrapper} from '@powerchain/web3-wrapper';
+import {Provider} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { constants } from '../constants';
+import {constants} from '../constants';
 import {
     ExtensionContractType,
     GetExtensionContractTypeOpts,
@@ -15,9 +15,9 @@ import {
     SwapQuoteConsumerError,
     SwapQuoteExecutionOpts,
 } from '../types';
-import { utils } from '../utils/utils';
+import {utils} from '../utils/utils';
 
-import { assert } from './assert';
+import {assert} from './assert';
 
 export const swapQuoteConsumerUtils = {
     async getTakerAddressOrThrowAsync(

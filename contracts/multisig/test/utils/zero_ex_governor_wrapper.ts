@@ -1,9 +1,9 @@
-import { constants, increaseTimeAndMineBlockAsync } from '@0x/contracts-test-utils';
-import { AbiEncoder, BigNumber, hexUtils } from '@0x/utils';
-import { LogWithDecodedArgs, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+import {constants, increaseTimeAndMineBlockAsync} from '@powerchain/contracts-test-utils';
+import {AbiEncoder, BigNumber, hexUtils} from '@powerchain/utils';
+import {LogWithDecodedArgs, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { TestZeroExGovernorContract, ZeroExGovernorContract, ZeroExGovernorSubmissionEventArgs } from '../wrappers';
+import {TestZeroExGovernorContract, ZeroExGovernorContract, ZeroExGovernorSubmissionEventArgs} from '../wrappers';
 
 // tslint:disable: no-unnecessary-type-assertion
 export class ZeroExGovernorWrapper {

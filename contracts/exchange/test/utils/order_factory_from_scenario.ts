@@ -1,8 +1,8 @@
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { constants, ERC1155HoldingsByOwner, ERC721TokenIdsByOwner } from '@0x/contracts-test-utils';
-import { generatePseudoRandomSalt } from '@0x/order-utils';
-import { Order } from '@0x/types';
-import { BigNumber, errorUtils } from '@0x/utils';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {constants, ERC1155HoldingsByOwner, ERC721TokenIdsByOwner} from '@powerchain/contracts-test-utils';
+import {generatePseudoRandomSalt} from '@powerchain/order-utils';
+import {Order} from '@powerchain/types';
+import {BigNumber, errorUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
 
 import {

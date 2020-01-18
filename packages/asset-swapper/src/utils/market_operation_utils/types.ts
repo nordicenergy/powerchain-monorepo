@@ -1,6 +1,6 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { SignedOrderWithFillableAmounts } from '../../types';
+import {SignedOrderWithFillableAmounts} from '../../types';
 
 /**
  * Order domain keys: chainId and exchange
@@ -53,10 +53,10 @@ export interface DexSample {
  * Flags for `Fill` objects.
  */
 export enum FillFlags {
-    SourceNative = 0x1,
-    SourceUniswap = 0x2,
-    SourceEth2Dai = 0x4,
-    SourceKyber = 0x8,
+    SourceNative = powerchain1,
+    SourceUniswap = powerchain2,
+    SourceEth2Dai = powerchain4,
+    SourceKyber = powerchain8,
 }
 
 /**

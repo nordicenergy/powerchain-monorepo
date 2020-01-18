@@ -95,7 +95,7 @@ class CleanCommandExtension(clean):
         rmtree(".mypy_cache", ignore_errors=True)
         rmtree(".tox", ignore_errors=True)
         rmtree(".pytest_cache", ignore_errors=True)
-        rmtree("src/0x_json_schemas.egg-info", ignore_errors=True)
+        rmtree("src/powerchain_json_schemas.egg-info", ignore_errors=True)
 
 
 class TestPublishCommand(distutils.command.build_py.build_py):
@@ -130,7 +130,7 @@ class PublishDocsCommand(distutils.command.build_py.build_py):
 
     description = (
         "Publish docs to "
-        + "http://0x-json-schemas-py.s3-website-us-east-1.amazonaws.com/"
+        + "http://powerchain-json-schemas-py.s3-website-us-east-1.amazonaws.com/"
     )
 
     def run(self):
@@ -143,13 +143,13 @@ with open("README.md", "r") as file_handle:
 
 
 setup(
-    name="0x-json-schemas",
+    name="powerchain-json-schemas",
     version="2.1.0",
-    description="JSON schemas for 0x applications",
+    description="JSON schemas for powerchain applications",
     long_description=README_MD,
     long_description_content_type="text/markdown",
     url=(
-        "https://github.com/0xProject/0x-monorepo/tree/development"
+        "https://github.com/nordicenergy/powerchain-protocol-dev-kit/tree/development"
         + "/python-packages/json_schemas"
     ),
     author="F. Eugene Aumson",
@@ -166,7 +166,7 @@ setup(
     install_requires=["jsonschema", "mypy_extensions", "stringcase"],
     extras_require={
         "dev": [
-            "0x-contract-addresses",
+            "powerchain-contract-addresses",
             "bandit",
             "black",
             "coverage",
@@ -189,7 +189,7 @@ setup(
     package_dir={"": "src"},
     license="Apache 2.0",
     keywords=(
-        "ethereum cryptocurrency 0x decentralized blockchain dex exchange"
+        "ethereum cryptocurrency powerchain decentralized blockchain dex exchange"
     ),
     namespace_packages=["zero_ex"],
     packages=find_packages("src"),

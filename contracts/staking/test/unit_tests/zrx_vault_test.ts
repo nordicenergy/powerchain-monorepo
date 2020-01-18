@@ -1,5 +1,5 @@
-import { ERC20Wrapper } from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
+import {ERC20Wrapper} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
 import {
     blockchainTests,
     constants,
@@ -7,31 +7,31 @@ import {
     expectTransactionFailedAsync,
     filterLogsToArguments,
     provider,
-} from '@0x/contracts-test-utils';
-import { RevertReason } from '@0x/types';
-import { AuthorizableRevertErrors, BigNumber, SafeMathRevertErrors, StakingRevertErrors } from '@0x/utils';
-import { TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {RevertReason} from '@powerchain/types';
+import {AuthorizableRevertErrors, BigNumber, SafeMathRevertErrors, StakingRevertErrors} from '@powerchain/utils';
+import {TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { constants as stakingConstants } from '../../src/constants';
+import {constants as stakingConstants} from '../../src/constants';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 import {
-    ZrxVaultContract,
-    ZrxVaultDepositEventArgs,
-    ZrxVaultInCatastrophicFailureModeEventArgs,
-    ZrxVaultStakingProxySetEventArgs,
-    ZrxVaultWithdrawEventArgs,
-    ZrxVaultZrxProxySetEventArgs,
+    NetVaultContract,
+    NetVaultDepositEventArgs,
+    NetVaultInCatastrophicFailureModeEventArgs,
+    NetVaultNetAssetDataEventArgs,
+    NetVaultStakingProxySetEventArgs,
+    NetVaultWithdrawEventArgs,
 } from '../wrappers';
 
-blockchainTests.resets('ZrxVault unit tests', env => {
+blockchainTests.resets('NetVault unit tests', env => {
     let accounts: string[];
     let owner: string;
     let nonOwnerAddresses: string[];
     let erc20Wrapper: ERC20Wrapper;
-    let zrxVault: ZrxVaultContract;
-    let zrxAssetData: string;
-    let zrxProxyAddress: string;
+    let NetVault: NetVaultContract;
+    let netAssetData: string;
+    let netAssetData: string;
 
     const devUtils = new DevUtilsContract(constants.NULL_ADDRESS, provider);
 
@@ -44,20 +44,20 @@ blockchainTests.resets('ZrxVault unit tests', env => {
         erc20Wrapper = new ERC20Wrapper(env.provider, accounts, owner);
         // deploy erc20 proxy
         const erc20ProxyContract = await erc20Wrapper.deployProxyAsync();
-        zrxProxyAddress = erc20ProxyContract.address;
+        netAssetData = erc20ProxyContract.address;
         // deploy zrx token
-        const [zrxTokenContract] = await erc20Wrapper.deployDummyTokensAsync(1, constants.DUMMY_TOKEN_DECIMALS);
-        zrxAssetData = await devUtils.encodeERC20AssetData(zrxTokenContract.address).callAsync();
+        const [netTokenContract] = await erc20Wrapper.deployDummyTokensAsync(1, constants.DUMMY_TOKEN_DECIMALS);
+        netAssetData = await devUtils.encodeERC20AssetData(netTokenContract.address).callAsync();
 
         await erc20Wrapper.setBalancesAndAllowancesAsync();
 
-        zrxVault = await ZrxVaultContract.deployFrom0xArtifactAsync(
-            artifacts.ZrxVault,
+        zrxVault = await NetVaultContract.deployFrompowerchainArtifactAsync(
+            artifacts.NetVault,
             env.provider,
             env.txDefaults,
             artifacts,
-            zrxProxyAddress,
-            zrxTokenContract.address,
+            netAssetData,
+            netTokenContract.address,
         );
 
         await zrxVault.addAuthorizedAddress(owner).awaitTransactionSuccessAsync();
@@ -66,13 +66,13 @@ blockchainTests.resets('ZrxVault unit tests', env => {
         await erc20ProxyContract.addAuthorizedAddress(zrxVault.address).awaitTransactionSuccessAsync();
     });
 
-    enum ZrxTransfer {
+    enum NetTransfer {
         Deposit,
         Withdrawal,
     }
 
     async function verifyTransferPostconditionsAsync(
-        transferType: ZrxTransfer,
+        transferType: NetTransfer,
         staker: string,
         amount: BigNumber,
         initialVaultBalance: BigNumber,
@@ -80,17 +80,17 @@ blockchainTests.resets('ZrxVault unit tests', env => {
         receipt: TransactionReceiptWithDecodedLogs,
     ): Promise<void> {
         const eventArgs =
-            transferType === ZrxTransfer.Deposit
-                ? filterLogsToArguments<ZrxVaultDepositEventArgs>(receipt.logs, 'Deposit')
-                : filterLogsToArguments<ZrxVaultWithdrawEventArgs>(receipt.logs, 'Withdraw');
+            transferType === NetTransfer.Deposit
+                ? filterLogsToArguments<NetVaultDepositEventArgs>(receipt.logs, 'Deposit')
+                : filterLogsToArguments<NetVaultWithdrawEventArgs>(receipt.logs, 'Withdraw');
         expect(eventArgs.length).to.equal(1);
         expect(eventArgs[0].staker).to.equal(staker);
         expect(eventArgs[0].amount).to.bignumber.equal(amount);
 
         const newVaultBalance = await zrxVault.balanceOf(staker).callAsync();
-        const newTokenBalance = await erc20Wrapper.getBalanceAsync(staker, zrxAssetData);
+        const newTokenBalance = await erc20Wrapper.getBalanceAsync(staker, netAssetData);
         const [expectedVaultBalance, expectedTokenBalance] =
-            transferType === ZrxTransfer.Deposit
+            transferType === NetTransfer.Deposit
                 ? [initialVaultBalance.plus(amount), initialTokenBalance.minus(amount)]
                 : [initialVaultBalance.minus(amount), initialTokenBalance.plus(amount)];
         expect(newVaultBalance).to.bignumber.equal(expectedVaultBalance);
@@ -103,7 +103,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                 receipt: TransactionReceiptWithDecodedLogs,
                 newProxy: string,
             ): Promise<void> {
-                const eventArgs = filterLogsToArguments<ZrxVaultStakingProxySetEventArgs>(
+                const eventArgs = filterLogsToArguments<NetVaultStakingProxySetEventArgs>(
                     receipt.logs,
                     'StakingProxySet',
                 );
@@ -113,28 +113,28 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                 expect(actualAddress).to.equal(newProxy);
             }
 
-            it('Owner can set the ZRX proxy', async () => {
+            it('Owner can set the NET proxy', async () => {
                 const newProxy = nonOwnerAddresses[0];
-                const receipt = await zrxVault.setZrxProxy(newProxy).awaitTransactionSuccessAsync({
+                const receipt = await zrxVault.setNetProxy(newProxy).awaitTransactionSuccessAsync({
                     from: owner,
                 });
-                const eventArgs = filterLogsToArguments<ZrxVaultZrxProxySetEventArgs>(receipt.logs, 'ZrxProxySet');
+                const eventArgs = filterLogsToArguments<NetVaultNetAssetDataEventArgs>(receipt.logs, 'NetAssetData');
                 expect(eventArgs.length).to.equal(1);
-                expect(eventArgs[0].zrxProxyAddress).to.equal(newProxy);
+                expect(eventArgs[0].netAssetData).to.equal(newProxy);
             });
-            it('Authorized address can set the ZRX proxy', async () => {
+            it('Authorized address can set the NET proxy', async () => {
                 const [authorized, newProxy] = nonOwnerAddresses;
                 await zrxVault.addAuthorizedAddress(authorized).awaitTransactionSuccessAsync({ from: owner });
-                const receipt = await zrxVault.setZrxProxy(newProxy).awaitTransactionSuccessAsync({
+                const receipt = await zrxVault.setNetProxy(newProxy).awaitTransactionSuccessAsync({
                     from: authorized,
                 });
-                const eventArgs = filterLogsToArguments<ZrxVaultZrxProxySetEventArgs>(receipt.logs, 'ZrxProxySet');
+                const eventArgs = filterLogsToArguments<NetVaultNetAssetDataEventArgs>(receipt.logs, 'NetAssetData');
                 expect(eventArgs.length).to.equal(1);
-                expect(eventArgs[0].zrxProxyAddress).to.equal(newProxy);
+                expect(eventArgs[0].netAssetData).to.equal(newProxy);
             });
-            it('Non-authorized address cannot set the ZRX proxy', async () => {
+            it('Non-authorized address cannot set the NET proxy', async () => {
                 const [notAuthorized, newProxy] = nonOwnerAddresses;
-                const tx = zrxVault.setZrxProxy(newProxy).awaitTransactionSuccessAsync({
+                const tx = zrxVault.setNetProxy(newProxy).awaitTransactionSuccessAsync({
                     from: notAuthorized,
                 });
                 const expectedError = new AuthorizableRevertErrors.SenderNotAuthorizedError(notAuthorized);
@@ -166,7 +166,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                 expect(actualAddress).to.equal(stakingConstants.NIL_ADDRESS);
             });
         });
-        describe('ZRX management', () => {
+        describe('NET management', () => {
             let staker: string;
             let stakingProxy: string;
             let initialVaultBalance: BigNumber;
@@ -182,7 +182,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
 
             beforeEach(async () => {
                 initialVaultBalance = await zrxVault.balanceOf(staker).callAsync();
-                initialTokenBalance = await erc20Wrapper.getBalanceAsync(staker, zrxAssetData);
+                initialTokenBalance = await erc20Wrapper.getBalanceAsync(staker, netAssetData);
             });
 
             describe('Deposit', () => {
@@ -193,7 +193,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                             from: stakingProxy,
                         });
                     await verifyTransferPostconditionsAsync(
-                        ZrxTransfer.Deposit,
+                        NetTransfer.Deposit,
                         staker,
                         constants.ZERO_AMOUNT,
                         initialVaultBalance,
@@ -206,7 +206,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                         from: stakingProxy,
                     });
                     await verifyTransferPostconditionsAsync(
-                        ZrxTransfer.Deposit,
+                        NetTransfer.Deposit,
                         staker,
                         new BigNumber(1),
                         initialVaultBalance,
@@ -214,14 +214,14 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                         receipt,
                     );
                 });
-                it('Staking proxy can deposit entire ZRX balance on behalf of staker', async () => {
+                it('Staking proxy can deposit entire NET balance on behalf of staker', async () => {
                     const receipt = await zrxVault
                         .depositFrom(staker, initialTokenBalance)
                         .awaitTransactionSuccessAsync({
                             from: stakingProxy,
                         });
                     await verifyTransferPostconditionsAsync(
-                        ZrxTransfer.Deposit,
+                        NetTransfer.Deposit,
                         staker,
                         initialTokenBalance,
                         initialVaultBalance,
@@ -229,7 +229,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                         receipt,
                     );
                 });
-                it("Reverts if attempting to deposit more than staker's ZRX balance", async () => {
+                it("Reverts if attempting to deposit more than staker's NET balance", async () => {
                     const tx = zrxVault.depositFrom(staker, initialTokenBalance.plus(1)).sendTransactionAsync({
                         from: stakingProxy,
                     });
@@ -244,7 +244,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                             from: stakingProxy,
                         });
                     await verifyTransferPostconditionsAsync(
-                        ZrxTransfer.Withdrawal,
+                        NetTransfer.Withdrawal,
                         staker,
                         constants.ZERO_AMOUNT,
                         initialVaultBalance,
@@ -257,7 +257,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                         from: stakingProxy,
                     });
                     await verifyTransferPostconditionsAsync(
-                        ZrxTransfer.Withdrawal,
+                        NetTransfer.Withdrawal,
                         staker,
                         new BigNumber(1),
                         initialVaultBalance,
@@ -272,7 +272,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                             from: stakingProxy,
                         });
                     await verifyTransferPostconditionsAsync(
-                        ZrxTransfer.Withdrawal,
+                        NetTransfer.Withdrawal,
                         staker,
                         initialVaultBalance,
                         initialVaultBalance,
@@ -301,7 +301,7 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                 sender: string,
                 receipt: TransactionReceiptWithDecodedLogs,
             ): Promise<void> {
-                const eventArgs = filterLogsToArguments<ZrxVaultInCatastrophicFailureModeEventArgs>(
+                const eventArgs = filterLogsToArguments<NetVaultInCatastrophicFailureModeEventArgs>(
                     receipt.logs,
                     'InCatastrophicFailureMode',
                 );
@@ -361,31 +361,31 @@ blockchainTests.resets('ZrxVault unit tests', env => {
 
             beforeEach(async () => {
                 initialVaultBalance = await zrxVault.balanceOf(staker).callAsync();
-                initialTokenBalance = await erc20Wrapper.getBalanceAsync(staker, zrxAssetData);
+                initialTokenBalance = await erc20Wrapper.getBalanceAsync(staker, netAssetData);
             });
 
-            it('Owner cannot set the ZRX proxy', async () => {
+            it('Owner cannot set the NET proxy', async () => {
                 const newProxy = nonOwnerAddresses[0];
-                const tx = zrxVault.setZrxProxy(newProxy).awaitTransactionSuccessAsync({
+                const tx = zrxVault.setNetProxy(newProxy).awaitTransactionSuccessAsync({
                     from: owner,
                 });
                 const expectedError = new StakingRevertErrors.OnlyCallableIfNotInCatastrophicFailureError();
                 expect(tx).to.revertWith(expectedError);
-                const actualAddress = await zrxVault.zrxAssetProxy().callAsync();
-                expect(actualAddress).to.equal(zrxProxyAddress);
+                const actualAddress = await zrxVault.netAssetProxy().callAsync();
+                expect(actualAddress).to.equal(netAssetData);
             });
-            it('Authorized address cannot set the ZRX proxy', async () => {
+            it('Authorized address cannot set the NET proxy', async () => {
                 const [authorized, newProxy] = nonOwnerAddresses;
                 await zrxVault.addAuthorizedAddress(authorized).awaitTransactionSuccessAsync({ from: owner });
-                const tx = zrxVault.setZrxProxy(newProxy).awaitTransactionSuccessAsync({
+                const tx = zrxVault.setNetProxy(newProxy).awaitTransactionSuccessAsync({
                     from: authorized,
                 });
                 const expectedError = new StakingRevertErrors.OnlyCallableIfNotInCatastrophicFailureError();
                 expect(tx).to.revertWith(expectedError);
-                const actualAddress = await zrxVault.zrxAssetProxy().callAsync();
-                expect(actualAddress).to.equal(zrxProxyAddress);
+                const actualAddress = await zrxVault.netAssetProxy().callAsync();
+                expect(actualAddress).to.equal(netAssetData);
             });
-            it('Staking proxy cannot deposit ZRX', async () => {
+            it('Staking proxy cannot deposit NET', async () => {
                 const tx = zrxVault.depositFrom(staker, new BigNumber(1)).awaitTransactionSuccessAsync({
                     from: stakingProxy,
                 });
@@ -401,12 +401,12 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                     const expectedError = new StakingRevertErrors.OnlyCallableIfNotInCatastrophicFailureError();
                     expect(tx).to.revertWith(expectedError);
                 });
-                it('Staker can withdraw all their ZRX', async () => {
+                it('Staker can withdraw all their NET', async () => {
                     const receipt = await zrxVault.withdrawAllFrom(staker).awaitTransactionSuccessAsync({
                         from: staker,
                     });
                     await verifyTransferPostconditionsAsync(
-                        ZrxTransfer.Withdrawal,
+                        NetTransfer.Withdrawal,
                         staker,
                         initialVaultBalance,
                         initialVaultBalance,
@@ -414,12 +414,12 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                         receipt,
                     );
                 });
-                it('Owner can withdraw ZRX on behalf of a staker', async () => {
+                it('Owner can withdraw NET on behalf of a staker', async () => {
                     const receipt = await zrxVault.withdrawAllFrom(staker).awaitTransactionSuccessAsync({
                         from: owner,
                     });
                     await verifyTransferPostconditionsAsync(
-                        ZrxTransfer.Withdrawal,
+                        NetTransfer.Withdrawal,
                         staker,
                         initialVaultBalance,
                         initialVaultBalance,
@@ -427,12 +427,12 @@ blockchainTests.resets('ZrxVault unit tests', env => {
                         receipt,
                     );
                 });
-                it('Non-owner address can withdraw ZRX on behalf of a staker', async () => {
+                it('Non-owner address can withdraw NET on behalf of a staker', async () => {
                     const receipt = await zrxVault.withdrawAllFrom(staker).awaitTransactionSuccessAsync({
                         from: nonOwnerAddresses[0],
                     });
                     await verifyTransferPostconditionsAsync(
-                        ZrxTransfer.Withdrawal,
+                        NetTransfer.Withdrawal,
                         staker,
                         initialVaultBalance,
                         initialVaultBalance,

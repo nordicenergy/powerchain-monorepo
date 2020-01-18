@@ -1,17 +1,17 @@
-## @0x/assert
+## @powerchain/assert
 
-Standard type and schema assertions to be used across all 0x projects and packages
+Standard type and schema assertions to be used across all powerchain projects and packages
 
 ## Installation
 
 ```bash
-yarn add @0x/assert
+yarn add @powerchain/assert
 ```
 
 ## Usage
 
 ```typescript
-import { assert } from '@0x/assert';
+import { assert } from '@powerchain/assert';
 
 assert.isValidBaseUnitAmount('baseUnitAmount', baseUnitAmount);
 ```
@@ -20,7 +20,7 @@ If your project is in [TypeScript](https://www.typescriptlang.org/), add the fol
 
 ```json
 "compilerOptions": {
-    "typeRoots": ["node_modules/@0x/typescript-typings/types", "node_modules/@types"],
+    "typeRoots": ["node_modules/@powerchain/typescript-typings/types", "node_modules/@types"],
 }
 ```
 
@@ -49,13 +49,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/assert yarn build
+PKG=@powerchain/assert yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/assert yarn watch
+PKG=@powerchain/assert yarn watch
 ```
 
 ### Clean

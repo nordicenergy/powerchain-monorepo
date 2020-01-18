@@ -11,7 +11,7 @@ CHANGELOG
 
 ## v5.0.0 - _December 2, 2019_
 
-    * Add types for `@0x/dev-utils` chai helpers in `types/@0x` (#1761)
+    * Add types for `@powerchain/dev-utils` chai helpers in `types/@powerchain` (#1761)
 
 ## v4.4.0-beta.2 - _November 17, 2019_
 
@@ -23,7 +23,7 @@ CHANGELOG
 
 ## v4.4.0-beta.0 - _October 3, 2019_
 
-    * Add types for `@0x/dev-utils` chai helpers in `types/@0x` (#1761)
+    * Add types for `@powerchain/dev-utils` chai helpers in `types/@powerchain` (#1761)
 
 ## v4.3.0 - _September 17, 2019_
 
@@ -81,7 +81,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.3 - _October 18, 2018_
+## v1.0.1 - _October 18, 2018_
 
     * Dependencies updated
 
@@ -93,7 +93,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _September 28, 2018_
+## v1.0.0 - _September 28, 2018_
 
     * Remove types for ethers.js (#1069)
 

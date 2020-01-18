@@ -1,9 +1,9 @@
-import { blockchainTests, constants, expect } from '@0x/contracts-test-utils';
-import { AuthorizableRevertErrors, BigNumber, OwnableRevertErrors } from '@0x/utils';
+import {blockchainTests, constants, expect} from '@powerchain/contracts-test-utils';
+import {AuthorizableRevertErrors, BigNumber, OwnableRevertErrors} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
-import { TestAuthorizableContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestAuthorizableContract} from './wrappers';
 
 blockchainTests.resets('Authorizable', env => {
     let owner: string;
@@ -14,7 +14,7 @@ blockchainTests.resets('Authorizable', env => {
     before(async () => {
         const accounts = await env.getAccountAddressesAsync();
         [owner, address, notOwner] = _.slice(accounts, 0, 3);
-        authorizable = await TestAuthorizableContract.deployFrom0xArtifactAsync(
+        authorizable = await TestAuthorizableContract.deployFrompowerchainArtifactAsync(
             artifacts.TestAuthorizable,
             env.provider,
             env.txDefaults,

@@ -1,8 +1,7 @@
-import { expect } from '@0x/contracts-test-utils';
-import { RevertError } from '@0x/utils';
-import * as _ from 'lodash';
+import {expect} from '@powerchain/contracts-test-utils';
+import {RevertError} from '@powerchain/utils';
 
-import { PoolOperatorActor } from './pool_operator_actor';
+import {PoolOperatorActor} from './pool_operator_actor';
 
 export class MakerActor extends PoolOperatorActor {
     public async joinStakingPoolAsMakerAsync(poolId: string, revertError?: RevertError): Promise<void> {

@@ -1,15 +1,15 @@
-import { blockchainTests, expect } from '@0x/contracts-test-utils';
-import { coerceThrownErrorAsRevertError, hexUtils, StringRevertError } from '@0x/utils';
+import {blockchainTests, expect} from '@powerchain/contracts-test-utils';
+import {coerceThrownErrorAsRevertError, hexUtils, StringRevertError} from '@powerchain/utils';
 
-import { artifacts } from './artifacts';
-import { TestLibRichErrorsContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestLibRichErrorsContract} from './wrappers';
 
 blockchainTests('LibRichErrors', env => {
     let lib: TestLibRichErrorsContract;
 
     before(async () => {
         // Deploy SafeMath
-        lib = await TestLibRichErrorsContract.deployFrom0xArtifactAsync(
+        lib = await TestLibRichErrorsContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibRichErrors,
             env.provider,
             env.txDefaults,

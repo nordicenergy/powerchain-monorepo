@@ -1,8 +1,7 @@
-import { expect } from '@0x/contracts-test-utils';
-import { RevertError } from '@0x/utils';
-import * as _ from 'lodash';
+import {expect} from '@powerchain/contracts-test-utils';
+import {RevertError} from '@powerchain/utils';
 
-import { BaseActor } from './base_actor';
+import {BaseActor} from './base_actor';
 
 export class PoolOperatorActor extends BaseActor {
     public async createStakingPoolAsync(

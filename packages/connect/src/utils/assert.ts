@@ -1,11 +1,9 @@
-import { assert as sharedAssert } from '@0x/assert';
+import {assert as sharedAssert} from '@powerchain/assert';
 // HACK: We need those two unused imports because they're actually used by sharedAssert which gets injected here
 // tslint:disable-next-line:no-unused-variable
-import { Schema, schemas } from '@0x/json-schemas';
+import {schemas} from '@powerchain/json-schemas';
 // tslint:disable-next-line:no-unused-variable
-import { ECSignature } from '@0x/types';
 // tslint:disable-next-line:no-unused-variable
-import { BigNumber } from '@0x/utils';
 import * as _ from 'lodash';
 
 export const assert = {

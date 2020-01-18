@@ -1,11 +1,11 @@
-import { ContractWrappers } from '@0x/contract-wrappers';
-import { ERC20ProxyContract, MultiAssetProxyContract } from '@0x/contracts-asset-proxy';
-import { StakingProxyContract, ZrxVaultContract } from '@0x/contracts-staking';
-import { blockchainTests, describe, expect } from '@0x/contracts-test-utils';
-import { AssetProxyId } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {ContractWrappers} from '@powerchain/contract-wrappers';
+import {ERC20ProxyContract, MultiAssetProxyContract} from '@powerchain/contracts-asset-proxy';
+import {NetVaultContract, StakingProxyContract} from '@powerchain/contracts-staking';
+import {blockchainTests, describe, expect} from '@powerchain/contracts-test-utils';
+import {AssetProxyId} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { contractAddresses, getContractwrappers } from './mainnet_fork_utils';
+import {contractAddresses, getContractwrappers} from './mainnet_fork_utils';
 
 blockchainTests.live('Mainnet configs tests', env => {
     let contractWrappers: ContractWrappers;
@@ -66,7 +66,7 @@ blockchainTests.live('Mainnet configs tests', env => {
             expect(authorizedAddresses.includes(contractAddresses.exchangeV2), 'ExchangeV2');
             expect(authorizedAddresses.includes(contractAddresses.exchange), 'Exchange');
             expect(authorizedAddresses.includes(contractAddresses.multiAssetProxy), 'MultiAssetProxy');
-            expect(authorizedAddresses.includes(contractAddresses.zrxVault), 'ZrxVault');
+            expect(authorizedAddresses.includes(contractAddresses.zrxVault), 'NetVault');
         });
     });
     describe('ERC721Proxy', () => {
@@ -157,8 +157,8 @@ blockchainTests.live('Mainnet configs tests', env => {
             const isRegistered = await contractWrappers.staking.validExchanges(contractAddresses.exchange).callAsync();
             expect(isRegistered).to.be.true();
         });
-        it('ZrxVault should be set', async () => {
-            const zrxVault = await contractWrappers.staking.getZrxVault().callAsync();
+        it('NetVault should be set', async () => {
+            const zrxVault = await contractWrappers.staking.getNetVault().callAsync();
             expect(zrxVault).to.eq(contractAddresses.zrxVault);
         });
         it('WETH should be set', async () => {
@@ -184,8 +184,8 @@ blockchainTests.live('Mainnet configs tests', env => {
             expect(params[4]).to.bignumber.eq(cobbDouglasAlphaDenominator, 'cobbDouglasAlphaDenominator');
         });
     });
-    describe('ZrxVault', () => {
-        const zrxVault = new ZrxVaultContract(contractAddresses.zrxVault, env.provider);
+    describe('NetVault', () => {
+        const zrxVault = new NetVaultContract(contractAddresses.zrxVault, env.provider);
         it('should be owned by ZeroExGovernor', async () => {
             const owner = await zrxVault.owner().callAsync();
             expect(owner).to.eq(contractAddresses.zeroExGovernor);
@@ -196,7 +196,7 @@ blockchainTests.live('Mainnet configs tests', env => {
             expect(authorizedAddresses.includes(contractAddresses.zeroExGovernor), 'ZeroExGovernor');
         });
         it('ERC20Proxy should be set', async () => {
-            const erc20Proxy = await zrxVault.zrxAssetProxy().callAsync();
+            const erc20Proxy = await zrxVault.netAssetProxy().callAsync();
             expect(erc20Proxy).to.eq(contractAddresses.erc20Proxy);
         });
         it('StakingProxy should be set', async () => {

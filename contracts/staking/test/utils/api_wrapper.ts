@@ -1,24 +1,29 @@
-import { ERC20Wrapper } from '@0x/contracts-asset-proxy';
-import { artifacts as erc20Artifacts, DummyERC20TokenContract, WETH9Contract } from '@0x/contracts-erc20';
-import { BlockchainTestsEnvironment, constants, filterLogsToArguments, txDefaults } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { BlockParamLiteral, ContractArtifact, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+import {ERC20Wrapper} from '@powerchain/contracts-asset-proxy';
+import {artifacts as erc20Artifacts, DummyERC20TokenContract, WETH9Contract} from '@powerchain/contracts-erc20';
+import {
+    BlockchainTestsEnvironment,
+    constants,
+    filterLogsToArguments,
+    txDefaults
+} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {BlockParamLiteral, ContractArtifact, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 import {
     IStakingEventsEpochEndedEventArgs,
     IStakingEventsStakingPoolEarnedRewardsInEpochEventArgs,
+    NetVaultContract,
     StakingProxyContract,
     TestCobbDouglasContract,
     TestStakingContract,
     TestStakingEvents,
-    ZrxVaultContract,
 } from '../wrappers';
 
-import { constants as stakingConstants } from '../../src/constants';
-import { DecodedLogs, EndOfEpochInfo, StakingParams } from '../../src/types';
+import {constants as stakingConstants} from '../../src/constants';
+import {DecodedLogs, EndOfEpochInfo, StakingParams} from '../../src/types';
 
 export class StakingApiWrapper {
     // The address of the real Staking.sol contract
@@ -27,8 +32,8 @@ export class StakingApiWrapper {
     public stakingContract: TestStakingContract;
     // The StakingProxy.sol contract as a StakingProxyContract
     public stakingProxyContract: StakingProxyContract;
-    public zrxVaultContract: ZrxVaultContract;
-    public zrxTokenContract: DummyERC20TokenContract;
+    public zrxVaultContract: NetVaultContract;
+    public netTokenContract: DummyERC20TokenContract;
     public wethContract: WETH9Contract;
     public cobbDouglasContract: TestCobbDouglasContract;
     public utils = {
@@ -98,8 +103,8 @@ export class StakingApiWrapper {
             return poolId;
         },
 
-        getZrxTokenBalanceOfZrxVaultAsync: async (): Promise<BigNumber> => {
-            return this.zrxTokenContract.balanceOf(this.zrxVaultContract.address).callAsync();
+        getNetTokenBalanceOfNetVaultAsync: async (): Promise<BigNumber> => {
+            return this.netTokenContract.balanceOf(this.zrxVaultContract.address).callAsync();
         },
 
         setParamsAsync: async (params: Partial<StakingParams>): Promise<TransactionReceiptWithDecodedLogs> => {
@@ -171,14 +176,14 @@ export class StakingApiWrapper {
         ownerAddress: string,
         stakingProxyContract: StakingProxyContract,
         stakingContract: TestStakingContract,
-        zrxVaultContract: ZrxVaultContract,
-        zrxTokenContract: DummyERC20TokenContract,
+        zrxVaultContract: NetVaultContract,
+        netTokenContract: DummyERC20TokenContract,
         wethContract: WETH9Contract,
         cobbDouglasContract: TestCobbDouglasContract,
     ) {
         this._web3Wrapper = env.web3Wrapper;
         this.zrxVaultContract = zrxVaultContract;
-        this.zrxTokenContract = zrxTokenContract;
+        this.netTokenContract = netTokenContract;
         this.wethContract = wethContract;
         this.cobbDouglasContract = cobbDouglasContract;
         this.stakingContractAddress = stakingContract.address;
@@ -213,11 +218,11 @@ export async function deployAndConfigureContractsAsync(
     // deploy erc20 proxy
     const erc20ProxyContract = await erc20Wrapper.deployProxyAsync();
     // deploy zrx token
-    const [zrxTokenContract] = await erc20Wrapper.deployDummyTokensAsync(1, constants.DUMMY_TOKEN_DECIMALS);
+    const [netTokenContract] = await erc20Wrapper.deployDummyTokensAsync(1, constants.DUMMY_TOKEN_DECIMALS);
     await erc20Wrapper.setBalancesAndAllowancesAsync();
 
     // deploy WETH
-    const wethContract = await WETH9Contract.deployFrom0xArtifactAsync(
+    const wethContract = await WETH9Contract.deployFrompowerchainArtifactAsync(
         erc20Artifacts.WETH9,
         env.provider,
         txDefaults,
@@ -225,19 +230,19 @@ export async function deployAndConfigureContractsAsync(
     );
 
     // deploy zrx vault
-    const zrxVaultContract = await ZrxVaultContract.deployFrom0xArtifactAsync(
-        artifacts.ZrxVault,
+    const zrxVaultContract = await NetVaultContract.deployFrompowerchainArtifactAsync(
+        artifacts.NetVault,
         env.provider,
         env.txDefaults,
         artifacts,
         erc20ProxyContract.address,
-        zrxTokenContract.address,
+        netTokenContract.address,
     );
 
     await zrxVaultContract.addAuthorizedAddress(ownerAddress).awaitTransactionSuccessAsync();
 
     // deploy staking contract
-    const stakingContract = await TestStakingContract.deployFrom0xArtifactAsync(
+    const stakingContract = await TestStakingContract.deployFrompowerchainArtifactAsync(
         customStakingArtifact !== undefined ? customStakingArtifact : artifacts.TestStaking,
         env.provider,
         env.txDefaults,
@@ -247,7 +252,7 @@ export async function deployAndConfigureContractsAsync(
     );
 
     // deploy staking proxy
-    const stakingProxyContract = await StakingProxyContract.deployFrom0xArtifactAsync(
+    const stakingProxyContract = await StakingProxyContract.deployFrompowerchainArtifactAsync(
         artifacts.StakingProxy,
         env.provider,
         env.txDefaults,
@@ -258,7 +263,7 @@ export async function deployAndConfigureContractsAsync(
     await stakingProxyContract.addAuthorizedAddress(ownerAddress).awaitTransactionSuccessAsync();
 
     // deploy cobb douglas contract
-    const cobbDouglasContract = await TestCobbDouglasContract.deployFrom0xArtifactAsync(
+    const cobbDouglasContract = await TestCobbDouglasContract.deployFrompowerchainArtifactAsync(
         artifacts.TestCobbDouglas,
         env.provider,
         txDefaults,
@@ -275,7 +280,7 @@ export async function deployAndConfigureContractsAsync(
         stakingProxyContract,
         stakingContract,
         zrxVaultContract,
-        zrxTokenContract,
+        netTokenContract,
         wethContract,
         cobbDouglasContract,
     );

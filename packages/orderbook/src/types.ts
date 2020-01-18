@@ -1,5 +1,5 @@
-import { APIOrder, SignedOrder } from '@0x/connect';
-import { WSOpts } from '@0x/mesh-rpc-client';
+import {APIOrder, SignedOrder} from '@powerchain/connect';
+import {WSOpts} from '@powerchain/mesh-rpc-client';
 
 export interface AddedRemovedOrders {
     assetPairKey: string;
@@ -22,9 +22,9 @@ export type AddedRemovedListeners = (addedRemoved: AddedRemovedOrders) => void;
  * Constructor options for a SRA Websocket Order Provider
  */
 export interface SRAWebsocketOrderProviderOpts {
-    // The http endpoint to the SRA service, e.g https://sra.0x.org/v3
+    // The http endpoint to the SRA service, e.g https://sra.powerchain.org/v3
     httpEndpoint: string;
-    // The websocket endpoint to the SRA service, e.g wss://ws.sra.0x.org/
+    // The websocket endpoint to the SRA service, e.g wss://ws.sra.powerchain.org/
     websocketEndpoint: string;
 }
 
@@ -32,7 +32,7 @@ export interface SRAWebsocketOrderProviderOpts {
  * Constructor options for a SRA Polling Order Provider
  */
 export interface SRAPollingOrderProviderOpts {
-    // The http endpoint to the SRA service, e.g https://sra.0x.org/v3
+    // The http endpoint to the SRA service, e.g https://sra.powerchain.org/v3
     httpEndpoint: string;
     // The interval between polling for each subscription
     pollingIntervalMs: number;

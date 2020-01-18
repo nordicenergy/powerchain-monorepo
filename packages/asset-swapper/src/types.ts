@@ -1,7 +1,7 @@
-import { SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { GetMarketOrdersOpts } from './utils/market_operation_utils/types';
+import {GetMarketOrdersOpts} from './utils/market_operation_utils/types';
 
 /**
  * expiryBufferMs: The number of seconds to add when calculating whether an order is expired or not. Defaults to 300s (5m).
@@ -65,7 +65,7 @@ export enum ExtensionContractType {
 
 /**
  * feePercentage: Optional affiliate fee percentage used to calculate the eth amount paid to fee recipient.
- * feeRecipient: The address where affiliate fees are sent. Defaults to null address (0x000...000).
+ * feeRecipient: The address where affiliate fees are sent. Defaults to null address (powerchain000...000).
  */
 export interface ForwarderSmartContractParamsBase {
     feePercentage: BigNumber;
@@ -126,8 +126,8 @@ export interface GetExtensionContractTypeOpts {
 }
 
 /**
- * takerAssetData: String that represents a specific taker asset (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
- * makerAssetData: String that represents a specific maker asset (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
+ * takerAssetData: String that represents a specific taker asset (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
+ * makerAssetData: String that represents a specific maker asset (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
  * gasPrice: gas price used to determine protocolFee amount, default to ethGasStation fast amount.
  * orders: An array of objects conforming to SignedOrder. These orders can be used to cover the requested assetBuyAmount plus slippage.
  * bestCaseQuoteInfo: Info about the best case price for the asset.

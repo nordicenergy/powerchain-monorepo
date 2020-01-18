@@ -1,5 +1,5 @@
-import { ContractTxFunctionObj } from '@0x/base-contract';
-import { ReferenceFunctions as LibReferenceFunctions } from '@0x/contracts-exchange-libs';
+import {ContractTxFunctionObj} from '@powerchain/base-contract';
+import {ReferenceFunctions as LibReferenceFunctions} from '@powerchain/contracts-exchange-libs';
 import {
     blockchainTests,
     constants,
@@ -7,15 +7,15 @@ import {
     expect,
     getRandomPortion,
     orderHashUtils,
-} from '@0x/contracts-test-utils';
-import { ReferenceFunctions as UtilReferenceFunctions, SafeMathRevertErrors } from '@0x/contracts-utils';
-import { FillResults, Order } from '@0x/types';
-import { AnyRevertError, BigNumber, ExchangeRevertErrors, hexUtils, StringRevertError } from '@0x/utils';
-import { LogEntry, LogWithDecodedArgs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {ReferenceFunctions as UtilReferenceFunctions, SafeMathRevertErrors} from '@powerchain/contracts-utils';
+import {FillResults, Order} from '@powerchain/types';
+import {AnyRevertError, BigNumber, ExchangeRevertErrors, hexUtils, StringRevertError} from '@powerchain/utils';
+import {LogEntry, LogWithDecodedArgs} from 'ethereum-types';
 import * as ethjs from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 import {
     TestFillRoundingContract,
     TestWrapperFunctionsCancelOrderCalledEventArgs as CancelOrderCalledEventArgs,
@@ -24,7 +24,7 @@ import {
 } from './wrappers';
 
 blockchainTests('Exchange wrapper functions unit tests.', env => {
-    const CHAIN_ID = 0x74657374;
+    const CHAIN_ID = powerchain74657374;
     const { ONE_ETHER, MAX_UINT256 } = constants;
     const { addFillResults, getPartialAmountCeil } = LibReferenceFunctions;
     const { safeSub } = UtilReferenceFunctions;
@@ -49,7 +49,7 @@ blockchainTests('Exchange wrapper functions unit tests.', env => {
 
     before(async () => {
         [owner, senderAddress] = await env.getAccountAddressesAsync();
-        testContract = await TestWrapperFunctionsContract.deployFrom0xArtifactAsync(
+        testContract = await TestWrapperFunctionsContract.deployFrompowerchainArtifactAsync(
             artifacts.TestWrapperFunctions,
             env.provider,
             {
@@ -1071,7 +1071,7 @@ blockchainTests('Exchange wrapper functions unit tests.', env => {
                 // correct fill results are returned and we can test partial fills.
                 // TODO(dorothy-zbornak): Consolidate these contracts into one.
                 before(async () => {
-                    roundingTestContract = await TestFillRoundingContract.deployFrom0xArtifactAsync(
+                    roundingTestContract = await TestFillRoundingContract.deployFrompowerchainArtifactAsync(
                         artifacts.TestFillRounding,
                         env.provider,
                         {

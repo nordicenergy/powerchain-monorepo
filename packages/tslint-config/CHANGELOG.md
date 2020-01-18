@@ -25,7 +25,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _February 5, 2019_
+## v1.0.0 - _February 5, 2019_
 
     * Upgrade the bignumber.js to v8.0.2 (#1517)
 
@@ -144,5 +144,5 @@ CHANGELOG
 
 ## v0.1.0 - _November 13, 2017_
 
-    * Re-published TsLintConfig previously published under NPM package `tslint-config-0xproject`
+    * Re-published TsLintConfig previously published under NPM package `tslint-config-powerchainproject`
     * Updated to TSLint v5.8.0, requiring several rule additions to keep our conventions aligned.

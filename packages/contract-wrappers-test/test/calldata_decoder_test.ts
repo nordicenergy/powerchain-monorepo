@@ -1,15 +1,15 @@
-import { constants, OrderFactory } from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { migrateOnceAsync } from '@0x/migrations';
-import { SignedOrder } from '@0x/types';
-import { addressUtils, BigNumber } from '@0x/utils';
+import {constants, OrderFactory} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {migrateOnceAsync} from '@powerchain/migrations';
+import {SignedOrder} from '@powerchain/types';
+import {addressUtils, BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import 'mocha';
 
-import { ContractAddresses, ContractWrappers } from '@0x/contract-wrappers';
+import {ContractAddresses, ContractWrappers} from '@powerchain/contract-wrappers';
 
-import { chaiSetup } from './utils/chai_setup';
-import { provider, web3Wrapper } from './utils/web3_wrapper';
+import {chaiSetup} from './utils/chai_setup';
+import {provider, web3Wrapper} from './utils/web3_wrapper';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -58,7 +58,7 @@ describe('ABI Decoding Calldata', () => {
                 .encodeERC20AssetData(defaultERC20MakerAssetAddress)
                 .callAsync(),
             makerAssetAmount: new BigNumber(10),
-            takerAddress: '0x0000000000000000000000000000000000000000',
+            takerAddress: 'powerchain0000000000000000000000000000000000000000',
             takerAssetData: await contractWrappers.devUtils
                 .encodeERC20AssetData(defaultERC20MakerAssetAddress)
                 .callAsync(),
@@ -72,7 +72,7 @@ describe('ABI Decoding Calldata', () => {
             takerFeeAssetData: await contractWrappers.devUtils
                 .encodeERC20AssetData(defaultERC20MakerAssetAddress)
                 .callAsync(),
-            senderAddress: '0x0000000000000000000000000000000000000000',
+            senderAddress: 'powerchain0000000000000000000000000000000000000000',
             expirationTimeSeconds: new BigNumber(1549498915),
             salt: new BigNumber(217),
         };
@@ -82,7 +82,7 @@ describe('ABI Decoding Calldata', () => {
                 .encodeERC20AssetData(defaultERC20MakerAssetAddress)
                 .callAsync(),
             makerAssetAmount: new BigNumber(1),
-            takerAddress: '0x0000000000000000000000000000000000000000',
+            takerAddress: 'powerchain0000000000000000000000000000000000000000',
             takerAssetData: await contractWrappers.devUtils
                 .encodeERC20AssetData(defaultERC20MakerAssetAddress)
                 .callAsync(),
@@ -96,7 +96,7 @@ describe('ABI Decoding Calldata', () => {
             takerFeeAssetData: await contractWrappers.devUtils
                 .encodeERC20AssetData(defaultERC20MakerAssetAddress)
                 .callAsync(),
-            senderAddress: '0x0000000000000000000000000000000000000000',
+            senderAddress: 'powerchain0000000000000000000000000000000000000000',
             expirationTimeSeconds: new BigNumber(1549498915),
             salt: new BigNumber(50010),
         };
@@ -128,10 +128,10 @@ describe('ABI Decoding Calldata', () => {
             expect(decodedTxData.functionArguments).to.be.deep.equal(expectedFunctionArguments);
         });
         it('should throw if cannot decode calldata', async () => {
-            const badTxData = '0x01020304';
+            const badTxData = 'powerchain01020304';
             expect(() => {
                 contractWrappers.getAbiDecoder().decodeCalldataOrThrow(badTxData);
-            }).to.throw("No functions registered for selector '0x01020304'");
+            }).to.throw("No functions registered for selector 'powerchain01020304'");
         });
     });
 });

@@ -29,8 +29,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = sra_client.DefaultApi()
-asset_data_a = 0xf47261b04c32345ced77393b3530b1eed0f346429d # str | The assetData value for the first asset in the pair. (optional)
-asset_data_b = 0x0257179264389b814a946f3e92105513705ca6b990 # str | The assetData value for the second asset in the pair. (optional)
+asset_data_a = powerchainf47261b04c32345ced77393b3530b1eed0f346429d # str | The assetData value for the first asset in the pair. (optional)
+asset_data_b = powerchain0257179264389b814a946f3e92105513705ca6b990 # str | The assetData value for the second asset in the pair. (optional)
 network_id = 42 # float | The id of the Ethereum network (optional) (default to 1)
 page = 3 # float | The number of the page to request in the collection. (optional) (default to 1)
 per_page = 10 # float | The number of records to return per page. (optional) (default to 100)
@@ -122,7 +122,7 @@ No authorization required
 
 > RelayerApiOrderSchema get_order(order_hash, network_id=network_id)
 
-Retrieves the 0x order with meta info that is associated with the hash.
+Retrieves the powerchain order with meta info that is associated with the hash.
 
 ### Example
 
@@ -135,7 +135,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = sra_client.DefaultApi()
-order_hash = 0xd4b103c42d2512eef3fee775e097f044291615d25f5d71e0ac70dbd49d223591 # str | The hash of the desired 0x order.
+order_hash = powerchaind4b103c42d2512eef3fee775e097f044291615d25f5d71e0ac70dbd49d223591 # str | The hash of the desired powerchain order.
 network_id = 42 # float | The id of the Ethereum network (optional) (default to 1)
 
 try:
@@ -149,7 +149,7 @@ except ApiException as e:
 
 | Name           | Type      | Description                       | Notes                    |
 | -------------- | --------- | --------------------------------- | ------------------------ |
-| **order_hash** | **str**   | The hash of the desired 0x order. |
+| **order_hash** | **str**   | The hash of the desired powerchain order. |
 | **network_id** | **float** | The id of the Ethereum network    | [optional][default to 1] |
 
 ### Return type
@@ -185,7 +185,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = sra_client.DefaultApi()
 network_id = 42 # float | The id of the Ethereum network (optional) (default to 1)
-relayer_api_order_config_payload_schema = {"makerAddress":"0x9e56625509c2f60af937f23b7b532600390e8c8b","takerAddress":"0xa2b31dacf30a9c50ca473337c01d8a201ae33e32","makerAssetAmount":"10000000000000000","takerAssetAmount":"1","makerAssetData":"0xf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498","takerAssetData":"0x02571792000000000000000000000000371b13d97f4bf77d724e78c16b7dc74099f40e840000000000000000000000000000000000000000000000000000000000000063","exchangeAddress":"0x12459c951127e0c374ff9105dda097662a027093","expirationTimeSeconds":"1532560590"} # RelayerApiOrderConfigPayloadSchema | The fields of a 0x order the relayer may want to decide what configuration to send back. (optional)
+relayer_api_order_config_payload_schema = {"makerAddress":"powerchain9e56625509c2f60af937f23b7b532600390e8c8b","takerAddress":"powerchaina2b31dacf30a9c50ca473337c01d8a201ae33e32","makerAssetAmount":"10000000000000000","takerAssetAmount":"1","makerAssetData":"powerchainf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498","takerAssetData":"powerchain02571792000000000000000000000000371b13d97f4bf77d724e78c16b7dc74099f40e840000000000000000000000000000000000000000000000000000000000000063","exchangeAddress":"powerchain12459c951127e0c374ff9105dda097662a027093","expirationTimeSeconds":"1532560590"} # RelayerApiOrderConfigPayloadSchema | The fields of a powerchain order the relayer may want to decide what configuration to send back. (optional)
 
 try:
     api_response = api_instance.get_order_config(network_id=network_id, relayer_api_order_config_payload_schema=relayer_api_order_config_payload_schema)
@@ -199,7 +199,7 @@ except ApiException as e:
 | Name                                        | Type                                                                            | Description                                                                              | Notes                    |
 | ------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------ |
 | **network_id**                              | **float**                                                                       | The id of the Ethereum network                                                           | [optional][default to 1] |
-| **relayer_api_order_config_payload_schema** | [**RelayerApiOrderConfigPayloadSchema**](RelayerApiOrderConfigPayloadSchema.md) | The fields of a 0x order the relayer may want to decide what configuration to send back. | [optional]               |
+| **relayer_api_order_config_payload_schema** | [**RelayerApiOrderConfigPayloadSchema**](RelayerApiOrderConfigPayloadSchema.md) | The fields of a powerchain order the relayer may want to decide what configuration to send back. | [optional]               |
 
 ### Return type
 
@@ -233,8 +233,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = sra_client.DefaultApi()
-base_asset_data = 0xf47261b04c32345ced77393b3530b1eed0f346429d # str | assetData (makerAssetData or takerAssetData) designated as the base currency in the [currency pair calculation](https://en.wikipedia.org/wiki/Currency_pair) of price.
-quote_asset_data = 0xf47261b04c32345ced77393b3530b1eed0f346429d # str | assetData (makerAssetData or takerAssetData) designated as the quote currency in the currency pair calculation of price (required).
+base_asset_data = powerchainf47261b04c32345ced77393b3530b1eed0f346429d # str | assetData (makerAssetData or takerAssetData) designated as the base currency in the [currency pair calculation](https://en.wikipedia.org/wiki/Currency_pair) of price.
+quote_asset_data = powerchainf47261b04c32345ced77393b3530b1eed0f346429d # str | assetData (makerAssetData or takerAssetData) designated as the quote currency in the currency pair calculation of price (required).
 network_id = 42 # float | The id of the Ethereum network (optional) (default to 1)
 page = 3 # float | The number of the page to request in the collection. (optional) (default to 1)
 per_page = 10 # float | The number of records to return per page. (optional) (default to 100)
@@ -288,19 +288,19 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = sra_client.DefaultApi()
-maker_asset_proxy_id = 0xf47261b0 # str | The maker [asset proxy id](https://0x.org/docs/tools/0x.js#types-AssetProxyId) (example: \"0xf47261b0\" for ERC20, \"0x02571792\" for ERC721). (optional)
-taker_asset_proxy_id = 0x02571792 # str | The taker asset [asset proxy id](https://0x.org/docs/tools/0x.js#types-AssetProxyId) (example: \"0xf47261b0\" for ERC20, \"0x02571792\" for ERC721). (optional)
-maker_asset_address = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | The contract address for the maker asset. (optional)
-taker_asset_address = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | The contract address for the taker asset. (optional)
-exchange_address = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | Same as exchangeAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
-sender_address = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | Same as senderAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
-maker_asset_data = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | Same as makerAssetData in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
-taker_asset_data = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | Same as takerAssetData in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
-trader_asset_data = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | Same as traderAssetData in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
-maker_address = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | Same as makerAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
-taker_address = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | Same as takerAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
-trader_address = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | Same as traderAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
-fee_recipient_address = 0xe41d2489571d322189246dafa5ebde1f4699f498 # str | Same as feeRecipientAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
+maker_asset_proxy_id = powerchainf47261b0 # str | The maker [asset proxy id](https://powerchain.org/docs/tools/powerchain.js#types-AssetProxyId) (example: \"powerchainf47261b0\" for ERC20, \"powerchain02571792\" for ERC721). (optional)
+taker_asset_proxy_id = powerchain02571792 # str | The taker asset [asset proxy id](https://powerchain.org/docs/tools/powerchain.js#types-AssetProxyId) (example: \"powerchainf47261b0\" for ERC20, \"powerchain02571792\" for ERC721). (optional)
+maker_asset_address = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | The contract address for the maker asset. (optional)
+taker_asset_address = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | The contract address for the taker asset. (optional)
+exchange_address = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | Same as exchangeAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
+sender_address = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | Same as senderAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
+maker_asset_data = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | Same as makerAssetData in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
+taker_asset_data = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | Same as takerAssetData in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
+trader_asset_data = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | Same as traderAssetData in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
+maker_address = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | Same as makerAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
+taker_address = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | Same as takerAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
+trader_address = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | Same as traderAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
+fee_recipient_address = powerchaine41d2489571d322189246dafa5ebde1f4699f498 # str | Same as feeRecipientAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) (optional)
 network_id = 42 # float | The id of the Ethereum network (optional) (default to 1)
 page = 3 # float | The number of the page to request in the collection. (optional) (default to 1)
 per_page = 10 # float | The number of records to return per page. (optional) (default to 100)
@@ -316,19 +316,19 @@ except ApiException as e:
 
 | Name                      | Type      | Description                                                                                                                                                                       | Notes                      |
 | ------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| **maker_asset_proxy_id**  | **str**   | The maker [asset proxy id](https://0x.org/docs/tools/0x.js#types-AssetProxyId) (example: \&quot;0xf47261b0\&quot; for ERC20, \&quot;0x02571792\&quot; for ERC721).                | [optional]                 |
-| **taker_asset_proxy_id**  | **str**   | The taker asset [asset proxy id](https://0x.org/docs/tools/0x.js#types-AssetProxyId) (example: \&quot;0xf47261b0\&quot; for ERC20, \&quot;0x02571792\&quot; for ERC721).          | [optional]                 |
+| **maker_asset_proxy_id**  | **str**   | The maker [asset proxy id](https://powerchain.org/docs/tools/powerchain.js#types-AssetProxyId) (example: \&quot;powerchainf47261b0\&quot; for ERC20, \&quot;powerchain02571792\&quot; for ERC721).                | [optional]                 |
+| **taker_asset_proxy_id**  | **str**   | The taker asset [asset proxy id](https://powerchain.org/docs/tools/powerchain.js#types-AssetProxyId) (example: \&quot;powerchainf47261b0\&quot; for ERC20, \&quot;powerchain02571792\&quot; for ERC721).          | [optional]                 |
 | **maker_asset_address**   | **str**   | The contract address for the maker asset.                                                                                                                                         | [optional]                 |
 | **taker_asset_address**   | **str**   | The contract address for the taker asset.                                                                                                                                         | [optional]                 |
-| **exchange_address**      | **str**   | Same as exchangeAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)     | [optional]                 |
-| **sender_address**        | **str**   | Same as senderAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)       | [optional]                 |
-| **maker_asset_data**      | **str**   | Same as makerAssetData in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)      | [optional]                 |
-| **taker_asset_data**      | **str**   | Same as takerAssetData in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)      | [optional]                 |
-| **trader_asset_data**     | **str**   | Same as traderAssetData in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)     | [optional]                 |
-| **maker_address**         | **str**   | Same as makerAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)        | [optional]                 |
-| **taker_address**         | **str**   | Same as takerAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)        | [optional]                 |
-| **trader_address**        | **str**   | Same as traderAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)       | [optional]                 |
-| **fee_recipient_address** | **str**   | Same as feeRecipientAddress in the [0x Protocol v2 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) | [optional]                 |
+| **exchange_address**      | **str**   | Same as exchangeAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)     | [optional]                 |
+| **sender_address**        | **str**   | Same as senderAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)       | [optional]                 |
+| **maker_asset_data**      | **str**   | Same as makerAssetData in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)      | [optional]                 |
+| **taker_asset_data**      | **str**   | Same as takerAssetData in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)      | [optional]                 |
+| **trader_asset_data**     | **str**   | Same as traderAssetData in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)     | [optional]                 |
+| **maker_address**         | **str**   | Same as makerAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)        | [optional]                 |
+| **taker_address**         | **str**   | Same as takerAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)        | [optional]                 |
+| **trader_address**        | **str**   | Same as traderAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format)       | [optional]                 |
+| **fee_recipient_address** | **str**   | Same as feeRecipientAddress in the [powerchain Protocol v2 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#order-message-format) | [optional]                 |
 | **network_id**            | **float** | The id of the Ethereum network                                                                                                                                                    | [optional][default to 1]   |
 | **page**                  | **float** | The number of the page to request in the collection.                                                                                                                              | [optional][default to 1]   |
 | **per_page**              | **float** | The number of records to return per page.                                                                                                                                         | [optional][default to 100] |
@@ -366,7 +366,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = sra_client.DefaultApi()
 network_id = 42 # float | The id of the Ethereum network (optional) (default to 1)
-signed_order_schema = {"makerAddress":"0x9e56625509c2f60af937f23b7b532600390e8c8b","takerAddress":"0xa2b31dacf30a9c50ca473337c01d8a201ae33e32","feeRecipientAddress":"0xb046140686d052fff581f63f8136cce132e857da","senderAddress":"0xa2b31dacf30a9c50ca473337c01d8a201ae33e32","makerAssetAmount":"10000000000000000","takerAssetAmount":"20000000000000000","makerFee":"100000000000000","takerFee":"200000000000000","expirationTimeSeconds":"1532560590","salt":"1532559225","makerAssetData":"0xf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498","takerAssetData":"0x02571792000000000000000000000000371b13d97f4bf77d724e78c16b7dc74099f40e840000000000000000000000000000000000000000000000000000000000000063","exchangeAddress":"0x12459c951127e0c374ff9105dda097662a027093","signature":"0x012761a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351bc33"} # SignedOrderSchema | A valid signed 0x order based on the schema. (optional)
+signed_order_schema = {"makerAddress":"powerchain9e56625509c2f60af937f23b7b532600390e8c8b","takerAddress":"powerchaina2b31dacf30a9c50ca473337c01d8a201ae33e32","feeRecipientAddress":"powerchainb046140686d052fff581f63f8136cce132e857da","senderAddress":"powerchaina2b31dacf30a9c50ca473337c01d8a201ae33e32","makerAssetAmount":"10000000000000000","takerAssetAmount":"20000000000000000","makerFee":"100000000000000","takerFee":"200000000000000","expirationTimeSeconds":"1532560590","salt":"1532559225","makerAssetData":"powerchainf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498","takerAssetData":"powerchain02571792000000000000000000000000371b13d97f4bf77d724e78c16b7dc74099f40e840000000000000000000000000000000000000000000000000000000000000063","exchangeAddress":"powerchain12459c951127e0c374ff9105dda097662a027093","signature":"powerchain012761a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351bc33"} # SignedOrderSchema | A valid signed powerchain order based on the schema. (optional)
 
 try:
     api_instance.post_order(network_id=network_id, signed_order_schema=signed_order_schema)
@@ -379,7 +379,7 @@ except ApiException as e:
 | Name                    | Type                                          | Description                                  | Notes                    |
 | ----------------------- | --------------------------------------------- | -------------------------------------------- | ------------------------ |
 | **network_id**          | **float**                                     | The id of the Ethereum network               | [optional][default to 1] |
-| **signed_order_schema** | [**SignedOrderSchema**](SignedOrderSchema.md) | A valid signed 0x order based on the schema. | [optional]               |
+| **signed_order_schema** | [**SignedOrderSchema**](SignedOrderSchema.md) | A valid signed powerchain order based on the schema. | [optional]               |
 
 ### Return type
 

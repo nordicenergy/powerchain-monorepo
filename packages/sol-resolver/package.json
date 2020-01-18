@@ -1,5 +1,5 @@
 {
-    "name": "@0x/sol-resolver",
+    "name": "@powerchain/sol-resolver",
     "version": "3.0.2",
     "engines": {
         "node": ">=6.12"
@@ -16,23 +16,23 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/resolver/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/resolver/README.md",
     "devDependencies": {
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/tslint-config": "^4.0.0",
         "make-promises-safe": "^1.1.0",
         "shx": "^0.2.2",
         "tslint": "5.11.0",
         "typescript": "3.0.1"
     },
     "dependencies": {
-        "@0x/types": "^3.1.1",
-        "@0x/typescript-typings": "^5.0.1",
+        "@powerchain/types": "^3.1.1",
+        "@powerchain/typescript-typings": "^5.0.1",
         "lodash": "^4.17.11"
     },
     "publishConfig": {

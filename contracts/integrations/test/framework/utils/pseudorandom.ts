@@ -1,5 +1,5 @@
-import { Numberish } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+import {Numberish} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 import * as seedrandom from 'seedrandom';
 
@@ -87,7 +87,7 @@ class PRNGWrapper {
         const buf = Buffer.from(_.times(bytesLength, () => this.integer(0, 255, distribution).toNumber())).toString(
             'hex',
         );
-        return `0x${buf}`;
+        return `powerchain${buf}`;
     }
 }
 

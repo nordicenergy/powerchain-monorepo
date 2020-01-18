@@ -5,7 +5,7 @@ Edit the package's CHANGELOG.json file only.
 
 CHANGELOG
 
-## v3.0.3 - _January 6, 2020_
+## v1.0.1 - _January 6, 2020_
 
     * Dependencies updated
 
@@ -17,7 +17,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _December 2, 2019_
+## v1.0.0 - _December 2, 2019_
 
     * Drastically reduced bundle size by adding .npmignore, only exporting specific artifacts/wrappers/utils (#2330)
     * Introduced new export ExchangeRevertErrors (#2321)
@@ -36,7 +36,7 @@ CHANGELOG
     * Add a `bytes` return value to `executeTransaction`, which is equal to the encoded return data of the underlying Exchange function call (#1793)
     * Implement `batchExecuteTransactions` (#1793)
     * Refactor preSign to be compatible with `executeTransaction` (#1793)
-    * Remove ZRX fees in lieu of arbitrary maker and taker fee tokens. (#1819)
+    * Remove NET fees in lieu of arbitrary maker and taker fee tokens. (#1819)
     * Incorporate Multi-asset and ERC1155 tests into `fillOrder` and `matchOrders` tests (#1819)
     * Swap fill order from maker -> taker to taker -> maker (#1819)
     * Avoid redundant transfer in `fillOrder()` and `matchOrders()` when maker/taker is the same as feeRecipient and assets are the same (#1819)
@@ -107,7 +107,7 @@ CHANGELOG
     * Add a `bytes` return value to `executeTransaction`, which is equal to the encoded return data of the underlying Exchange function call (#1793)
     * Implement `batchExecuteTransactions` (#1793)
     * Refactor preSign to be compatible with `executeTransaction` (#1793)
-    * Remove ZRX fees in lieu of arbitrary maker and taker fee tokens. (#1819)
+    * Remove NET fees in lieu of arbitrary maker and taker fee tokens. (#1819)
     * Incorporate Multi-asset and ERC1155 tests into `fillOrder` and `matchOrders` tests (#1819)
     * Swap fill order from maker -> taker to taker -> maker (#1819)
     * Avoid redundant transfer in `fillOrder()` and `matchOrders()` when maker/taker is the same as feeRecipient and assets are the same (#1819)
@@ -163,7 +163,7 @@ CHANGELOG
 
 ## v2.1.10 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies. (#1995)
 
 ## v2.1.9 - _July 24, 2019_
 

@@ -1,8 +1,8 @@
-import { BaseContract } from '@0x/base-contract';
-import { ApprovalFactory, SignedCoordinatorApproval } from '@0x/contracts-coordinator';
-import { SignatureType, SignedZeroExTransaction } from '@0x/types';
+import {BaseContract} from '@powerchain/base-contract';
+import {ApprovalFactory, SignedCoordinatorApproval} from '@powerchain/contracts-coordinator';
+import {SignatureType, SignedZeroExTransaction} from '@powerchain/types';
 
-import { Actor, ActorConfig, Constructor } from './base';
+import {Actor, ActorConfig, Constructor} from './base';
 
 interface FeeRecipientConfig extends ActorConfig {
     verifyingContract?: BaseContract;
@@ -18,7 +18,7 @@ export interface FeeRecipientInterface {
 }
 
 /**
- * This mixin encapsulates functionality associated with fee recipients within the 0x ecosystem.
+ * This mixin encapsulates functionality associated with fee recipients within the powerchain ecosystem.
  * As of writing, the only extra functionality provided is signing Coordinator approvals.
  */
 export function FeeRecipientMixin<TBase extends Constructor>(Base: TBase): TBase & Constructor<FeeRecipientInterface> {

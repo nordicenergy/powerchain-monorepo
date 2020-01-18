@@ -1,16 +1,16 @@
-import { IChaiContract } from '@0x/contracts-asset-proxy';
-import { artifacts as devUtilsArtifacts, DevUtilsContract } from '@0x/contracts-dev-utils';
-import { ERC20TokenContract } from '@0x/contracts-erc20';
-import { blockchainTests, constants, expect } from '@0x/contracts-test-utils';
-import { assetDataUtils } from '@0x/order-utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {IChaiContract} from '@powerchain/contracts-asset-proxy';
+import {artifacts as devUtilsArtifacts, DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {ERC20TokenContract} from '@powerchain/contracts-erc20';
+import {blockchainTests, constants, expect} from '@powerchain/contracts-test-utils';
+import {assetDataUtils} from '@powerchain/order-utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 
-import { contractAddresses } from '../mainnet_fork_utils';
+import {contractAddresses} from '../mainnet_fork_utils';
 
 blockchainTests.fork.resets('DevUtils mainnet tests', env => {
-    const daiAddress = '0x6b175474e89094c44da98b954eedeac495271d0f';
-    const chaiAddress = '0x06af07097c9eeb7fd685c692751d5c66db49c215';
-    const daiHolder = '0x6cc5f688a315f3dc28a7781717a9a798a59fda7b';
+    const daiAddress = 'powerchain6b175474e89094c44da98b954eedeac495271d0f';
+    const chaiAddress = 'powerchain06af07097c9eeb7fd685c692751d5c66db49c215';
+    const daiHolder = 'powerchain6cc5f688a315f3dc28a7781717a9a798a59fda7b';
     let noDaiAddress: string;
 
     const assetData = assetDataUtils.encodeERC20BridgeAssetData(
@@ -26,7 +26,7 @@ blockchainTests.fork.resets('DevUtils mainnet tests', env => {
 
     before(async () => {
         [noDaiAddress] = await env.getAccountAddressesAsync();
-        devUtils = await DevUtilsContract.deployFrom0xArtifactAsync(
+        devUtils = await DevUtilsContract.deployFrompowerchainArtifactAsync(
             devUtilsArtifacts.DevUtils,
             env.provider,
             env.txDefaults,

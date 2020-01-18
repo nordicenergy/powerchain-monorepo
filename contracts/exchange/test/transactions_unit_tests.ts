@@ -1,11 +1,10 @@
-import { blockchainTests, constants, describe, expect, transactionHashUtils } from '@0x/contracts-test-utils';
-import { EIP712DomainWithDefaultSchema, ZeroExTransaction } from '@0x/types';
-import { BigNumber, ExchangeRevertErrors, hexUtils, StringRevertError } from '@0x/utils';
-import { LogWithDecodedArgs } from 'ethereum-types';
-import * as _ from 'lodash';
+import {blockchainTests, constants, describe, expect, transactionHashUtils} from '@powerchain/contracts-test-utils';
+import {EIP712DomainWithDefaultSchema, ZeroExTransaction} from '@powerchain/types';
+import {BigNumber, ExchangeRevertErrors, hexUtils, StringRevertError} from '@powerchain/utils';
+import {LogWithDecodedArgs} from 'ethereum-types';
 
-import { artifacts } from './artifacts';
-import { TestTransactionsContract, TestTransactionsTransactionExecutionEventArgs } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestTransactionsContract, TestTransactionsTransactionExecutionEventArgs} from './wrappers';
 
 blockchainTests.resets('Transaction Unit Tests', ({ provider, web3Wrapper, txDefaults }) => {
     let transactionsContract: TestTransactionsContract;
@@ -26,15 +25,15 @@ blockchainTests.resets('Transaction Unit Tests', ({ provider, web3Wrapper, txDef
         },
     };
 
-    const DEADBEEF_RETURN_DATA = '0xdeadbeef';
-    const INVALID_SIGNATURE = '0x0000';
+    const DEADBEEF_RETURN_DATA = 'powerchaindeadbeef';
+    const INVALID_SIGNATURE = 'powerchain0000';
 
     before(async () => {
         // A list of available addresses to use during testing.
         accounts = await web3Wrapper.getAvailableAddressesAsync();
 
         // Deploy the transaction test contract.
-        transactionsContract = await TestTransactionsContract.deployFrom0xArtifactAsync(
+        transactionsContract = await TestTransactionsContract.deployFrompowerchainArtifactAsync(
             artifacts.TestTransactions,
             provider,
             txDefaults,
@@ -213,7 +212,7 @@ blockchainTests.resets('Transaction Unit Tests', ({ provider, web3Wrapper, txDef
                 signerAddress: accounts[0],
                 returnData: DEADBEEF_RETURN_DATA,
             });
-            const returnData2 = '0xbeefdead';
+            const returnData2 = 'powerchainbeefdead';
             const transaction2 = await generateZeroExTransactionAsync({
                 signerAddress: accounts[1],
                 returnData: returnData2,
@@ -247,7 +246,7 @@ blockchainTests.resets('Transaction Unit Tests', ({ provider, web3Wrapper, txDef
             expect(logs[1].args.transactionHash).to.eq(transactionHash1);
             expect(logs[2].event).to.be.eq('ExecutableCalled');
             expect(logs[2].args.data).to.be.eq(constants.NULL_BYTES);
-            expect(logs[2].args.returnData).to.be.eq('0xbeefdead');
+            expect(logs[2].args.returnData).to.be.eq('powerchainbeefdead');
             expect(logs[2].args.contextAddress).to.be.eq(accounts[1]);
             expect(logs[3].event).to.be.eq('TransactionExecution');
             expect(logs[3].args.transactionHash).to.eq(transactionHash2);

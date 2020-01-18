@@ -1,18 +1,18 @@
-import { constants as stakingConstants, StakingPoolById } from '@0x/contracts-staking';
-import { constants } from '@0x/contracts-test-utils';
+import {constants as stakingConstants, StakingPoolById} from '@powerchain/contracts-staking';
+import {constants} from '@powerchain/contracts-test-utils';
 import '@azure/core-asynciterator-polyfill';
-import { TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+import {TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { invalidCreateStakingPoolAssertion, validCreateStakingPoolAssertion } from '../assertions/createStakingPool';
+import {invalidCreateStakingPoolAssertion, validCreateStakingPoolAssertion} from '../assertions/createStakingPool';
 import {
     invalidDecreaseStakingPoolOperatorShareAssertion,
     validDecreaseStakingPoolOperatorShareAssertion,
 } from '../assertions/decreaseStakingPoolOperatorShare';
-import { AssertionResult } from '../assertions/function_assertion';
-import { Distributions, Pseudorandom } from '../utils/pseudorandom';
+import {AssertionResult} from '../assertions/function_assertion';
+import {Distributions, Pseudorandom} from '../utils/pseudorandom';
 
-import { Actor, Constructor } from './base';
+import {Actor, Constructor} from './base';
 
 export interface PoolOperatorInterface {
     createStakingPoolAsync: (operatorShare: number, addOperatorAsMaker?: boolean) => Promise<string>;
@@ -23,7 +23,7 @@ export interface PoolOperatorInterface {
 }
 
 /**
- * This mixin encapsulates functionality associated with pool operators within the 0x ecosystem.
+ * This mixin encapsulates functionality associated with pool operators within the powerchain ecosystem.
  * This includes creating staking pools and decreasing the operator share of a pool.
  */
 export function PoolOperatorMixin<TBase extends Constructor>(Base: TBase): TBase & Constructor<PoolOperatorInterface> {

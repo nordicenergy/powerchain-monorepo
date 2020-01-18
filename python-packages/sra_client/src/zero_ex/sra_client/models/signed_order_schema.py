@@ -50,10 +50,10 @@ class SignedOrderSchema(object):
                 "Invalid value for `signature`, must not be `None`"
             )  # noqa: E501
         if signature is not None and not re.search(
-            r"^0x(([0-9a-f][0-9a-f])+)?$", signature
+            r"^powerchain(([0-9a-f][0-9a-f])+)?$", signature
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `signature`, must be a follow pattern or equal to `/^0x(([0-9a-f][0-9a-f])+)?$/`"
+                r"Invalid value for `signature`, must be a follow pattern or equal to `/^powerchain(([0-9a-f][0-9a-f])+)?$/`"
             )  # noqa: E501
 
         self._signature = signature

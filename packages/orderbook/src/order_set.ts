@@ -1,6 +1,6 @@
-import { APIOrder } from '@0x/connect';
+import {APIOrder} from '@powerchain/connect';
 
-import { utils } from './utils';
+import {utils} from './utils';
 
 export class OrderSet {
     private readonly _map: Map<string, APIOrder>;

@@ -1,6 +1,6 @@
-import { BigNumber, fetchAsync } from '@0x/utils';
+import {BigNumber, fetchAsync} from '@powerchain/utils';
 
-import { COINBASE_API_BASE_URL } from '../constants';
+import {COINBASE_API_BASE_URL} from '../constants';
 
 export const coinbaseApi = {
     getEthUsdPrice: async (): Promise<BigNumber> => {

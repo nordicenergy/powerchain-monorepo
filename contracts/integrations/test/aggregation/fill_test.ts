@@ -1,18 +1,18 @@
-import { MarketBuySwapQuote, MarketSellSwapQuote, Orderbook, SwapQuoter } from '@0x/asset-swapper';
-import { blockchainTests, expect, Numberish } from '@0x/contracts-test-utils';
-import { assetDataUtils } from '@0x/order-utils';
-import { FillResults, SignedOrder } from '@0x/types';
-import { BigNumber, logUtils } from '@0x/utils';
+import {MarketBuySwapQuote, MarketSellSwapQuote, Orderbook, SwapQuoter} from '@powerchain/asset-swapper';
+import {blockchainTests, expect, Numberish} from '@powerchain/contracts-test-utils';
+import {assetDataUtils} from '@powerchain/order-utils';
+import {FillResults, SignedOrder} from '@powerchain/types';
+import {BigNumber, logUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { TestMainnetAggregatorFillsContract } from '../wrappers';
+import {TestMainnetAggregatorFillsContract} from '../wrappers';
 
-import { tokens } from './tokens';
+import {tokens} from './tokens';
 
 blockchainTests.live('Aggregator Mainnet Tests', env => {
     // Mainnet address of the `TestMainnetAggregatorFills` contract.
-    const TEST_CONTRACT_ADDRESS = '0x37Ca306F42748b7fe105F89FCBb2CD03D27c8146';
-    const TAKER_ADDRESS = '0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B'; // Vitalik
+    const TEST_CONTRACT_ADDRESS = 'powerchain37Ca306F42748b7fe105F89FCBb2CD03D27c8146';
+    const TAKER_ADDRESS = 'powerchainAb5801a7D398351b8bE11C439e05C5B3259aeC9B'; // Vitalik
     const ORDERBOOK_POLLING_MS = 1000;
     const GAS_PRICE = new BigNumber(1);
     const TAKER_ASSET_ETH_VALUE = 500e18;
@@ -130,11 +130,11 @@ blockchainTests.live('Aggregator Mainnet Tests', env => {
             gasPrice: GAS_PRICE,
             gas: 10e6,
         });
-        swapQuoter = SwapQuoter.getSwapQuoterForStandardRelayerAPIUrl(env.provider, 'https://api.0x.org/sra');
+        swapQuoter = SwapQuoter.getSwapQuoterForStandardRelayerAPIUrl(env.provider, 'https://api.powerchain.org/sra');
         // Pool orderbooks because we're desperate for liquidity.
         orderbooks.swapQuoter = swapQuoter.orderbook;
         orderbooks.bamboo = Orderbook.getOrderbookForPollingProvider({
-            httpEndpoint: 'https://sra.bamboorelay.com/0x/v3',
+            httpEndpoint: 'https://sra.bamboorelay.com/powerchain/v3',
             pollingIntervalMs: ORDERBOOK_POLLING_MS,
         });
         // TODO(dorothy-zbornak): Uncomment when radar's SRA is up.

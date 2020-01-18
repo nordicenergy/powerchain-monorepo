@@ -1,4 +1,4 @@
-"""Python wrappers for interacting with 0x smart contracts.
+"""Python wrappers for interacting with powerchain smart contracts.
 
 The smart contract wrappers have simplified interfaces, performing client-side
 validation on transactions, and throwing helpful error messages.
@@ -6,9 +6,9 @@ validation on transactions, and throwing helpful error messages.
 Setup
 -----
 
-Install the 0x-contract-wrappers with pip::
+Install the powerchain-contract-wrappers with pip::
 
-    pip install 0x-contract-wrappers
+    pip install powerchain-contract-wrappers
 
 We need a Web3 provider to allow us to talk to the blockchain. You can
 read `more about providers in the Web3.py documentation
@@ -18,10 +18,10 @@ there's a local instance of Ganache listening on port 8545:
 >>> from web3 import HTTPProvider
 >>> ganache = HTTPProvider("http://localhost:8545")
 
-To replicate these examples, one can use the `0xorg/ganache-cli`:code: docker
-image, which comes with the 0x contracts pre-deployed.  To start it::
+To replicate these examples, one can use the `nordicenergy/ganache-cli`:code: docker
+image, which comes with the powerchain contracts pre-deployed.  To start it::
 
-    docker run -d -p 8545:8545 0xorg/ganache-cli
+    docker run -d -p 8545:8545 nordicenergy/ganache-cli
 
 Accounts
 --------
@@ -46,22 +46,22 @@ For convenience, a `TxParams`:code: class is provided:
 Contract Addresses
 ------------------
 
-The `0x-contract-addresses`:code: package (which is used by
-`0x-contract-wrappers`:code: and thus gets installed along with it) provides
-the addresses of the 0x contracts on each chain, including those that come
-pre-deployed deployed in the `0xorg/ganache-cli`:code: docker image.  Let's
+The `powerchain-contract-addresses`:code: package (which is used by
+`powerchain-contract-wrappers`:code: and thus gets installed along with it) provides
+the addresses of the powerchain contracts on each chain, including those that come
+pre-deployed deployed in the `nordicenergy/ganache-cli`:code: docker image.  Let's
 capture the addresses we'll use throughout the examples below:
 
 >>> from zero_ex.contract_addresses import chain_to_addresses, ChainId
 >>> weth_address     = chain_to_addresses(ChainId.GANACHE).ether_token
->>> zrx_address      = chain_to_addresses(ChainId.GANACHE).zrx_token
+>>> zrx_address      = chain_to_addresses(ChainId.GANACHE).net_token
 >>> exchange_address = chain_to_addresses(ChainId.GANACHE).exchange
 
 Wrapping ETH
 ------------
 
 The examples below demonstrate constructing an order with the maker providing
-ZRX in exchange for the taker providing some WETH.  For the order to be valid,
+NET in exchange for the taker providing some WETH.  For the order to be valid,
 our Taker first needs to wrap some ether as WETH.
 
 First get an instance of the WETH contract on the network:
@@ -80,20 +80,20 @@ it receiving WETH:
 ...     {"from": Web3.toChecksumAddress(taker_address),
 ...      "value": to_wei(1, 'ether')}
 ... )
-HexBytes('0x...')
+HexBytes('powerchain...')
 
 Approvals
 ---------
 
-In order to trade on 0x, one must approve the 0x smart contracts to transfer
+In order to trade on powerchain, one must approve the powerchain smart contracts to transfer
 their tokens.  Because the order constructed below has the maker giving WETH,
-we need to tell the WETH token contract to let the 0x contracts transfer our
+we need to tell the WETH token contract to let the powerchain contracts transfer our
 balance:
 
 >>> from zero_ex.contract_wrappers.erc20_token import ERC20Token
->>> zrx_token = ERC20Token(
+>>> net_token = ERC20Token(
 ...     web3_or_provider=ganache,
-...     contract_address=chain_to_addresses(ChainId.GANACHE).zrx_token,
+...     contract_address=chain_to_addresses(ChainId.GANACHE).net_token,
 ... )
 >>> weth_token = ERC20Token(
 ...     web3_or_provider=ganache,
@@ -102,7 +102,7 @@ balance:
 
 >>> erc20_proxy_addr = chain_to_addresses(ChainId.GANACHE).erc20_proxy
 
->>> tx = zrx_token.approve.send_transaction(
+>>> tx = net_token.approve.send_transaction(
 ...     erc20_proxy_addr,
 ...     to_wei(100, 'ether'),
 ...     tx_params=TxParams(from_=maker_address),
@@ -123,9 +123,9 @@ Constructing an order
 >>> import random
 >>> order = Order(
 ...     makerAddress=maker_address,
-...     takerAddress='0x0000000000000000000000000000000000000000',
-...     senderAddress='0x0000000000000000000000000000000000000000',
-...     feeRecipientAddress='0x0000000000000000000000000000000000000000',
+...     takerAddress='powerchain0000000000000000000000000000000000000000',
+...     senderAddress='powerchain0000000000000000000000000000000000000000',
+...     feeRecipientAddress='powerchain0000000000000000000000000000000000000000',
 ...     makerAssetData=asset_data_utils.encode_erc20(zrx_address),
 ...     takerAssetData=asset_data_utils.encode_erc20(weth_address),
 ...     salt=random.randint(1, 100000000000000000),
@@ -136,8 +136,8 @@ Constructing an order
 ...     expirationTimeSeconds=round(
 ...         (datetime.utcnow() + timedelta(days=1)).timestamp()
 ...     ),
-...     makerFeeAssetData='0x',
-...     takerFeeAssetData='0x',
+...     makerFeeAssetData='powerchain',
+...     takerFeeAssetData='powerchain',
 ... )
 
 For this order to be valid, our Maker must sign a hash of it:
@@ -153,9 +153,9 @@ For this order to be valid, our Maker must sign a hash of it:
 ... )
 
 Now our Maker can either deliver this order, along with his signature, directly
-to the taker, or he can choose to broadcast the order to a 0x Relayer.  For
+to the taker, or he can choose to broadcast the order to a powerchain Relayer.  For
 more information on working with Relayers, see `the documentation for
-0x-sra-client <http://0x-sra-client-py.s3-website-us-east-1.amazonaws.com/>`_.
+powerchain-sra-client <http://powerchain-sra-client-py.s3-website-us-east-1.amazonaws.com/>`_.
 
 Filling an order
 ----------------
@@ -221,16 +221,16 @@ the exchange wrapper:
 >>> exchange.get_fill_event(tx_hash)
 (AttributeDict({'args': ...({'makerAddress': ...}), 'event': 'Fill', ...}),)
 >>> pprint(exchange.get_fill_event(tx_hash)[0].args.__dict__)
-{'feeRecipientAddress': '0x0000000000000000000000000000000000000000',
- 'makerAddress': '0x...',
+{'feeRecipientAddress': 'powerchain0000000000000000000000000000000000000000',
+ 'makerAddress': 'powerchain...',
  'makerAssetData': b...,
  'makerAssetFilledAmount': 100000000000000000,
  'makerFeeAssetData': b...,
  'makerFeePaid': 0,
  'orderHash': b...,
  'protocolFeePaid': ...,
- 'senderAddress': '0x...',
- 'takerAddress': '0x...',
+ 'senderAddress': 'powerchain...',
+ 'takerAddress': 'powerchain...',
  'takerAssetData': b...,
  'takerAssetFilledAmount': 100000000000000000,
  'takerFeeAssetData': b...,
@@ -245,14 +245,14 @@ A Maker can cancel an order that has yet to be filled.
 
 >>> order = Order(
 ...     makerAddress=maker_address,
-...     takerAddress='0x0000000000000000000000000000000000000000',
+...     takerAddress='powerchain0000000000000000000000000000000000000000',
 ...     exchangeAddress=exchange_address,
-...     senderAddress='0x0000000000000000000000000000000000000000',
-...     feeRecipientAddress='0x0000000000000000000000000000000000000000',
+...     senderAddress='powerchain0000000000000000000000000000000000000000',
+...     feeRecipientAddress='powerchain0000000000000000000000000000000000000000',
 ...     makerAssetData=asset_data_utils.encode_erc20(weth_address),
-...     makerFeeAssetData=asset_data_utils.encode_erc20('0x' + '00'*20),
+...     makerFeeAssetData=asset_data_utils.encode_erc20('powerchain' + '00'*20),
 ...     takerAssetData=asset_data_utils.encode_erc20(weth_address),
-...     takerFeeAssetData=asset_data_utils.encode_erc20('0x' + '00'*20),
+...     takerFeeAssetData=asset_data_utils.encode_erc20('powerchain' + '00'*20),
 ...     salt=random.randint(1, 100000000000000000),
 ...     makerFee=0,
 ...     takerFee=0,
@@ -273,14 +273,14 @@ through the Exchange wrapper:
 >>> exchange.get_cancel_event(tx_hash)
 (AttributeDict({'args': ...({'makerAddress': ...}), 'event': 'Cancel', ...}),)
 >>> pprint(exchange.get_cancel_event(tx_hash)[0].args.__dict__)
-{'feeRecipientAddress': '0x0000000000000000000000000000000000000000',
- 'makerAddress': '0x...',
+{'feeRecipientAddress': 'powerchain0000000000000000000000000000000000000000',
+ 'makerAddress': 'powerchain...',
  'makerAssetData': b...,
  'orderHash': b...,
- 'senderAddress': '0x...',
+ 'senderAddress': 'powerchain...',
  'takerAssetData': b...}
 >>> exchange.get_cancel_event(tx_hash)[0].args.feeRecipientAddress
-'0x0000000000000000000000000000000000000000'
+'powerchain0000000000000000000000000000000000000000'
 
 Batching orders
 ----------------
@@ -290,13 +290,13 @@ is an example where the taker fills two orders in one transaction:
 
 >>> order_1 = Order(
 ...     makerAddress=maker_address,
-...     takerAddress='0x0000000000000000000000000000000000000000',
-...     senderAddress='0x0000000000000000000000000000000000000000',
-...     feeRecipientAddress='0x0000000000000000000000000000000000000000',
+...     takerAddress='powerchain0000000000000000000000000000000000000000',
+...     senderAddress='powerchain0000000000000000000000000000000000000000',
+...     feeRecipientAddress='powerchain0000000000000000000000000000000000000000',
 ...     makerAssetData=asset_data_utils.encode_erc20(zrx_address),
-...     makerFeeAssetData=asset_data_utils.encode_erc20('0x' + '00'*20),
+...     makerFeeAssetData=asset_data_utils.encode_erc20('powerchain' + '00'*20),
 ...     takerAssetData=asset_data_utils.encode_erc20(weth_address),
-...     takerFeeAssetData=asset_data_utils.encode_erc20('0x' + '00'*20),
+...     takerFeeAssetData=asset_data_utils.encode_erc20('powerchain' + '00'*20),
 ...     salt=random.randint(1, 100000000000000000),
 ...     makerFee=0,
 ...     takerFee=0,
@@ -315,13 +315,13 @@ is an example where the taker fills two orders in one transaction:
 ... )
 >>> order_2 = Order(
 ...     makerAddress=maker_address,
-...     takerAddress='0x0000000000000000000000000000000000000000',
-...     senderAddress='0x0000000000000000000000000000000000000000',
-...     feeRecipientAddress='0x0000000000000000000000000000000000000000',
+...     takerAddress='powerchain0000000000000000000000000000000000000000',
+...     senderAddress='powerchain0000000000000000000000000000000000000000',
+...     feeRecipientAddress='powerchain0000000000000000000000000000000000000000',
 ...     makerAssetData=asset_data_utils.encode_erc20(zrx_address),
-...     makerFeeAssetData=asset_data_utils.encode_erc20('0x' + '00'*20),
+...     makerFeeAssetData=asset_data_utils.encode_erc20('powerchain' + '00'*20),
 ...     takerAssetData=asset_data_utils.encode_erc20(weth_address),
-...     takerFeeAssetData=asset_data_utils.encode_erc20('0x' + '00'*20),
+...     takerFeeAssetData=asset_data_utils.encode_erc20('powerchain' + '00'*20),
 ...     salt=random.randint(1, 100000000000000000),
 ...     makerFee=0,
 ...     takerFee=0,
@@ -350,7 +350,7 @@ Fill order_1 and order_2 together:
 ...         value=2*web3.eth.generateGasPrice()*150000
 ...     )
 ... )
-HexBytes('0x...')
+HexBytes('powerchain...')
 
 Estimating gas consumption
 --------------------------
@@ -361,14 +361,14 @@ will be consumed.
 >>> exchange.cancel_order.estimate_gas(
 ...     order=Order(
 ...         makerAddress=maker_address,
-...         takerAddress='0x0000000000000000000000000000000000000000',
+...         takerAddress='powerchain0000000000000000000000000000000000000000',
 ...         exchangeAddress=exchange_address,
-...         senderAddress='0x0000000000000000000000000000000000000000',
-...         feeRecipientAddress='0x0000000000000000000000000000000000000000',
+...         senderAddress='powerchain0000000000000000000000000000000000000000',
+...         feeRecipientAddress='powerchain0000000000000000000000000000000000000000',
 ...         makerAssetData=asset_data_utils.encode_erc20(weth_address),
-...         makerFeeAssetData=asset_data_utils.encode_erc20('0x' + '00'*20),
+...         makerFeeAssetData=asset_data_utils.encode_erc20('powerchain' + '00'*20),
 ...         takerAssetData=asset_data_utils.encode_erc20(weth_address),
-...         takerFeeAssetData=asset_data_utils.encode_erc20('0x' + '00'*20),
+...         takerFeeAssetData=asset_data_utils.encode_erc20('powerchain' + '00'*20),
 ...         salt=random.randint(1, 100000000000000000),
 ...         makerFee=0,
 ...         takerFee=0,

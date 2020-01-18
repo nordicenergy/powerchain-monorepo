@@ -190,7 +190,7 @@
         "version": "0.0.5",
         "changes": [
             {
-                "note": "Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies.",
+                "note": "Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies.",
                 "pr": 1995
             }
         ],
@@ -244,7 +244,7 @@
                 "pr": 1848
             },
             {
-                "note": "Refactor `LibAssetData` to only check 0x-specific allowances",
+                "note": "Refactor `LibAssetData` to only check powerchain-specific allowances",
                 "pr": 1848
             },
             {
@@ -264,7 +264,7 @@
                 "pr": 1868
             },
             {
-                "note": "Updated to use the new rich error pattern from @0x/contracts-exchange",
+                "note": "Updated to use the new rich error pattern from @powerchain/contracts-exchange",
                 "pr": 1913
             }
         ]

@@ -1,18 +1,19 @@
-import { ReferenceFunctions as LibReferenceFunctions } from '@0x/contracts-exchange-libs';
-import { blockchainTests, constants, expect, orderHashUtils } from '@0x/contracts-test-utils';
-import { SafeMathRevertErrors } from '@0x/contracts-utils';
-import { Order } from '@0x/types';
-import { BigNumber, ExchangeRevertErrors, hexUtils } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { LogWithDecodedArgs } from 'ethereum-types';
+import {ReferenceFunctions as LibReferenceFunctions} from '@powerchain/contracts-exchange-libs';
+import {blockchainTests, constants, expect, orderHashUtils} from '@powerchain/contracts-test-utils';
+import {SafeMathRevertErrors} from '@powerchain/contracts-utils';
+import {Order} from '@powerchain/types';
+import {BigNumber, ExchangeRevertErrors, hexUtils} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {LogWithDecodedArgs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 import {
     TestExchangeInternalsContract,
     TestExchangeInternalsDispatchTransferFromCalledEventArgs,
     TestExchangeInternalsFillEventArgs,
 } from './wrappers';
+
 blockchainTests('Exchange core internal functions', env => {
     const CHAIN_ID = 1337;
     const ONE_ETHER = constants.ONE_ETHER;
@@ -28,7 +29,7 @@ blockchainTests('Exchange core internal functions', env => {
         const accounts = await env.getAccountAddressesAsync();
         senderAddress = accounts[0];
 
-        testExchange = await TestExchangeInternalsContract.deployFrom0xArtifactAsync(
+        testExchange = await TestExchangeInternalsContract.deployFrompowerchainArtifactAsync(
             artifacts.TestExchangeInternals,
             env.provider,
             env.txDefaults,

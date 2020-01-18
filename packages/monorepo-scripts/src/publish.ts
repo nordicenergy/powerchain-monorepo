@@ -1,26 +1,26 @@
 #!/usr/bin/env node
 
-import { PackageJSON } from '@0x/types';
-import { logUtils } from '@0x/utils';
-import { spawn } from 'child_process';
+import {PackageJSON} from '@powerchain/types';
+import {logUtils} from '@powerchain/utils';
+import {spawn} from 'child_process';
 import * as promisify from 'es6-promisify';
 import * as fs from 'fs';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import * as path from 'path';
-import { exec as execAsync, spawn as spawnAsync } from 'promisify-child-process';
+import {exec as execAsync, spawn as spawnAsync} from 'promisify-child-process';
 import * as prompt from 'prompt';
+
+import {constants} from './constants';
+import {Package, PackageToNextVersion, VersionChangelog} from './types';
+import {changelogUtils} from './utils/changelog_utils';
+import {configs} from './utils/configs';
+import {alertDiscordAsync} from './utils/discord';
+import {DocGenerateUtils} from './utils/doc_generate_utils';
+import {publishReleaseNotesAsync} from './utils/github_release_utils';
+import {utils} from './utils/utils';
 import semver = require('semver');
 import semverSort = require('semver-sort');
-
-import { constants } from './constants';
-import { Package, PackageToNextVersion, VersionChangelog } from './types';
-import { changelogUtils } from './utils/changelog_utils';
-import { configs } from './utils/configs';
-import { alertDiscordAsync } from './utils/discord';
-import { DocGenerateUtils } from './utils/doc_generate_utils';
-import { publishReleaseNotesAsync } from './utils/github_release_utils';
-import { utils } from './utils/utils';
 
 const TODAYS_TIMESTAMP = moment().unix();
 
@@ -120,7 +120,7 @@ async function publishImagesToDockerHubAsync(allUpdatedPackages: Package[]): Pro
         }
         const dockerHubRepo = _.get(packageJSON, 'config.postpublish.dockerHubRepo');
         const pkgName = pkg.packageJson.name;
-        const packageDirName = _.startsWith(pkgName, '@0x/') ? pkgName.split('/')[1] : pkgName;
+        const packageDirName = _.startsWith(pkgName, '@powerchain/') ? pkgName.split('/')[1] : pkgName;
 
         // Build the Docker image
         logUtils.log(`Building '${dockerHubRepo}' docker image...`);
@@ -151,7 +151,7 @@ function getPackagesWithDocs(allUpdatedPackages: Package[]): Package[] {
     const packagesWithDocPages = packagesWithDocPagesStringIfExist.split(' ');
     const updatedPackagesWithDocPages: Package[] = [];
     _.each(allUpdatedPackages, pkg => {
-        const nameWithoutPrefix = pkg.packageJson.name.replace('@0x/', '');
+        const nameWithoutPrefix = pkg.packageJson.name.replace('@powerchain/', '');
         if (_.includes(packagesWithDocPages, nameWithoutPrefix)) {
             updatedPackagesWithDocPages.push(pkg);
         }
@@ -161,7 +161,7 @@ function getPackagesWithDocs(allUpdatedPackages: Package[]): Package[] {
 
 async function generateDocMDAsync(packagesWithDocs: Package[]): Promise<void> {
     for (const pkg of packagesWithDocs) {
-        const nameWithoutPrefix = pkg.packageJson.name.replace('@0x/', '');
+        const nameWithoutPrefix = pkg.packageJson.name.replace('@powerchain/', '');
         const docGenerateAndUploadUtils = new DocGenerateUtils(nameWithoutPrefix);
         await docGenerateAndUploadUtils.generateAndUploadDocsAsync();
     }

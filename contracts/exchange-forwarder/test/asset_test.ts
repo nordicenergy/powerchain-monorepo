@@ -1,23 +1,23 @@
-import { IAssetDataContract } from '@0x/contracts-asset-proxy';
+import {IAssetDataContract} from '@powerchain/contracts-asset-proxy';
 import {
     artifacts as ERC1155Artifacts,
     ERC1155Events,
     ERC1155MintableContract,
     ERC1155TransferBatchEventArgs,
     Erc1155Wrapper,
-} from '@0x/contracts-erc1155';
+} from '@powerchain/contracts-erc1155';
 import {
     artifacts as ERC20Artifacts,
     DummyERC20TokenContract,
     ERC20TokenEvents,
     ERC20TokenTransferEventArgs,
-} from '@0x/contracts-erc20';
+} from '@powerchain/contracts-erc20';
 import {
     artifacts as ERC721Artifacts,
     DummyERC721TokenContract,
     ERC721TokenEvents,
     ERC721TokenTransferEventArgs,
-} from '@0x/contracts-erc721';
+} from '@powerchain/contracts-erc721';
 import {
     blockchainTests,
     constants,
@@ -25,12 +25,12 @@ import {
     getRandomInteger,
     randomAddress,
     verifyEventsFromLogs,
-} from '@0x/contracts-test-utils';
-import { BigNumber, ExchangeForwarderRevertErrors, hexUtils } from '@0x/utils';
-import { LogWithDecodedArgs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber, ExchangeForwarderRevertErrors, hexUtils} from '@powerchain/utils';
+import {LogWithDecodedArgs} from 'ethereum-types';
 
-import { artifacts } from './artifacts';
-import { TestForwarderContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestForwarderContract} from './wrappers';
 
 // tslint:disable:no-unnecessary-type-assertion
 blockchainTests.resets('Supported asset type unit tests', env => {
@@ -56,14 +56,14 @@ blockchainTests.resets('Supported asset type unit tests', env => {
         [receiver] = await env.getAccountAddressesAsync();
         assetDataEncoder = new IAssetDataContract(constants.NULL_ADDRESS, env.provider);
 
-        forwarder = await TestForwarderContract.deployFrom0xArtifactAsync(
+        forwarder = await TestForwarderContract.deployFrompowerchainArtifactAsync(
             artifacts.TestForwarder,
             env.provider,
             env.txDefaults,
             { ...artifacts, ...ERC20Artifacts, ...ERC721Artifacts, ...ERC1155Artifacts },
         );
 
-        erc20Token = await DummyERC20TokenContract.deployFrom0xArtifactAsync(
+        erc20Token = await DummyERC20TokenContract.deployFrompowerchainArtifactAsync(
             ERC20Artifacts.DummyERC20Token,
             env.provider,
             env.txDefaults,
@@ -75,7 +75,7 @@ blockchainTests.resets('Supported asset type unit tests', env => {
         );
         erc20AssetData = assetDataEncoder.ERC20Token(erc20Token.address).getABIEncodedTransactionData();
 
-        erc721Token = await DummyERC721TokenContract.deployFrom0xArtifactAsync(
+        erc721Token = await DummyERC721TokenContract.deployFrompowerchainArtifactAsync(
             ERC721Artifacts.DummyERC721Token,
             env.provider,
             env.txDefaults,
@@ -86,7 +86,7 @@ blockchainTests.resets('Supported asset type unit tests', env => {
         nftId = getRandomInteger(0, constants.MAX_UINT256);
         erc721AssetData = assetDataEncoder.ERC721Token(erc721Token.address, nftId).getABIEncodedTransactionData();
 
-        erc1155Token = await ERC1155MintableContract.deployFrom0xArtifactAsync(
+        erc1155Token = await ERC1155MintableContract.deployFrompowerchainArtifactAsync(
             ERC1155Artifacts.ERC1155Mintable,
             env.provider,
             env.txDefaults,

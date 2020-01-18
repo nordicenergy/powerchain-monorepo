@@ -1,10 +1,10 @@
 {
-    "name": "@0x/contract-artifacts",
+    "name": "@powerchain/contract-artifacts",
     "version": "3.3.0",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "0x smart contract compilation artifacts",
+    "description": "powerchain smart contract compilation artifacts",
     "main": "lib/src/index.js",
     "directories": {
         "test": "test"
@@ -22,15 +22,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/contract-artifacts/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/contract-artifacts/README.md",
     "devDependencies": {
-        "@0x/utils": "^5.1.2",
+        "@powerchain/utils": "^5.1.2",
         "@types/mocha": "^5.2.7",
         "chai": "^4.0.1",
         "lodash": "^4.17.11",

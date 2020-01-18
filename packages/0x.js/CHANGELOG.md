@@ -19,14 +19,14 @@ CHANGELOG
 
 ## v9.0.0 - _December 2, 2019_
 
-    * Remove ZRXToken contract wrapper (#2324)
+    * Remove NETToken contract wrapper (#2324)
     * ContractWrappers no longer exposes `erc20Proxy`, `erc721Proxy` and `dutchAuction` wrappers (#2324)
-    * [Breaking] Big refactor of contract wrapper interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details (#2325)
+    * [Breaking] Big refactor of contract wrapper interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details (#2325)
     * Remove IWallet and IValidator contract wrappers (#2337)
     * Remove exports orderHashUtils and transactionHashUtils (#2321)
     * Update BigNumber version to ~9.0.0 (#2342)
     * Exported intefaces changed: from getContractAddressesForNetworkOrThrow to getContractAddressesForChainOrThrow, from NetworkId to ChainId, from ContractNetworks to ContractChains, and from ContractNetworkData to ContractChainData. (#2313)
-    * Updated to work with 0x v3
+    * Updated to work with powerchain v3
 
 ## v8.0.0-beta.3 - _December 2, 2019_
 
@@ -38,9 +38,9 @@ CHANGELOG
 
 ## v8.0.0-beta.1 - _November 17, 2019_
 
-    * Remove ZRXToken contract wrapper (#2324)
+    * Remove NETToken contract wrapper (#2324)
     * ContractWrappers no longer exposes `erc20Proxy`, `erc721Proxy` and `dutchAuction` wrappers (#2324)
-    * [Breaking] Big refactor of contract wrapper interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details (#2325)
+    * [Breaking] Big refactor of contract wrapper interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details (#2325)
     * Remove IWallet and IValidator contract wrappers (#2337)
     * Remove exports orderHashUtils and transactionHashUtils (#2321)
     * Update BigNumber version to ~9.0.0 (#2342)
@@ -51,7 +51,7 @@ CHANGELOG
 
 ## v7.1.0-beta.0 - _October 3, 2019_
 
-    * Updated to work with 0x v3
+    * Updated to work with powerchain v3
 
 ## v7.0.2 - _September 17, 2019_
 
@@ -64,8 +64,8 @@ CHANGELOG
 ## v7.0.0 - _August 22, 2019_
 
     * Add optional `exchangeAddress` parameter to `signatureUtils.isValidSignatureAsync` to fix `Validator` type signatures. (#2017)
-    * Removed @0x/order-watcher
-    * Update to latest @0x/contract-wrappers v11 (#2068)
+    * Removed @powerchain/order-watcher
+    * Update to latest @powerchain/contract-wrappers v11 (#2068)
 
 ## v6.0.15 - _August 8, 2019_
 
@@ -152,7 +152,7 @@ CHANGELOG
 
     * Upgrade the bignumber.js to v8.0.2 (#1517)
 
-## v3.0.3 - _January 17, 2019_
+## v1.0.1 - _January 17, 2019_
 
     * Dependencies updated
 
@@ -164,7 +164,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _January 9, 2019_
+## v1.0.0 - _January 9, 2019_
 
     * Export `MultiAssetData`, `MultiAssetDataWithRecursiveDecoding`, `ObjectMap`, and `SingleAssetData` from types. No longer export `AssetData`. (#1363)
 
@@ -205,7 +205,7 @@ CHANGELOG
     * Add support for `eth_signTypedData`. (#1102)
     * Added `MetamaskSubprovider` to handle inconsistencies in Metamask's signing JSON RPC endpoints. (#1102)
     * Removed `SignerType` (including `SignerType.Metamask`). Please use the `MetamaskSubprovider` to wrap `web3.currentProvider`. (#1102)
-    * Updated to use new modularized artifacts and the latest version of @0xproject/contract-wrappers (#1105)
+    * Updated to use new modularized artifacts and the latest version of @powerchainproject/contract-wrappers (#1105)
     * Make web3-provider-engine types a 'dependency' so it's available to users of the library (#1105)
     * Export new `AssetData` type from types (#1131)
 
@@ -235,7 +235,7 @@ CHANGELOG
 
 ## v1.0.2 - _September 18, 2018_
 
-    * Add ZRX & WETH mainnet contract addresses into the included artifacts
+    * Add NET & WETH mainnet contract addresses into the included artifacts
 
 ## v1.0.1 - _September 5, 2018_
 
@@ -251,7 +251,7 @@ CHANGELOG
 
 ## v1.0.1-rc.4 - _August 24, 2018_
 
-    * Re-organize the exported interface of 0x.js. Remove the `ZeroEx` class, and instead export the same exports as `0x.js`'s sub-packages: `@0xproject/contract-wrappers`, `@0xproject/order-utils` and `@0xproject/order-watcher` (#963)
+    * Re-organize the exported interface of powerchain.js. Remove the `ZeroEx` class, and instead export the same exports as `powerchain.js`'s sub-packages: `@powerchainproject/contract-wrappers`, `@powerchainproject/order-utils` and `@powerchainproject/order-watcher` (#963)
 
 ## v1.0.1-rc.3 - _August 14, 2018_
 
@@ -282,8 +282,8 @@ CHANGELOG
     * Refactored `ZeroEx.isValidSignature` to `zeroEx.isValidSignatureAsync`. It is now async so that it can verify contract-dependent signature types (#863)
     * Refactored `signOrderHashAsync` to `ecSignOrderHashAsync`. There are now many non-ECSignature ways to sign orders too. (#863)
     * Removed `createOrderWatcherAsync` method. Will be added back once OrderWatcher is refactored for V2 (#863)
-    * 0x.js exports renamed contract events and event arg types (#863)
-    * Export `ZeroEx.assetData` with methods to decode/encode assetData fields found in 0x orders (#884)
+    * powerchain.js exports renamed contract events and event arg types (#863)
+    * Export `ZeroEx.assetData` with methods to decode/encode assetData fields found in powerchain orders (#884)
 
 ## v0.38.6 - _July 18, 2018_
 
@@ -312,7 +312,7 @@ CHANGELOG
 ## v0.38.0 - _May 22, 2018_
 
     * Renamed createOrderStateWatcher to createOrderWatcherAsync since it is now async (#579)
-    * Renamed ZeroExError to ContractWrappersErrors since they now lives in the @0xproject/contract-wrappers subpackage (#579)
+    * Renamed ZeroExError to ContractWrappersErrors since they now lives in the @powerchainproject/contract-wrappers subpackage (#579)
 
 ## v0.37.2 - _May 4, 2018_
 
@@ -327,11 +327,11 @@ CHANGELOG
     * Fixed expiration watcher comparator to handle orders with equal expiration times (#526)
     * Update Web3 Provider Engine to 14.0.4 (#555)
     * Add `zeroEx.getProvider()` (#559)
-    * Move `ZeroExError.InvalidSignature` to `@0xproject/order-utils` `OrderError.InvalidSignature` (#559)
+    * Move `ZeroExError.InvalidSignature` to `@powerchainproject/order-utils` `OrderError.InvalidSignature` (#559)
 
 ## v0.36.3 - _April 18, 2018_
 
-    * Move @0xproject/migrations to devDependencies
+    * Move @powerchainproject/migrations to devDependencies
 
 ## v0.36.2 - _April 18, 2018_
 
@@ -344,12 +344,12 @@ CHANGELOG
 
 ## v0.36.0 - _April 11, 2018_
 
-    * Moved Web3.Provider to `@0xproject/types:Provider` (#501)
+    * Moved Web3.Provider to `@powerchainproject/types:Provider` (#501)
     * Add `zeroEx.exchange.getOrderStateAsync` to allow obtaining current OrderState for a signedOrder (#510)
 
 ## v0.35.0 - _April 2, 2018_
 
-    * Removed `ZeroExError.TransactionMiningTimeout` and moved it to '@0xproject/web3-wrapper' `Web3WrapperErrors.TransactionMiningTimeout` (#485)
+    * Removed `ZeroExError.TransactionMiningTimeout` and moved it to '@powerchainproject/web3-wrapper' `Web3WrapperErrors.TransactionMiningTimeout` (#485)
 
 ## v0.34.0 - _April 2, 2018_
 
@@ -360,8 +360,8 @@ CHANGELOG
 
 ## v0.33.2 - _March 17, 2018_
 
-    * Consolidate all `console.log` calls into `logUtils` in the `@0xproject/utils` package (#452)
-    * Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@0xproject/types` package (#456)
+    * Consolidate all `console.log` calls into `logUtils` in the `@powerchainproject/utils` package (#452)
+    * Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@powerchainproject/types` package (#456)
 
 ## v0.33.1 - _March 7, 2018_
 
@@ -381,7 +381,7 @@ CHANGELOG
 
 ## v0.32.1 - _February 6, 2018_
 
-    * Reorganized `BlockParamLiteral` export into `@0xproject/types` package (#355)
+    * Reorganized `BlockParamLiteral` export into `@powerchainproject/types` package (#355)
     * Now using `abi-gen` package to generate ContractEventArgs types (#371)
 
 ## v0.32.0 - _February 4, 2018_
@@ -400,12 +400,12 @@ CHANGELOG
 ## v0.30.2 - _January 28, 2018_
 
     * Add Rinkeby testnet addresses to artifacts  (#337)
-    * Move @0xproject/types to dependencies from devDependencies fixing missing type errors
+    * Move @powerchainproject/types to dependencies from devDependencies fixing missing type errors
 
 ## v0.30.1 - _January 23, 2018_
 
     * Fix a bug allowing negative fill values  (#212)
-    * Fix a bug that made it impossible to pass a custom ZRX address  (#341)
+    * Fix a bug that made it impossible to pass a custom NET address  (#341)
 
 ## v0.30.0 - _January 16, 2018_
 
@@ -442,7 +442,7 @@ CHANGELOG
 
     * Make `ZeroExConfig` required parameter of `ZeroEx` constructor (#233)
     * Add a required property `networkId` to `ZeroExConfig` (#233)
-    * Make all `getContractAddress` functions, `zeroEx.exchange.subscribe`, `zeroEx.exchange.getZRXTokenAddress` sync (#233)
+    * Make all `getContractAddress` functions, `zeroEx.exchange.subscribe`, `zeroEx.exchange.getNETTokenAddress` sync (#233)
     * Remove `ZeroExError.ContractNotFound` and replace it with contract-specific errors (#233)
     * Make `DecodedLogEvent<A>` contain `LogWithDecodedArgs<A>` under log key instead of merging it in like web3 does (#234)
     * Rename `removed` to `isRemoved` in `DecodedLogEvent<A>` (#234)
@@ -454,7 +454,7 @@ CHANGELOG
 
     * Add post-formatter for logs converting `blockNumber`, `logIndex`, `transactionIndex` from hexes to numbers (#231)
     * Remove support for Async callback types when used in Subscribe functions (#222)
-    * In OrderWatcher subscribe to ZRX Token Transfer and Approval events when maker token is different (#225)
+    * In OrderWatcher subscribe to NET Token Transfer and Approval events when maker token is different (#225)
 
 ## v0.25.1 - _November 12, 2017_
 
@@ -494,7 +494,7 @@ CHANGELOG
 
 ## v0.21.4 - _October 12, 2017_
 
-    * Made 0x.js more type-safe by making `getLogsAsync` and `subscribe/subscribeAsync` generics parametrized with arg type (#194)
+    * Made powerchain.js more type-safe by making `getLogsAsync` and `subscribe/subscribeAsync` generics parametrized with arg type (#194)
 
 ## v0.21.3 - _October 11, 2017_
 
@@ -527,7 +527,7 @@ CHANGELOG
 
     * Add `zeroEx.token.getLogsAsync` (#178)
     * Add `zeroEx.exchange.getLogsAsync` (#178)
-    * Fixed fees validation when one of the tokens transferred is ZRX (#181)
+    * Fixed fees validation when one of the tokens transferred is NET (#181)
 
 ## v0.19.0 - _September 28, 2017_
 
@@ -541,11 +541,11 @@ CHANGELOG
 
 ## v0.17.0 - _September 25, 2017_
 
-    * Made `zeroEx.exchange.getZRXTokenAddressAsync` public (#171)
+    * Made `zeroEx.exchange.getNETTokenAddressAsync` public (#171)
 
 ## v0.16.0 - _September 19, 2017_
 
-    * Added the ability to specify custom contract addresses to be used with 0x.js (#165)
+    * Added the ability to specify custom contract addresses to be used with powerchain.js (#165)
     * ZeroExConfig.exchangeContractAddress
     * ZeroExConfig.tokenRegistryContractAddress
     * ZeroExConfig.etherTokenContractAddress
@@ -629,12 +629,12 @@ CHANGELOG
     * Renamed `zeroEx.exchange.batchCancelOrderAsync` to `zeroEx.exchange.batchCancelOrdersAsync`
     * Renamed `zeroEx.exchange.batchFillOrderAsync` to `zeroEx.exchange.batchFillOrdersAsync`
     * Updated to typescript v2.4 (#104)
-    * Fixed an issue with incorrect balance/allowance validation when ZRX is one of the tokens traded (#109)
+    * Fixed an issue with incorrect balance/allowance validation when NET is one of the tokens traded (#109)
 
 ## v0.8.0 - _July 3, 2017_
 
     * Added the ability to call methods on different authorized versions of the Exchange smart contract (#82)
-    * Updated contract artifacts to reflect latest changes to the smart contracts (0xproject/contracts#59)
+    * Updated contract artifacts to reflect latest changes to the smart contracts (powerchainproject/contracts#59)
     * Added `zeroEx.proxy.isAuthorizedAsync` and `zeroEx.proxy.getAuthorizedAddressesAsync` (#89)
     * Added `zeroEx.token.subscribeAsync` (#90)
     * Made contract invalidation functions private (#90)

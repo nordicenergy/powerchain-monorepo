@@ -1,6 +1,6 @@
-import { OpCode } from 'ethereum-types';
+import {OpCode} from 'ethereum-types';
 
-import { OpCodeToGasCost, OpCodeToParamToStackOffset } from './types';
+import {OpCodeToGasCost, OpCodeToParamToStackOffset} from './types';
 
 const opCodeToParamToStackOffset: OpCodeToParamToStackOffset = {
     [OpCode.Call]: {
@@ -23,10 +23,10 @@ const opCodeToGasCost: OpCodeToGasCost = {
 export const constants = {
     NEW_CONTRACT: 'NEW_CONTRACT' as 'NEW_CONTRACT',
     HEX_BASE: 16,
-    PUSH1: 0x60,
-    PUSH2: 0x61,
-    PUSH32: 0x7f,
-    TIMESTAMP: 0x42,
+    PUSH1: powerchain60,
+    PUSH2: powerchain61,
+    PUSH32: powerchain7f,
+    TIMESTAMP: powerchain42,
     opCodeToGasCost,
     opCodeToParamToStackOffset,
 };

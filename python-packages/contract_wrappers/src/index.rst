@@ -169,10 +169,10 @@ zero_ex.contract_wrappers.weth9
    :special-members:
 
 
-zero_ex.contract_wrappers.zrx_token
+zero_ex.contract_wrappers.net_token
 ===================================
 
-.. automodule:: zero_ex.contract_wrappers.zrx_token
+.. automodule:: zero_ex.contract_wrappers.net_token
    :members:
    :special-members:
 
@@ -203,23 +203,23 @@ zero_ex.contract_wrappers.exchange: Generated Tuples
 
 .. autoclass:: zero_ex.contract_wrappers.exchange.LibOrderOrder
 
-    This is the generated class representing `the Order struct <https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order>`_.
+    This is the generated class representing `the Order struct <https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order>`_.
 
 .. autoclass:: zero_ex.contract_wrappers.exchange.LibFillResultsFillResults
 
-    This is the generated class representing `the FillResults struct <https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#fillresults>`_.
+    This is the generated class representing `the FillResults struct <https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#fillresults>`_.
 
 .. autoclass:: zero_ex.contract_wrappers.exchange.LibFillResultsMatchedFillResults
 
-    This is the generated class representing `the MatchedFillResults struct <https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#matchedfillresults>`_.
+    This is the generated class representing `the MatchedFillResults struct <https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#matchedfillresults>`_.
 
 .. autoclass:: zero_ex.contract_wrappers.exchange.LibOrderOrderInfo
 
-    This is the generated class representing `the OrderInfo struct <https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#orderinfo>`_.
+    This is the generated class representing `the OrderInfo struct <https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#orderinfo>`_.
 
 .. autoclass:: zero_ex.contract_wrappers.exchange.LibZeroExTransactionZeroExTransaction
 
-    This is the generated class representing `the ZeroExTransaction struct <https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#zeroextransaction>`_.
+    This is the generated class representing `the ZeroExTransaction struct <https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#zeroextransaction>`_.
 
 Indices and tables
 ==================

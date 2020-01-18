@@ -1,12 +1,12 @@
 {
-    "name": "@0x/contract-wrappers",
+    "name": "@powerchain/contract-wrappers",
     "version": "13.3.0",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "Wrappers for 0x smart contract wrappers generated using @0x/abi-gen",
+    "description": "Wrappers for powerchain smart contract wrappers generated using @powerchain/abi-gen",
     "keywords": [
-        "0xproject",
+        "powerchainproject",
         "ethereum",
         "tokens",
         "exchange"
@@ -23,7 +23,7 @@
         "clean": "shx rm -rf lib generated_docs",
         "docs_test": "typedoc --excludePrivate --excludeExternals --target ES5 --tsconfig typedoc-tsconfig.json --out generated_docs ./src/generated-wrappers/*",
         "diff_docs": "git diff --exit-code ./docs",
-        "s3:sync_md_docs": "aws s3 sync ./docs s3://docs-markdown/${npm_package_name}/v${npm_package_version} --profile 0xproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
+        "s3:sync_md_docs": "aws s3 sync ./docs s3://docs-markdown/${npm_package_name}/v${npm_package_version} --profile powerchainproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
         "docs:md": "ts-doc-gen --sourceDir='$PROJECT_FILES' --output=$MD_FILE_DIR --fileExtension=mdx --tsconfig=./typedoc-tsconfig.json",
         "docs:json": "typedoc --excludePrivate --excludeExternals --excludeProtected --ignoreCompilerErrors --target ES5 --tsconfig typedoc-tsconfig.json --json $JSON_FILE_PATH $PROJECT_FILES",
         "wrappers:prettier": "prettier --write src/generated-wrappers/* --config ../../.prettierrc",
@@ -35,28 +35,28 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/contract-wrappers/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/contract-wrappers/README.md",
     "devDependencies": {
-        "@0x/ts-doc-gen": "^0.0.22",
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/ts-doc-gen": "^0.0.22",
+        "@powerchain/tslint-config": "^4.0.0",
         "tslint": "5.11.0",
         "typedoc": "^0.15.0",
         "typescript": "3.0.1"
     },
     "dependencies": {
-        "@0x/assert": "^3.0.3",
-        "@0x/base-contract": "^6.0.3",
-        "@0x/contract-addresses": "^4.2.0",
-        "@0x/json-schemas": "^5.0.3",
-        "@0x/types": "^3.1.1",
-        "@0x/utils": "^5.1.2",
-        "@0x/web3-wrapper": "^7.0.3",
+        "@powerchain/assert": "^3.0.3",
+        "@powerchain/base-contract": "^6.0.3",
+        "@powerchain/contract-addresses": "^4.2.0",
+        "@powerchain/json-schemas": "^5.0.3",
+        "@powerchain/types": "^3.1.1",
+        "@powerchain/utils": "^5.1.2",
+        "@powerchain/web3-wrapper": "^7.0.3",
         "ethereum-types": "^3.0.0",
         "ethers": "~4.0.4"
     },

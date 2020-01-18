@@ -1,9 +1,9 @@
-import { promisify } from '@0x/utils';
-import { JSONRPCRequestPayload } from 'ethereum-types';
+import {promisify} from '@powerchain/utils';
+import {JSONRPCRequestPayload} from 'ethereum-types';
 
-import { Callback } from '../types';
+import {Callback} from '../types';
 
-import { Subprovider } from './subprovider';
+import {Subprovider} from './subprovider';
 
 /**
  * This class implements the [web3-provider-engine](https://github.com/MetaMask/provider-engine) subprovider interface.
@@ -24,7 +24,7 @@ export class RedundantSubprovider extends Subprovider {
                 return data;
             } catch (err) {
                 lastErr = err;
-                continue;
+
             }
         }
         if (lastErr !== undefined) {

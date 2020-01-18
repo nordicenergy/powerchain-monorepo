@@ -1,11 +1,11 @@
-"""0x smart contract compilation artifacts.
+"""powerchain smart contract compilation artifacts.
 
 Setup
 -----
 
 Install the package with pip::
 
-    pip install 0x-contract-artifacts
+    pip install powerchain-contract-artifacts
 """
 
 import json

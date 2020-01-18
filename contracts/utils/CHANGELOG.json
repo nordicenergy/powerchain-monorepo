@@ -3,7 +3,7 @@
         "version": "4.1.0",
         "changes": [
             {
-                "note": "Replaced ethers with 0x ABI Encoder for decoding logs. Fixes decoding for arrays/objects.",
+                "note": "Replaced ethers with powerchain ABI Encoder for decoding logs. Fixes decoding for arrays/objects.",
                 "pr": 2443
             }
         ]
@@ -285,7 +285,7 @@
         "version": "3.2.0",
         "changes": [
             {
-                "note": "Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies.",
+                "note": "Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies.",
                 "pr": 1995
             },
             {

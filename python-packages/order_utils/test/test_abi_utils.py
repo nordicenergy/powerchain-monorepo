@@ -1,4 +1,4 @@
-"""Tests of 0x.abi_utils."""
+"""Tests of powerchain.abi_utils."""
 
 import pytest
 

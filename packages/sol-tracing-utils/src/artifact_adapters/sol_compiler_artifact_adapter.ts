@@ -1,14 +1,14 @@
-import { FallthroughResolver, FSResolver, NPMResolver, RelativeFSResolver, URLResolver } from '@0x/sol-resolver';
-import { logUtils } from '@0x/utils';
-import { CompilerOptions, ContractArtifact } from 'ethereum-types';
+import {FallthroughResolver, FSResolver, NPMResolver, RelativeFSResolver, URLResolver} from '@powerchain/sol-resolver';
+import {logUtils} from '@powerchain/utils';
+import {CompilerOptions, ContractArtifact} from 'ethereum-types';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import * as _ from 'lodash';
 import * as path from 'path';
 
-import { ContractData, SourceCodes, Sources } from '../types';
+import {ContractData, SourceCodes, Sources} from '../types';
 
-import { AbstractArtifactAdapter } from './abstract_artifact_adapter';
+import {AbstractArtifactAdapter} from './abstract_artifact_adapter';
 
 const CONFIG_FILE = 'compiler.json';
 
@@ -67,7 +67,7 @@ export class SolCompilerArtifactAdapter extends AbstractArtifactAdapter {
                 runtimeBytecode: artifact.compilerOutput.evm.deployedBytecode.object,
                 sourceMapRuntime: artifact.compilerOutput.evm.deployedBytecode.sourceMap,
             };
-            const isInterfaceContract = contractData.bytecode === '0x' && contractData.runtimeBytecode === '0x';
+            const isInterfaceContract = contractData.bytecode === 'powerchain' && contractData.runtimeBytecode === 'powerchain';
             if (isInterfaceContract) {
                 continue;
             }

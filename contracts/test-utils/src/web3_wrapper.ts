@@ -1,13 +1,13 @@
-import { devConstants, env, EnvVars, Web3Config, web3Factory } from '@0x/dev-utils';
-import { prependSubprovider, Web3ProviderEngine } from '@0x/subproviders';
-import { logUtils } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {devConstants, env, EnvVars, Web3Config, web3Factory} from '@powerchain/dev-utils';
+import {prependSubprovider, Web3ProviderEngine} from '@powerchain/subproviders';
+import {logUtils} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as _ from 'lodash';
 
-import { constants } from './constants';
-import { coverage } from './coverage';
-import { profiler } from './profiler';
-import { revertTrace } from './revert_trace';
+import {constants} from './constants';
+import {coverage} from './coverage';
+import {profiler} from './profiler';
+import {revertTrace} from './revert_trace';
 
 export const txDefaults = {
     from: devConstants.TESTRPC_FIRST_ADDRESS,
@@ -20,7 +20,7 @@ export let providerConfigs: Web3Config = {
     shouldUseInProcessGanache: true,
     shouldAllowUnlimitedContractSize: true,
     hardfork: 'istanbul',
-    unlocked_accounts: ['0x6cc5f688a315f3dc28a7781717a9a798a59fda7b', '0x55dc8f21d20d4c6ed3c82916a438a413ca68e335'],
+    unlocked_accounts: ['powerchain6cc5f688a315f3dc28a7781717a9a798a59fda7b', 'powerchain55dc8f21d20d4c6ed3c82916a438a413ca68e335'],
 };
 
 export const provider: Web3ProviderEngine = web3Factory.getRpcProvider(providerConfigs);

@@ -1,13 +1,13 @@
-## 0x-contract-addresses
+## powerchain-contract-addresses
 
-Addresses at which the 0x smart contracts have been deployed.
+Addresses at which the powerchain smart contracts have been deployed.
 
-Read the [documentation](http://0x-contract-addresses-py.s3-website-us-east-1.amazonaws.com/)
+Read the [documentation](http://powerchain-contract-addresses-py.s3-website-us-east-1.amazonaws.com/)
 
 ## Installing
 
 ```bash
-pip install 0x-contract-addresses
+pip install powerchain-contract-addresses
 ```
 
 ## Contributing

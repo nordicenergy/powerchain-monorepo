@@ -1,19 +1,18 @@
 import * as chai from 'chai';
-import * as _ from 'lodash';
 import 'mocha';
 
-import { fillableAmountsUtils } from '../src/utils/fillable_amounts_utils';
+import {fillableAmountsUtils} from '../src/utils/fillable_amounts_utils';
 
-import { chaiSetup } from './utils/chai_setup';
-import { testOrderFactory } from './utils/test_order_factory';
-import { baseUnitAmount } from './utils/utils';
+import {chaiSetup} from './utils/chai_setup';
+import {testOrderFactory} from './utils/test_order_factory';
+import {baseUnitAmount} from './utils/utils';
 
 chaiSetup.configure();
 const expect = chai.expect;
 
 // tslint:disable:custom-no-magic-numbers
-const FAKE_ERC20_TAKER_ASSET_DATA = '0xf47261b02222222222222222222222222222222222222222222222222222222222222222';
-const FAKE_ERC20_MAKER_ASSET_DATA = '0xf47261b01111111111111111111111111111111111111111111111111111111111111111';
+const FAKE_ERC20_TAKER_ASSET_DATA = 'powerchainf47261b02222222222222222222222222222222222222222222222222222222222222222';
+const FAKE_ERC20_MAKER_ASSET_DATA = 'powerchainf47261b01111111111111111111111111111111111111111111111111111111111111111';
 
 const TAKER_ASSET_DENOMINATED_TAKER_FEE_ORDER = testOrderFactory.generateTestSignedOrderWithFillableAmounts({
     takerAssetData: FAKE_ERC20_TAKER_ASSET_DATA,

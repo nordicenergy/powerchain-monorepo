@@ -1,17 +1,17 @@
-import { SwapQuoter } from '@0x/asset-swapper';
-import { AssetProxyId } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {SwapQuoter} from '@powerchain/asset-swapper';
+import {AssetProxyId} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
 
-import { ERC20AssetAmountInput, ERC20AssetAmountInputProps } from '../components/erc20_asset_amount_input';
-import { Action, actions } from '../redux/actions';
-import { State } from '../redux/reducer';
-import { ColorOption } from '../style/theme';
-import { ERC20Asset, Omit, OrderProcessState, QuoteFetchOrigin } from '../types';
-import { swapQuoteUpdater } from '../util/swap_quote_updater';
+import {ERC20AssetAmountInput, ERC20AssetAmountInputProps} from '../components/erc20_asset_amount_input';
+import {Action, actions} from '../redux/actions';
+import {State} from '../redux/reducer';
+import {ColorOption} from '../style/theme';
+import {ERC20Asset, Omit, OrderProcessState, QuoteFetchOrigin} from '../types';
+import {swapQuoteUpdater} from '../util/swap_quote_updater';
 
 export interface SelectedERC20AssetAmountInputProps {
     fontColor?: ColorOption;

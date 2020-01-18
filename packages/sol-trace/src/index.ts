@@ -5,7 +5,7 @@ export {
     ContractData,
     SourceCodes,
     Sources,
-} from '@0x/sol-tracing-utils';
+} from '@powerchain/sol-tracing-utils';
 
 export { RevertTraceSubprovider } from './revert_trace_subprovider';
 
@@ -17,6 +17,6 @@ export {
     ErrorCallback,
     OnNextCompleted,
     Callback,
-} from '@0x/subproviders';
+} from '@powerchain/subproviders';
 
 export import Web3ProviderEngine = require('web3-provider-engine');

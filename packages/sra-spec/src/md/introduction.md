@@ -1,15 +1,15 @@
 # Schemas
 
-The [JSON schemas](http://json-schema.org/) for the API payloads and responses can be found in [@0xproject/json-schemas](https://github.com/0xProject/0x-monorepo/tree/development/packages/json-schemas). Examples of each payload and response can be found in the library's [test suite](https://github.com/0xProject/0x-monorepo/blob/development/packages/json-schemas/test/schema_test.ts#L1).
+The [JSON schemas](http://json-schema.org/) for the API payloads and responses can be found in [@powerchainproject/json-schemas](https://github.com/nordicenergy/powerchain-protocol-dev-kit/tree/development/packages/json-schemas). Examples of each payload and response can be found in the library's [test suite](https://github.com/nordicenergy/powerchain-protocol-dev-kit/blob/development/packages/json-schemas/test/schema_test.ts#L1).
 
 ```bash
-npm install @0xproject/json-schemas --save
+npm install @powerchainproject/json-schemas --save
 ```
 
-You can easily validate your API's payloads and responses using the [@0xproject/json-schemas](https://github.com/0xProject/0x-monorepo/tree/development/packages/json-schemas) package:
+You can easily validate your API's payloads and responses using the [@powerchainproject/json-schemas](https://github.com/nordicenergy/powerchain-protocol-dev-kit/tree/development/packages/json-schemas) package:
 
 ```js
-import {SchemaValidator, ValidatorResult, schemas} from '@0xproject/json-schemas';
+import {SchemaValidator, ValidatorResult, schemas} from '@powerchainproject/json-schemas';
 
 const {relayerApiTokenPairsResponseSchema} = schemas;
 const validator = new SchemaValidator();
@@ -95,7 +95,7 @@ Unless the spec defines otherwise, errors to bad requests should respond with HT
 
 ## Error reporting format
 
-For all **400** responses, see the [error response schema](https://github.com/0xProject/0x-monorepo/blob/development/packages/json-schemas/schemas/relayer_api_error_response_schema.ts#L1).
+For all **400** responses, see the [error response schema](https://github.com/nordicenergy/powerchain-protocol-dev-kit/blob/development/packages/json-schemas/schemas/relayer_api_error_response_schema.ts#L1).
 
 ```json
 {
@@ -134,42 +134,42 @@ Validation error codes:
 
 # Asset Data Encoding
 
-As we now support multiple [token transfer proxies](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#assetproxy), the identifier of which proxy to use for the token transfer must be encoded, along with the token information. Each proxy in 0x v3 has a unique identifier. If you're using 0x.js there will be helper methods for this encoding and decoding.
+As we now support multiple [token transfer proxies](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#assetproxy), the identifier of which proxy to use for the token transfer must be encoded, along with the token information. Each proxy in powerchain v3 has a unique identifier. If you're using powerchain.js there will be helper methods for this encoding and decoding.
 
 The identifier for the Proxy uses a similar scheme to [ABI function selectors](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI#function-selector).
 
 ```js
-// ERC20 Proxy ID  0xf47261b0
+// ERC20 Proxy ID  powerchainf47261b0
 bytes4(keccak256('ERC20Token(address)'));
-// ERC721 Proxy ID 0x02571792
+// ERC721 Proxy ID powerchain02571792
 bytes4(keccak256('ERC721Token(address,uint256)'));
 ```
 
 Asset data is encoded using [ABI encoding](https://solidity.readthedocs.io/en/develop/abi-spec.html).
 
-For example, encoding the ERC20 token contract (address: 0x1dc4c1cefef38a777b15aa20260a54e584b16c48) using the ERC20 Transfer Proxy (id: 0xf47261b0) would be:
+For example, encoding the ERC20 token contract (address: powerchain1dc4c1cefef38a777b15aa20260a54e584b16c48) using the ERC20 Transfer Proxy (id: powerchainf47261b0) would be:
 
 ```bash
-0xf47261b00000000000000000000000001dc4c1cefef38a777b15aa20260a54e584b16c48
+powerchainf47261b00000000000000000000000001dc4c1cefef38a777b15aa20260a54e584b16c48
 ```
 
-Encoding the ERC721 token contract (address: `0x371b13d97f4bf77d724e78c16b7dc74099f40e84`), token id (id: `99`, which hex encoded is `0x63`) and the ERC721 Transfer Proxy (id: 0x02571792) would be:
+Encoding the ERC721 token contract (address: `powerchain371b13d97f4bf77d724e78c16b7dc74099f40e84`), token id (id: `99`, which hex encoded is `powerchain63`) and the ERC721 Transfer Proxy (id: powerchain02571792) would be:
 
 ```bash
-0x02571792000000000000000000000000371b13d97f4bf77d724e78c16b7dc74099f40e840000000000000000000000000000000000000000000000000000000000000063
+powerchain02571792000000000000000000000000371b13d97f4bf77d724e78c16b7dc74099f40e840000000000000000000000000000000000000000000000000000000000000063
 ```
 
-For more information see [the Asset Proxy](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#erc20proxy) section of the v3 spec and the [Ethereum ABI Spec](https://solidity.readthedocs.io/en/develop/abi-spec.html).
+For more information see [the Asset Proxy](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#erc20proxy) section of the v3 spec and the [Ethereum ABI Spec](https://solidity.readthedocs.io/en/develop/abi-spec.html).
 
 # Meta Data in Order Responses
 
 In v3 of the standard relayer API we added the `metaData` field. It is meant to provide a standard place for relayers to put optional, custom or non-standard fields that may of interest to the consumer of the API.
 
-A good example of such a field is `remainingTakerAssetAmount`, which is a convenience field that communicates how much of a 0x order is potentially left to be filled. Unlike the other fields in a 0x order, it is not guaranteed to be correct as it is derived from whatever mechanism the implementer (ie. the relayer) is using. While convenient for prototyping and low stakes situations, we recommend validating the value of the field by checking the state of the blockchain yourself.
+A good example of such a field is `remainingTakerAssetAmount`, which is a convenience field that communicates how much of a powerchain order is potentially left to be filled. Unlike the other fields in a powerchain order, it is not guaranteed to be correct as it is derived from whatever mechanism the implementer (ie. the relayer) is using. While convenient for prototyping and low stakes situations, we recommend validating the value of the field by checking the state of the blockchain yourself.
 
 # Misc.
 
 -   All requests and responses should be of **application/json** content type
 -   All token amounts are sent in amounts of the smallest level of precision (base units). (e.g if a token has 18 decimal places, selling 1 token would show up as selling `'1000000000000000000'` units by this API).
--   All addresses are sent as lower-case (non-checksummed) Ethereum addresses with the `0x` prefix.
+-   All addresses are sent as lower-case (non-checksummed) Ethereum addresses with the `powerchain` prefix.
 -   All parameters are to be written in `lowerCamelCase`.

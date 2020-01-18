@@ -1,17 +1,17 @@
-import { SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { TransactionReceiptWithDecodedLogs, TxData } from 'ethereum-types';
+import {SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {TransactionReceiptWithDecodedLogs, TxData} from 'ethereum-types';
 
-import { validFillOrderAssertion } from '../assertions/fillOrder';
-import { AssertionResult } from '../assertions/function_assertion';
-import { validMatchOrdersAssertion } from '../assertions/matchOrders';
-import { validMatchOrdersWithMaximalFillAssertion } from '../assertions/matchOrdersWithMaximalFill';
-import { DeploymentManager } from '../deployment_manager';
-import { Pseudorandom } from '../utils/pseudorandom';
+import {validFillOrderAssertion} from '../assertions/fillOrder';
+import {AssertionResult} from '../assertions/function_assertion';
+import {validMatchOrdersAssertion} from '../assertions/matchOrders';
+import {validMatchOrdersWithMaximalFillAssertion} from '../assertions/matchOrdersWithMaximalFill';
+import {DeploymentManager} from '../deployment_manager';
+import {Pseudorandom} from '../utils/pseudorandom';
 
-import { Actor, Constructor } from './base';
-import { Maker } from './maker';
-import { filterActorsByRole } from './utils';
+import {Actor, Constructor} from './base';
+import {Maker} from './maker';
+import {filterActorsByRole} from './utils';
 
 export interface TakerInterface {
     fillOrderAsync: (
@@ -22,7 +22,7 @@ export interface TakerInterface {
 }
 
 /**
- * This mixin encapsulates functionality associated with takers within the 0x ecosystem.
+ * This mixin encapsulates functionality associated with takers within the powerchain ecosystem.
  * As of writing, the only extra functionality provided is a utility wrapper around `fillOrder`,
  */
 export function TakerMixin<TBase extends Constructor>(Base: TBase): TBase & Constructor<TakerInterface> {

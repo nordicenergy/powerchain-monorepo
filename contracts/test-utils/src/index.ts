@@ -21,7 +21,7 @@ export { orderUtils } from './order_utils';
 export { typeEncodingUtils } from './type_encoding_utils';
 export { profiler } from './profiler';
 export { coverage } from './coverage';
-export { Web3ProviderEngine } from '@0x/subproviders';
+export { Web3ProviderEngine } from '@powerchain/subproviders';
 export { randomAddress } from './address_utils';
 export { OrderFactory } from './order_factory';
 export { bytes32Values, testCombinatoriallyWithReferenceFunc, uint256Values } from './combinatorial_utils';

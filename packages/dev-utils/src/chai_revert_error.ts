@@ -1,4 +1,4 @@
-import { coerceThrownErrorAsRevertError, RevertError, StringRevertError } from '@0x/utils';
+import {coerceThrownErrorAsRevertError, RevertError, StringRevertError} from '@powerchain/utils';
 
 // tslint:disable only-arrow-functions prefer-conditional-expression
 

@@ -1,5 +1,5 @@
-import { IAssetDataContract } from '@0x/contract-wrappers';
-import { hexUtils, NULL_ADDRESS } from '@0x/utils';
+import {IAssetDataContract} from '@powerchain/contract-wrappers';
+import {hexUtils, NULL_ADDRESS} from '@powerchain/utils';
 
 const fakeProvider = { isEIP1193: true } as any;
 

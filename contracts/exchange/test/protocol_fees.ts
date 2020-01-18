@@ -1,8 +1,8 @@
-import { blockchainTests } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+import {blockchainTests} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { artifacts } from './artifacts';
-import { TestProtocolFeesContract, TestProtocolFeesReceiverContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestProtocolFeesContract, TestProtocolFeesReceiverContract} from './wrappers';
 
 // The contents of this test suite does not inform the reader about the assertions made in these
 // tests. For more information and a more accurate view of the tests, check out
@@ -16,13 +16,13 @@ blockchainTests('Protocol Fee Payments', env => {
     const DEFAULT_PROTOCOL_FEE = DEFAULT_GAS_PRICE.times(DEFAULT_PROTOCOL_FEE_MULTIPLIER);
 
     before(async () => {
-        testProtocolFees = await TestProtocolFeesContract.deployFrom0xArtifactAsync(
+        testProtocolFees = await TestProtocolFeesContract.deployFrompowerchainArtifactAsync(
             artifacts.TestProtocolFees,
             env.provider,
             env.txDefaults,
             {},
         );
-        testProtocolFeesReceiver = await TestProtocolFeesReceiverContract.deployFrom0xArtifactAsync(
+        testProtocolFeesReceiver = await TestProtocolFeesReceiverContract.deployFrompowerchainArtifactAsync(
             artifacts.TestProtocolFeesReceiver,
             env.provider,
             env.txDefaults,

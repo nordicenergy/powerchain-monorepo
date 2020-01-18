@@ -8,7 +8,7 @@
         "generated-artifacts/DummyNoReturnERC20Token.json",
         "generated-artifacts/ERC20Token.json",
         "generated-artifacts/WETH9.json",
-        "generated-artifacts/ZRXToken.json",
+        "generated-artifacts/NETToken.json",
         "test/generated-artifacts/DummyERC20Token.json",
         "test/generated-artifacts/DummyMultipleReturnERC20Token.json",
         "test/generated-artifacts/DummyNoReturnERC20Token.json",
@@ -22,7 +22,7 @@
         "test/generated-artifacts/UnlimitedAllowanceERC20Token.json",
         "test/generated-artifacts/UntransferrableDummyERC20Token.json",
         "test/generated-artifacts/WETH9.json",
-        "test/generated-artifacts/ZRXToken.json"
+        "test/generated-artifacts/NETToken.json"
     ],
     "exclude": ["./deploy/solc/solc_bin"]
 }

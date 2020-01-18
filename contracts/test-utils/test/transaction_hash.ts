@@ -1,20 +1,20 @@
-import { chaiSetup } from '@0x/dev-utils';
-import { ZeroExTransaction } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {chaiSetup} from '@powerchain/dev-utils';
+import {ZeroExTransaction} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import 'mocha';
 
-import { transactionHashUtils } from '../src';
+import {transactionHashUtils} from '../src';
 
-import { constants } from '../src/constants';
+import {constants} from '../src/constants';
 
 chaiSetup.configure();
 const expect = chai.expect;
 
-describe('0x transaction hashing', () => {
+describe('powerchain transaction hashing', () => {
     describe('#getTransactionHashHex', () => {
-        const expectedTransactionHash = '0x7845d260300acfbebaff52f0462f984016473290b9eb865fb6ffac0503cab364';
-        const fakeVerifyingContractAddress = '0x5e72914535f202659083db3a02c984188fa26e9f';
+        const expectedTransactionHash = 'powerchain7845d260300acfbebaff52f0462f984016473290b9eb865fb6ffac0503cab364';
+        const fakeVerifyingContractAddress = 'powerchain5e72914535f202659083db3a02c984188fa26e9f';
         const fakeChainId = 1337;
         const transaction: ZeroExTransaction = {
             signerAddress: constants.NULL_ADDRESS,

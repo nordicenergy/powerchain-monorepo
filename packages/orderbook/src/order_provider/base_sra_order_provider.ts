@@ -1,11 +1,12 @@
-import { APIOrder, HttpClient } from '@0x/connect';
-import { AssetPairsItem, PaginatedCollection, SignedOrder } from '@0x/types';
+import {APIOrder, HttpClient} from '@powerchain/connect';
+import {AssetPairsItem, PaginatedCollection, SignedOrder} from '@powerchain/types';
 
-import { OrderStore } from '../order_store';
-import { AcceptedRejectedOrders, RejectedOrder } from '../types';
-import { utils } from '../utils';
+import {OrderStore} from '../order_store';
+import {AcceptedRejectedOrders, RejectedOrder} from '../types';
+import {utils} from '../utils';
 
-import { BaseOrderProvider } from './base_order_provider';
+import {BaseOrderProvider} from './base_order_provider';
+
 export const PER_PAGE_DEFAULT = 100;
 
 export abstract class BaseSRAOrderProvider extends BaseOrderProvider {

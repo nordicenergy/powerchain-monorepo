@@ -1,11 +1,11 @@
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
 import {
     artifacts as erc1155Artifacts,
     DummyERC1155ReceiverBatchTokenReceivedEventArgs,
     DummyERC1155ReceiverContract,
     ERC1155MintableContract,
     Erc1155Wrapper,
-} from '@0x/contracts-erc1155';
+} from '@powerchain/contracts-erc1155';
 import {
     chaiSetup,
     constants,
@@ -14,20 +14,20 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { SafeMathRevertErrors } from '@0x/contracts-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { AssetProxyId, RevertReason } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {SafeMathRevertErrors} from '@powerchain/contracts-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {AssetProxyId, RevertReason} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
-import { LogWithDecodedArgs } from 'ethereum-types';
+import {LogWithDecodedArgs} from 'ethereum-types';
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { ERC1155ProxyWrapper } from '../src/erc1155_proxy_wrapper';
-import { ERC1155ProxyContract, IAssetDataContract } from '../src/wrappers';
+import {ERC1155ProxyWrapper} from '../src/erc1155_proxy_wrapper';
+import {ERC1155ProxyContract, IAssetDataContract} from '../src/wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -46,7 +46,7 @@ describe('ERC1155Proxy', () => {
     const valueMultiplierSmall = new BigNumber(2);
     const valueMultiplierNft = new BigNumber(1);
     const nonFungibleValueToTransfer = nftOwnerBalance;
-    const receiverCallbackData = '0x01020304';
+    const receiverCallbackData = 'powerchain01020304';
     // addresses
     let owner: string;
     let notAuthorized: string;
@@ -83,7 +83,7 @@ describe('ERC1155Proxy', () => {
         // deploy & configure ERC1155 tokens and receiver
         [erc1155Wrapper] = await erc1155ProxyWrapper.deployDummyContractsAsync();
         erc1155Contract = erc1155Wrapper.getContract();
-        erc1155Receiver = await DummyERC1155ReceiverContract.deployFrom0xArtifactAsync(
+        erc1155Receiver = await DummyERC1155ReceiverContract.deployFrompowerchainArtifactAsync(
             erc1155Artifacts.DummyERC1155Receiver,
             provider,
             txDefaults,
@@ -112,7 +112,7 @@ describe('ERC1155Proxy', () => {
     });
     describe('general', () => {
         it('should revert if undefined function is called', async () => {
-            const undefinedSelector = '0x01020304';
+            const undefinedSelector = 'powerchain01020304';
             await expectTransactionFailedWithoutReasonAsync(
                 web3Wrapper.sendTransactionAsync({
                     from: owner,
@@ -122,7 +122,7 @@ describe('ERC1155Proxy', () => {
                 }),
             );
         });
-        it('should have an id of 0xa7cb5fb7', async () => {
+        it('should have an id of powerchaina7cb5fb7', async () => {
             const proxyId = await erc1155Proxy.getProxyId().callAsync();
             const expectedProxyId = AssetProxyId.ERC1155;
             expect(proxyId).to.equal(expectedProxyId);
@@ -446,7 +446,7 @@ describe('ERC1155Proxy', () => {
             const expectedInitialBalances = [spenderInitialFungibleBalance, receiverContractInitialFungibleBalance];
             await erc1155Wrapper.assertBalancesAsync(tokenHolders, tokensToTransfer, expectedInitialBalances);
             // execute transfer
-            const nullReceiverCallbackData = '0x';
+            const nullReceiverCallbackData = 'powerchain';
             const txReceipt = await erc1155ProxyWrapper.transferFromAsync(
                 spender,
                 receiverContract,
@@ -490,7 +490,7 @@ describe('ERC1155Proxy', () => {
             const expectedInitialBalances = [spenderInitialFungibleBalance, receiverContractInitialFungibleBalance];
             await erc1155Wrapper.assertBalancesAsync(tokenHolders, tokensToTransfer, expectedInitialBalances);
             // create word of callback data
-            const customReceiverCallbackData = '0x0102030405060708091001020304050607080910010203040506070809100102';
+            const customReceiverCallbackData = 'powerchain0102030405060708091001020304050607080910010203040506070809100102';
             const customReceiverCallbackDataAsBuffer = ethUtil.toBuffer(customReceiverCallbackData);
             const oneWordInBytes = 32;
             expect(customReceiverCallbackDataAsBuffer.byteLength).to.be.equal(oneWordInBytes);
@@ -539,7 +539,7 @@ describe('ERC1155Proxy', () => {
             await erc1155Wrapper.assertBalancesAsync(tokenHolders, tokensToTransfer, expectedInitialBalances);
             // create word of callback data
             const scalar = 5;
-            const customReceiverCallbackData = `0x${'0102030405060708091001020304050607080910010203040506070809100102'.repeat(
+            const customReceiverCallbackData = `powerchain${'0102030405060708091001020304050607080910010203040506070809100102'.repeat(
                 scalar,
             )}`;
             const customReceiverCallbackDataAsBuffer = ethUtil.toBuffer(customReceiverCallbackData);
@@ -590,7 +590,7 @@ describe('ERC1155Proxy', () => {
             await erc1155Wrapper.assertBalancesAsync(tokenHolders, tokensToTransfer, expectedInitialBalances);
             // create word of callback data
             const scalar = 5;
-            const customReceiverCallbackData = `0x${'0102030405060708091001020304050607080910010203040506070809100102'.repeat(
+            const customReceiverCallbackData = `powerchain${'0102030405060708091001020304050607080910010203040506070809100102'.repeat(
                 scalar,
             )}090807`;
             const customReceiverCallbackDataAsBuffer = ethUtil.toBuffer(customReceiverCallbackData);
@@ -731,15 +731,15 @@ describe('ERC1155Proxy', () => {
             expect(initialBalances).to.be.deep.equal(expectedInitialBalances);
             ///// Step 3/5 /////
             // Create optimized calldata. We expect it to be formatted like the table below.
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082      // ERC1155 contract address
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token IDs
-            // 0x40       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token values (same as IDs)
-            // 0x60       00000000000000000000000000000000000000000000000000000000000000e0      // Offset to data
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000002      // Length of token Ids / token values
-            // 0xA0       0000000000000000000000000000000000000000000000000000000000000001      // First Token ID / Token value
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000002      // Second Token ID / Token value
-            // 0xE0       0000000000000000000000000000000000000000000000000000000000000004      // Length of callback data
-            // 0x100      0102030400000000000000000000000000000000000000000000000000000000      // Callback data
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082      // ERC1155 contract address
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token IDs
+            // powerchain40       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token values (same as IDs)
+            // powerchain60       00000000000000000000000000000000000000000000000000000000000000e0      // Offset to data
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000002      // Length of token Ids / token values
+            // powerchainA0       0000000000000000000000000000000000000000000000000000000000000001      // First Token ID / Token value
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000002      // Second Token ID / Token value
+            // powerchainE0       0000000000000000000000000000000000000000000000000000000000000004      // Length of callback data
+            // powerchain100      0102030400000000000000000000000000000000000000000000000000000000      // Callback data
             const erc1155ContractAddress = erc1155Wrapper.getContract().address;
             const tokensToTransfer = [new BigNumber(1), new BigNumber(2)];
             const valuesToTransfer = tokensToTransfer;
@@ -842,16 +842,16 @@ describe('ERC1155Proxy', () => {
             expect(initialBalances).to.be.deep.equal(expectedInitialBalances);
             ///// Step 3/5 /////
             // Create optimized calldata. We format like the table below.
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082      // ERC1155 contract address
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token IDs
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000e0      // Offset to token values
-            // 0x60       00000000000000000000000000000000000000000000000000000000000000e0      // Offset to data (same as values)
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000002      // Length of token Ids
-            // 0xA0       0000000000000000000000000000000000000000000000000000000000000001      // First Token ID
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000002      // Second Token ID
-            // 0xE0       0000000000000000000000000000000000000000000000000000000000000002      // Length of values (Length of data)
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000002      // First Value
-            // 0x120      0000000000000000000000000000000000000000000000000000000000000002      // Second Value
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082      // ERC1155 contract address
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token IDs
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000e0      // Offset to token values
+            // powerchain60       00000000000000000000000000000000000000000000000000000000000000e0      // Offset to data (same as values)
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000002      // Length of token Ids
+            // powerchainA0       0000000000000000000000000000000000000000000000000000000000000001      // First Token ID
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000002      // Second Token ID
+            // powerchainE0       0000000000000000000000000000000000000000000000000000000000000002      // Length of values (Length of data)
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000002      // First Value
+            // powerchain120      0000000000000000000000000000000000000000000000000000000000000002      // Second Value
             const erc1155ContractAddress = erc1155Wrapper.getContract().address;
             const tokensToTransfer = [new BigNumber(1), new BigNumber(2)];
             const valuesToTransfer = [new BigNumber(2), new BigNumber(2)];
@@ -897,7 +897,7 @@ describe('ERC1155Proxy', () => {
             expect(receiverLog.args.tokenValues.length).to.be.deep.equal(2);
             expect(receiverLog.args.tokenValues[0]).to.be.bignumber.equal(valuesToTransfer[0].times(valueMultiplier));
             expect(receiverLog.args.tokenValues[1]).to.be.bignumber.equal(valuesToTransfer[1].times(valueMultiplier));
-            expect(receiverLog.args.data).to.be.deep.equal('0x0000');
+            expect(receiverLog.args.data).to.be.deep.equal('powerchain0000');
             ///// Step 5/5 /////
             // Validate final balances
             const finalBalances = await erc1155Wrapper.getBalancesAsync(balanceHolders, balanceTokens);
@@ -971,13 +971,13 @@ describe('ERC1155Proxy', () => {
             expect(initialBalances).to.be.deep.equal(expectedInitialBalances);
             ///// Step 3/5 /////
             // Create optimized calldata. We format like the table below.
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082      // ERC1155 contract address
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token IDs
-            // 0x40       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token values
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000080      // Offset to data (same as values)
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000002      // Length of token Ids (Length of values / data)
-            // 0xA0       0000000000000000000000000000000000000000000000000000000000000001      // First Token ID (First Value)
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000002      // Second Token ID (Second Value)
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082      // ERC1155 contract address
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token IDs
+            // powerchain40       0000000000000000000000000000000000000000000000000000000000000080      // Offset to token values
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000080      // Offset to data (same as values)
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000002      // Length of token Ids (Length of values / data)
+            // powerchainA0       0000000000000000000000000000000000000000000000000000000000000001      // First Token ID (First Value)
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000002      // Second Token ID (Second Value)
             const erc1155ContractAddress = erc1155Wrapper.getContract().address;
             const tokensToTransfer = [new BigNumber(1), new BigNumber(2)];
             const valuesToTransfer = [new BigNumber(1), new BigNumber(2)];
@@ -1023,7 +1023,7 @@ describe('ERC1155Proxy', () => {
             expect(receiverLog.args.tokenValues.length).to.be.deep.equal(2);
             expect(receiverLog.args.tokenValues[0]).to.be.bignumber.equal(valuesToTransfer[0].times(valueMultiplier));
             expect(receiverLog.args.tokenValues[1]).to.be.bignumber.equal(valuesToTransfer[1].times(valueMultiplier));
-            expect(receiverLog.args.data).to.be.deep.equal('0x0000');
+            expect(receiverLog.args.data).to.be.deep.equal('powerchain0000');
             ///// Step 5/5 /////
             // Validate final balances
             const finalBalances = await erc1155Wrapper.getBalancesAsync(balanceHolders, balanceTokens);
@@ -1058,16 +1058,16 @@ describe('ERC1155Proxy', () => {
                 .callAsync();
             // The asset data we just generated will look like this:
             // a7cb5fb7
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080 // offset to token ids
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000c0
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000100
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xA0       0000000000000000000000000000000100000000000000000000000000000000
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xE0       0000000000000000000000000000000000000000000000878678326eac900000
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000004
-            // 0x120      0102030400000000000000000000000000000000000000000000000000000000
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080 // offset to token ids
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000c0
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000100
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainA0       0000000000000000000000000000000100000000000000000000000000000000
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainE0       0000000000000000000000000000000000000000000000878678326eac900000
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000004
+            // powerchain120      0102030400000000000000000000000000000000000000000000000000000000
             //
             // We want to change the offset to token ids to point outside the calldata.
             const encodedOffsetToTokenIds = '0000000000000000000000000000000000000000000000000000000000000080';
@@ -1107,16 +1107,16 @@ describe('ERC1155Proxy', () => {
                 .callAsync();
             // The asset data we just generated will look like this:
             // a7cb5fb7
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080 // offset to token ids
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000c0
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000100
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xA0       0000000000000000000000000000000100000000000000000000000000000000
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xE0       0000000000000000000000000000000000000000000000878678326eac900000
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000004
-            // 0x120      0102030400000000000000000000000000000000000000000000000000000000
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080 // offset to token ids
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000c0
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000100
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainA0       0000000000000000000000000000000100000000000000000000000000000000
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainE0       0000000000000000000000000000000000000000000000878678326eac900000
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000004
+            // powerchain120      0102030400000000000000000000000000000000000000000000000000000000
             //
             // We want to change the offset to token ids to the end of calldata.
             // Then we'll add an invalid length: we encode length of 2 but only add 1 element.
@@ -1160,16 +1160,16 @@ describe('ERC1155Proxy', () => {
                 .callAsync();
             // The asset data we just generated will look like this:
             // a7cb5fb7
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080 // offset to token ids
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000c0
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000100
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xA0       0000000000000000000000000000000100000000000000000000000000000000
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xE0       0000000000000000000000000000000000000000000000878678326eac900000
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000004
-            // 0x120      0102030400000000000000000000000000000000000000000000000000000000
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080 // offset to token ids
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000c0
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000100
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainA0       0000000000000000000000000000000100000000000000000000000000000000
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainE0       0000000000000000000000000000000000000000000000878678326eac900000
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000004
+            // powerchain120      0102030400000000000000000000000000000000000000000000000000000000
             //
             // We want to change the offset to token ids to point to the end of calldata
             const encodedOffsetToTokenIds = '0000000000000000000000000000000000000000000000000000000000000080';
@@ -1213,16 +1213,16 @@ describe('ERC1155Proxy', () => {
                 .callAsync();
             // The asset data we just generated will look like this:
             // a7cb5fb7
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000c0 // offset to token values
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000100
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xA0       0000000000000000000000000000000100000000000000000000000000000000
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xE0       0000000000000000000000000000000000000000000000878678326eac900000
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000004
-            // 0x120      0102030400000000000000000000000000000000000000000000000000000000
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000c0 // offset to token values
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000100
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainA0       0000000000000000000000000000000100000000000000000000000000000000
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainE0       0000000000000000000000000000000000000000000000878678326eac900000
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000004
+            // powerchain120      0102030400000000000000000000000000000000000000000000000000000000
             //
             // We want to change the offset to token values to point to the end of calldata
             const encodedOffsetToTokenIds = '00000000000000000000000000000000000000000000000000000000000000c0';
@@ -1266,16 +1266,16 @@ describe('ERC1155Proxy', () => {
                 .callAsync();
             // The asset data we just generated will look like this:
             // a7cb5fb7
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000c0
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000100 // offset to token data
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xA0       0000000000000000000000000000000100000000000000000000000000000000
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xE0       0000000000000000000000000000000000000000000000878678326eac900000
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000004
-            // 0x120      0102030400000000000000000000000000000000000000000000000000000000
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000c0
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000100 // offset to token data
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainA0       0000000000000000000000000000000100000000000000000000000000000000
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainE0       0000000000000000000000000000000000000000000000878678326eac900000
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000004
+            // powerchain120      0102030400000000000000000000000000000000000000000000000000000000
             //
             // We want to change the offset to token ids to point to the end of calldata,
             // which we'll extend with a bad length.
@@ -1320,16 +1320,16 @@ describe('ERC1155Proxy', () => {
                 .callAsync();
             // The asset data we just generated will look like this:
             // a7cb5fb7
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000c0 // offset to token values
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000100
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xA0       0000000000000000000000000000000100000000000000000000000000000000
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xE0       0000000000000000000000000000000000000000000000878678326eac900000
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000004
-            // 0x120      0102030400000000000000000000000000000000000000000000000000000000
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000c0 // offset to token values
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000100
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainA0       0000000000000000000000000000000100000000000000000000000000000000
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainE0       0000000000000000000000000000000000000000000000878678326eac900000
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000004
+            // powerchain120      0102030400000000000000000000000000000000000000000000000000000000
             //
             // We want to change the offset to token values to point outside the calldata.
             const encodedOffsetToTokenValues = '00000000000000000000000000000000000000000000000000000000000000c0';
@@ -1369,16 +1369,16 @@ describe('ERC1155Proxy', () => {
                 .callAsync();
             // The asset data we just generated will look like this:
             // a7cb5fb7
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000c0 // offset to token values
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000100
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xA0       0000000000000000000000000000000100000000000000000000000000000000
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xE0       0000000000000000000000000000000000000000000000878678326eac900000
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000004
-            // 0x120      0102030400000000000000000000000000000000000000000000000000000000
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000c0 // offset to token values
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000100
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainA0       0000000000000000000000000000000100000000000000000000000000000000
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainE0       0000000000000000000000000000000000000000000000878678326eac900000
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000004
+            // powerchain120      0102030400000000000000000000000000000000000000000000000000000000
             //
             // We want to change the offset to token values to the end of calldata.
             // Then we'll add an invalid length: we encode length of 2 but only add 1 element.
@@ -1422,16 +1422,16 @@ describe('ERC1155Proxy', () => {
                 .callAsync();
             // The asset data we just generated will look like this:
             // a7cb5fb7
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000c0
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000100 // offset to token data
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xA0       0000000000000000000000000000000100000000000000000000000000000000
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xE0       0000000000000000000000000000000000000000000000878678326eac900000
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000004
-            // 0x120      0102030400000000000000000000000000000000000000000000000000000000
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000c0
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000100 // offset to token data
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainA0       0000000000000000000000000000000100000000000000000000000000000000
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainE0       0000000000000000000000000000000000000000000000878678326eac900000
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000004
+            // powerchain120      0102030400000000000000000000000000000000000000000000000000000000
             //
             // We want to change the offset to token data to point outside the calldata.
             const encodedOffsetToTokenData = '0000000000000000000000000000000000000000000000000000000000000100';
@@ -1471,16 +1471,16 @@ describe('ERC1155Proxy', () => {
                 .callAsync();
             // The asset data we just generated will look like this:
             // a7cb5fb7
-            // 0x         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
-            // 0x20       0000000000000000000000000000000000000000000000000000000000000080
-            // 0x40       00000000000000000000000000000000000000000000000000000000000000c0
-            // 0x60       0000000000000000000000000000000000000000000000000000000000000100 // offset to token data
-            // 0x80       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xA0       0000000000000000000000000000000100000000000000000000000000000000
-            // 0xC0       0000000000000000000000000000000000000000000000000000000000000001
-            // 0xE0       0000000000000000000000000000000000000000000000878678326eac900000
-            // 0x100      0000000000000000000000000000000000000000000000000000000000000004
-            // 0x120      0102030400000000000000000000000000000000000000000000000000000000
+            // powerchain         0000000000000000000000000b1ba0af832d7c05fd64161e0db78e85978e8082
+            // powerchain20       0000000000000000000000000000000000000000000000000000000000000080
+            // powerchain40       00000000000000000000000000000000000000000000000000000000000000c0
+            // powerchain60       0000000000000000000000000000000000000000000000000000000000000100 // offset to token data
+            // powerchain80       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainA0       0000000000000000000000000000000100000000000000000000000000000000
+            // powerchainC0       0000000000000000000000000000000000000000000000000000000000000001
+            // powerchainE0       0000000000000000000000000000000000000000000000878678326eac900000
+            // powerchain100      0000000000000000000000000000000000000000000000000000000000000004
+            // powerchain120      0102030400000000000000000000000000000000000000000000000000000000
             //
             // We want to change the offset to token data to the end of calldata.
             // Then we'll add an invalid length: we encode length of 33 but only add 32 elements.
@@ -1566,7 +1566,7 @@ describe('ERC1155Proxy', () => {
                 authorized,
                 assetData,
             );
-            // append asset data to end of tx data with a length of 0x300 bytes, which will extend past actual calldata.
+            // append asset data to end of tx data with a length of powerchain300 bytes, which will extend past actual calldata.
             const offsetToAssetData = '0000000000000000000000000000000000000000000000000000000000000080';
             const invalidOffsetToAssetData = '0000000000000000000000000000000000000000000000000000000000000200';
             const newAssetData = '0000000000000000000000000000000000000000000000000000000000000304';

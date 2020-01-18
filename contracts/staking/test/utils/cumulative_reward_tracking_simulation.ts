@@ -1,13 +1,12 @@
-import { BlockchainTestsEnvironment, expect, toBaseUnitAmount, txDefaults } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { DecodedLogEntry, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
-import * as _ from 'lodash';
+import {BlockchainTestsEnvironment, expect, toBaseUnitAmount, txDefaults} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {DecodedLogEntry, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { DecodedLogs, StakeInfo, StakeStatus } from '../../src/types';
-import { artifacts } from '../artifacts';
-import { TestCumulativeRewardTrackingContract, TestCumulativeRewardTrackingEvents } from '../wrappers';
+import {DecodedLogs, StakeInfo, StakeStatus} from '../../src/types';
+import {artifacts} from '../artifacts';
+import {TestCumulativeRewardTrackingContract, TestCumulativeRewardTrackingEvents} from '../wrappers';
 
-import { StakingApiWrapper } from './api_wrapper';
+import {StakingApiWrapper} from './api_wrapper';
 
 export enum TestAction {
     Finalize,
@@ -76,7 +75,7 @@ export class CumulativeRewardTrackingSimulation {
         await this._stakingApiWrapper.stakingContract
             .addExchangeAddress(this._exchangeAddress)
             .awaitTransactionSuccessAsync();
-        this._testCumulativeRewardTrackingContract = await TestCumulativeRewardTrackingContract.deployFrom0xArtifactAsync(
+        this._testCumulativeRewardTrackingContract = await TestCumulativeRewardTrackingContract.deployFrompowerchainArtifactAsync(
             artifacts.TestCumulativeRewardTracking,
             env.provider,
             txDefaults,

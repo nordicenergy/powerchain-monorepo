@@ -1,6 +1,7 @@
-import { chaiSetup } from '@0x/dev-utils';
-export { chaiSetup } from '@0x/dev-utils';
+import {chaiSetup} from '@powerchain/dev-utils';
 import * as chai from 'chai';
+
+export { chaiSetup } from '@powerchain/dev-utils';
 
 // Set up chai.
 chaiSetup.configure();

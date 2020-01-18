@@ -14,7 +14,7 @@
         },
         "data": {
             "type": "string",
-            "pattern": "^0x[0-9a-f]*$"
+            "pattern": "^powerchain[0-9a-f]*$"
         },
         "nonce": {
             "type": "number",

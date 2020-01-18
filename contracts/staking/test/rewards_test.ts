@@ -1,14 +1,21 @@
-import { ERC20Wrapper } from '@0x/contracts-asset-proxy';
-import { blockchainTests, constants, describe, expect, shortZip, toBaseUnitAmount } from '@0x/contracts-test-utils';
-import { BigNumber, StakingRevertErrors } from '@0x/utils';
+import {ERC20Wrapper} from '@powerchain/contracts-asset-proxy';
+import {
+    blockchainTests,
+    constants,
+    describe,
+    expect,
+    shortZip,
+    toBaseUnitAmount
+} from '@powerchain/contracts-test-utils';
+import {BigNumber, StakingRevertErrors} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { DelegatorsByPoolId, OperatorByPoolId, StakeInfo, StakeStatus } from '../src/types';
+import {DelegatorsByPoolId, OperatorByPoolId, StakeInfo, StakeStatus} from '../src/types';
 
-import { FinalizerActor } from './actors/finalizer_actor';
-import { PoolOperatorActor } from './actors/pool_operator_actor';
-import { StakerActor } from './actors/staker_actor';
-import { deployAndConfigureContractsAsync, StakingApiWrapper } from './utils/api_wrapper';
+import {FinalizerActor} from './actors/finalizer_actor';
+import {PoolOperatorActor} from './actors/pool_operator_actor';
+import {StakerActor} from './actors/staker_actor';
+import {deployAndConfigureContractsAsync, StakingApiWrapper} from './utils/api_wrapper';
 
 // tslint:disable:no-unnecessary-type-assertion
 // tslint:disable:max-file-line-count

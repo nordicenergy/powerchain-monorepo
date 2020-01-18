@@ -6,15 +6,15 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as chai from 'chai';
 
-import { WETH9Contract } from './wrappers';
+import {WETH9Contract} from './wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -35,7 +35,7 @@ describe('EtherToken', () => {
         const accounts = await web3Wrapper.getAvailableAddressesAsync();
         account = accounts[0];
 
-        etherToken = await WETH9Contract.deployFrom0xArtifactAsync(
+        etherToken = await WETH9Contract.deployFrompowerchainArtifactAsync(
             artifacts.WETH9,
             provider,
             {

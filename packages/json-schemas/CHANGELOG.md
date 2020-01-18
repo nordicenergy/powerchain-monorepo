@@ -54,7 +54,7 @@ CHANGELOG
 
 ## v4.0.0 - _August 22, 2019_
 
-    * Removed @0x/order-watcher
+    * Removed @powerchain/order-watcher
 
 ## v3.1.13 - _August 8, 2019_
 
@@ -100,7 +100,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.3 - _February 9, 2019_
+## v1.0.1 - _February 9, 2019_
 
     * Dependencies updated
 
@@ -112,7 +112,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _February 5, 2019_
+## v1.0.0 - _February 5, 2019_
 
     * Upgrade the bignumber.js to v8.0.2 (#1517)
     * Add `verifyingContractAddress` to `zeroExTransactionSchema` (#1576)
@@ -148,7 +148,7 @@ CHANGELOG
 ## v2.1.0 - _November 12, 2018_
 
     * Improve schemas by enforcing that amounts that must be whole numbers (e.g Order asset amounts) no longer allow decimal amounts (#1173)
-    * Add schemas from @0x/connect (#1250)
+    * Add schemas from @powerchain/connect (#1250)
 
 ## v2.0.0 - _October 18, 2018_
 
@@ -193,7 +193,7 @@ CHANGELOG
 ## v1.0.1-rc.4 - _August 14, 2018_
 
     * Allow for additional properties in txData schema (#938)
-    * Change hexSchema to match `0x` (#937)
+    * Change hexSchema to match `powerchain` (#937)
     * Upgrade Relayer API schemas for relayer API V2 (#916)
 
 ## v1.0.1-rc.3 - _July 26, 2018_
@@ -214,7 +214,7 @@ CHANGELOG
 
 ## v1.0.0-rc.1 - _July 19, 2018_
 
-    * Update schemas for V2 or 0x Protocol (#615)
+    * Update schemas for V2 or powerchain Protocol (#615)
     * Added CallData schema (#821)
     * Update CallData schema id to CallData (#894)
 
@@ -272,4 +272,4 @@ CHANGELOG
 
 ## v0.6.7 - _November 13, 2017_
 
-    * Re-publish JSON-schema previously published under NPM package 0x-json-schemas
+    * Re-publish JSON-schema previously published under NPM package powerchain-json-schemas

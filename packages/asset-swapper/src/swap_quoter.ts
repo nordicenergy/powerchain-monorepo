@@ -1,13 +1,13 @@
-import { ContractAddresses, getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
-import { DevUtilsContract, IERC20BridgeSamplerContract } from '@0x/contract-wrappers';
-import { schemas } from '@0x/json-schemas';
-import { assetDataUtils, SignedOrder } from '@0x/order-utils';
-import { MeshOrderProviderOpts, Orderbook, SRAPollingOrderProviderOpts } from '@0x/orderbook';
-import { BigNumber, providerUtils } from '@0x/utils';
-import { SupportedProvider, ZeroExProvider } from 'ethereum-types';
+import {ContractAddresses, getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
+import {DevUtilsContract, IERC20BridgeSamplerContract} from '@powerchain/contract-wrappers';
+import {schemas} from '@powerchain/json-schemas';
+import {assetDataUtils, SignedOrder} from '@powerchain/order-utils';
+import {MeshOrderProviderOpts, Orderbook, SRAPollingOrderProviderOpts} from '@powerchain/orderbook';
+import {BigNumber, providerUtils} from '@powerchain/utils';
+import {SupportedProvider, ZeroExProvider} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { constants } from './constants';
+import {constants} from './constants';
 import {
     LiquidityForTakerMakerAssetDataPair,
     MarketBuySwapQuote,
@@ -19,16 +19,16 @@ import {
     SwapQuoteRequestOpts,
     SwapQuoterOpts,
 } from './types';
-import { assert } from './utils/assert';
-import { calculateLiquidity } from './utils/calculate_liquidity';
-import { MarketOperationUtils } from './utils/market_operation_utils';
-import { constants as marketOperationConstants } from './utils/market_operation_utils/constants';
-import { dummyOrderUtils } from './utils/market_operation_utils/dummy_order_utils';
-import { orderPrunerUtils } from './utils/order_prune_utils';
-import { OrderStateUtils } from './utils/order_state_utils';
-import { ProtocolFeeUtils } from './utils/protocol_fee_utils';
-import { sortingUtils } from './utils/sorting_utils';
-import { SwapQuoteCalculator } from './utils/swap_quote_calculator';
+import {assert} from './utils/assert';
+import {calculateLiquidity} from './utils/calculate_liquidity';
+import {MarketOperationUtils} from './utils/market_operation_utils';
+import {constants as marketOperationConstants} from './utils/market_operation_utils/constants';
+import {dummyOrderUtils} from './utils/market_operation_utils/dummy_order_utils';
+import {orderPrunerUtils} from './utils/order_prune_utils';
+import {OrderStateUtils} from './utils/order_state_utils';
+import {ProtocolFeeUtils} from './utils/protocol_fee_utils';
+import {sortingUtils} from './utils/sorting_utils';
+import {SwapQuoteCalculator} from './utils/swap_quote_calculator';
 
 export class SwapQuoter {
     public readonly provider: ZeroExProvider;
@@ -64,7 +64,7 @@ export class SwapQuoter {
     }
 
     /**
-     * Instantiates a new SwapQuoter instance given a [Standard Relayer API](https://github.com/0xProject/standard-relayer-api) endpoint
+     * Instantiates a new SwapQuoter instance given a [Standard Relayer API](https://github.com/powerchainProject/standard-relayer-api) endpoint
      * @param   supportedProvider  The Provider instance you would like to use for interacting with the Ethereum network.
      * @param   sraApiUrl          The standard relayer API base HTTP url you would like to source orders from.
      * @param   options            Initialization options for the SwapQuoter. See type definition for details.
@@ -88,7 +88,7 @@ export class SwapQuoter {
         return swapQuoter;
     }
     /**
-     * Instantiates a new SwapQuoter instance given a [Standard Relayer API](https://github.com/0xProject/standard-relayer-api) endpoint
+     * Instantiates a new SwapQuoter instance given a [Standard Relayer API](https://github.com/powerchainProject/standard-relayer-api) endpoint
      * and a websocket endpoint. This is more effecient than `getSwapQuoterForStandardRelayerAPIUrl` when requesting multiple quotes.
      * @param   supportedProvider    The Provider instance you would like to use for interacting with the Ethereum network.
      * @param   sraApiUrl            The standard relayer API base HTTP url you would like to source orders from.
@@ -114,7 +114,7 @@ export class SwapQuoter {
         return swapQuoter;
     }
     /**
-     * Instantiates a new SwapQuoter instance given a 0x Mesh endpoint. This pulls all available liquidity stored in Mesh
+     * Instantiates a new SwapQuoter instance given a powerchain Mesh endpoint. This pulls all available liquidity stored in Mesh
      * @param   supportedProvider The Provider instance you would like to use for interacting with the Ethereum network.
      * @param   meshEndpoint      The standard relayer API base HTTP url you would like to source orders from.
      * @param   options           Initialization options for the SwapQuoter. See type definition for details.
@@ -178,8 +178,8 @@ export class SwapQuoter {
     /**
      * Get a `SwapQuote` containing all information relevant to fulfilling a swap between a desired ERC20 token address and ERC20 owned by a provided address.
      * You can then pass the `SwapQuote` to a `SwapQuoteConsumer` to execute a buy, or process SwapQuote for on-chain consumption.
-     * @param   makerAssetData           The makerAssetData of the desired asset to swap for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
-     * @param   takerAssetData           The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   makerAssetData           The makerAssetData of the desired asset to swap for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   takerAssetData           The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
      * @param   takerAssetSellAmount     The amount of taker asset to swap for.
      * @param   options                  Options for the request. See type definition for more information.
      *
@@ -204,8 +204,8 @@ export class SwapQuoter {
     /**
      * Get a `SwapQuote` containing all information relevant to fulfilling a swap between a desired ERC20 token address and ERC20 owned by a provided address.
      * You can then pass the `SwapQuote` to a `SwapQuoteConsumer` to execute a buy, or process SwapQuote for on-chain consumption.
-     * @param   makerAssetData           The makerAssetData of the desired asset to swap for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
-     * @param   takerAssetData           The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   makerAssetData           The makerAssetData of the desired asset to swap for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   takerAssetData           The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
      * @param   makerAssetBuyAmount     The amount of maker asset to swap for.
      * @param   options                  Options for the request. See type definition for more information.
      *
@@ -289,8 +289,8 @@ export class SwapQuoter {
     /**
      * Returns information about available liquidity for an asset
      * Does not factor in slippage or fees
-     * @param   makerAssetData      The makerAssetData of the desired asset to swap for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
-     * @param   takerAssetData      The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   makerAssetData      The makerAssetData of the desired asset to swap for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   takerAssetData      The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
      *
      * @return  An object that conforms to LiquidityForTakerMakerAssetDataPair that satisfies the request. See type definition for more information.
      */
@@ -349,8 +349,8 @@ export class SwapQuoter {
 
     /**
      * Validates the taker + maker asset pair is available from the order provider provided to `SwapQuote`.
-     * @param   makerAssetData      The makerAssetData of the desired asset to swap for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
-     * @param   takerAssetData      The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   makerAssetData      The makerAssetData of the desired asset to swap for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   takerAssetData      The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
      *
      * @return  A boolean on if the taker, maker pair exists
      */
@@ -368,8 +368,8 @@ export class SwapQuoter {
 
     /**
      * Grab orders from the order provider, prunes for valid orders with provided OrderPruner options
-     * @param   makerAssetData      The makerAssetData of the desired asset to swap for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
-     * @param   takerAssetData      The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   makerAssetData      The makerAssetData of the desired asset to swap for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   takerAssetData      The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
      */
     public async getSignedOrdersWithFillableAmountsAsync(
         makerAssetData: string,
@@ -395,8 +395,8 @@ export class SwapQuoter {
     }
 
     /**
-     * Util function to check if takerAddress's allowance is enough for 0x exchange contracts to conduct the swap specified by the swapQuote.
-     * @param swapQuote The swapQuote in question to check enough allowance enabled for 0x exchange contracts to conduct the swap.
+     * Util function to check if takerAddress's allowance is enough for powerchain exchange contracts to conduct the swap specified by the swapQuote.
+     * @param swapQuote The swapQuote in question to check enough allowance enabled for powerchain exchange contracts to conduct the swap.
      * @param takerAddress The address of the taker of the provided swapQuote
      */
     public async isSwapQuoteFillableByTakerAddressAsync(
@@ -428,8 +428,8 @@ export class SwapQuoter {
 
     /**
      * Grab orders from the order provider, prunes for valid orders with provided OrderPruner options
-     * @param   makerAssetData      The makerAssetData of the desired asset to swap for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
-     * @param   takerAssetData      The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   makerAssetData      The makerAssetData of the desired asset to swap for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
+     * @param   takerAssetData      The takerAssetData of the asset to swap makerAssetData for (for more info: https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
      */
     private async _getSignedOrdersAsync(makerAssetData: string, takerAssetData: string): Promise<SignedOrder[]> {
         assert.isString('makerAssetData', makerAssetData);

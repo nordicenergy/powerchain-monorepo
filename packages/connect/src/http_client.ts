@@ -1,5 +1,5 @@
-import { assert } from '@0x/assert';
-import { schemas } from '@0x/json-schemas';
+import {assert} from '@powerchain/assert';
+import {schemas} from '@powerchain/json-schemas';
 import {
     APIOrder,
     AssetPairsRequestOpts,
@@ -13,13 +13,13 @@ import {
     OrdersResponse,
     PagedRequestOpts,
     SignedOrder,
-} from '@0x/types';
-import { fetchAsync } from '@0x/utils';
+} from '@powerchain/types';
+import {fetchAsync} from '@powerchain/utils';
 import * as _ from 'lodash';
 import * as queryString from 'query-string';
 
-import { HttpRequestOptions, HttpRequestType } from './types';
-import { relayerResponseJsonParsers } from './utils/relayer_response_json_parsers';
+import {HttpRequestOptions, HttpRequestType} from './types';
+import {relayerResponseJsonParsers} from './utils/relayer_response_json_parsers';
 
 const TRAILING_SLASHES_REGEX = /\/+$/;
 

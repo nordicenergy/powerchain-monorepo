@@ -1,9 +1,9 @@
-import { Schema, SchemaValidator } from '@0x/json-schemas';
-import { addressUtils, BigNumber, logUtils } from '@0x/utils';
+import {Schema, SchemaValidator} from '@powerchain/json-schemas';
+import {addressUtils, BigNumber, logUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
 import * as validUrl from 'valid-url';
 
-const HEX_REGEX = /^0x[0-9A-F]*$/i;
+const HEX_REGEX = /^powerchain[0-9A-F]*$/i;
 
 export const assert = {
     isBigNumber(variableName: string, value: BigNumber): void {

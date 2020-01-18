@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "0x-monorepo",
+    "name": "powerchain-monorepo",
     "engines": {
         "node": ">=6.12"
     },
@@ -25,10 +25,10 @@
         "install:all": "yarn install",
         "wsrun": "wsrun",
         "lerna": "lerna",
-        "build": "lerna link && wsrun build $PKG -r --stages --fast-exit --exclude-missing --exclude @0x/contracts-extensions",
-        "build:ci": "lerna link && wsrun build:ci $PKG --fast-exit -r --stages --exclude-missing --exclude @0x/contracts-extensions",
-        "build:contracts": "lerna link && wsrun build -p ${npm_package_config_contractsPackages} -c --fast-exit -r --stages --exclude-missing --exclude @0x/contracts-extensions",
-        "build:monorepo_scripts": "PKG=@0x/monorepo-scripts yarn build",
+        "build": "lerna link && wsrun build $PKG -r --stages --fast-exit --exclude-missing --exclude @powerchain/contracts-extensions",
+        "build:ci": "lerna link && wsrun build:ci $PKG --fast-exit -r --stages --exclude-missing --exclude @powerchain/contracts-extensions",
+        "build:contracts": "lerna link && wsrun build -p ${npm_package_config_contractsPackages} -c --fast-exit -r --stages --exclude-missing --exclude @powerchain/contracts-extensions",
+        "build:monorepo_scripts": "PKG=@powerchain/monorepo-scripts yarn build",
         "build:ts": "tsc -b",
         "watch:ts": "tsc -b -w",
         "clean": "wsrun clean $PKG --fast-exit -r --parallel --exclude-missing",
@@ -39,7 +39,7 @@
         "contracts:watch": "wsrun watch $PKG --parallel --exclude-missing",
         "remove_node_modules": "lerna clean --yes; rm -rf node_modules",
         "rebuild": "run-s clean build",
-        "test": "wsrun test $PKG --fast-exit --serial --exclude-missing --exclude @0x/asset-swapper --exclude @0x/orderbook --exclude @0x/contracts-extensions",
+        "test": "wsrun test $PKG --fast-exit --serial --exclude-missing --exclude @powerchain/asset-swapper --exclude @powerchain/orderbook --exclude @powerchain/contracts-extensions",
         "test:contracts": "wsrun test -p ${npm_package_config_contractsPackages} -c --fast-exit --exclude-missing",
         "generate_doc": "node ./packages/monorepo-scripts/lib/doc_generate.js",
         "upload_md_docs": "aws s3 rm --recursive s3://docs-markdown; wsrun s3:sync_md_docs --exclude-missing",
@@ -51,16 +51,16 @@
         "lint:contracts": "wsrun lint -p ${npm_package_config_contractsPackages} -c --fast-exit --stages --exclude-missing"
     },
     "config": {
-        "contractsPackages": "@0x/contracts-asset-proxy @0x/contracts-dev-utils @0x/contracts-erc20 @0x/contracts-erc20-bridge-sampler @0x/contracts-erc721 @0x/contracts-erc1155 @0x/contracts-exchange @0x/contracts-exchange-forwarder @0x/contracts-exchange-libs @0x/contracts-integrations @0x/contracts-multisig @0x/contracts-staking @0x/contracts-test-utils @0x/contracts-utils @0x/contracts-coordinator @0x/contracts-erc20-bridge-sampler",
+        "contractsPackages": "@powerchain/contracts-asset-proxy @powerchain/contracts-dev-utils @powerchain/contracts-erc20 @powerchain/contracts-erc20-bridge-sampler @powerchain/contracts-erc721 @powerchain/contracts-erc1155 @powerchain/contracts-exchange @powerchain/contracts-exchange-forwarder @powerchain/contracts-exchange-libs @powerchain/contracts-integrations @powerchain/contracts-multisig @powerchain/contracts-staking @powerchain/contracts-test-utils @powerchain/contracts-utils @powerchain/contracts-coordinator @powerchain/contracts-erc20-bridge-sampler",
         "mnemonic": "concert load couple harbor equip island argue ramp clarify fence smart topic",
-        "packagesWithDocPages": "0x.js @0x/contract-wrappers @0x/connect @0x/json-schemas @0x/subproviders @0x/web3-wrapper @0x/order-utils @0x/sol-compiler @0x/sol-coverage @0x/sol-profiler @0x/sol-trace @0x/dev-utils @0x/asset-swapper @0x/migrations @0x/orderbook @0x/contracts-asset-proxy @0x/contracts-coordinator @0x/contracts-dev-utils @0x/contracts-erc20 @0x/contracts-erc721 @0x/contracts-erc1155 @0x/contracts-exchange @0x/contracts-exchange-forwarder @0x/contracts-exchange-libs @0x/contracts-extensions @0x/contracts-staking",
+        "packagesWithDocPages": "powerchain.js @powerchain/contract-wrappers @powerchain/connect @powerchain/json-schemas @powerchain/subproviders @powerchain/web3-wrapper @powerchain/order-utils @powerchain/sol-compiler @powerchain/sol-coverage @powerchain/sol-profiler @powerchain/sol-trace @powerchain/dev-utils @powerchain/asset-swapper @powerchain/migrations @powerchain/orderbook @powerchain/contracts-asset-proxy @powerchain/contracts-coordinator @powerchain/contracts-dev-utils @powerchain/contracts-erc20 @powerchain/contracts-erc721 @powerchain/contracts-erc1155 @powerchain/contracts-exchange @powerchain/contracts-exchange-forwarder @powerchain/contracts-exchange-libs @powerchain/contracts-extensions @powerchain/contracts-staking",
         "ignoreDependencyVersions": "@types/styled-components @types/node",
         "ignoreDependencyVersionsForPackage": "instant contract-wrappers"
     },
     "bundlewatch": {
         "files": [
             {
-                "path": "packages/0x.js/_bundles/index.min.js",
+                "path": "packages/powerchain.js/_bundles/index.min.js",
                 "maxSize": "1300kB"
             },
             {
@@ -77,8 +77,8 @@
         }
     },
     "devDependencies": {
-        "@0x-lerna-fork/lerna": "3.16.10",
-        "@0xproject/npm-cli-login": "^0.0.11",
+        "@powerchain-lerna-fork/lerna": "3.16.10",
+        "@powerchainproject/npm-cli-login": "^0.0.11",
         "async-child-process": "^1.1.1",
         "bundlewatch": "^0.2.1",
         "coveralls": "^3.0.0",

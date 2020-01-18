@@ -1,10 +1,9 @@
-import { EmptyWalletSubprovider, RPCSubprovider, Web3ProviderEngine } from '@0x/subproviders';
-import { providerUtils } from '@0x/utils';
-import { ZeroExProvider } from 'ethereum-types';
-import * as _ from 'lodash';
+import {EmptyWalletSubprovider, RPCSubprovider, Web3ProviderEngine} from '@powerchain/subproviders';
+import {providerUtils} from '@powerchain/utils';
+import {ZeroExProvider} from 'ethereum-types';
 
-import { ETHEREUM_NODE_URL_BY_NETWORK } from '../constants';
-import { Maybe, Network } from '../types';
+import {ETHEREUM_NODE_URL_BY_NETWORK} from '../constants';
+import {Maybe, Network} from '../types';
 
 export const providerFactory = {
     getInjectedProviderIfExists: (): Maybe<ZeroExProvider> => {

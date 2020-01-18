@@ -1,13 +1,13 @@
-## 0x-contract-artifacts
+## powerchain-contract-artifacts
 
-0x smart contract compilation artifacts
+powerchain smart contract compilation artifacts
 
-Read the [documentation](http://0x-contract-artifacts-py.s3-website-us-east-1.amazonaws.com/)
+Read the [documentation](http://powerchain-contract-artifacts-py.s3-website-us-east-1.amazonaws.com/)
 
 ## Installing
 
 ```bash
-pip install 0x-contract-artifacts
+pip install powerchain-contract-artifacts
 ```
 
 ## Contributing

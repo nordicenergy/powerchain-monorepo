@@ -8,10 +8,11 @@ export {
     LibOrderContract,
     LibZeroExTransactionContract,
 } from './wrappers';
-export { LibMathRevertErrors } from '@0x/utils';
+export { LibMathRevertErrors } from '@powerchain/utils';
 
 import * as ReferenceFunctionsToExport from './reference_functions';
 export import ReferenceFunctions = ReferenceFunctionsToExport;
+
 export {
     ContractArtifact,
     ContractChains,

@@ -1,9 +1,9 @@
-import { orderCalculationUtils } from '@0x/order-utils';
-import { SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {orderCalculationUtils} from '@powerchain/order-utils';
+import {SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { constants } from '../constants';
+import {constants} from '../constants';
 import {
     CalculateSwapQuoteOpts,
     MarketBuySwapQuote,
@@ -14,10 +14,10 @@ import {
     SwapQuoteInfo,
 } from '../types';
 
-import { fillableAmountsUtils } from './fillable_amounts_utils';
-import { MarketOperationUtils } from './market_operation_utils';
-import { ProtocolFeeUtils } from './protocol_fee_utils';
-import { utils } from './utils';
+import {fillableAmountsUtils} from './fillable_amounts_utils';
+import {MarketOperationUtils} from './market_operation_utils';
+import {ProtocolFeeUtils} from './protocol_fee_utils';
+import {utils} from './utils';
 
 // TODO(dave4506) How do we want to reintroduce InsufficientAssetLiquidityError?
 export class SwapQuoteCalculator {

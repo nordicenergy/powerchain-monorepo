@@ -3,18 +3,17 @@
 // tslint:disable:no-unused-variable
 import {
     AwaitTransactionSuccessOpts,
+    BaseContract,
     ContractFunctionObj,
     ContractTxFunctionObj,
-    SendTransactionOpts,
-    BaseContract,
-    SubscriptionManager,
-    PromiseWithTransactionHash,
     methodAbiToFunctionSignature,
-} from '@0x/base-contract';
-import { schemas } from '@0x/json-schemas';
+    PromiseWithTransactionHash,
+    SendTransactionOpts,
+    SubscriptionManager,
+} from '@powerchain/base-contract';
+import {schemas} from '@powerchain/json-schemas';
 import {
     BlockParam,
-    BlockParamLiteral,
     BlockRange,
     CallData,
     ContractAbi,
@@ -22,15 +21,14 @@ import {
     DecodedLogArgs,
     LogWithDecodedArgs,
     MethodAbi,
+    SupportedProvider,
     TransactionReceiptWithDecodedLogs,
     TxData,
-    TxDataPayable,
-    SupportedProvider,
 } from 'ethereum-types';
-import { BigNumber, classUtils, logUtils, providerUtils } from '@0x/utils';
-import { EventCallback, IndexedFilterValues, SimpleContractArtifact } from '@0x/types';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { assert } from '@0x/assert';
+import {BigNumber, classUtils, logUtils, providerUtils} from '@powerchain/utils';
+import {EventCallback, IndexedFilterValues, SimpleContractArtifact} from '@powerchain/types';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {assert} from '@powerchain/assert';
 import * as ethers from 'ethers';
 // tslint:enable:no-unused-variable
 
@@ -56,7 +54,7 @@ export class ForwarderContract extends BaseContract {
     public static contractName = 'Forwarder';
     private readonly _methodABIIndex: { [name: string]: number } = {};
     private readonly _subscriptionManager: SubscriptionManager<ForwarderEventArgs, ForwarderEvents>;
-    public static async deployFrom0xArtifactAsync(
+    public static async deployFrompowerchainArtifactAsync(
         artifact: ContractArtifact | SimpleContractArtifact,
         supportedProvider: SupportedProvider,
         txDefaults: Partial<TxData>,

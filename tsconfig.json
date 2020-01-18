@@ -8,7 +8,7 @@
         "noImplicitReturns": true,
         "pretty": true,
         "skipLibCheck": true,
-        "typeRoots": ["node_modules/@0x/typescript-typings/types", "node_modules/@types"],
+        "typeRoots": ["node_modules/@powerchain/typescript-typings/types", "node_modules/@types"],
         "strict": true,
         // These settings are required for TypeScript project references
         "composite": true,
@@ -35,7 +35,7 @@
         { "path": "./contracts/utils" },
         { "path": "./contracts/dev-utils" },
         { "path": "./contracts/integrations" },
-        { "path": "./packages/0x.js" },
+        { "path": "./packages/powerchain.js" },
         { "path": "./packages/abi-gen" },
         { "path": "./packages/assert" },
         { "path": "./packages/asset-swapper" },

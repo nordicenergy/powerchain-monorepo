@@ -1,8 +1,8 @@
-import { Order, SignedOrder } from '@0x/types';
+import {Order, SignedOrder} from '@powerchain/types';
 import * as _ from 'lodash';
 
-import { constants } from '../../src/constants';
-import { orderFactory } from '../../src/order_factory';
+import {constants} from '../../src/constants';
+import {orderFactory} from '../../src/order_factory';
 
 const CHAIN_ID = 1337;
 const BASE_TEST_ORDER: Order = orderFactory.createOrder(

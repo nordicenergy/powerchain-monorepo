@@ -1,12 +1,11 @@
-import { chaiSetup, constants, provider, txDefaults, web3Wrapper } from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { BigNumber, hexUtils, signTypedDataUtils } from '@0x/utils';
+import {chaiSetup, constants, provider, txDefaults, web3Wrapper} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {BigNumber, hexUtils, signTypedDataUtils} from '@powerchain/utils';
 import * as chai from 'chai';
 import * as ethUtil from 'ethereumjs-util';
-import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
-import { TestLibEIP712Contract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestLibEIP712Contract} from './wrappers';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -18,7 +17,7 @@ describe('LibEIP712', () => {
     before(async () => {
         await blockchainLifecycle.startAsync();
         // Deploy LibEIP712
-        lib = await TestLibEIP712Contract.deployFrom0xArtifactAsync(artifacts.TestLibEIP712, provider, txDefaults, {});
+        lib = await TestLibEIP712Contract.deployFrompowerchainArtifactAsync(artifacts.TestLibEIP712, provider, txDefaults, {});
     });
 
     after(async () => {
@@ -77,8 +76,8 @@ describe('LibEIP712', () => {
         const unprefixedHashStruct = hashStruct.slice(2, hashStruct.length);
 
         // Hash the provided input to get the expected hash
-        const input = '0x1901'.concat(unprefixedDomainHash.concat(unprefixedHashStruct));
-        const expectedHash = '0x'.concat(ethUtil.sha3(input).toString('hex'));
+        const input = 'powerchain1901'.concat(unprefixedDomainHash.concat(unprefixedHashStruct));
+        const expectedHash = 'powerchain'.concat(ethUtil.sha3(input).toString('hex'));
 
         // Get the actual hash by calling the smart contract
         const actualHash = await lib.externalHashEIP712Message(domainHash, hashStruct).callAsync();
@@ -94,15 +93,15 @@ describe('LibEIP712', () => {
 
         it('should correctly hash non-empty input', async () => {
             await testHashEIP712MessageAsync(
-                '0xb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6', // keccak256(abi.encode(1))
-                '0x405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace', // keccak256(abi.encode(2))
+                'powerchainb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6', // keccak256(abi.encode(1))
+                'powerchain405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace', // keccak256(abi.encode(2))
             );
         });
 
         it('should correctly hash non-empty input', async () => {
             await testHashEIP712MessageAsync(
-                '0x405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace', // keccak256(abi.encode(2))
-                '0xc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b', // keccak256(abi.encode(3))
+                'powerchain405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace', // keccak256(abi.encode(2))
+                'powerchainc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b', // keccak256(abi.encode(3))
             );
         });
     });

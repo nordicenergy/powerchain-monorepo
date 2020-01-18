@@ -593,7 +593,7 @@
         "version": "0.0.4",
         "changes": [
             {
-                "note": "Re-publish Assert previously published under NPM package @0xproject/0x-assert"
+                "note": "Re-publish Assert previously published under NPM package @powerchainproject/powerchain-assert"
             },
             {
                 "note": "Added assertion isValidBaseUnitAmount which checks both that the value is a valid bigNumber and that it does not contain decimals."

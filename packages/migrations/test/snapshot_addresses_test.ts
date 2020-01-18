@@ -1,10 +1,10 @@
-import { ChainId, getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
-import { devConstants, web3Factory } from '@0x/dev-utils';
+import {ChainId, getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
+import {devConstants, web3Factory} from '@powerchain/dev-utils';
 import * as chai from 'chai';
 import * as dirtyChai from 'dirty-chai';
 import 'mocha';
 
-import { runMigrationsAsync } from '../src/migration';
+import {runMigrationsAsync} from '../src/migration';
 
 chai.use(dirtyChai);
 

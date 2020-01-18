@@ -1,9 +1,9 @@
-import { blockchainTests, constants, expect } from '@0x/contracts-test-utils';
-import { OwnableRevertErrors } from '@0x/contracts-utils';
-import { BigNumber } from '@0x/utils';
-import { LogWithDecodedArgs } from 'ethereum-types';
+import {blockchainTests, constants, expect} from '@powerchain/contracts-test-utils';
+import {OwnableRevertErrors} from '@powerchain/contracts-utils';
+import {BigNumber} from '@powerchain/utils';
+import {LogWithDecodedArgs} from 'ethereum-types';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 import {
     ExchangeContract,
     ExchangeProtocolFeeCollectorAddressEventArgs,
@@ -30,7 +30,7 @@ blockchainTests.resets('MixinProtocolFees', env => {
         env.txDefaults.from = owner;
 
         // Deploy the exchange contract.
-        exchange = await ExchangeContract.deployFrom0xArtifactAsync(
+        exchange = await ExchangeContract.deployFrompowerchainArtifactAsync(
             artifacts.Exchange,
             env.provider,
             env.txDefaults,

@@ -1,5 +1,5 @@
-import { devConstants } from '@0x/dev-utils';
-import { RevertTraceSubprovider, SolCompilerArtifactAdapter } from '@0x/sol-trace';
+import {devConstants} from '@powerchain/dev-utils';
+import {RevertTraceSubprovider, SolCompilerArtifactAdapter} from '@powerchain/sol-trace';
 
 let revertTraceSubprovider: RevertTraceSubprovider;
 

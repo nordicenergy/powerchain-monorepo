@@ -1,10 +1,10 @@
-import { schemas } from '@0x/json-schemas';
-import { BigNumber } from '@0x/utils';
+import {schemas} from '@powerchain/json-schemas';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import * as dirtyChai from 'dirty-chai';
 import 'mocha';
 
-import { assert } from '../src/index';
+import {assert} from '../src/index';
 
 chai.config.includeStack = true;
 chai.use(dirtyChai);
@@ -70,8 +70,8 @@ describe('Assertions', () => {
     describe('#isHexString', () => {
         it('should not throw for valid input', () => {
             const validInputs = [
-                '0x61a3ed31B43c8780e905a260a35faefEc527be7516aa11c0256729b5b351bc33',
-                '0x40349190569279751135161d22529dc25add4f6069af05be04cacbda2ace2254',
+                'powerchain61a3ed31B43c8780e905a260a35faefEc527be7516aa11c0256729b5b351bc33',
+                'powerchain40349190569279751135161d22529dc25add4f6069af05be04cacbda2ace2254',
             ];
             validInputs.forEach(input => expect(assert.isHexString.bind(assert, variableName, input)).to.not.throw());
         });
@@ -82,7 +82,7 @@ describe('Assertions', () => {
                 { random: 'test' },
                 undefined,
                 new BigNumber(45),
-                '0x61a3ed31B43c8780e905a260a35faYfEc527be7516aa11c0256729b5b351bc33',
+                'powerchain61a3ed31B43c8780e905a260a35faYfEc527be7516aa11c0256729b5b351bc33',
             ];
             invalidInputs.forEach(input => expect(assert.isHexString.bind(assert, variableName, input)).to.throw());
         });
@@ -90,9 +90,9 @@ describe('Assertions', () => {
     describe('#isETHAddressHex', () => {
         it('should not throw for valid input', () => {
             const validInputs = [
-                '0x0000000000000000000000000000000000000000',
-                '0x6fffd0ae3f7d88c9b4925323f54c6e4b2918c5fd',
-                '0x12459c951127e0c374ff9105dda097662a027093',
+                'powerchain0000000000000000000000000000000000000000',
+                'powerchain6fffd0ae3f7d88c9b4925323f54c6e4b2918c5fd',
+                'powerchain12459c951127e0c374ff9105dda097662a027093',
             ];
             validInputs.forEach(input =>
                 expect(assert.isETHAddressHex.bind(assert, variableName, input)).to.not.throw(),
@@ -105,8 +105,8 @@ describe('Assertions', () => {
                 { random: 'test' },
                 undefined,
                 new BigNumber(45),
-                '0x6FFFd0ae3f7d88c9b4925323f54c6e4b2918c5fd',
-                '0x6FFFd0ae3f7d88c9b4925323f54c6e4',
+                'powerchain6FFFd0ae3f7d88c9b4925323f54c6e4b2918c5fd',
+                'powerchain6FFFd0ae3f7d88c9b4925323f54c6e4',
             ];
             invalidInputs.forEach(input => expect(assert.isETHAddressHex.bind(assert, variableName, input)).to.throw());
         });
@@ -180,8 +180,8 @@ describe('Assertions', () => {
         const schema = schemas.addressSchema;
         it('should not throw for valid input', () => {
             const validInputs = [
-                '0x6fffd0ae3f7d88c9b4925323f54c6e4b2918c5fd',
-                '0x12459c951127e0c374ff9105dda097662a027093',
+                'powerchain6fffd0ae3f7d88c9b4925323f54c6e4b2918c5fd',
+                'powerchain12459c951127e0c374ff9105dda097662a027093',
             ];
             validInputs.forEach(input =>
                 expect(assert.doesConformToSchema.bind(assert, variableName, input, schema)).to.not.throw(),
@@ -199,8 +199,8 @@ describe('Assertions', () => {
             const validInputs = [
                 'http://www.google.com',
                 'https://api.example-relayer.net',
-                'https://api.radarrelay.com/0x/v0/',
-                'https://zeroex.beta.radarrelay.com:8000/0x/v0/',
+                'https://api.radarrelay.com/powerchain/v0/',
+                'https://zeroex.beta.radarrelay.com:8000/powerchain/v0/',
             ];
             validInputs.forEach(input => expect(assert.isWebUri.bind(assert, variableName, input)).to.not.throw());
         });
@@ -224,8 +224,8 @@ describe('Assertions', () => {
             const validInputs = [
                 'http://www.google.com',
                 'https://api.example-relayer.net',
-                'https://api.radarrelay.com/0x/v0/',
-                'https://zeroex.beta.radarrelay.com:8000/0x/v0/',
+                'https://api.radarrelay.com/powerchain/v0/',
+                'https://zeroex.beta.radarrelay.com:8000/powerchain/v0/',
                 'ws://www.api.example-relayer.net',
                 'wss://www.api.example-relayer.net',
                 'user:password@api.example-relayer.net',

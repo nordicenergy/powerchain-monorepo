@@ -75,7 +75,7 @@ class CleanCommandExtension(clean):
         rmtree(".mypy_cache", ignore_errors=True)
         rmtree(".tox", ignore_errors=True)
         rmtree(".pytest_cache", ignore_errors=True)
-        rmtree("src/0x_middlewares.egg-info", ignore_errors=True)
+        rmtree("src/powerchain_middlewares.egg-info", ignore_errors=True)
 
 
 class TestPublishCommand(distutils.command.build_py.build_py):
@@ -110,7 +110,7 @@ class PublishDocsCommand(distutils.command.build_py.build_py):
 
     description = (
         "Publish docs to "
-        + "http://0x-middlewares-py.s3-website-us-east-1.amazonaws.com/"
+        + "http://powerchain-middlewares-py.s3-website-us-east-1.amazonaws.com/"
     )
 
     def run(self):
@@ -126,7 +126,7 @@ class GanacheCommand(distutils.command.build_py.build_py):
     def run(self):
         """Run ganache."""
         cmd_line = (
-            "docker run -d -p 8545:8545 0xorg/ganache-cli:2.2.2"
+            "docker run -d -p 8545:8545 nordicenergy/ganache-cli:2.2.2"
         ).split()
         subprocess.call(cmd_line)  # nosec
 
@@ -136,13 +136,13 @@ with open("README.md", "r") as file_handle:
 
 
 setup(
-    name="0x-middlewares",
+    name="powerchain-middlewares",
     version="1.0.0",
-    description="Web3 middlewares for 0x applications",
+    description="Web3 middlewares for powerchain applications",
     long_description=README_MD,
     long_description_content_type="text/markdown",
     url=(
-        "https://github.com/0xproject/0x-monorepo/tree/development"
+        "https://github.com/powerchainproject/powerchain-monorepo/tree/development"
         "/python-packages/middlewares"
     ),
     author="Michael Huang",
@@ -164,9 +164,9 @@ setup(
     ],
     extras_require={
         "dev": [
-            "0x-contract-addresses",
-            "0x-contract-wrappers",
-            "0x-order-utils",
+            "powerchain-contract-addresses",
+            "powerchain-contract-wrappers",
+            "powerchain-order-utils",
             "web3",
             "bandit",
             "black",
@@ -190,7 +190,7 @@ setup(
     package_dir={"": "src"},
     license="Apache 2.0",
     keywords=(
-        "ethereum cryptocurrency 0x decentralized blockchain dex exchange"
+        "ethereum cryptocurrency powerchain decentralized blockchain dex exchange"
     ),
     namespace_packages=["zero_ex"],
     packages=find_packages("src"),

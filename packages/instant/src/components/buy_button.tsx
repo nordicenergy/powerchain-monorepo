@@ -5,23 +5,22 @@ import {
     SwapQuoteConsumer,
     SwapQuoteConsumerError,
     SwapQuoter,
-} from '@0x/asset-swapper';
-import { AssetProxyId } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import * as _ from 'lodash';
+} from '@powerchain/asset-swapper';
+import {AssetProxyId} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as React from 'react';
-import { oc } from 'ts-optchain';
+import {oc} from 'ts-optchain';
 
-import { WEB_3_WRAPPER_TRANSACTION_FAILED_ERROR_MSG_PREFIX } from '../constants';
-import { ColorOption } from '../style/theme';
-import { AffiliateInfo, Asset, ZeroExInstantError } from '../types';
-import { analytics } from '../util/analytics';
-import { errorReporter } from '../util/error_reporter';
-import { gasPriceEstimator } from '../util/gas_price_estimator';
-import { util } from '../util/util';
+import {WEB_3_WRAPPER_TRANSACTION_FAILED_ERROR_MSG_PREFIX} from '../constants';
+import {ColorOption} from '../style/theme';
+import {AffiliateInfo, Asset, ZeroExInstantError} from '../types';
+import {analytics} from '../util/analytics';
+import {errorReporter} from '../util/error_reporter';
+import {gasPriceEstimator} from '../util/gas_price_estimator';
+import {util} from '../util/util';
 
-import { Button } from './ui/button';
+import {Button} from './ui/button';
 
 export interface BuyButtonProps {
     accountAddress?: string;

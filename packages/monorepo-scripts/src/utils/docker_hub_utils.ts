@@ -1,7 +1,7 @@
-import { fetchAsync } from '@0x/utils';
-import { exec as execAsync } from 'promisify-child-process';
+import {fetchAsync} from '@powerchain/utils';
+import {exec as execAsync} from 'promisify-child-process';
 
-import { utils } from './utils';
+import {utils} from './utils';
 
 const API_ENDPOINT = 'https://hub.docker.com/v2';
 const HTTP_OK_STATUS = 200;
@@ -32,7 +32,7 @@ export const dockerHubUtils = {
         return token;
     },
     async checkUserAddedToOrganizationOrThrowAsync(organization: string): Promise<void> {
-        utils.log('Checking that the user was added to the 0xorg DockerHub organization...');
+        utils.log('Checking that the user was added to the nordicenergy DockerHub organization...');
         const token = await dockerHubUtils.getTokenAsync();
         const response = await fetchAsync(`${API_ENDPOINT}/repositories/${organization}/?page_size=10`, {
             method: 'GET',

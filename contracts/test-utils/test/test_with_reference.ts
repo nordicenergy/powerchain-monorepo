@@ -1,8 +1,8 @@
-import { AnyRevertError, StringRevertError } from '@0x/utils';
+import {AnyRevertError, StringRevertError} from '@powerchain/utils';
 
-import { expect } from '../src/chai_setup';
+import {expect} from '../src/chai_setup';
 
-import { testWithReferenceFuncAsync } from '../src/test_with_reference';
+import {testWithReferenceFuncAsync} from '../src/test_with_reference';
 
 async function divAsync(x: number, y: number): Promise<number> {
     if (y === 0) {

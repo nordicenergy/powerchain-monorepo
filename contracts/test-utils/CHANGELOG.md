@@ -17,7 +17,7 @@ CHANGELOG
 
 ## v5.0.0 - _December 9, 2019_
 
-    * Removed `hex_utils.ts`. Moved to @0x/utils (#2373)
+    * Removed `hex_utils.ts`. Moved to @powerchain/utils (#2373)
 
 ## v4.0.0 - _December 2, 2019_
 
@@ -27,14 +27,14 @@ CHANGELOG
     * OrderFactory default order expiration time increased from ten minutes to fifteen minutes  (#2304)
     * Add `chainId` to `TransactionFactory` constructor (#1742)
     * Use new `Order` structure with `domain` field (#1742)
-    * Inherit `chaiSetup` from `@0x/dev-utils` (#1761)
+    * Inherit `chaiSetup` from `@powerchain/dev-utils` (#1761)
     * Add `generatePseudoRandomOrderHash()` to `orderUtils` (#1761)
-    * Inherit `OrderStatus` from `@0x/types` (#1761)
+    * Inherit `OrderStatus` from `@powerchain/types` (#1761)
     * Update types for arbitrary fee tokens (#1819)
     * Remove formatters (#1834)
     * Add `hexConcat()` in `hex_utils.ts` (#1885)
     * Introduce Mocha blockchain extensions (#2007)
-    * Move `*FillResults`, `OrderInfo` types to `@0x/types` (#2031)
+    * Move `*FillResults`, `OrderInfo` types to `@powerchain/types` (#2031)
     * Add `log_utils.ts` (#2031)
     * Add `hexRandom()` to `hex_utils.ts` (#2031)
     * Add the constants: `MAX_UINT256`, `ADDRESS_LENGTH`, `MAX_UINT256_ROOT`, `ONE_ETHER` (#2031)
@@ -73,14 +73,14 @@ CHANGELOG
 
     * Add `chainId` to `TransactionFactory` constructor (#1742)
     * Use new `Order` structure with `domain` field (#1742)
-    * Inherit `chaiSetup` from `@0x/dev-utils` (#1761)
+    * Inherit `chaiSetup` from `@powerchain/dev-utils` (#1761)
     * Add `generatePseudoRandomOrderHash()` to `orderUtils` (#1761)
-    * Inherit `OrderStatus` from `@0x/types` (#1761)
+    * Inherit `OrderStatus` from `@powerchain/types` (#1761)
     * Update types for arbitrary fee tokens (#1819)
     * Remove formatters (#1834)
     * Add `hexConcat()` in `hex_utils.ts` (#1885)
     * Introduce Mocha blockchain extensions (#2007)
-    * Move `*FillResults`, `OrderInfo` types to `@0x/types` (#2031)
+    * Move `*FillResults`, `OrderInfo` types to `@powerchain/types` (#2031)
     * Add `log_utils.ts` (#2031)
     * Add `haxRandom()` to `hex_utils.ts` (#2031)
     * Add the constants: `MAX_UINT256`, `ADDRESS_LENGTH`, `MAX_UINT256_ROOT`, `ONE_ETHER` (#2031)
@@ -157,7 +157,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.1.0 - _March 20, 2019_
+## v1.0.1- _March 20, 2019_
 
     * Added ERC1155Proxy test constants and interfaces (#1661)
 
@@ -186,7 +186,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.3 - _February 7, 2019_
+## v1.0.1 - _February 7, 2019_
 
     * Dependencies updated
 
@@ -198,7 +198,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _February 5, 2019_
+## v1.0.0 - _February 5, 2019_
 
     * Upgrade the bignumber.js to v8.0.2 (#1517)
     * Import `ZeroExTransaction` type instead of using type defined in this package (#1576)

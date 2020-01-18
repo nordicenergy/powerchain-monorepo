@@ -1,5 +1,5 @@
 {
-    "extends": ["@0x/tslint-config"],
+    "extends": ["@powerchain/tslint-config"],
     "rules": {
         "max-classes-per-file": false,
         "no-non-null-assertion": false,

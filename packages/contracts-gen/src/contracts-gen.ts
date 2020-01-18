@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import { Compiler } from '@0x/sol-compiler';
-import { NameResolver } from '@0x/sol-resolver';
-import { PackageJSON } from '@0x/types';
-import { logUtils } from '@0x/utils';
-import { CompilerOptions } from 'ethereum-types';
+import {Compiler} from '@powerchain/sol-compiler';
+import {NameResolver} from '@powerchain/sol-resolver';
+import {PackageJSON} from '@powerchain/types';
+import {logUtils} from '@powerchain/utils';
+import {CompilerOptions} from 'ethereum-types';
 import * as fs from 'fs';
 import * as _ from 'lodash';
 import * as mkdirp from 'mkdirp';
@@ -188,8 +188,8 @@ function generateArtifactsTs(
     const sortedImports = _.sortBy(imports, _import => _import.toLowerCase());
     const artifacts = _.map(contracts, contract => {
         const contractName = path.basename(contract, SOLIDITY_EXTENSION);
-        if (contractName === 'ZRXToken') {
-            // HACK(albrow): "as any" hack still required here because ZRXToken does not
+        if (contractName === 'NETToken') {
+            // HACK(albrow): "as any" hack still required here because NETToken does not
             // conform to the v2 artifact type.
             return `${contractName}: (${contractName} as any) as ContractArtifact,`;
         } else {

@@ -31,7 +31,7 @@
         "version": "1.0.0",
         "changes": [
             {
-                "note": "Added dependency on @0x/contracts-dev-utils",
+                "note": "Added dependency on @powerchain/contracts-dev-utils",
                 "pr": 2321
             },
             {
@@ -67,7 +67,7 @@
         "version": "0.1.0-beta.2",
         "changes": [
             {
-                "note": "Added dependency on @0x/contracts-dev-utils",
+                "note": "Added dependency on @powerchain/contracts-dev-utils",
                 "pr": 2321
             },
             {

@@ -1,7 +1,7 @@
-import { APIOrder } from '@0x/connect';
+import {APIOrder} from '@powerchain/connect';
 
-import { OrderSet } from './order_set';
-import { AddedRemovedOrders } from './types';
+import {OrderSet} from './order_set';
+import {AddedRemovedOrders} from './types';
 
 export class OrderStore {
     // Both bids and asks are stored together in one set

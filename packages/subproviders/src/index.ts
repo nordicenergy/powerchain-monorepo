@@ -1,8 +1,8 @@
 import Eth from '@ledgerhq/hw-app-eth';
 import TransportU2F from '@ledgerhq/hw-transport-u2f';
-export import Web3ProviderEngine = require('web3-provider-engine');
 
-import { LedgerEthereumClient } from './types';
+import {LedgerEthereumClient} from './types';
+export import Web3ProviderEngine = require('web3-provider-engine');
 
 /**
  * A factory method for creating a LedgerEthereumClient usable in a browser context.
@@ -55,7 +55,7 @@ export {
     TrezorSubproviderConfig,
 } from './types';
 
-export { ECSignature, EIP712Object, EIP712ObjectValue, EIP712TypedData, EIP712Types, EIP712Parameter } from '@0x/types';
+export { ECSignature, EIP712Object, EIP712ObjectValue, EIP712TypedData, EIP712Types, EIP712Parameter } from '@powerchain/types';
 
 export {
     JSONRPCRequestPayload,

@@ -4,11 +4,11 @@ This package allows you to generate TypeScript or Python contract wrappers from 
 It's heavily inspired by [Geth abigen](https://github.com/ethereum/go-ethereum/wiki/Native-DApps:-Go-bindings-to-Ethereum-contracts) but takes a different approach.
 You can write your custom handlebars templates which will allow you to seamlessly integrate the generated code into your existing codebase with existing conventions.
 
-[Here](https://github.com/0xProject/0x-monorepo/tree/development/packages/0x.js/abi-gen-templates) are the templates used to generate the contract wrappers used by 0x.js.
+[Here](https://github.com/nordicenergy/powerchain-protocol-dev-kit/tree/development/packages/powerchain.js/abi-gen-templates) are the templates used to generate the contract wrappers used by powerchain.js.
 
 ## Installation
 
-`yarn add -g @0x/abi-gen`
+`yarn add -g @powerchain/abi-gen`
 
 ## Usage
 
@@ -44,7 +44,7 @@ Examples:
 ```
 
 You're required to pass a [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) template where your abi files are located.
-TL;DR - here is the example from 0x.js.
+TL;DR - here is the example from powerchain.js.
 
 `--abis 'src/artifacts/@(Exchange|Token|TokenTransferProxy|EtherToken|TokenRegistry).json`
 
@@ -56,14 +56,14 @@ You need to also specify the location of your main template used for every contr
 
 ## How to write custom templates?
 
-The best way to get started is to copy [0x.js templates](https://github.com/0xProject/0x-monorepo/tree/development/packages/abi-gen-templates) and start adjusting them for your needs.
+The best way to get started is to copy [powerchain.js templates](https://github.com/nordicenergy/powerchain-protocol-dev-kit/tree/development/packages/abi-gen-templates) and start adjusting them for your needs.
 We use [handlebars](http://handlebarsjs.com/) template engine under the hood.
 You need to have a master template called `contract.mustache`. it will be used to generate each contract wrapper. Although - you don't need and probably shouldn't write all your logic in a single template file. You can write [partial templates](http://handlebarsjs.com/partials.html) and as long as they are within a partials folder - they will be registered and available.
 
 ## Which data/context do I get in my templates?
 
 For now you don't get much on top of methods abi, some useful helpers and a contract name because it was enough for our use-case, but if you need something else - create a PR.
-See the [type definition](https://github.com/0xProject/0x-monorepo/tree/development/packages/abi-gen/src/types.ts) of what we pass to the render method.
+See the [type definition](https://github.com/nordicenergy/powerchain-protocol-dev-kit/tree/development/packages/abi-gen/src/types.ts) of what we pass to the render method.
 
 ## Output files
 
@@ -98,13 +98,13 @@ You will also need to have Python 3 installed in order to build and run the test
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/abi-gen yarn build
+PKG=@powerchain/abi-gen yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/abi-gen yarn watch
+PKG=@powerchain/abi-gen yarn watch
 ```
 
 ### Clean
@@ -143,7 +143,7 @@ Run unit tests and check diffs of generated wrappers vs known wrappers:
 yarn test_cli
 ```
 
-Known-good wrappers have been previously committed and are kept in `test-cli/expected-output/{language}`. They are intended to provide sample output and should be kept in sync with the generating code. When making changes to this project or `@0x/abi-gen-templates`, run `yarn test_cli:prebuild` to generate fresh code into `test-cli/output/{language}`, and then manually copy it to `test-cli/expected-output/{language}`.
+Known-good wrappers have been previously committed and are kept in `test-cli/expected-output/{language}`. They are intended to provide sample output and should be kept in sync with the generating code. When making changes to this project or `@powerchain/abi-gen-templates`, run `yarn test_cli:prebuild` to generate fresh code into `test-cli/output/{language}`, and then manually copy it to `test-cli/expected-output/{language}`.
 
 Run linters against generated code:
 

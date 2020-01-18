@@ -1,9 +1,9 @@
-import { blockchainTests, constants, expect, verifyEventsFromLogs } from '@0x/contracts-test-utils';
-import { AuthorizableRevertErrors } from '@0x/contracts-utils';
-import { BigNumber, StakingRevertErrors } from '@0x/utils';
+import {blockchainTests, constants, expect, verifyEventsFromLogs} from '@powerchain/contracts-test-utils';
+import {AuthorizableRevertErrors} from '@powerchain/contracts-utils';
+import {BigNumber, StakingRevertErrors} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 import {
     StakingProxyEvents,
     TestProxyDestinationContract,
@@ -11,7 +11,7 @@ import {
     TestStakingProxyUnitContract,
 } from '../wrappers';
 
-import { constants as stakingConstants } from '../../src/constants';
+import {constants as stakingConstants} from '../../src/constants';
 
 blockchainTests.resets('StakingProxy unit tests', env => {
     const testString = 'Hello, World!';
@@ -31,19 +31,19 @@ blockchainTests.resets('StakingProxy unit tests', env => {
         [owner, authorizedAddress, ...notAuthorizedAddresses] = accounts;
 
         // Deploy contracts
-        testContract = await TestProxyDestinationContract.deployFrom0xArtifactAsync(
+        testContract = await TestProxyDestinationContract.deployFrompowerchainArtifactAsync(
             artifacts.TestProxyDestination,
             env.provider,
             env.txDefaults,
             artifacts,
         );
-        testContract2 = await TestProxyDestinationContract.deployFrom0xArtifactAsync(
+        testContract2 = await TestProxyDestinationContract.deployFrompowerchainArtifactAsync(
             artifacts.TestProxyDestination,
             env.provider,
             env.txDefaults,
             artifacts,
         );
-        testProxyContract = await TestStakingProxyUnitContract.deployFrom0xArtifactAsync(
+        testProxyContract = await TestStakingProxyUnitContract.deployFrompowerchainArtifactAsync(
             artifacts.TestStakingProxyUnit,
             env.provider,
             env.txDefaults,

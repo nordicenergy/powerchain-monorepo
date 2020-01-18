@@ -1,18 +1,18 @@
-import { ExchangeContract } from '@0x/contracts-exchange';
-import { blockchainTests, constants, expect, signingUtils, transactionHashUtils } from '@0x/contracts-test-utils';
-import { orderHashUtils } from '@0x/order-utils';
-import { Order, SignatureType, ZeroExTransaction } from '@0x/types';
-import { hexUtils, logUtils } from '@0x/utils';
+import {ExchangeContract} from '@powerchain/contracts-exchange';
+import {blockchainTests, constants, expect, signingUtils, transactionHashUtils} from '@powerchain/contracts-test-utils';
+import {orderHashUtils} from '@powerchain/order-utils';
+import {Order, SignatureType, ZeroExTransaction} from '@powerchain/types';
+import {hexUtils, logUtils} from '@powerchain/utils';
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { artifacts } from '../artifacts';
-import { AssertionResult } from '../framework/assertions/function_assertion';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { DeploymentManager } from '../framework/deployment_manager';
-import { Simulation, SimulationEnvironment } from '../framework/simulation';
-import { Pseudorandom } from '../framework/utils/pseudorandom';
-import { TestSignatureValidationWalletContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {AssertionResult} from '../framework/assertions/function_assertion';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {DeploymentManager} from '../framework/deployment_manager';
+import {Simulation, SimulationEnvironment} from '../framework/simulation';
+import {Pseudorandom} from '../framework/utils/pseudorandom';
+import {TestSignatureValidationWalletContract} from '../wrappers';
 
 // tslint:disable: max-classes-per-file no-non-null-assertion no-unnecessary-type-assertion
 const tests = process.env.FUZZ_TEST === 'exchange/signature_validation' ? blockchainTests : blockchainTests.skip;
@@ -78,7 +78,7 @@ tests('Exchange signature validation fuzz tests', env => {
             numErc1155TokensToDeploy: 0,
         });
         exchange = deployment.exchange;
-        walletContractAddress = (await TestSignatureValidationWalletContract.deployFrom0xArtifactAsync(
+        walletContractAddress = (await TestSignatureValidationWalletContract.deployFrompowerchainArtifactAsync(
             artifacts.TestSignatureValidationWallet,
             env.provider,
             env.txDefaults,
@@ -527,7 +527,7 @@ tests('Exchange signature validation fuzz tests', env => {
             domain: {
                 chainId,
                 verifyingContract: exchange.address,
-                name: '0x Protocol',
+                name: 'powerchain Protocol',
                 version: '3.0.0',
             },
             gasPrice: Pseudorandom.integer(1e9, 100e9),

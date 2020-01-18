@@ -4,7 +4,7 @@ This package allows you to generate boilerplate TypeScript code and configs for 
 
 ## Installation
 
-`yarn add -g @0x/contracts-gen`
+`yarn add -g @powerchain/contracts-gen`
 
 ## Usage
 
@@ -54,13 +54,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/contracts-gen yarn build
+PKG=@powerchain/contracts-gen yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/contracts-gen yarn watch
+PKG=@powerchain/contracts-gen yarn watch
 ```
 
 ### Clean

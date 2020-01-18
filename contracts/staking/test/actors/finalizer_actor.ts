@@ -1,5 +1,5 @@
-import { constants, expect } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+import {constants, expect} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 
 import {
@@ -12,9 +12,9 @@ import {
     RewardBalanceByPoolId,
     RewardByPoolId,
 } from '../../src/types';
-import { StakingApiWrapper } from '../utils/api_wrapper';
+import {StakingApiWrapper} from '../utils/api_wrapper';
 
-import { BaseActor } from './base_actor';
+import {BaseActor} from './base_actor';
 
 const { PPM_100_PERCENT } = constants;
 

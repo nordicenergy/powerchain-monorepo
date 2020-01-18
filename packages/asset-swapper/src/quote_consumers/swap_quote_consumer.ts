@@ -1,9 +1,9 @@
-import { ContractAddresses, getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
-import { providerUtils } from '@0x/utils';
-import { SupportedProvider, ZeroExProvider } from '@0x/web3-wrapper';
+import {ContractAddresses, getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
+import {providerUtils} from '@powerchain/utils';
+import {SupportedProvider, ZeroExProvider} from '@powerchain/web3-wrapper';
 import * as _ from 'lodash';
 
-import { constants } from '../constants';
+import {constants} from '../constants';
 import {
     CalldataInfo,
     ExtensionContractType,
@@ -14,11 +14,11 @@ import {
     SwapQuoteExecutionOpts,
     SwapQuoteGetOutputOpts,
 } from '../types';
-import { assert } from '../utils/assert';
-import { swapQuoteConsumerUtils } from '../utils/swap_quote_consumer_utils';
+import {assert} from '../utils/assert';
+import {swapQuoteConsumerUtils} from '../utils/swap_quote_consumer_utils';
 
-import { ExchangeSwapQuoteConsumer } from './exchange_swap_quote_consumer';
-import { ForwarderSwapQuoteConsumer } from './forwarder_swap_quote_consumer';
+import {ExchangeSwapQuoteConsumer} from './exchange_swap_quote_consumer';
+import {ForwarderSwapQuoteConsumer} from './forwarder_swap_quote_consumer';
 
 export class SwapQuoteConsumer implements SwapQuoteConsumerBase {
     public readonly provider: ZeroExProvider;
@@ -48,7 +48,7 @@ export class SwapQuoteConsumer implements SwapQuoteConsumerBase {
     }
 
     /**
-     * Given a SwapQuote, returns 'CalldataInfo' for a 0x extesion or exchange call. See type definition of CalldataInfo for more information.
+     * Given a SwapQuote, returns 'CalldataInfo' for a powerchain extesion or exchange call. See type definition of CalldataInfo for more information.
      * @param quote An object that conforms to SwapQuote. See type definition for more information.
      * @param opts  Options for getting SmartContractParams. See type definition for more information.
      */
@@ -62,7 +62,7 @@ export class SwapQuoteConsumer implements SwapQuoteConsumerBase {
     }
 
     /**
-     * Given a SwapQuote and desired rate (in takerAsset), attempt to execute the swap with 0x extension or exchange contract.
+     * Given a SwapQuote and desired rate (in takerAsset), attempt to execute the swap with powerchain extension or exchange contract.
      * @param quote An object that conforms to SwapQuote. See type definition for more information.
      * @param opts  Options for getting CalldataInfo. See type definition for more information.
      */
@@ -76,7 +76,7 @@ export class SwapQuoteConsumer implements SwapQuoteConsumerBase {
     }
 
     /**
-     * Given a SwapQuote, returns optimal 0x protocol interface (extension or no extension) to perform the swap.
+     * Given a SwapQuote, returns optimal powerchain protocol interface (extension or no extension) to perform the swap.
      * @param quote An object that conforms to SwapQuote. See type definition for more information.
      * @param opts  Options for getting optimal exteion contract to fill quote. See type definition for more information.
      */

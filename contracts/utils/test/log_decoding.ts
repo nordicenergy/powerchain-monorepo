@@ -1,11 +1,11 @@
-import { chaiSetup, provider, txDefaults, web3Wrapper } from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { BigNumber } from '@0x/utils';
+import {chaiSetup, provider, txDefaults, web3Wrapper} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
-import { DecodedLogArgs, LogWithDecodedArgs } from 'ethereum-types';
+import {DecodedLogArgs, LogWithDecodedArgs} from 'ethereum-types';
 
-import { artifacts } from './artifacts';
-import { TestLogDecodingContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestLogDecodingContract} from './wrappers';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -17,7 +17,7 @@ describe('TestLogDecoding', () => {
     let testLogDecodingDeployedWithoutDependencies: TestLogDecodingContract;
     const expectedEvent = {
         foo: new BigNumber(256),
-        bar: '0x1234',
+        bar: 'powerchain1234',
         car: '4321',
     };
     const expectedDownstreamEvent = {
@@ -27,13 +27,13 @@ describe('TestLogDecoding', () => {
     const emptyDependencyList = {};
 
     before(async () => {
-        testLogDecodingDeployedWithoutDependencies = await TestLogDecodingContract.deployFrom0xArtifactAsync(
+        testLogDecodingDeployedWithoutDependencies = await TestLogDecodingContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLogDecoding,
             provider,
             txDefaults,
             emptyDependencyList,
         );
-        testLogDecodingWithDependencies = await TestLogDecodingContract.deployFrom0xArtifactAsync(
+        testLogDecodingWithDependencies = await TestLogDecodingContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLogDecoding,
             provider,
             txDefaults,

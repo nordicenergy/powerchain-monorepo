@@ -5,9 +5,9 @@ import {
     expect,
     testCombinatoriallyWithReferenceFunc,
     uint256Values,
-} from '@0x/contracts-test-utils';
-import { SafeMathRevertErrors } from '@0x/contracts-utils';
-import { BigNumber, LibMathRevertErrors } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {SafeMathRevertErrors} from '@powerchain/contracts-utils';
+import {BigNumber, LibMathRevertErrors} from '@powerchain/utils';
 
 import {
     getPartialAmountCeil,
@@ -18,15 +18,15 @@ import {
     safeGetPartialAmountFloor,
 } from '../src/reference_functions';
 
-import { artifacts } from './artifacts';
-import { TestLibMathContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestLibMathContract} from './wrappers';
 
 blockchainTests('LibMath', env => {
     const { ONE_ETHER, MAX_UINT256, MAX_UINT256_ROOT, ZERO_AMOUNT } = constants;
     let libsContract: TestLibMathContract;
 
     before(async () => {
-        libsContract = await TestLibMathContract.deployFrom0xArtifactAsync(
+        libsContract = await TestLibMathContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibMath,
             env.provider,
             env.txDefaults,

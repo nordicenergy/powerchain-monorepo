@@ -1,23 +1,23 @@
-import { assert } from '@0x/assert';
-import { ContractAddresses } from '@0x/contract-addresses';
-import { AbiDecoder } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { SupportedProvider } from 'ethereum-types';
+import {assert} from '@powerchain/assert';
+import {ContractAddresses} from '@powerchain/contract-addresses';
+import {AbiDecoder} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {SupportedProvider} from 'ethereum-types';
 
-import { ContractWrappersConfigSchema } from './contract_wrappers_config_schema';
-import { CoordinatorContract } from './generated-wrappers/coordinator';
-import { DevUtilsContract } from './generated-wrappers/dev_utils';
-import { ERC20TokenContract } from './generated-wrappers/erc20_token';
-import { ERC721TokenContract } from './generated-wrappers/erc721_token';
-import { ExchangeContract } from './generated-wrappers/exchange';
-import { ForwarderContract } from './generated-wrappers/forwarder';
-import { StakingContract } from './generated-wrappers/staking';
-import { WETH9Contract } from './generated-wrappers/weth9';
-import { ContractWrappersConfig } from './types';
-import { _getDefaultContractAddresses } from './utils/contract_addresses';
+import {ContractWrappersConfigSchema} from './contract_wrappers_config_schema';
+import {CoordinatorContract} from './generated-wrappers/coordinator';
+import {DevUtilsContract} from './generated-wrappers/dev_utils';
+import {ERC20TokenContract} from './generated-wrappers/erc20_token';
+import {ERC721TokenContract} from './generated-wrappers/erc721_token';
+import {ExchangeContract} from './generated-wrappers/exchange';
+import {ForwarderContract} from './generated-wrappers/forwarder';
+import {StakingContract} from './generated-wrappers/staking';
+import {WETH9Contract} from './generated-wrappers/weth9';
+import {ContractWrappersConfig} from './types';
+import {_getDefaultContractAddresses} from './utils/contract_addresses';
 
 /**
- * The ContractWrappers class contains smart contract wrappers helpful when building on 0x protocol.
+ * The ContractWrappers class contains smart contract wrappers helpful when building on powerchain protocol.
  */
 export class ContractWrappers {
     /**
@@ -25,7 +25,7 @@ export class ContractWrappers {
      */
     public contractAddresses: ContractAddresses;
     /**
-     * An instance of the ExchangeContract class containing methods for interacting with the 0x Exchange smart contract.
+     * An instance of the ExchangeContract class containing methods for interacting with the powerchain Exchange smart contract.
      */
     public exchange: ExchangeContract;
     /**

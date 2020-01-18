@@ -20,9 +20,9 @@ import * as Staking from '../artifacts/Staking.json';
 import * as StakingProxy from '../artifacts/StakingProxy.json';
 import * as StaticCallProxy from '../artifacts/StaticCallProxy.json';
 import * as WETH9 from '../artifacts/WETH9.json';
-import * as ZRXToken from '../artifacts/ZRXToken.json';
+import * as NETToken from '../artifacts/NETToken.json';
 import * as ERC20BridgeProxy from '../artifacts/ERC20BridgeProxy.json';
-import * as ZrxVault from '../artifacts/ZrxVault.json';
+import * as NetVault from '../artifacts/NetVault.json';
 import * as IERC20BridgeSampler from '../artifacts/IERC20BridgeSampler.json';
 
 export {
@@ -45,11 +45,11 @@ export {
     MultiAssetProxy,
     StaticCallProxy,
     WETH9,
-    ZRXToken,
+    NETToken,
     Coordinator,
     CoordinatorRegistry,
     Staking,
     StakingProxy,
-    ZrxVault,
+    NetVault,
     IERC20BridgeSampler,
 };

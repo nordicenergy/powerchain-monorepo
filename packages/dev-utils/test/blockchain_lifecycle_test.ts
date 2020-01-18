@@ -1,8 +1,8 @@
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as chai from 'chai';
 import 'mocha';
 
-import { BlockchainLifecycle, web3Factory } from '../src';
+import {BlockchainLifecycle, web3Factory} from '../src';
 
 const expect = chai.expect;
 

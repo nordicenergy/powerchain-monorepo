@@ -1,5 +1,5 @@
-import { ContractAddresses } from '@0x/contract-addresses';
-import { BigNumber } from '@0x/utils';
+import {ContractAddresses} from '@powerchain/contract-addresses';
+import {BigNumber} from '@powerchain/utils';
 
 export enum ForwarderError {
     CompleteFillFailed = 'COMPLETE_FILL_FAILED',
@@ -54,10 +54,10 @@ export interface TraderInfo {
     makerAllowance: BigNumber;
     takerBalance: BigNumber;
     takerAllowance: BigNumber;
-    makerZrxBalance: BigNumber;
-    makerZrxAllowance: BigNumber;
-    takerZrxBalance: BigNumber;
-    takerZrxAllowance: BigNumber;
+    makerNetBalance: BigNumber;
+    makerNetAllowance: BigNumber;
+    takerNetBalance: BigNumber;
+    takerNetAllowance: BigNumber;
 }
 
 export interface OrderAndTraderInfo {

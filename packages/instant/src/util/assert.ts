@@ -1,11 +1,11 @@
-import { assert as sharedAssert } from '@0x/assert';
-import { schemas } from '@0x/json-schemas';
-import { AssetProxyId, ObjectMap, SignedOrder } from '@0x/types';
+import {assert as sharedAssert} from '@powerchain/assert';
+import {schemas} from '@powerchain/json-schemas';
+import {AssetProxyId, ObjectMap, SignedOrder} from '@powerchain/types';
 import * as _ from 'lodash';
 
-import { AffiliateInfo, AssetMetaData } from '../types';
+import {AffiliateInfo, AssetMetaData} from '../types';
 
-import { decodeAssetProxyId } from './asset_data_encoder';
+import {decodeAssetProxyId} from './asset_data_encoder';
 
 export const assert = {
     ...sharedAssert,

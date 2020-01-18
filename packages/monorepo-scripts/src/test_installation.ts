@@ -4,20 +4,20 @@ import * as fs from 'fs';
 import * as _ from 'lodash';
 import * as mkdirp from 'mkdirp';
 import * as path from 'path';
-import { exec as execAsync } from 'promisify-child-process';
+import {exec as execAsync} from 'promisify-child-process';
 import * as rimraf from 'rimraf';
-import { promisify } from 'util';
+import {promisify} from 'util';
 
-import { Changelog, Package } from './types';
-import { utils } from './utils/utils';
+import {Changelog, Package} from './types';
+import {utils} from './utils/utils';
 
 // Packages might not be runnable if they are command-line tools or only run in browsers.
-const UNRUNNABLE_PACKAGES = ['@0x/abi-gen'];
-// HACK(fabio): Temporarily adding '@0x/contracts-coordinator', '@0x/contracts-extensions' since they
+const UNRUNNABLE_PACKAGES = ['@powerchain/abi-gen'];
+// HACK(fabio): Temporarily adding '@powerchain/contracts-coordinator', '@powerchain/contracts-extensions' since they
 // aren't working in the V3 branch yet.
-// TODO(dorothy-zbornak): Remove '@0x/contracts-coordinator', '@0x/contracts-extensions' after updating
+// TODO(dorothy-zbornak): Remove '@powerchain/contracts-coordinator', '@powerchain/contracts-extensions' after updating
 // these packages for 3.0.
-const UNINSTALLABLE_PACKAGES = ['@0x/contracts-coordinator', '@0x/contracts-extensions'];
+const UNINSTALLABLE_PACKAGES = ['@powerchain/contracts-coordinator', '@powerchain/contracts-extensions'];
 
 const mkdirpAsync = promisify(mkdirp);
 const rimrafAsync = promisify(rimraf);
@@ -130,7 +130,7 @@ async function testInstallPackageAsync(
     await writeFileAsync(indexFilePath, `import * as Package from '${packageName}';\nconsole.log(Package);\n`);
     const tsConfig = {
         compilerOptions: {
-            typeRoots: ['node_modules/@0x/typescript-typings/types', 'node_modules/@types'],
+            typeRoots: ['node_modules/@powerchain/typescript-typings/types', 'node_modules/@types'],
             module: 'commonjs',
             target: 'es5',
             lib: ['es2017', 'dom'],

@@ -1,8 +1,8 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { AbstractBalanceAndProxyAllowanceFetcher } from '../abstract/abstract_balance_and_proxy_allowance_fetcher';
-import { AbstractBalanceAndProxyAllowanceLazyStore } from '../abstract/abstract_balance_and_proxy_allowance_lazy_store';
+import {AbstractBalanceAndProxyAllowanceFetcher} from '../abstract/abstract_balance_and_proxy_allowance_fetcher';
+import {AbstractBalanceAndProxyAllowanceLazyStore} from '../abstract/abstract_balance_and_proxy_allowance_lazy_store';
 
 /**
  * Copy on read store for balances/proxyAllowances of tokens/accounts
@@ -67,7 +67,7 @@ export class BalanceAndProxyAllowanceLazyStore implements AbstractBalanceAndProx
         }
     }
     /**
-     * Get the 0x asset proxy allowance
+     * Get the powerchain asset proxy allowance
      * @param assetData AssetData of interest
      * @param userAddress Ethereum address of interest
      */
@@ -86,7 +86,7 @@ export class BalanceAndProxyAllowanceLazyStore implements AbstractBalanceAndProx
         return cachedProxyAllowance;
     }
     /**
-     * Set the 0x asset proxy allowance
+     * Set the powerchain asset proxy allowance
      * @param assetData AssetData of interest
      * @param userAddress Ethereum address of interest
      */
@@ -97,7 +97,7 @@ export class BalanceAndProxyAllowanceLazyStore implements AbstractBalanceAndProx
         this._proxyAllowance[assetData][userAddress] = proxyAllowance;
     }
     /**
-     * Clear the 0x asset proxy allowance
+     * Clear the powerchain asset proxy allowance
      * @param assetData AssetData of interest
      * @param userAddress Ethereum address of interest
      */

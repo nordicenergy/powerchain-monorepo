@@ -93,7 +93,7 @@ class CleanCommandExtension(clean):
         rmtree(".mypy_cache", ignore_errors=True)
         rmtree(".tox", ignore_errors=True)
         rmtree(".pytest_cache", ignore_errors=True)
-        rmtree("src/0x_contract_artifacts.egg-info", ignore_errors=True)
+        rmtree("src/powerchain_contract_artifacts.egg-info", ignore_errors=True)
 
 
 class TestPublishCommand(distutils.command.build_py.build_py):
@@ -128,7 +128,7 @@ class PublishDocsCommand(distutils.command.build_py.build_py):
 
     description = (
         "Publish docs to "
-        + "http://0x-contract-artifacts-py.s3-website-us-east-1.amazonaws.com/"
+        + "http://powerchain-contract-artifacts-py.s3-website-us-east-1.amazonaws.com/"
     )
 
     def run(self):
@@ -152,13 +152,13 @@ with open("README.md", "r") as file_handle:
 
 
 setup(
-    name="0x-contract-artifacts",
+    name="powerchain-contract-artifacts",
     version="3.0.0",
-    description="0x smart contract compilation artifacts",
+    description="powerchain smart contract compilation artifacts",
     long_description=README_MD,
     long_description_content_type="text/markdown",
     url=(
-        "https://github.com/0xproject/0x-monorepo/tree/development"
+        "https://github.com/powerchainproject/powerchain-monorepo/tree/development"
         + "/python-packages/contract_artifacts"
     ),
     author="F. Eugene Aumson",
@@ -195,7 +195,7 @@ setup(
     package_dir={"": "src"},
     license="Apache 2.0",
     keywords=(
-        "ethereum cryptocurrency 0x decentralized blockchain dex exchange"
+        "ethereum cryptocurrency powerchain decentralized blockchain dex exchange"
     ),
     namespace_packages=["zero_ex"],
     packages=find_packages("src"),

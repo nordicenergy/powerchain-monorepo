@@ -1,15 +1,15 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import * as dirtyChai from 'dirty-chai';
-import forEach = require('lodash.foreach');
 import 'mocha';
 
-import { schemas, SchemaValidator } from '../src/index';
+import {schemas, SchemaValidator} from '../src/index';
+import forEach = require('lodash.foreach');
 
 chai.config.includeStack = true;
 chai.use(dirtyChai);
 const expect = chai.expect;
-const NULL_ADDRESS = '0x0000000000000000000000000000000000000000';
+const NULL_ADDRESS = 'powerchain0000000000000000000000000000000000000000';
 const CHAIN_ID = 1337;
 const {
     numberSchema,
@@ -88,22 +88,22 @@ describe('Schema', () => {
     });
     describe('#addressSchema', () => {
         it('should validate valid addresses', () => {
-            const testCases = ['0x8b0292b11a196601ed2ce54b665cafeca0347d42', NULL_ADDRESS];
+            const testCases = ['powerchain8b0292b11a196601ed2ce54b665cafeca0347d42', NULL_ADDRESS];
             validateAgainstSchema(testCases, addressSchema);
         });
         it('should fail for invalid addresses', () => {
-            const testCases = ['0x', '0', '0x00', '0xzzzzzzB11a196601eD2ce54B665CaFEca0347D42'];
+            const testCases = ['powerchain', '0', 'powerchain00', 'powerchainzzzzzzB11a196601eD2ce54B665CaFEca0347D42'];
             const shouldFail = true;
             validateAgainstSchema(testCases, addressSchema, shouldFail);
         });
     });
     describe('#hexSchema', () => {
         it('should validate valid hex string', () => {
-            const testCases = ['0x8b0292b11a196601ed2ce54b665cafeca0347d42', NULL_ADDRESS];
+            const testCases = ['powerchain8b0292b11a196601ed2ce54b665cafeca0347d42', NULL_ADDRESS];
             validateAgainstSchema(testCases, hexSchema);
         });
         it('should fail for invalid hex string', () => {
-            const testCases = ['0', '0xzzzzzzB11a196601eD2ce54B665CaFEca0347D42'];
+            const testCases = ['0', 'powerchainzzzzzzB11a196601eD2ce54B665CaFEca0347D42'];
             const shouldFail = true;
             validateAgainstSchema(testCases, hexSchema, shouldFail);
         });
@@ -111,16 +111,16 @@ describe('Schema', () => {
     describe('#orderHashSchema', () => {
         it('should validate valid order hash', () => {
             const testCases = [
-                '0x61a3ed31B43c8780e905a260a35faefEc527be7516aa11c0256729b5b351bc33',
-                '0x40349190569279751135161d22529dc25add4f6069af05be04cacbda2ace2254',
+                'powerchain61a3ed31B43c8780e905a260a35faefEc527be7516aa11c0256729b5b351bc33',
+                'powerchain40349190569279751135161d22529dc25add4f6069af05be04cacbda2ace2254',
             ];
             validateAgainstSchema(testCases, orderHashSchema);
         });
         it('should fail for invalid order hash', () => {
             const testCases = [
                 {},
-                '0x',
-                '0x8b0292B11a196601eD2ce54B665CaFEca0347D42',
+                'powerchain',
+                'powerchain8b0292B11a196601eD2ce54B665CaFEca0347D42',
                 '61a3ed31B43c8780e905a260a35faefEc527be7516aa11c0256729b5b351bc33',
             ];
             const shouldFail = true;
@@ -153,10 +153,10 @@ describe('Schema', () => {
     describe('#tokenSchema', () => {
         const token = {
             name: 'Zero Ex',
-            symbol: 'ZRX',
+            symbol: 'NET',
             decimals: 100500,
-            address: '0x8b0292b11a196601ed2ce54b665cafeca0347d42',
-            url: 'https://0xproject.com',
+            address: 'powerchain8b0292b11a196601ed2ce54b665cafeca0347d42',
+            url: 'https://powerchainproject.com',
         };
         it('should validate valid token', () => {
             const testCases = [token];
@@ -257,7 +257,7 @@ describe('Schema', () => {
             const signedOrder = {
                 ...order,
                 signature:
-                    '0x031b61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351bc3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace2254',
+                    'powerchain031b61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351bc3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace2254',
             };
             describe('#signedOrdersSchema', () => {
                 it('should validate valid signed orders', () => {
@@ -434,9 +434,9 @@ describe('Schema', () => {
                     it('should validate valid fees payloads', () => {
                         const testCases = [
                             {
-                                exchangeAddress: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
-                                makerAddress: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
-                                takerAddress: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
+                                exchangeAddress: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
+                                makerAddress: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
+                                takerAddress: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
                                 makerAssetData: NULL_ADDRESS,
                                 takerAssetData: NULL_ADDRESS,
                                 makerAssetAmount: '10000000000000000000',
@@ -447,7 +447,7 @@ describe('Schema', () => {
                         validateAgainstSchema(testCases, relayerApiOrderConfigPayloadSchema);
                     });
                     it('should fail for invalid fees payloads', () => {
-                        const checksummedAddress = '0xA2b31daCf30a9C50ca473337c01d8A201ae33e32';
+                        const checksummedAddress = 'powerchainA2b31daCf30a9C50ca473337c01d8A201ae33e32';
                         const testCases = [
                             {},
                             {
@@ -476,16 +476,16 @@ describe('Schema', () => {
                             {
                                 makerFee: '10000000000000000',
                                 takerFee: '30000000000000000',
-                                feeRecipientAddress: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
-                                senderAddress: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
-                                makerFeeAssetData: '0xf47261b04c32345ced77393b3530b1eed0f346429d',
-                                takerFeeAssetData: '0xf47261b04c32345ced77393b3530b1eed0f346429d',
+                                feeRecipientAddress: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
+                                senderAddress: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
+                                makerFeeAssetData: 'powerchainf47261b04c32345ced77393b3530b1eed0f346429d',
+                                takerFeeAssetData: 'powerchainf47261b04c32345ced77393b3530b1eed0f346429d',
                             },
                         ];
                         validateAgainstSchema(testCases, relayerApiOrderConfigResponseSchema);
                     });
                     it('should fail for invalid fees responses', () => {
-                        const checksummedAddress = '0xA2b31daCf30a9C50ca473337c01d8A201ae33e32';
+                        const checksummedAddress = 'powerchainA2b31daCf30a9C50ca473337c01d8A201ae33e32';
                         const testCases = [
                             {},
                             {
@@ -515,13 +515,13 @@ describe('Schema', () => {
                                 records: [
                                     {
                                         assetDataA: {
-                                            assetData: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
+                                            assetData: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
                                             minAmount: '0',
                                             maxAmount: '10000000000000000000',
                                             precision: 5,
                                         },
                                         assetDataB: {
-                                            assetData: '0xef7fff64389b814a946f3e92105513705ca6b990',
+                                            assetData: 'powerchainef7fff64389b814a946f3e92105513705ca6b990',
                                             minAmount: '0',
                                             maxAmount: '50000000000000000000',
                                             precision: 5,
@@ -534,10 +534,10 @@ describe('Schema', () => {
                                 records: [
                                     {
                                         assetDataA: {
-                                            assetData: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
+                                            assetData: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
                                         },
                                         assetDataB: {
-                                            assetData: '0xef7fff64389b814a946f3e92105513705ca6b990',
+                                            assetData: 'powerchainef7fff64389b814a946f3e92105513705ca6b990',
                                         },
                                     },
                                 ],
@@ -552,13 +552,13 @@ describe('Schema', () => {
                                 records: [
                                     {
                                         assetDataA: {
-                                            assetData: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
+                                            assetData: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
                                             minAmount: '0',
                                             maxAmount: '10000000000000000000',
                                             precision: 5,
                                         },
                                         assetDataC: {
-                                            assetData: '0xef7fff64389b814a946f3e92105513705ca6b990',
+                                            assetData: 'powerchainef7fff64389b814a946f3e92105513705ca6b990',
                                             minAmount: '0',
                                             maxAmount: '50000000000000000000',
                                             precision: 5,
@@ -570,13 +570,13 @@ describe('Schema', () => {
                                 records: [
                                     {
                                         assetDataA: {
-                                            assetData: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
+                                            assetData: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
                                             minAmount: '0',
                                             maxAmount: '10000000000000000000',
                                             precision: 5,
                                         },
                                         assetDataB: {
-                                            assetData: '0xef7fff64389b814a946f3e92105513705ca6b990',
+                                            assetData: 'powerchainef7fff64389b814a946f3e92105513705ca6b990',
                                             minAmount: '0',
                                             maxAmount: '50000000000000000000',
                                             precision: 5,
@@ -716,8 +716,8 @@ describe('Schema', () => {
                                 channel: 'orders',
                                 requestId: 'randomId',
                                 payload: {
-                                    makerAssetProxyId: '0x02571792',
-                                    takerAssetProxyId: '0xf47261b0',
+                                    makerAssetProxyId: 'powerchain02571792',
+                                    takerAssetProxyId: 'powerchainf47261b0',
                                 },
                             },
                             {
@@ -730,7 +730,7 @@ describe('Schema', () => {
                         validateAgainstSchema(testCases, relayerApiOrdersChannelSubscribeSchema);
                     });
                     it('should fail for invalid orders channel websocket subscribe message', () => {
-                        const bogusAddress = '0xz2b31daCf30a9C50ca473337c01d8A201ae33e32';
+                        const bogusAddress = 'powerchainz2b31daCf30a9C50ca473337c01d8A201ae33e32';
                         const testCases = [
                             {
                                 type: 'subscribe',
@@ -741,8 +741,8 @@ describe('Schema', () => {
                                 channel: 'orders',
                                 requestId: 'randomId',
                                 payload: {
-                                    makerAssetProxyId: '0x02571792',
-                                    takerAssetProxyId: '0xf47261b0',
+                                    makerAssetProxyId: 'powerchain02571792',
+                                    takerAssetProxyId: 'powerchainf47261b0',
                                     makerAssetAddress: bogusAddress,
                                 },
                             },

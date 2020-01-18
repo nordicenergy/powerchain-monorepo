@@ -1,4 +1,4 @@
-import { APIOrder, OrdersChannelSubscriptionOpts } from '@0x/types';
+import {APIOrder, OrdersChannelSubscriptionOpts} from '@powerchain/types';
 
 export interface OrdersChannel {
     subscribe: (subscriptionOpts: OrdersChannelSubscriptionOpts) => void;

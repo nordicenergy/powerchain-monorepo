@@ -5,7 +5,7 @@ Edit the package's CHANGELOG.json file only.
 
 CHANGELOG
 
-## v3.0.3 - _January 6, 2020_
+## v1.0.1 - _January 6, 2020_
 
     * Ignore zero sample results from the sampler contract. (#2406)
     * Increase default `runLimit` from `1024` to `4096`. (#2406)
@@ -25,7 +25,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _December 2, 2019_
+## v1.0.0 - _December 2, 2019_
 
     * Refactor of logic for marketBuy/marketSell order pruning and selecting, introduced protocol fees, and refactored types used by the package (#2272)
     * Incorporate paying protocol fees. (#2350)
@@ -55,7 +55,7 @@ CHANGELOG
 
 ## v2.0.0 - _September 17, 2019_
 
-    * AssetSwapper to use `@0x/orderbook` to fetch and subscribe to order updates (#2056)
+    * AssetSwapper to use `@powerchain/orderbook` to fetch and subscribe to order updates (#2056)
 
 ## v1.0.3 - _September 3, 2019_
 

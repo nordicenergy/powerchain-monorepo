@@ -1,4 +1,4 @@
-import { DoneCallback } from '@0x/types';
+import {DoneCallback} from '@powerchain/types';
 
 export const reportCallbackErrors = (done: DoneCallback) => {
     return (f: (...args: any[]) => void) => {

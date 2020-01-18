@@ -1,5 +1,5 @@
-import { assert } from '@0x/assert';
-import { schemas } from '@0x/json-schemas';
+import {assert} from '@powerchain/assert';
+import {schemas} from '@powerchain/json-schemas';
 import {
     APIOrder,
     AssetPairsItem,
@@ -7,10 +7,10 @@ import {
     OrderbookResponse,
     OrderConfigResponse,
     OrdersResponse,
-} from '@0x/types';
+} from '@powerchain/types';
 
-import { orderParsingUtils } from './order_parsing_utils';
-import { typeConverters } from './type_converters';
+import {orderParsingUtils} from './order_parsing_utils';
+import {typeConverters} from './type_converters';
 
 export const relayerResponseJsonParsers = {
     parseAssetDataPairsJson(json: any): AssetPairsResponse {

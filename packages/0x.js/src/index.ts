@@ -1,6 +1,6 @@
-export { getContractAddressesForChainOrThrow, ChainId, ContractAddresses } from '@0x/contract-addresses';
+export { getContractAddressesForChainOrThrow, ChainId, ContractAddresses } from '@powerchain/contract-addresses';
 
-export { signatureUtils, generatePseudoRandomSalt, assetDataUtils } from '@0x/order-utils';
+export { signatureUtils, generatePseudoRandomSalt, assetDataUtils } from '@powerchain/order-utils';
 
 export {
     ExchangeEventArgs,
@@ -34,7 +34,7 @@ export {
     ExchangeProtocolFeeCollectorAddressEventArgs,
     ExchangeProtocolFeeMultiplierEventArgs,
     ExchangeTransactionExecutionEventArgs,
-} from '@0x/contract-wrappers';
+} from '@powerchain/contract-wrappers';
 
 export {
     ContractEvent,
@@ -43,7 +43,7 @@ export {
     ContractFunctionObj,
     ContractTxFunctionObj,
     SubscriptionErrors,
-} from '@0x/base-contract';
+} from '@powerchain/base-contract';
 
 export import Web3ProviderEngine = require('web3-provider-engine');
 
@@ -53,9 +53,9 @@ export {
     JSONRPCRequestPayloadWithMethod,
     ErrorCallback,
     MetamaskSubprovider,
-} from '@0x/subproviders';
+} from '@powerchain/subproviders';
 
-export { DecodedCalldata, BigNumber } from '@0x/utils';
+export { DecodedCalldata, BigNumber } from '@powerchain/utils';
 
 export {
     Order,
@@ -82,7 +82,7 @@ export {
     EventCallback,
     IndexedFilterValues,
     DecodedLogEvent,
-} from '@0x/types';
+} from '@powerchain/types';
 
 export {
     BlockRange,

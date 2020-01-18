@@ -1,9 +1,9 @@
-import { getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
-import { ContractWrappers } from '@0x/contract-wrappers';
-import { Web3ProviderEngine } from '@0x/dev-utils';
+import {getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
+import {ContractWrappers} from '@powerchain/contract-wrappers';
+import {Web3ProviderEngine} from '@powerchain/dev-utils';
 
 const chainId = 1;
-export const dydxAccountOwner = '0xeb58c2caa96f39626dcceb74fdbb7a9a8b54ec18';
+export const dydxAccountOwner = 'powerchaineb58c2caa96f39626dcceb74fdbb7a9a8b54ec18';
 export const contractAddresses = getContractAddressesForChainOrThrow(chainId);
 
 /**

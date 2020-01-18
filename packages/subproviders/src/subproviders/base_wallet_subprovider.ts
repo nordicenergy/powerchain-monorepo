@@ -1,11 +1,10 @@
-import { assert } from '@0x/assert';
-import { addressUtils } from '@0x/utils';
-import { JSONRPCRequestPayload, JSONRPCResponsePayload } from 'ethereum-types';
-import * as _ from 'lodash';
+import {assert} from '@powerchain/assert';
+import {addressUtils} from '@powerchain/utils';
+import {JSONRPCRequestPayload, JSONRPCResponsePayload} from 'ethereum-types';
 
-import { Callback, ErrorCallback, PartialTxParams, WalletSubproviderErrors } from '../types';
+import {Callback, ErrorCallback, PartialTxParams, WalletSubproviderErrors} from '../types';
 
-import { Subprovider } from './subprovider';
+import {Subprovider} from './subprovider';
 
 export abstract class BaseWalletSubprovider extends Subprovider {
     protected static _validateTxParams(txParams: PartialTxParams): void {

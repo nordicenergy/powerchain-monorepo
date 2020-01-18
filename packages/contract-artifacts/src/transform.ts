@@ -1,4 +1,4 @@
-import { deleteNestedProperty, logUtils } from '@0x/utils';
+import {deleteNestedProperty, logUtils} from '@powerchain/utils';
 import * as fs from 'fs';
 
 export const REQUIRED_PROPERTIES: string[] = [

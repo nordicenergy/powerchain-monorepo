@@ -1,11 +1,10 @@
-import { OrdersChannelMessageTypes, OrdersChannelSubscriptionOpts } from '@0x/types';
-import * as _ from 'lodash';
-import { v4 as uuid } from 'uuid';
+import {OrdersChannelMessageTypes, OrdersChannelSubscriptionOpts} from '@powerchain/types';
+import {v4 as uuid} from 'uuid';
 import * as WebSocket from 'websocket';
 
-import { OrdersChannel, OrdersChannelHandler } from './types';
-import { assert } from './utils/assert';
-import { ordersChannelMessageParser } from './utils/orders_channel_message_parser';
+import {OrdersChannel, OrdersChannelHandler} from './types';
+import {assert} from './utils/assert';
+import {ordersChannelMessageParser} from './utils/orders_channel_message_parser';
 
 export interface OrdersChannelSubscriptionOptsMap {
     [key: string]: OrdersChannelSubscriptionOpts;

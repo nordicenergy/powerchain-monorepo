@@ -134,10 +134,10 @@ class RelayerApiOrderConfigResponseSchema(object):
                 "Invalid value for `fee_recipient_address`, must not be `None`"
             )  # noqa: E501
         if fee_recipient_address is not None and not re.search(
-            r"^0x[0-9a-f]{40}$", fee_recipient_address
+            r"^powerchain[0-9a-f]{40}$", fee_recipient_address
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `fee_recipient_address`, must be a follow pattern or equal to `/^0x[0-9a-f]{40}$/`"
+                r"Invalid value for `fee_recipient_address`, must be a follow pattern or equal to `/^powerchain[0-9a-f]{40}$/`"
             )  # noqa: E501
 
         self._fee_recipient_address = fee_recipient_address
@@ -165,10 +165,10 @@ class RelayerApiOrderConfigResponseSchema(object):
                 "Invalid value for `sender_address`, must not be `None`"
             )  # noqa: E501
         if sender_address is not None and not re.search(
-            r"^0x[0-9a-f]{40}$", sender_address
+            r"^powerchain[0-9a-f]{40}$", sender_address
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `sender_address`, must be a follow pattern or equal to `/^0x[0-9a-f]{40}$/`"
+                r"Invalid value for `sender_address`, must be a follow pattern or equal to `/^powerchain[0-9a-f]{40}$/`"
             )  # noqa: E501
 
         self._sender_address = sender_address

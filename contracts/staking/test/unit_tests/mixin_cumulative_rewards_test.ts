@@ -1,11 +1,10 @@
-import { blockchainTests, expect, toBaseUnitAmount } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import * as _ from 'lodash';
+import {blockchainTests, expect, toBaseUnitAmount} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { constants as stakingConstants } from '../../src/constants';
+import {constants as stakingConstants} from '../../src/constants';
 
-import { artifacts } from '../artifacts';
-import { TestMixinCumulativeRewardsContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {TestMixinCumulativeRewardsContract} from '../wrappers';
 
 blockchainTests.resets('MixinCumulativeRewards unit tests', env => {
     const ZERO = new BigNumber(0);
@@ -28,7 +27,7 @@ blockchainTests.resets('MixinCumulativeRewards unit tests', env => {
 
     before(async () => {
         // Deploy contracts
-        testContract = await TestMixinCumulativeRewardsContract.deployFrom0xArtifactAsync(
+        testContract = await TestMixinCumulativeRewardsContract.deployFrompowerchainArtifactAsync(
             artifacts.TestMixinCumulativeRewards,
             env.provider,
             env.txDefaults,
@@ -149,7 +148,7 @@ blockchainTests.resets('MixinCumulativeRewards unit tests', env => {
             expect(reward).to.bignumber.equal(expectedReward);
         };
 
-        it('Should successfully compute reward over a valid interval when staking non-zero ZRX', async () => {
+        it('Should successfully compute reward over a valid interval when staking non-zero NET', async () => {
             const amountToStake = toBaseUnitAmount(1);
             const epochOfFirstReward = new BigNumber(1);
             const epochOfSecondReward = new BigNumber(2);

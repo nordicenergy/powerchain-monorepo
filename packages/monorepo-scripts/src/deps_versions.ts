@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { PackageJSON, PackageJSONConfig } from '@0x/types';
+import {PackageJSON, PackageJSONConfig} from '@powerchain/types';
 import chalk from 'chalk';
-import { sync as globSync } from 'glob';
+import {sync as globSync} from 'glob';
 import * as path from 'path';
 
-import { utils } from './utils/utils';
+import {utils} from './utils/utils';
 
 interface Dependencies {
     [depName: string]: string;

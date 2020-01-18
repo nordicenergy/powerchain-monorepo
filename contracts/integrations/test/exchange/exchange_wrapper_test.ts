@@ -1,6 +1,6 @@
-import { DummyERC20TokenContract, ERC20TokenEvents, ERC20TokenTransferEventArgs } from '@0x/contracts-erc20';
-import { ExchangeRevertErrors, IExchangeEvents, IExchangeFillEventArgs } from '@0x/contracts-exchange';
-import { ReferenceFunctions } from '@0x/contracts-exchange-libs';
+import {DummyERC20TokenContract, ERC20TokenEvents, ERC20TokenTransferEventArgs} from '@powerchain/contracts-erc20';
+import {ExchangeRevertErrors, IExchangeEvents, IExchangeFillEventArgs} from '@powerchain/contracts-exchange';
+import {ReferenceFunctions} from '@powerchain/contracts-exchange-libs';
 import {
     blockchainTests,
     constants,
@@ -11,17 +11,16 @@ import {
     orderHashUtils,
     toBaseUnitAmount,
     verifyEvents,
-} from '@0x/contracts-test-utils';
-import { FillResults, OrderStatus, SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { TransactionReceiptWithDecodedLogs } from 'ethereum-types';
-import * as _ from 'lodash';
+} from '@powerchain/contracts-test-utils';
+import {FillResults, OrderStatus, SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { Actor } from '../framework/actors/base';
-import { Maker } from '../framework/actors/maker';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { LocalBalanceStore } from '../framework/balances/local_balance_store';
-import { DeploymentManager } from '../framework/deployment_manager';
+import {Actor} from '../framework/actors/base';
+import {Maker} from '../framework/actors/maker';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {LocalBalanceStore} from '../framework/balances/local_balance_store';
+import {DeploymentManager} from '../framework/deployment_manager';
 
 const { addFillResults, safeGetPartialAmountFloor } = ReferenceFunctions;
 
@@ -652,7 +651,7 @@ blockchainTests.resets('Exchange wrappers', env => {
             it('should not revert if an order is invalid and fill the remaining orders', async () => {
                 const invalidOrder: SignedOrder = {
                     ...signedOrders[0],
-                    signature: '0x00',
+                    signature: 'powerchain00',
                 };
 
                 const validOrders = signedOrders.slice(1);
@@ -836,7 +835,7 @@ blockchainTests.resets('Exchange wrappers', env => {
             it('should not revert if an invalid order is included (eth protocol fee)', async () => {
                 const takerAssetFillAmount = toBaseUnitAmount(new BigNumber(100000));
 
-                const invalidOrder = { ...signedOrders[0], signature: '0x00' };
+                const invalidOrder = { ...signedOrders[0], signature: 'powerchain00' };
                 const validOrders = signedOrders.slice(1);
 
                 const newOrdersWithValidity = [
@@ -856,7 +855,7 @@ blockchainTests.resets('Exchange wrappers', env => {
             it('should not revert if an invalid order is included (weth protocol fee)', async () => {
                 const takerAssetFillAmount = toBaseUnitAmount(new BigNumber(100000));
 
-                const invalidOrder = { ...signedOrders[0], signature: '0x00' };
+                const invalidOrder = { ...signedOrders[0], signature: 'powerchain00' };
                 const validOrders = signedOrders.slice(1);
 
                 const newOrdersWithValidity = [
@@ -1036,7 +1035,7 @@ blockchainTests.resets('Exchange wrappers', env => {
             it('should not revert if an invalid order is included (eth protocol fee)', async () => {
                 const makerAssetFillAmount = toBaseUnitAmount(new BigNumber(100000));
 
-                const invalidOrder = { ...signedOrders[0], signature: '0x00' };
+                const invalidOrder = { ...signedOrders[0], signature: 'powerchain00' };
                 const validOrders = signedOrders.slice(1);
 
                 const newOrdersWithValidity = [
@@ -1056,7 +1055,7 @@ blockchainTests.resets('Exchange wrappers', env => {
             it('should not revert if an invalid order is included (weth protocol fee)', async () => {
                 const makerAssetFillAmount = toBaseUnitAmount(new BigNumber(100000));
 
-                const invalidOrder = { ...signedOrders[0], signature: '0x00' };
+                const invalidOrder = { ...signedOrders[0], signature: 'powerchain00' };
                 const validOrders = signedOrders.slice(1);
 
                 const newOrdersWithValidity = [

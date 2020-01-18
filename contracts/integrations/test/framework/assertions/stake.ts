@@ -1,17 +1,17 @@
-import { increaseCurrentAndNextBalance, OwnerStakeByStatus, StakeStatus } from '@0x/contracts-staking';
-import { expect } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { TxData } from 'ethereum-types';
+import {increaseCurrentAndNextBalance, OwnerStakeByStatus, StakeStatus} from '@powerchain/contracts-staking';
+import {expect} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {TxData} from 'ethereum-types';
 
-import { LocalBalanceStore } from '../balances/local_balance_store';
-import { DeploymentManager } from '../deployment_manager';
-import { SimulationEnvironment } from '../simulation';
+import {LocalBalanceStore} from '../balances/local_balance_store';
+import {DeploymentManager} from '../deployment_manager';
+import {SimulationEnvironment} from '../simulation';
 
-import { FunctionAssertion, FunctionResult } from './function_assertion';
+import {FunctionAssertion, FunctionResult} from './function_assertion';
 
 /**
  * Returns a FunctionAssertion for `stake` which assumes valid input is provided. The
- * FunctionAssertion checks that the staker and zrxVault's balances of ZRX decrease and increase,
+ * FunctionAssertion checks that the staker and zrxVault's balances of NET decrease and increase,
  * respectively, by the input amount.
  */
 /* tslint:disable:no-unnecessary-type-assertion */
@@ -27,7 +27,7 @@ export function validStakeAssertion(
             const [amount] = args;
             const { balanceStore } = simulationEnvironment;
 
-            // Simulates the transfer of ZRX from staker to vault
+            // Simulates the transfer of NET from staker to vault
             const expectedBalances = LocalBalanceStore.create(balanceStore);
             expectedBalances.transferAsset(
                 txData.from as string,
@@ -49,7 +49,7 @@ export function validStakeAssertion(
             const [amount] = args;
             const { balanceStore, currentEpoch, globalStake } = simulationEnvironment;
 
-            // Checks that the ZRX transfer updated balances as expected.
+            // Checks that the NET transfer updated balances as expected.
             await balanceStore.updateErc20BalancesAsync();
             balanceStore.assertEquals(expectedBalances);
 

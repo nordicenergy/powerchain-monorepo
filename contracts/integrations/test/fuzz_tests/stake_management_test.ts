@@ -1,18 +1,18 @@
-import { blockchainTests } from '@0x/contracts-test-utils';
+import {blockchainTests} from '@powerchain/contracts-test-utils';
 import * as _ from 'lodash';
 
-import { Actor } from '../framework/actors/base';
-import { StakerOperator } from '../framework/actors/hybrids';
-import { PoolOperator } from '../framework/actors/pool_operator';
-import { Staker } from '../framework/actors/staker';
-import { filterActorsByRole } from '../framework/actors/utils';
-import { AssertionResult } from '../framework/assertions/function_assertion';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { DeploymentManager } from '../framework/deployment_manager';
-import { Simulation, SimulationEnvironment } from '../framework/simulation';
-import { Pseudorandom } from '../framework/utils/pseudorandom';
+import {Actor} from '../framework/actors/base';
+import {StakerOperator} from '../framework/actors/hybrids';
+import {PoolOperator} from '../framework/actors/pool_operator';
+import {Staker} from '../framework/actors/staker';
+import {filterActorsByRole} from '../framework/actors/utils';
+import {AssertionResult} from '../framework/assertions/function_assertion';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {DeploymentManager} from '../framework/deployment_manager';
+import {Simulation, SimulationEnvironment} from '../framework/simulation';
+import {Pseudorandom} from '../framework/utils/pseudorandom';
 
-import { PoolManagementSimulation } from './pool_management_test';
+import {PoolManagementSimulation} from './pool_management_test';
 
 export class StakeManagementSimulation extends Simulation {
     protected async *_assertionGenerator(): AsyncIterableIterator<AssertionResult | void> {
@@ -65,9 +65,9 @@ blockchainTests('Stake management fuzz test', env => {
         const balanceStore = new BlockchainBalanceStore(
             {
                 StakingProxy: deployment.staking.stakingProxy.address,
-                ZRXVault: deployment.staking.zrxVault.address,
+                NETVault: deployment.staking.zrxVault.address,
             },
-            { erc20: { ZRX: deployment.tokens.zrx } },
+            { erc20: { NET: deployment.tokens.zrx } },
         );
 
         const actors = [

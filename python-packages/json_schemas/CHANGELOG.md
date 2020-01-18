@@ -2,8 +2,8 @@
 
 ## 1.2.0 - 2019-12-03
 
--   Removed dev dependency on package `0x-contract-wrappers`
--   Migrated examples to using new version of `0x-contract-addresses`.
+-   Removed dev dependency on package `powerchain-contract-wrappers`
+-   Migrated examples to using new version of `powerchain-contract-addresses`.
 
 ## 1.1.0 - 2019-08-09
 

@@ -1,14 +1,14 @@
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { Callback, ErrorCallback, NextCallback, Subprovider, Web3ProviderEngine } from '@0x/subproviders';
-import { logUtils } from '@0x/utils';
-import { CallDataRPC, marshaller, Web3Wrapper } from '@0x/web3-wrapper';
-import { JSONRPCRequestPayload, TxData } from 'ethereum-types';
-import { utils } from 'ethers';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {Callback, ErrorCallback, NextCallback, Subprovider, Web3ProviderEngine} from '@powerchain/subproviders';
+import {logUtils} from '@powerchain/utils';
+import {CallDataRPC, marshaller, Web3Wrapper} from '@powerchain/web3-wrapper';
+import {JSONRPCRequestPayload, TxData} from 'ethereum-types';
+import {utils} from 'ethers';
 import * as _ from 'lodash';
-import { Lock } from 'semaphore-async-await';
+import {Lock} from 'semaphore-async-await';
 
-import { constants } from './constants';
-import { BlockParamLiteral } from './types';
+import {constants} from './constants';
+import {BlockParamLiteral} from './types';
 
 interface MaybeFakeTxData extends TxData {
     isFakeTransaction?: boolean;
@@ -162,7 +162,7 @@ export abstract class TraceCollectionSubprovider extends Subprovider {
             // And we don't want it to be executed within a snapshotting period
             await this._lock.acquire();
         }
-        const NULL_ADDRESS = '0x0';
+        const NULL_ADDRESS = 'powerchain0';
         if (err === null) {
             const toAddress =
                 txData.to === undefined || txData.to === NULL_ADDRESS ? constants.NEW_CONTRACT : txData.to;
@@ -199,7 +199,7 @@ export abstract class TraceCollectionSubprovider extends Subprovider {
         const blockchainLifecycle = new BlockchainLifecycle(this._web3Wrapper);
         await blockchainLifecycle.startAsync();
         const fakeTxData = {
-            gas: `0x${BLOCK_GAS_LIMIT.toString(16)}`, // tslint:disable-line:custom-no-magic-numbers
+            gas: `powerchain${BLOCK_GAS_LIMIT.toString(16)}`, // tslint:disable-line:custom-no-magic-numbers
             isFakeTransaction: true, // This transaction (and only it) is allowed to come through when the lock is locked
             ...callData,
             from: callData.from || this._defaultFromAddress,

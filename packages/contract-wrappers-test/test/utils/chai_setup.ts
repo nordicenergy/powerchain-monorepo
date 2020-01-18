@@ -1,1 +1,1 @@
-export { chaiSetup } from '@0x/dev-utils';
+export { chaiSetup } from '@powerchain/dev-utils';

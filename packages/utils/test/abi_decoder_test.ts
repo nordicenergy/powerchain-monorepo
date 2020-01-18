@@ -1,10 +1,10 @@
 import * as chai from 'chai';
-import { MethodAbi } from 'ethereum-types';
+import {MethodAbi} from 'ethereum-types';
 import 'mocha';
 
-import { AbiDecoder, AbiEncoder } from '../src';
+import {AbiDecoder, AbiEncoder} from '../src';
 
-import { chaiSetup } from './utils/chai_setup';
+import {chaiSetup} from './utils/chai_setup';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -32,7 +32,7 @@ describe('AbiDecoder', () => {
             stateMutability: 'pure',
         };
         const contractName = 'newContract';
-        const testAddress = '0x0001020304050607080900010203040506070809';
+        const testAddress = 'powerchain0001020304050607080900010203040506070809';
         const abiDecoder = new AbiDecoder([]);
         abiDecoder.addABI([abi], contractName);
         // Create some tx data

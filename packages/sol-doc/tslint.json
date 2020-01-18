@@ -1,3 +1,3 @@
 {
-    "extends": ["@0x/tslint-config"]
+    "extends": ["@powerchain/tslint-config"]
 }

@@ -1,25 +1,25 @@
-## @0x/sol-coverage
+## @powerchain/sol-coverage
 
 A Solidity code coverage tool.
 
-### Read the [Documentation](https://0x.org/docs/tools/sol-coverage).
+### Read the [Documentation](https://powerchain.org/docs/tools/sol-coverage).
 
 ## Installation
 
 ```bash
-yarn add @0x/sol-coverage
+yarn add @powerchain/sol-coverage
 ```
 
 **Import**
 
 ```javascript
-import { CoverageSubprovider } from '@0x/sol-coverage';
+import { CoverageSubprovider } from '@powerchain/sol-coverage';
 ```
 
 or
 
 ```javascript
-var CoverageSubprovider = require('@0x/sol-coverage').CoverageSubprovider;
+var CoverageSubprovider = require('@powerchain/sol-coverage').CoverageSubprovider;
 ```
 
 ## Contributing
@@ -47,13 +47,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/sol-coverage yarn build
+PKG=@powerchain/sol-coverage yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/sol-coverage yarn watch
+PKG=@powerchain/sol-coverage yarn watch
 ```
 
 ### Clean

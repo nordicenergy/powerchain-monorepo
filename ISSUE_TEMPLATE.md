@@ -2,7 +2,7 @@
 
 <!--- Before submitting please check to see if this issue was already reported -->
 
-<!--- Prefix your issue title with the package name it relates to (e.g., `0x.js: ` or `general:`) -->
+<!--- Prefix your issue title with the package name it relates to (e.g., `powerchain.js: ` or `general:`) -->
 
 ## Expected Behavior
 
@@ -51,7 +51,7 @@
 
 
 <!-- For example:
-|             `0x.js` | 2.0.4   |
+|             `powerchain.js` | 2.0.4   |
 | `Exchange Contract` | v2      |
 -->
 

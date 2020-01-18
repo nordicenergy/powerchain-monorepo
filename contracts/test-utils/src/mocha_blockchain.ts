@@ -1,12 +1,12 @@
-import { BlockchainLifecycle, web3Factory } from '@0x/dev-utils';
-import { RPCSubprovider, Web3ProviderEngine } from '@0x/subproviders';
-import { providerUtils } from '@0x/utils';
-import { TxData, Web3Wrapper } from '@0x/web3-wrapper';
+import {BlockchainLifecycle, web3Factory} from '@powerchain/dev-utils';
+import {RPCSubprovider, Web3ProviderEngine} from '@powerchain/subproviders';
+import {providerUtils} from '@powerchain/utils';
+import {TxData, Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as _ from 'lodash';
 import * as mocha from 'mocha';
 import * as process from 'process';
 
-import { provider, providerConfigs, txDefaults, web3Wrapper } from './web3_wrapper';
+import {provider, providerConfigs, txDefaults, web3Wrapper} from './web3_wrapper';
 
 // tslint:disable: no-namespace only-arrow-functions no-unbound-method max-classes-per-file
 

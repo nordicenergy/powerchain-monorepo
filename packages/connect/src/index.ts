@@ -16,4 +16,4 @@ export {
     PagedRequestOpts,
     PaginatedCollection,
     SignedOrder,
-} from '@0x/types';
+} from '@powerchain/types';

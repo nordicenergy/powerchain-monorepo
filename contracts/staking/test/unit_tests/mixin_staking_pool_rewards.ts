@@ -1,4 +1,4 @@
-import { ReferenceFunctions } from '@0x/contracts-exchange-libs';
+import {ReferenceFunctions} from '@powerchain/contracts-exchange-libs';
 import {
     blockchainTests,
     constants,
@@ -8,14 +8,14 @@ import {
     Numberish,
     randomAddress,
     verifyEventsFromLogs,
-} from '@0x/contracts-test-utils';
-import { BigNumber, hexUtils } from '@0x/utils';
-import { LogEntry, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber, hexUtils} from '@powerchain/utils';
+import {LogEntry, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { StoredBalance } from '../../src/types';
+import {StoredBalance} from '../../src/types';
 
-import { artifacts } from '../artifacts';
-import { TestMixinStakingPoolRewardsContract, TestMixinStakingPoolRewardsEvents as Events } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {TestMixinStakingPoolRewardsContract, TestMixinStakingPoolRewardsEvents as Events} from '../wrappers';
 
 blockchainTests.resets('MixinStakingPoolRewards unit tests', env => {
     let testContract: TestMixinStakingPoolRewardsContract;
@@ -26,7 +26,7 @@ blockchainTests.resets('MixinStakingPoolRewards unit tests', env => {
     let caller: string;
 
     before(async () => {
-        testContract = await TestMixinStakingPoolRewardsContract.deployFrom0xArtifactAsync(
+        testContract = await TestMixinStakingPoolRewardsContract.deployFrompowerchainArtifactAsync(
             artifacts.TestMixinStakingPoolRewards,
             env.provider,
             env.txDefaults,

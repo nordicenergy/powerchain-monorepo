@@ -1,14 +1,14 @@
-import { createHash } from 'crypto';
+import {createHash} from 'crypto';
 
 import * as changeCase from 'change-case';
 import * as cliFormat from 'cli-format';
-import { AbiType, ConstructorAbi, DataItem, TupleDataItem } from 'ethereum-types';
+import {AbiType, ConstructorAbi, DataItem, TupleDataItem} from 'ethereum-types';
 import * as fs from 'fs';
 import * as _ from 'lodash';
 import * as path from 'path';
-import toSnakeCase = require('to-snake-case');
 
-import { ContractsBackend, ParamKind } from './types';
+import {ContractsBackend, ParamKind} from './types';
+import toSnakeCase = require('to-snake-case');
 
 export const utils = {
     solTypeToAssertion(solName: string, solType: string): string {
@@ -199,7 +199,7 @@ export const utils = {
         } else {
             const tupleComponents = tuple.components;
             const lengthOfHashSuffix = 8;
-            return `Tuple0x${createHash('MD5')
+            return `Tuplepowerchain${createHash('MD5')
                 .update(_.map(tupleComponents, component => component.name).join('_'))
                 .digest()
                 .toString('hex')

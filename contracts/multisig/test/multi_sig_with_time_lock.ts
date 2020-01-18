@@ -7,15 +7,14 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { RevertReason } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {RevertReason} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
-import { LogWithDecodedArgs } from 'ethereum-types';
-import * as _ from 'lodash';
+import {LogWithDecodedArgs} from 'ethereum-types';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 import {
     MultiSigWalletWithTimeLockConfirmationEventArgs,
     MultiSigWalletWithTimeLockConfirmationTimeSetEventArgs,
@@ -26,7 +25,7 @@ import {
     TestRejectEtherContract,
 } from './wrappers';
 
-import { MultiSigWrapper } from './utils/multi_sig_wrapper';
+import {MultiSigWrapper} from './utils/multi_sig_wrapper';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -63,7 +62,7 @@ describe('MultiSigWalletWithTimeLock', () => {
     describe('external_call', () => {
         it('should be internal', async () => {
             const secondsTimeLocked = new BigNumber(0);
-            multiSig = await MultiSigWalletWithTimeLockContract.deployFrom0xArtifactAsync(
+            multiSig = await MultiSigWalletWithTimeLockContract.deployFrompowerchainArtifactAsync(
                 artifacts.MultiSigWalletWithTimeLock,
                 provider,
                 txDefaults,
@@ -79,7 +78,7 @@ describe('MultiSigWalletWithTimeLock', () => {
         let txId: BigNumber;
         beforeEach(async () => {
             const secondsTimeLocked = new BigNumber(0);
-            multiSig = await MultiSigWalletWithTimeLockContract.deployFrom0xArtifactAsync(
+            multiSig = await MultiSigWalletWithTimeLockContract.deployFrompowerchainArtifactAsync(
                 artifacts.MultiSigWalletWithTimeLock,
                 provider,
                 txDefaults,
@@ -141,7 +140,7 @@ describe('MultiSigWalletWithTimeLock', () => {
         let txId: BigNumber;
         const secondsTimeLocked = new BigNumber(1000000);
         beforeEach(async () => {
-            multiSig = await MultiSigWalletWithTimeLockContract.deployFrom0xArtifactAsync(
+            multiSig = await MultiSigWalletWithTimeLockContract.deployFrompowerchainArtifactAsync(
                 artifacts.MultiSigWalletWithTimeLock,
                 provider,
                 txDefaults,
@@ -205,7 +204,7 @@ describe('MultiSigWalletWithTimeLock', () => {
             await expectTransactionFailedWithoutReasonAsync(multiSigWrapper.executeTransactionAsync(txId, owners[1]));
         });
         it("should log an ExecutionFailure event and not update the transaction's execution state if unsuccessful", async () => {
-            const contractWithoutFallback = await TestRejectEtherContract.deployFrom0xArtifactAsync(
+            const contractWithoutFallback = await TestRejectEtherContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestRejectEther,
                 provider,
                 txDefaults,
@@ -242,7 +241,7 @@ describe('MultiSigWalletWithTimeLock', () => {
             });
             before('deploy a wallet', async () => {
                 const secondsTimeLocked = new BigNumber(0);
-                multiSig = await MultiSigWalletWithTimeLockContract.deployFrom0xArtifactAsync(
+                multiSig = await MultiSigWalletWithTimeLockContract.deployFrompowerchainArtifactAsync(
                     artifacts.MultiSigWalletWithTimeLock,
                     provider,
                     txDefaults,
@@ -317,7 +316,7 @@ describe('MultiSigWalletWithTimeLock', () => {
             let txId: BigNumber;
             const newSecondsTimeLocked = new BigNumber(0);
             before('deploy a wallet, submit transaction to change timelock, and confirm the transaction', async () => {
-                multiSig = await MultiSigWalletWithTimeLockContract.deployFrom0xArtifactAsync(
+                multiSig = await MultiSigWalletWithTimeLockContract.deployFrompowerchainArtifactAsync(
                     artifacts.MultiSigWalletWithTimeLock,
                     provider,
                     txDefaults,

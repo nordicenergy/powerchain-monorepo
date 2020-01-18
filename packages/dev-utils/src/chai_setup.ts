@@ -1,10 +1,10 @@
-import { RevertError } from '@0x/utils';
+import {RevertError} from '@powerchain/utils';
 import * as chai from 'chai';
-import chaiAsPromised = require('chai-as-promised');
-import ChaiBigNumber = require('chai-bignumber');
 import * as dirtyChai from 'dirty-chai';
 
-import { revertErrorHelper } from './chai_revert_error';
+import {revertErrorHelper} from './chai_revert_error';
+import chaiAsPromised = require('chai-as-promised');
+import ChaiBigNumber = require('chai-bignumber');
 
 declare global {
     namespace Chai {

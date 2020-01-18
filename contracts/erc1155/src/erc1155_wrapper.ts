@@ -1,8 +1,8 @@
-import { BigNumber } from '@0x/utils';
-import { LogWithDecodedArgs, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+import {BigNumber} from '@powerchain/utils';
+import {LogWithDecodedArgs, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { ERC1155MintableContract, ERC1155TransferSingleEventArgs } from './wrappers';
+import {ERC1155MintableContract, ERC1155TransferSingleEventArgs} from './wrappers';
 
 export class Erc1155Wrapper {
     private readonly _erc1155Contract: ERC1155MintableContract;
@@ -28,7 +28,7 @@ export class Erc1155Wrapper {
         delegatedSpender?: string,
     ): Promise<TransactionReceiptWithDecodedLogs> {
         const spender = delegatedSpender === undefined ? from : delegatedSpender;
-        const callbackDataHex = callbackData === undefined ? '0x' : callbackData;
+        const callbackDataHex = callbackData === undefined ? 'powerchain' : callbackData;
         const tx = await this._erc1155Contract
             .safeTransferFrom(from, to, token, value, callbackDataHex)
             .awaitTransactionSuccessAsync({
@@ -45,7 +45,7 @@ export class Erc1155Wrapper {
         delegatedSpender?: string,
     ): Promise<TransactionReceiptWithDecodedLogs> {
         const spender = delegatedSpender === undefined ? from : delegatedSpender;
-        const callbackDataHex = callbackData === undefined ? '0x' : callbackData;
+        const callbackDataHex = callbackData === undefined ? 'powerchain' : callbackData;
         const tx = await this._erc1155Contract
             .safeBatchTransferFrom(from, to, tokens, values, callbackDataHex)
             .awaitTransactionSuccessAsync({ from: spender });

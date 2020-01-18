@@ -1,9 +1,9 @@
-import { chaiSetup } from '@0x/dev-utils';
-import { expect } from 'chai';
+import {chaiSetup} from '@powerchain/dev-utils';
+import {expect} from 'chai';
 import * as _ from 'lodash';
 
-import { ContractKind, EventDocs, FunctionKind, MethodDocs, SolidityDocs, Visibility } from '../src/extract_docs';
-import { transformDocs } from '../src/transform_docs';
+import {ContractKind, EventDocs, FunctionKind, MethodDocs, SolidityDocs, Visibility} from '../src/extract_docs';
+import {transformDocs} from '../src/transform_docs';
 
 import {
     randomContract,

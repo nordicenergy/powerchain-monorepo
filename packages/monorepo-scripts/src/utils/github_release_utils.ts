@@ -1,14 +1,14 @@
 import * as promisify from 'es6-promisify';
-import { readFileSync } from 'fs';
+import {readFileSync} from 'fs';
 import * as _ from 'lodash';
 import * as path from 'path';
-import { exec as execAsync } from 'promisify-child-process';
+import {exec as execAsync} from 'promisify-child-process';
 import * as publishRelease from 'publish-release';
 
-import { constants } from '../constants';
-import { Package } from '../types';
+import {constants} from '../constants';
+import {Package} from '../types';
 
-import { utils } from './utils';
+import {utils} from './utils';
 
 const publishReleaseAsync = promisify(publishRelease);
 // tslint:disable-next-line:completed-docs
@@ -39,7 +39,7 @@ export async function publishReleaseNotesAsync(
         }
     }
 
-    const releaseName = `0x monorepo - ${shortenedGitCommit}`;
+    const releaseName = `powerchain monorepo - ${shortenedGitCommit}`;
 
     let assets: string[] = [];
     let aggregateNotes = '';
@@ -55,9 +55,9 @@ export async function publishReleaseNotesAsync(
 
     const publishReleaseConfigs = {
         token: constants.githubPersonalAccessToken,
-        owner: '0xProject',
+        owner: 'powerchainProject',
         tag: tagName,
-        repo: '0x-monorepo',
+        repo: 'powerchain-monorepo',
         name: releaseName,
         notes: aggregateNotes,
         draft: false,

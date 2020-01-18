@@ -1,13 +1,12 @@
-import { assert } from '@0x/assert';
-import { EIP712TypedData } from '@0x/types';
-import { signTypedDataUtils } from '@0x/utils';
-import EthereumTx = require('ethereumjs-tx');
+import {assert} from '@powerchain/assert';
+import {EIP712TypedData} from '@powerchain/types';
+import {signTypedDataUtils} from '@powerchain/utils';
 import * as ethUtil from 'ethereumjs-util';
-import * as _ from 'lodash';
 
-import { PartialTxParams, WalletSubproviderErrors } from '../types';
+import {PartialTxParams, WalletSubproviderErrors} from '../types';
 
-import { BaseWalletSubprovider } from './base_wallet_subprovider';
+import {BaseWalletSubprovider} from './base_wallet_subprovider';
+import EthereumTx = require('ethereumjs-tx');
 
 /**
  * This class implements the [web3-provider-engine](https://github.com/MetaMask/provider-engine) subprovider interface.
@@ -26,7 +25,7 @@ export class PrivateKeyWalletSubprovider extends BaseWalletSubprovider {
         assert.isString('privateKey', privateKey);
         super();
         this._privateKeyBuffer = Buffer.from(privateKey, 'hex');
-        this._address = `0x${ethUtil.privateToAddress(this._privateKeyBuffer).toString('hex')}`;
+        this._address = `powerchain${ethUtil.privateToAddress(this._privateKeyBuffer).toString('hex')}`;
     }
     /**
      * Retrieve the account associated with the supplied private key.
@@ -56,7 +55,7 @@ export class PrivateKeyWalletSubprovider extends BaseWalletSubprovider {
         }
         const tx = new EthereumTx(txParams);
         tx.sign(this._privateKeyBuffer);
-        const rawTx = `0x${tx.serialize().toString('hex')}`;
+        const rawTx = `powerchain${tx.serialize().toString('hex')}`;
         return rawTx;
     }
     /**

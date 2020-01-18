@@ -694,7 +694,7 @@
                 "pr": 426
             },
             {
-                "note": "Remove 0x-specific `migrate` command",
+                "note": "Remove powerchain-specific `migrate` command",
                 "pr": 426
             },
             {
@@ -702,7 +702,7 @@
                 "pr": 426
             },
             {
-                "note": "Consolidate all `console.log` calls into `logUtils` in the `@0xproject/utils` package",
+                "note": "Consolidate all `console.log` calls into `logUtils` in the `@powerchainproject/utils` package",
                 "pr": 452
             },
             {

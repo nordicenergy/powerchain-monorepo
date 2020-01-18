@@ -1,13 +1,13 @@
-import { providerUtils } from '@0x/utils';
+import {providerUtils} from '@powerchain/utils';
 import * as chai from 'chai';
-import { JSONRPCResponsePayload } from 'ethereum-types';
+import {JSONRPCResponsePayload} from 'ethereum-types';
 import * as ethUtils from 'ethereumjs-util';
 
-import { GanacheSubprovider, PrivateKeyWalletSubprovider, Web3ProviderEngine } from '../../src/';
-import { DoneCallback, WalletSubproviderErrors } from '../../src/types';
-import { chaiSetup } from '../chai_setup';
-import { fixtureData } from '../utils/fixture_data';
-import { reportCallbackErrors } from '../utils/report_callback_errors';
+import {GanacheSubprovider, PrivateKeyWalletSubprovider, Web3ProviderEngine} from '../../src/';
+import {DoneCallback, WalletSubproviderErrors} from '../../src/types';
+import {chaiSetup} from '../chai_setup';
+import {fixtureData} from '../utils/fixture_data';
+import {reportCallbackErrors} from '../utils/report_callback_errors';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -186,8 +186,8 @@ describe('PrivateKeyWalletSubprovider', () => {
             });
             it('should throw if `from` param missing when calling eth_sendTransaction', (done: DoneCallback) => {
                 const tx = {
-                    to: '0xafa3f8684e54059998bc3a7b0d2b0da075154d66',
-                    value: '0xde0b6b3a7640000',
+                    to: 'powerchainafa3f8684e54059998bc3a7b0d2b0da075154d66',
+                    value: 'powerchainde0b6b3a7640000',
                 };
                 const payload = {
                     jsonrpc: '2.0',
@@ -204,9 +204,9 @@ describe('PrivateKeyWalletSubprovider', () => {
             });
             it('should throw if `from` param invalid address when calling eth_sendTransaction', (done: DoneCallback) => {
                 const tx = {
-                    to: '0xafa3f8684e54059998bc3a7b0d2b0da075154d66',
-                    from: '0xIncorrectEthereumAddress',
-                    value: '0xde0b6b3a7640000',
+                    to: 'powerchainafa3f8684e54059998bc3a7b0d2b0da075154d66',
+                    from: 'powerchainIncorrectEthereumAddress',
+                    value: 'powerchainde0b6b3a7640000',
                 };
                 const payload = {
                     jsonrpc: '2.0',
@@ -226,12 +226,12 @@ describe('PrivateKeyWalletSubprovider', () => {
                 const payload = {
                     jsonrpc: '2.0',
                     method: 'personal_sign',
-                    params: [messageHex, '0x0'],
+                    params: [messageHex, 'powerchain0'],
                     id: 1,
                 };
                 const callback = reportCallbackErrors(done)((err: Error, _response: JSONRPCResponsePayload) => {
                     expect(err).to.not.be.a('null');
-                    expect(err.message).to.be.equal(`Expected address to be of type ETHAddressHex, encountered: 0x0`);
+                    expect(err.message).to.be.equal(`Expected address to be of type ETHAddressHex, encountered: powerchain0`);
                     done();
                 });
                 provider.sendAsync(payload, callback);

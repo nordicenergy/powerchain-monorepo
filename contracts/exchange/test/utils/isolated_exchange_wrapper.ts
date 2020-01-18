@@ -3,14 +3,14 @@ import {
     filterLogsToArguments,
     orderHashUtils,
     txDefaults as testTxDefaults,
-} from '@0x/contracts-test-utils';
-import { FillResults, Order, OrderInfo, SignatureType } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { TxData, Web3Wrapper } from '@0x/web3-wrapper';
+} from '@powerchain/contracts-test-utils';
+import {FillResults, Order, OrderInfo, SignatureType} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {TxData, Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as crypto from 'crypto';
-import { LogEntry } from 'ethereum-types';
+import {LogEntry} from 'ethereum-types';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 
 import {
     IsolatedExchangeContract,
@@ -47,7 +47,7 @@ export class IsolatedExchangeWrapper {
         txDefaults: Partial<TxData> = testTxDefaults,
     ): Promise<IsolatedExchangeWrapper> {
         const provider = web3Wrapper.getProvider();
-        const instance = await IsolatedExchangeContract.deployFrom0xArtifactAsync(
+        const instance = await IsolatedExchangeContract.deployFrompowerchainArtifactAsync(
             artifacts.IsolatedExchange,
             provider,
             txDefaults,
@@ -125,14 +125,14 @@ export class IsolatedExchangeWrapper {
  * Create a signature for the `IsolatedExchange` contract that will pass.
  */
 export function createGoodSignature(type: SignatureType = SignatureType.EIP712): string {
-    return `0x01${Buffer.from([type]).toString('hex')}`;
+    return `powerchain01${Buffer.from([type]).toString('hex')}`;
 }
 
 /**
  * Create a signature for the `IsolatedExchange` contract that will fail.
  */
 export function createBadSignature(type: SignatureType = SignatureType.EIP712): string {
-    return `0x00${Buffer.from([type]).toString('hex')}`;
+    return `powerchain00${Buffer.from([type]).toString('hex')}`;
 }
 
 const ERC20_ASSET_DATA_LENGTH = 36;
@@ -141,14 +141,14 @@ const ERC20_ASSET_DATA_LENGTH = 36;
  * Create asset data for the `IsolatedExchange` contract that will pass.
  */
 export function createGoodAssetData(length: number = ERC20_ASSET_DATA_LENGTH): string {
-    return `0x01${crypto.randomBytes(length - 1).toString('hex')}`;
+    return `powerchain01${crypto.randomBytes(length - 1).toString('hex')}`;
 }
 
 /**
  * Create asset data for the `IsolatedExchange` contract that will fail.
  */
 export function createBadAssetData(length: number = ERC20_ASSET_DATA_LENGTH): string {
-    return `0x00${crypto.randomBytes(length - 1).toString('hex')}`;
+    return `powerchain00${crypto.randomBytes(length - 1).toString('hex')}`;
 }
 
 function createEmptyEvents(): IsolatedExchangeEvents {

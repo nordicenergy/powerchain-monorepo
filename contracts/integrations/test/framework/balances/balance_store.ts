@@ -1,8 +1,8 @@
-import { BaseContract } from '@0x/base-contract';
-import { constants, expect, replaceKeysDeep, TokenBalances } from '@0x/contracts-test-utils';
+import {BaseContract} from '@powerchain/base-contract';
+import {constants, expect, replaceKeysDeep, TokenBalances} from '@powerchain/contracts-test-utils';
 import * as _ from 'lodash';
 
-import { TokenAddresses, TokenContractsByName, TokenOwnersByName } from './types';
+import {TokenAddresses, TokenContractsByName, TokenOwnersByName} from './types';
 
 export class BalanceStore {
     public balances: TokenBalances;

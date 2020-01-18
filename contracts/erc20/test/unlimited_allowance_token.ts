@@ -5,15 +5,15 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { RevertReason } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {RevertReason} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 
-import { DummyERC20TokenContract } from './wrappers';
+import {DummyERC20TokenContract} from './wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -35,7 +35,7 @@ describe('UnlimitedAllowanceToken', () => {
         const accounts = await web3Wrapper.getAvailableAddressesAsync();
         owner = accounts[0];
         spender = accounts[1];
-        token = await DummyERC20TokenContract.deployFrom0xArtifactAsync(
+        token = await DummyERC20TokenContract.deployFrompowerchainArtifactAsync(
             artifacts.DummyERC20Token,
             provider,
             txDefaults,

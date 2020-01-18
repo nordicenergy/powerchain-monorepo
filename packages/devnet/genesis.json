@@ -3,7 +3,7 @@
         "chainId": 50,
         "homesteadBlock": 1,
         "eip150Block": 2,
-        "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "eip150Hash": "powerchain0000000000000000000000000000000000000000000000000000000000000000",
         "eip155Block": 3,
         "eip158Block": 3,
         "byzantiumBlock": 4,
@@ -12,49 +12,49 @@
             "epoch": 30000
         }
     },
-    "nonce": "0x0",
-    "timestamp": "0x5af1ffac",
-    "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000e8816898d851d5b61b7f950627d04d794c07ca370000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    "gasLimit": "0x4c4b400000",
-    "difficulty": "0x1",
-    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "coinbase": "0x0000000000000000000000000000000000000000",
+    "nonce": "powerchain0",
+    "timestamp": "powerchain5af1ffac",
+    "extraData": "powerchain0000000000000000000000000000000000000000000000000000000000000000e8816898d851d5b61b7f950627d04d794c07ca370000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "gasLimit": "powerchain4c4b400000",
+    "difficulty": "powerchain1",
+    "mixHash": "powerchain0000000000000000000000000000000000000000000000000000000000000000",
+    "coinbase": "powerchain0000000000000000000000000000000000000000",
     "alloc": {
-        "0xe8816898d851d5b61b7f950627d04d794c07ca37": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchaine8816898d851d5b61b7f950627d04d794c07ca37": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0x5409ed021d9299bf6814279a6a1411a7e866a631": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchain5409ed021d9299bf6814279a6a1411a7e866a631": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0x6ecbe1db9ef729cbe972c83fb886247691fb6beb": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchain6ecbe1db9ef729cbe972c83fb886247691fb6beb": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0xe36ea790bc9d7ab70c55260c66d52b1eca985f84": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchaine36ea790bc9d7ab70c55260c66d52b1eca985f84": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0xe834ec434daba538cd1b9fe1582052b880bd7e63": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchaine834ec434daba538cd1b9fe1582052b880bd7e63": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0x78dc5d2d739606d31509c31d654056a45185ecb6": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchain78dc5d2d739606d31509c31d654056a45185ecb6": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0xa8dda8d7f5310e4a9e24f8eba77e091ac264f872": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchaina8dda8d7f5310e4a9e24f8eba77e091ac264f872": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0x06cef8e666768cc40cc78cf93d9611019ddcb628": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchain06cef8e666768cc40cc78cf93d9611019ddcb628": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0x4404ac8bd8f9618d27ad2f1485aa1b2cfd82482d": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchain4404ac8bd8f9618d27ad2f1485aa1b2cfd82482d": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0x7457d5e02197480db681d3fdf256c7aca21bdc12": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchain7457d5e02197480db681d3fdf256c7aca21bdc12": {
+            "balance": "powerchain56BC75E2D63100000"
         },
-        "0x91c987bf62d25945db517bdaa840a6c661374402": {
-            "balance": "0x56BC75E2D63100000"
+        "powerchain91c987bf62d25945db517bdaa840a6c661374402": {
+            "balance": "powerchain56BC75E2D63100000"
         }
     },
-    "number": "0x0",
-    "gasUsed": "0x0",
-    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    "number": "powerchain0",
+    "gasUsed": "powerchain0",
+    "parentHash": "powerchain0000000000000000000000000000000000000000000000000000000000000000"
 }

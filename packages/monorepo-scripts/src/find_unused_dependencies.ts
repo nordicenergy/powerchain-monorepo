@@ -3,11 +3,11 @@
 import * as depcheckAsync from 'depcheck';
 import * as _ from 'lodash';
 
-import { constants } from './constants';
-import { utils } from './utils/utils';
+import {constants} from './constants';
+import {utils} from './utils/utils';
 
 // For some reason, `depcheck` hangs on some packages. Add them here.
-const IGNORE_PACKAGES = ['@0x/sol-compiler'];
+const IGNORE_PACKAGES = ['@powerchain/sol-compiler'];
 
 (async () => {
     utils.log('*** NOTE: Not all deps listed here are actually not required. ***');

@@ -10,11 +10,11 @@ import {
     SourceSnippet,
     TraceCollectionSubprovider,
     utils,
-} from '@0x/sol-tracing-utils';
+} from '@powerchain/sol-tracing-utils';
 import chalk from 'chalk';
-import { stripHexPrefix } from 'ethereumjs-util';
+import {stripHexPrefix} from 'ethereumjs-util';
 import * as _ from 'lodash';
-import { getLogger, levels, Logger } from 'loglevel';
+import {getLogger, levels, Logger} from 'loglevel';
 
 /**
  * This class implements the [web3-provider-engine](https://github.com/MetaMask/provider-engine) subprovider interface.
@@ -28,7 +28,7 @@ export class RevertTraceSubprovider extends TraceCollectionSubprovider {
 
     /**
      * Instantiates a RevertTraceSubprovider instance
-     * @param artifactAdapter Adapter for used artifacts format (0x, truffle, giveth, etc.)
+     * @param artifactAdapter Adapter for used artifacts format (powerchain, truffle, giveth, etc.)
      * @param defaultFromAddress default from address to use when sending transactions
      * @param isVerbose If true, we will log any unknown transactions. Otherwise we will ignore them
      */

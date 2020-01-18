@@ -1,20 +1,20 @@
-## @0x/web3-wrapper
+## @powerchain/web3-wrapper
 
 Web3-wrapper is a JSON-RPC client for Ethereum nodes. It is a type-safe alternative to [Web3.js](https://github.com/ethereum/web3.js/) written in TypeScript.
 
-### Read the [Documentation](https://0x.org/docs/tools/web3-wrapper).
+### Read the [Documentation](https://powerchain.org/docs/tools/web3-wrapper).
 
 ## Installation
 
 ```bash
-yarn add @0x/web3-wrapper
+yarn add @powerchain/web3-wrapper
 ```
 
 If your project is in [TypeScript](https://www.typescriptlang.org/), add the following to your `tsconfig.json`:
 
 ```json
 "compilerOptions": {
-    "typeRoots": ["node_modules/@0x/typescript-typings/types", "node_modules/@types"],
+    "typeRoots": ["node_modules/@powerchain/typescript-typings/types", "node_modules/@types"],
 }
 ```
 
@@ -43,13 +43,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/web3-wrapper yarn build
+PKG=@powerchain/web3-wrapper yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/web3-wrapper yarn watch
+PKG=@powerchain/web3-wrapper yarn watch
 ```
 
 ### Clean

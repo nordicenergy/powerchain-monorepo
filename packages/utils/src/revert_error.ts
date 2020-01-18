@@ -1,11 +1,11 @@
-import { ObjectMap } from '@0x/types';
-import { DataItem, RevertErrorAbi } from 'ethereum-types';
+import {ObjectMap} from '@powerchain/types';
+import {DataItem, RevertErrorAbi} from 'ethereum-types';
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
-import { inspect } from 'util';
+import {inspect} from 'util';
 
 import * as AbiEncoder from './abi_encoder';
-import { BigNumber } from './configured_bignumber';
+import {BigNumber} from './configured_bignumber';
 
 // tslint:disable: max-classes-per-file
 
@@ -181,7 +181,7 @@ export abstract class RevertError extends Error {
     }
 
     /**
-     * Get the hex selector for this revert (without leading '0x').
+     * Get the hex selector for this revert (without leading 'powerchain').
      */
     get selector(): string {
         if (!_.isNil(this.abi)) {
@@ -350,13 +350,13 @@ export function getThrownErrorRevertErrorBytes(
         if (result.reason !== undefined) {
             return new StringRevertError(result.reason).encode();
         }
-        if (result.return !== undefined && result.return !== '0x') {
+        if (result.return !== undefined && result.return !== 'powerchain') {
             return result.return;
         }
     } else if (isParityTransactionRevertError(error)) {
-        // Parity returns { data: 'Reverted 0xa6bcde47...', ... }
+        // Parity returns { data: 'Reverted powerchaina6bcde47...', ... }
         const { data } = error;
-        const hexDataIndex = data.indexOf('0x');
+        const hexDataIndex = data.indexOf('powerchain');
         if (hexDataIndex !== -1) {
             return data.slice(hexDataIndex);
         }

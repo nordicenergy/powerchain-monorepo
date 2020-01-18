@@ -19,7 +19,7 @@ CHANGELOG
 
 ## v5.0.0 - _December 2, 2019_
 
-    * Refactored TS wrapper templates to result in a more succint interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details. (#2284)
+    * Refactored TS wrapper templates to result in a more succint interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details. (#2284)
     * Python: Corrected return types and values for call() interface to generated method wrappers.  (Fixes #2298) (#2345)
     * Python: Stopped generating send_transaction() interface for constant (view/pure) methods (#2345)
     * Python: Added a build_transaction() interface to contract method classes (#2345)
@@ -45,7 +45,7 @@ CHANGELOG
 
 ## v4.4.0-beta.2 - _November 17, 2019_
 
-    * Refactored TS wrapper templates to result in a more succint interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details. (#2284)
+    * Refactored TS wrapper templates to result in a more succint interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details. (#2284)
     * Python: Corrected return types and values for call() interface to generated method wrappers.  (Fixes #2298) (#2345)
     * Python: Stopped generating send_transaction() interface for constant (view/pure) methods (#2345)
     * Python: Added a build_transaction() interface to contract method classes (#2345)
@@ -307,7 +307,7 @@ CHANGELOG
 
 ## v0.2.5 - _March 17, 2018_
 
-    * Consolidate all `console.log` calls into `logUtils` in the `@0xproject/utils` package (#452)
+    * Consolidate all `console.log` calls into `logUtils` in the `@powerchainproject/utils` package (#452)
 
 ## v0.2.4 - _March 3, 2018_
 
@@ -322,7 +322,7 @@ CHANGELOG
 ## v0.2.0 - _February 6, 2018_
 
     * Added CLI options for explicit specifying location of partials and main template (#346)
-    * Added CLI option to specify networkId, adding support for the JSON artifact format found in @0xproject/contracts (#388)
+    * Added CLI option to specify networkId, adding support for the JSON artifact format found in @powerchainproject/contracts (#388)
 
 ## v0.1.0 - _January 10, 2018_
 

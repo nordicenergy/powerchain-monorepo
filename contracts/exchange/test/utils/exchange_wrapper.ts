@@ -1,4 +1,4 @@
-import { BatchMatchOrder, orderUtils } from '@0x/contracts-test-utils';
+import {BatchMatchOrder, orderUtils} from '@powerchain/contracts-test-utils';
 import {
     BatchMatchedFillResults,
     FillResults,
@@ -6,14 +6,14 @@ import {
     OrderInfo,
     SignedOrder,
     SignedZeroExTransaction,
-} from '@0x/types';
-import { AbiEncoder, BigNumber } from '@0x/utils';
-import { MethodAbi, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+} from '@powerchain/types';
+import {AbiEncoder, BigNumber} from '@powerchain/utils';
+import {MethodAbi, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { ExchangeContract } from '../wrappers';
+import {ExchangeContract} from '../wrappers';
 
-import { AbiDecodedFillOrderData } from './types';
+import {AbiDecodedFillOrderData} from './types';
 
 export class ExchangeWrapper {
     constructor(public readonly exchangeContract: ExchangeContract) {}

@@ -1,13 +1,13 @@
-## 0x-json-schemas
+## powerchain-json-schemas
 
-0x JSON schemas for those developing on top of 0x protocol.
+powerchain JSON schemas for those developing on top of powerchain protocol.
 
-Read the [documentation](http://0x-json-schemas-py.s3-website-us-east-1.amazonaws.com/)
+Read the [documentation](http://powerchain-json-schemas-py.s3-website-us-east-1.amazonaws.com/)
 
 ## Installing
 
 ```bash
-pip install 0x-json-schemas
+pip install powerchain-json-schemas
 ```
 
 ## Contributing

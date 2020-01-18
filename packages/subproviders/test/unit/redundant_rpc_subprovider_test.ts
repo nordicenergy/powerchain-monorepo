@@ -1,14 +1,14 @@
-import { DoneCallback } from '@0x/types';
-import { providerUtils } from '@0x/utils';
+import {DoneCallback} from '@powerchain/types';
+import {providerUtils} from '@powerchain/utils';
 import * as chai from 'chai';
-import { JSONRPCResponsePayload } from 'ethereum-types';
+import {JSONRPCResponsePayload} from 'ethereum-types';
 import * as Sinon from 'sinon';
 
-import { RedundantSubprovider, RPCSubprovider, Web3ProviderEngine } from '../../src';
-import { Subprovider } from '../../src/subproviders/subprovider';
-import { chaiSetup } from '../chai_setup';
-import { ganacheSubprovider } from '../utils/ganache_subprovider';
-import { reportCallbackErrors } from '../utils/report_callback_errors';
+import {RedundantSubprovider, RPCSubprovider, Web3ProviderEngine} from '../../src';
+import {Subprovider} from '../../src/subproviders/subprovider';
+import {chaiSetup} from '../chai_setup';
+import {ganacheSubprovider} from '../utils/ganache_subprovider';
+import {reportCallbackErrors} from '../utils/report_callback_errors';
 
 const expect = chai.expect;
 chaiSetup.configure();

@@ -1,15 +1,15 @@
-import { ERC20ProxyContract } from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { DummyERC20TokenContract } from '@0x/contracts-erc20';
-import { ExchangeContract } from '@0x/contracts-exchange';
-import { blockchainTests, constants, expect, orderHashUtils, OrderStatus } from '@0x/contracts-test-utils';
-import { assetDataUtils } from '@0x/order-utils';
-import { OrderTransferResults, SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {ERC20ProxyContract} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {DummyERC20TokenContract} from '@powerchain/contracts-erc20';
+import {ExchangeContract} from '@powerchain/contracts-exchange';
+import {blockchainTests, constants, expect, orderHashUtils, OrderStatus} from '@powerchain/contracts-test-utils';
+import {assetDataUtils} from '@powerchain/order-utils';
+import {OrderTransferResults, SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { Maker } from '../framework/actors/maker';
-import { Taker } from '../framework/actors/taker';
-import { DeploymentManager } from '../framework/deployment_manager';
+import {Maker} from '../framework/actors/maker';
+import {Taker} from '../framework/actors/taker';
+import {DeploymentManager} from '../framework/deployment_manager';
 
 // TODO(jalextowle): This can be cleaned up by using the actors more.
 blockchainTests.resets('OrderValidationUtils/OrderTransferSimulatorUtils', env => {
@@ -133,7 +133,7 @@ blockchainTests.resets('OrderValidationUtils/OrderTransferSimulatorUtils', env =
             expect(isValidSignature).to.equal(true);
         });
         it('should return isValidSignature=false when the signature is invalid', async () => {
-            const invalidSignature = '0x01';
+            const invalidSignature = 'powerchain01';
             const [, , isValidSignature] = await devUtils
                 .getOrderRelevantState(signedOrder, invalidSignature)
                 .callAsync();
@@ -377,8 +377,8 @@ blockchainTests.resets('OrderValidationUtils/OrderTransferSimulatorUtils', env =
             signedOrder = await maker.signOrderAsync({
                 makerFee: new BigNumber(0),
                 takerFee: new BigNumber(0),
-                makerFeeAssetData: '0x',
-                takerFeeAssetData: '0x',
+                makerFeeAssetData: 'powerchain',
+                takerFeeAssetData: 'powerchain',
             });
             await erc20Token.setBalance(maker.address, signedOrder.makerAssetAmount).awaitTransactionSuccessAsync();
             await erc20Token.approve(erc20Proxy.address, signedOrder.makerAssetAmount).awaitTransactionSuccessAsync({
@@ -409,7 +409,7 @@ blockchainTests.resets('OrderValidationUtils/OrderTransferSimulatorUtils', env =
                 makerAssetData: erc721AssetData,
                 makerAssetAmount: new BigNumber(1),
             });
-            const invalidSignature = '0x01';
+            const invalidSignature = 'powerchain01';
             await exchange.cancelOrder(signedOrder2).awaitTransactionSuccessAsync({ from: maker.address });
             const [ordersInfo, fillableTakerAssetAmounts, isValidSignature] = await devUtils
                 .getOrderRelevantStates([signedOrder, signedOrder2], [signedOrder.signature, invalidSignature])

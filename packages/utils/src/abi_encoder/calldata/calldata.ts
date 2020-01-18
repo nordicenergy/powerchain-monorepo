@@ -1,13 +1,13 @@
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { constants } from '../utils/constants';
-import { EncodingRules } from '../utils/rules';
+import {constants} from '../utils/constants';
+import {EncodingRules} from '../utils/rules';
 
-import { PointerCalldataBlock } from './blocks/pointer';
-import { SetCalldataBlock } from './blocks/set';
-import { CalldataBlock } from './calldata_block';
-import { CalldataIterator, ReverseCalldataIterator } from './iterator';
+import {PointerCalldataBlock} from './blocks/pointer';
+import {SetCalldataBlock} from './blocks/set';
+import {CalldataBlock} from './calldata_block';
+import {CalldataIterator, ReverseCalldataIterator} from './iterator';
 
 export class Calldata {
     private readonly _rules: EncodingRules;
@@ -30,8 +30,8 @@ export class Calldata {
      * If the root block was created by a Method then a selector will likely be set.
      */
     public setSelector(selector: string): void {
-        if (!_.startsWith(selector, '0x')) {
-            throw new Error(`Expected selector to be hex. Missing prefix '0x'`);
+        if (!_.startsWith(selector, 'powerchain')) {
+            throw new Error(`Expected selector to be hex. Missing prefix 'powerchain'`);
         } else if (selector.length !== constants.HEX_SELECTOR_LENGTH_IN_CHARS) {
             throw new Error(`Invalid selector '${selector}'`);
         }
@@ -83,8 +83,8 @@ export class Calldata {
      *
      * Example #3:
      *  function f((string, uint, bytes), string, uint, bytes)
-     *  f(("foo", 5, "0x05"), "foo", 5, "0x05")
-     *  The string "foo" and bytes "0x05" will only be included in the calldata once.
+     *  f(("foo", 5, "powerchain05"), "foo", 5, "powerchain05")
+     *  The string "foo" and bytes "powerchain05" will only be included in the calldata once.
      *  The duplicate `uint 5` values cannot be optimized out because they are static values (no pointer points to them).
      *
      * @TODO #1:
@@ -160,18 +160,18 @@ export class Calldata {
      *   simpleFunction(strings, strings)
      *
      * Output:
-     *   0xbb4f12e3
+     *   powerchainbb4f12e3
      *                                                                                      ### simpleFunction
-     *   0x0       0000000000000000000000000000000000000000000000000000000000000040              ptr<array1> (alias for array2)
-     *   0x20      0000000000000000000000000000000000000000000000000000000000000040              ptr<array2>
+     *   powerchain0       0000000000000000000000000000000000000000000000000000000000000040              ptr<array1> (alias for array2)
+     *   powerchain20      0000000000000000000000000000000000000000000000000000000000000040              ptr<array2>
      *
-     *   0x40      0000000000000000000000000000000000000000000000000000000000000002          ### array2
-     *   0x60      0000000000000000000000000000000000000000000000000000000000000040              ptr<array2[0]>
-     *   0x80      0000000000000000000000000000000000000000000000000000000000000080              ptr<array2[1]>
-     *   0xa0      0000000000000000000000000000000000000000000000000000000000000005              array2[0]
-     *   0xc0      48656c6c6f000000000000000000000000000000000000000000000000000000
-     *   0xe0      0000000000000000000000000000000000000000000000000000000000000005              array2[1]
-     *   0x100     576f726c64000000000000000000000000000000000000000000000000000000
+     *   powerchain40      0000000000000000000000000000000000000000000000000000000000000002          ### array2
+     *   powerchain60      0000000000000000000000000000000000000000000000000000000000000040              ptr<array2[0]>
+     *   powerchain80      0000000000000000000000000000000000000000000000000000000000000080              ptr<array2[1]>
+     *   powerchaina0      0000000000000000000000000000000000000000000000000000000000000005              array2[0]
+     *   powerchainc0      48656c6c6f000000000000000000000000000000000000000000000000000000
+     *   powerchaine0      0000000000000000000000000000000000000000000000000000000000000005              array2[1]
+     *   powerchain100     576f726c64000000000000000000000000000000000000000000000000000000
      */
     private _toHumanReadableCallData(): string {
         // Sanity check: must have a root block.
@@ -209,7 +209,7 @@ export class Calldata {
                 lineStr = `\n${offsetStr}${valueStr}${nameStr}`;
             } else {
                 // This block has at least one word of value.
-                offsetStr = `0x${offset.toString(constants.HEX_BASE)}`.padEnd(offsetPadding);
+                offsetStr = `powerchain${offset.toString(constants.HEX_BASE)}`.padEnd(offsetPadding);
                 valueStr = ethUtil
                     .stripHexPrefix(
                         ethUtil.bufferToHex(
@@ -227,7 +227,7 @@ export class Calldata {
             }
             // This block has a value that is more than 1 word.
             for (let j = constants.EVM_WORD_WIDTH_IN_BYTES; j < size; j += constants.EVM_WORD_WIDTH_IN_BYTES) {
-                offsetStr = `0x${(offset + j).toString(constants.HEX_BASE)}`.padEnd(offsetPadding);
+                offsetStr = `powerchain${(offset + j).toString(constants.HEX_BASE)}`.padEnd(offsetPadding);
                 valueStr = ethUtil
                     .stripHexPrefix(
                         ethUtil.bufferToHex(block.toBuffer().slice(j, j + constants.EVM_WORD_WIDTH_IN_BYTES)),

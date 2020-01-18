@@ -1,24 +1,24 @@
 ## AssetProxy
 
-This package contains the implementations of all of the [`AssetProxy`](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#assetproxy) contracts available within the 0x protocol. These contracts are responsible for decoding the `assetData` sent to them and performing the actual transfer of assets. Addresses of the deployed contracts can be found in this 0x [guide](https://0x.org/docs/guides/0x-cheat-sheet) or the [DEPLOYS](./DEPLOYS.json) file within this package.
+This package contains the implementations of all of the [`AssetProxy`](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#assetproxy) contracts available within the powerchain protocol. These contracts are responsible for decoding the `assetData` sent to them and performing the actual transfer of assets. Addresses of the deployed contracts can be found in this powerchain [guide](https://powerchain.org/docs/guides/powerchain-cheat-sheet) or the [DEPLOYS](./DEPLOYS.json) file within this package.
 
 ## Installation
 
 **Install**
 
 ```bash
-npm install @0x/contracts-asset-proxy --save
+npm install @powerchain/contracts-asset-proxy --save
 ```
 
 ## Bug bounty
 
-A bug bounty for the 2.0.0 contracts is ongoing! Instructions can be found [here](https://0x.org/docs/guides/bug-bounty-program).
+A bug bounty for the 2.0.0 contracts is ongoing! Instructions can be found [here](https://powerchain.org/docs/guides/bug-bounty-program).
 
 ## Contributing
 
 We strongly recommend that the community help us make improvements and determine the future direction of the protocol. To report bugs within this package, please create an issue in this repository.
 
-For proposals regarding the 0x protocol's smart contract architecture, message format, or additional functionality, go to the [0x Improvement Proposals (ZEIPs)](https://github.com/0xProject/ZEIPs) repository and follow the contribution guidelines provided therein.
+For proposals regarding the powerchain protocol's smart contract architecture, message format, or additional functionality, go to the [powerchain Improvement Proposals (ZEIPs)](https://github.com/powerchainProject/ZEIPs) repository and follow the contribution guidelines provided therein.
 
 Please read our [contribution guidelines](../../CONTRIBUTING.md) before getting started.
 
@@ -41,13 +41,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/contracts-asset-proxy yarn build
+PKG=@powerchain/contracts-asset-proxy yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/contracts-asset-proxy yarn watch
+PKG=@powerchain/contracts-asset-proxy yarn watch
 ```
 
 ### Clean

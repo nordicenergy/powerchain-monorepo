@@ -1,19 +1,19 @@
 #!/usr/bin/env node
-import { AbiEncoder, abiUtils, logUtils } from '@0x/utils';
+import {AbiEncoder, abiUtils, logUtils} from '@powerchain/utils';
 import chalk from 'chalk';
 import * as changeCase from 'change-case';
-import { execSync } from 'child_process';
+import {execSync} from 'child_process';
 import * as cliFormat from 'cli-format';
-import { AbiDefinition, ConstructorAbi, ContractAbi, DevdocOutput, EventAbi, MethodAbi } from 'ethereum-types';
-import { sync as globSync } from 'glob';
+import {AbiDefinition, ConstructorAbi, ContractAbi, DevdocOutput, EventAbi, MethodAbi} from 'ethereum-types';
+import {sync as globSync} from 'glob';
 import * as Handlebars from 'handlebars';
 import * as _ from 'lodash';
 import * as mkdirp from 'mkdirp';
 import * as yargs from 'yargs';
 
-import { registerPythonHelpers } from './python_handlebars_helpers';
-import { ContextData, ContractsBackend, ParamKind } from './types';
-import { utils } from './utils';
+import {registerPythonHelpers} from './python_handlebars_helpers';
+import {ContextData, ContractsBackend, ParamKind} from './types';
+import {utils} from './utils';
 
 const ABI_TYPE_CONSTRUCTOR = 'constructor';
 const ABI_TYPE_METHOD = 'function';
@@ -169,7 +169,7 @@ for (const abiFileName of abiFileNames) {
     } else if (parsedContent.abi !== undefined) {
         ABI = parsedContent.abi; // Truffle artifact
     } else if (parsedContent.compilerOutput.abi !== undefined) {
-        ABI = parsedContent.compilerOutput.abi; // 0x artifact
+        ABI = parsedContent.compilerOutput.abi; // powerchain artifact
         if (parsedContent.compilerOutput.devdoc !== undefined) {
             devdoc = parsedContent.compilerOutput.devdoc;
         }
@@ -177,7 +177,7 @@ for (const abiFileName of abiFileNames) {
     if (ABI === undefined) {
         logUtils.log(`${chalk.red(`ABI not found in ${abiFileName}.`)}`);
         logUtils.log(
-            `Please make sure your ABI file is either an array with ABI entries or a truffle artifact or 0x sol-compiler artifact`,
+            `Please make sure your ABI file is either an array with ABI entries or a truffle artifact or powerchain sol-compiler artifact`,
         );
         process.exit(1);
     }
@@ -206,8 +206,8 @@ for (const abiFileName of abiFileNames) {
         if (
             deployedBytecode === '' ||
             deployedBytecode === undefined ||
-            deployedBytecode === '0x' ||
-            deployedBytecode === '0x00'
+            deployedBytecode === 'powerchain' ||
+            deployedBytecode === 'powerchain00'
         ) {
             throw new Error();
         }

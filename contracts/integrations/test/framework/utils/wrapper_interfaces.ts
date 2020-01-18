@@ -1,5 +1,5 @@
-import { ContractFunctionObj, ContractTxFunctionObj } from '@0x/base-contract';
-import { BlockParam, CallData } from 'ethereum-types';
+import {ContractFunctionObj, ContractTxFunctionObj} from '@powerchain/base-contract';
+import {BlockParam, CallData} from 'ethereum-types';
 
 // tslint:disable:max-classes-per-file
 // Generated Wrapper Interfaces

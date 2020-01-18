@@ -1,24 +1,29 @@
-import { IAssetDataContract } from '@0x/contracts-asset-proxy';
-import { DummyERC721TokenContract } from '@0x/contracts-erc721';
-import { ForwarderContract } from '@0x/contracts-exchange-forwarder';
-import { blockchainTests, constants, getLatestBlockTimestampAsync, toBaseUnitAmount } from '@0x/contracts-test-utils';
-import { generatePseudoRandomSalt } from '@0x/order-utils';
-import { SignatureType, SignedOrder } from '@0x/types';
-import { AbiEncoder, BigNumber, ExchangeForwarderRevertErrors, hexUtils } from '@0x/utils';
+import {IAssetDataContract} from '@powerchain/contracts-asset-proxy';
+import {DummyERC721TokenContract} from '@powerchain/contracts-erc721';
+import {ForwarderContract} from '@powerchain/contracts-exchange-forwarder';
+import {
+    blockchainTests,
+    constants,
+    getLatestBlockTimestampAsync,
+    toBaseUnitAmount
+} from '@powerchain/contracts-test-utils';
+import {generatePseudoRandomSalt} from '@powerchain/order-utils';
+import {SignatureType, SignedOrder} from '@powerchain/types';
+import {AbiEncoder, BigNumber, ExchangeForwarderRevertErrors, hexUtils} from '@powerchain/utils';
 
-import { deployEth2DaiBridgeAsync } from '../bridges/deploy_eth2dai_bridge';
-import { deployUniswapBridgeAsync } from '../bridges/deploy_uniswap_bridge';
-import { Actor } from '../framework/actors/base';
-import { FeeRecipient } from '../framework/actors/fee_recipient';
-import { Maker } from '../framework/actors/maker';
-import { Taker } from '../framework/actors/taker';
-import { actorAddressesByName } from '../framework/actors/utils';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { DeploymentManager } from '../framework/deployment_manager';
-import { TestEth2DaiContract, TestUniswapExchangeContract } from '../wrappers';
+import {deployEth2DaiBridgeAsync} from '../bridges/deploy_eth2dai_bridge';
+import {deployUniswapBridgeAsync} from '../bridges/deploy_uniswap_bridge';
+import {Actor} from '../framework/actors/base';
+import {FeeRecipient} from '../framework/actors/fee_recipient';
+import {Maker} from '../framework/actors/maker';
+import {Taker} from '../framework/actors/taker';
+import {actorAddressesByName} from '../framework/actors/utils';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {DeploymentManager} from '../framework/deployment_manager';
+import {TestEth2DaiContract, TestUniswapExchangeContract} from '../wrappers';
 
-import { deployForwarderAsync } from './deploy_forwarder';
-import { ForwarderTestFactory } from './forwarder_test_factory';
+import {deployForwarderAsync} from './deploy_forwarder';
+import {ForwarderTestFactory} from './forwarder_test_factory';
 
 blockchainTests.resets('Forwarder <> ERC20Bridge integration tests', env => {
     let deployment: DeploymentManager;

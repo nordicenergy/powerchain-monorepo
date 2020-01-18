@@ -1,13 +1,13 @@
 {
-    "name": "0x.js",
+    "name": "powerchain.js",
     "version": "9.0.3",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "A javascript library for interacting with the 0x protocol",
+    "description": "A javascript library for interacting with the powerchain protocol",
     "keywords": [
-        "0x.js",
-        "0xproject",
+        "powerchain.js",
+        "powerchainproject",
         "ethereum",
         "tokens",
         "exchange"
@@ -28,29 +28,29 @@
         "build:umd:prod": "NODE_ENV=production node --max_old_space_size=8192 ../../node_modules/.bin/webpack --mode production",
         "build:commonjs": "tsc -b",
         "diff_docs": "git diff --exit-code ./docs",
-        "s3:sync_md_docs": "aws s3 sync ./docs s3://docs-markdown/${npm_package_name}/v${npm_package_version} --profile 0xproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
+        "s3:sync_md_docs": "aws s3 sync ./docs s3://docs-markdown/${npm_package_name}/v${npm_package_version} --profile powerchainproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
         "docs:md": "ts-doc-gen --sourceDir='$PROJECT_FILES' --output=$MD_FILE_DIR --fileExtension=mdx --tsconfig=./typedoc-tsconfig.json",
         "docs:json": "typedoc --excludePrivate --excludeExternals --excludeProtected --ignoreCompilerErrors --target ES5 --tsconfig typedoc-tsconfig.json --json $JSON_FILE_PATH $PROJECT_FILES"
     },
     "config": {
         "postpublish": {
             "assets": [
-                "packages/0x.js/_bundles/index.js",
-                "packages/0x.js/_bundles/index.min.js"
+                "packages/powerchain.js/_bundles/index.js",
+                "packages/powerchain.js/_bundles/index.min.js"
             ]
         }
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit"
     },
     "license": "Apache-2.0",
     "devDependencies": {
-        "@0x/contract-addresses": "^4.2.0",
-        "@0x/dev-utils": "^3.1.0",
-        "@0x/migrations": "^5.1.0",
-        "@0x/ts-doc-gen": "^0.0.22",
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/contract-addresses": "^4.2.0",
+        "@powerchain/dev-utils": "^3.1.0",
+        "@powerchain/migrations": "^5.1.0",
+        "@powerchain/ts-doc-gen": "^0.0.22",
+        "@powerchain/tslint-config": "^4.0.0",
         "@types/lodash": "4.14.104",
         "@types/mocha": "^5.2.7",
         "@types/node": "*",
@@ -77,17 +77,17 @@
         "webpack": "^4.20.2"
     },
     "dependencies": {
-        "@0x/abi-gen-wrappers": "^5.4.0-beta.3",
-        "@0x/assert": "^3.0.3",
-        "@0x/asset-swapper": "^3.0.3",
-        "@0x/base-contract": "^6.0.3",
-        "@0x/contract-wrappers": "^13.3.0",
-        "@0x/order-utils": "^10.1.0",
-        "@0x/subproviders": "^6.0.3",
-        "@0x/types": "^3.1.1",
-        "@0x/typescript-typings": "^5.0.1",
-        "@0x/utils": "^5.1.2",
-        "@0x/web3-wrapper": "^7.0.3",
+        "@powerchain/abi-gen-wrappers": "^5.4.0-beta.3",
+        "@powerchain/assert": "^3.0.3",
+        "@powerchain/asset-swapper": "^3.0.3",
+        "@powerchain/base-contract": "^6.0.3",
+        "@powerchain/contract-wrappers": "^13.3.0",
+        "@powerchain/order-utils": "^10.1.0",
+        "@powerchain/subproviders": "^6.0.3",
+        "@powerchain/types": "^3.1.1",
+        "@powerchain/typescript-typings": "^5.0.1",
+        "@powerchain/utils": "^5.1.2",
+        "@powerchain/web3-wrapper": "^7.0.3",
         "@types/web3-provider-engine": "^14.0.0",
         "ethereum-types": "^3.0.0",
         "ethers": "~4.0.4",

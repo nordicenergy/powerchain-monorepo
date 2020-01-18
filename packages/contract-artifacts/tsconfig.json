@@ -25,14 +25,14 @@
         "./artifacts/MultiAssetProxy.json",
         "./artifacts/OrderValidator.json",
         "./artifacts/WETH9.json",
-        "./artifacts/ZRXToken.json",
+        "./artifacts/NETToken.json",
         "./artifacts/CoordinatorRegistry.json",
         "./artifacts/Coordinator.json",
         "./artifacts/ERC1155Proxy.json",
         "./artifacts/StaticCallProxy.json",
         "./artifacts/Staking.json",
         "./artifacts/StakingProxy.json",
-        "./artifacts/ZrxVault.json",
+        "./artifacts/NetVault.json",
         "./artifacts/ERC20BridgeProxy.json",
         "./artifacts/IERC20BridgeSampler.json"
     ]

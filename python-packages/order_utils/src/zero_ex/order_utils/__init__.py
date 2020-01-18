@@ -1,19 +1,19 @@
-r"""Order utilities for 0x applications.
+r"""Order utilities for powerchain applications.
 
 Setup
 -----
 
 Install the package with pip::
 
-    pip install 0x-order-utils
+    pip install powerchain-order-utils
 
 Some methods require the caller to pass in a `Web3.BaseProvider`:code: object.
 For local testing one may construct such a provider pointing at an instance of
-`ganache-cli <https://www.npmjs.com/package/ganache-cli>`_ which has the 0x
+`ganache-cli <https://www.npmjs.com/package/ganache-cli>`_ which has the powerchain
 contracts deployed on it.  For convenience, a docker container is provided for
 just this purpose.  To start it::
 
-    docker run -d -p 8545:8545 0xorg/ganache-cli
+    docker run -d -p 8545:8545 nordicenergy/ganache-cli
 
 """
 
@@ -25,7 +25,7 @@ from pkg_resources import resource_string
 from mypy_extensions import TypedDict
 
 from eth_typing import HexStr
-from eth_utils import keccak, remove_0x_prefix, to_bytes, to_checksum_address
+from eth_utils import keccak, remove_powerchain_prefix, to_bytes, to_checksum_address
 from web3 import Web3
 import web3.exceptions
 from web3.providers.base import BaseProvider
@@ -47,7 +47,7 @@ from zero_ex.json_schemas import assert_valid
 class _Constants:
     """Static data used by order utilities."""
 
-    null_address = "0x0000000000000000000000000000000000000000"
+    null_address = "powerchain0000000000000000000000000000000000000000"
 
     eip191_header = b"\x19\x01"
 
@@ -62,7 +62,7 @@ class _Constants:
 
     eip712_domain_struct_header = (
         eip712_domain_separator_schema_hash
-        + keccak(b"0x Protocol")
+        + keccak(b"powerchain Protocol")
         + keccak(b"3.0.0")
     )
 
@@ -103,20 +103,20 @@ def generate_order_hash_hex(
 ) -> str:
     """Calculate the hash of the given order as a hexadecimal string.
 
-    :param order: The order to be hashed.  Must conform to `the 0x order JSON schema <https://github.com/0xProject/0x-monorepo/blob/development/packages/json-schemas/schemas/order_schema.json>`_.
-    :param exchange_address: The address to which the 0x Exchange smart
+    :param order: The order to be hashed.  Must conform to `the powerchain order JSON schema <https://github.com/nordicenergy/powerchain-protocol-dev-kit/blob/development/packages/json-schemas/schemas/order_schema.json>`_.
+    :param exchange_address: The address to which the powerchain Exchange smart
         contract has been deployed.
     :returns: A string, of ASCII hex digits, representing the order hash.
 
     Inputs and expected result below were copied from
-    @0x/order-utils/test/order_hash_test.ts
+    @powerchain/order-utils/test/order_hash_test.ts
 
     >>> generate_order_hash_hex(
     ...     Order(
-    ...         makerAddress="0x0000000000000000000000000000000000000000",
-    ...         takerAddress="0x0000000000000000000000000000000000000000",
-    ...         feeRecipientAddress="0x0000000000000000000000000000000000000000",
-    ...         senderAddress="0x0000000000000000000000000000000000000000",
+    ...         makerAddress="powerchain0000000000000000000000000000000000000000",
+    ...         takerAddress="powerchain0000000000000000000000000000000000000000",
+    ...         feeRecipientAddress="powerchain0000000000000000000000000000000000000000",
+    ...         senderAddress="powerchain0000000000000000000000000000000000000000",
     ...         makerAssetAmount="0",
     ...         takerAssetAmount="0",
     ...         makerFee="0",
@@ -128,7 +128,7 @@ def generate_order_hash_hex(
     ...         makerFeeAssetData=((0).to_bytes(1, byteorder='big') * 20),
     ...         takerFeeAssetData=((0).to_bytes(1, byteorder='big') * 20),
     ...     ),
-    ...     exchange_address="0x1dc4c1cefef38a777b15aa20260a54e584b16c48",
+    ...     exchange_address="powerchain1dc4c1cefef38a777b15aa20260a54e584b16c48",
     ...     chain_id=1337
     ... )
     'cb36e4fedb36508fb707e2c05e21bffc7a72766ccae93f8ff096693fff7f1714'
@@ -190,7 +190,7 @@ def is_valid_signature(
     Check if the supplied `signature`:code: corresponds to signing `data`:code:
     with the private key corresponding to `signer_address`:code:.
 
-    :param provider: A Web3 provider able to access the 0x Exchange contract.
+    :param provider: A Web3 provider able to access the powerchain Exchange contract.
     :param data: The hex encoded data signed by the supplied signature.
     :param signature: The hex encoded signature.
     :param signer_address: The hex encoded address that signed the data to
@@ -200,9 +200,9 @@ def is_valid_signature(
 
     >>> is_valid_signature(
     ...     Web3.HTTPProvider("http://127.0.0.1:8545"),
-    ...     '0x6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b0',
-    ...     '0x1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351bc3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace225403',
-    ...     '0x5409ed021d9299bf6814279a6a1411a7e866a631',
+    ...     'powerchain6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b0',
+    ...     'powerchain1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351bc3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace225403',
+    ...     'powerchain5409ed021d9299bf6814279a6a1411a7e866a631',
     ... )
     True
     """  # noqa: E501 (line too long)
@@ -219,9 +219,9 @@ def is_valid_signature(
             )
         ).exchange,
     ).is_valid_hash_signature.call(
-        bytes.fromhex(remove_0x_prefix(HexStr(data))),
+        bytes.fromhex(remove_powerchain_prefix(HexStr(data))),
         to_checksum_address(signer_address),
-        bytes.fromhex(remove_0x_prefix(HexStr(signature))),
+        bytes.fromhex(remove_powerchain_prefix(HexStr(signature))),
     )
 
 
@@ -236,7 +236,7 @@ class ECSignature(TypedDict):
 def _parse_signature_hex_as_vrs(signature_hex: str) -> ECSignature:
     """Parse signature hex as a concatentation of EC parameters ordered V, R, S.
 
-    >>> _parse_signature_hex_as_vrs('0x1b117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d872871137feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b03')
+    >>> _parse_signature_hex_as_vrs('powerchain1b117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d872871137feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b03')
     {'v': 27, 'r': '117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d87287113', 's': '7feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b'}
     """  # noqa: E501 (line too long)
     signature: ECSignature = {
@@ -252,7 +252,7 @@ def _parse_signature_hex_as_vrs(signature_hex: str) -> ECSignature:
 def _parse_signature_hex_as_rsv(signature_hex: str) -> ECSignature:
     """Parse signature hex as a concatentation of EC parameters ordered R, S, V.
 
-    >>> _parse_signature_hex_as_rsv('0x117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d872871137feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b00')
+    >>> _parse_signature_hex_as_rsv('powerchain117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d872871137feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b00')
     {'r': '117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d87287113', 's': '7feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b', 'v': 27}
     """  # noqa: E501 (line too long)
     signature: ECSignature = {
@@ -275,10 +275,10 @@ def _convert_ec_signature_to_vrs_hex(signature: ECSignature) -> str:
     ...         'v': 27
     ...     }
     ... )
-    '0x1b117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d872871137feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b'
+    'powerchain1b117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d872871137feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b'
     """  # noqa: E501 (line too long)
     return (
-        "0x"
+        "powerchain"
         + signature["v"].to_bytes(1, byteorder="big").hex()
         + signature["r"]
         + signature["s"]
@@ -303,9 +303,9 @@ def sign_hash(
     >>> sign_hash(
     ...     provider,
     ...     Web3(provider).geth.personal.listAccounts()[0],
-    ...     '0x34decbedc118904df65f379a175bb39ca18209d6ce41d5ed549d54e6e0a95004',
+    ...     'powerchain34decbedc118904df65f379a175bb39ca18209d6ce41d5ed549d54e6e0a95004',
     ... )
-    '0x1b117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d872871137feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b03'
+    'powerchain1b117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d872871137feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b03'
     """  # noqa: E501 (line too long)
     web3_instance = None
     if isinstance(web3_or_provider, BaseProvider):
@@ -323,7 +323,7 @@ def sign_hash(
 
     # false positive from pylint: disable=no-member
     signature = web3_instance.eth.sign(  # type: ignore
-        signer_address, hexstr=hash_hex.replace("0x", "")
+        signer_address, hexstr=hash_hex.replace("powerchain", "")
     ).hex()
 
     valid_v_param_values = [27, 28]
@@ -390,10 +390,10 @@ def sign_hash_to_bytes(
     >>> sign_hash_to_bytes(
     ...     provider,
     ...     Web3(provider).geth.personal.listAccounts()[0],
-    ...     '0x34decbedc118904df65f379a175bb39ca18209d6ce41d5ed549d54e6e0a95004',
+    ...     'powerchain34decbedc118904df65f379a175bb39ca18209d6ce41d5ed549d54e6e0a95004',
     ... ).decode(encoding='utf_8')
     '1b117902c86dfb95fe0d1badd983ee166ad259b27acb220174cbb4460d872871137feabdfe76e05924b484789f79af4ee7fa29ec006cedce1bbf369320d034e10b03'
     """  # noqa: E501 (line too long)
-    return remove_0x_prefix(
+    return remove_powerchain_prefix(
         HexStr(sign_hash(web3_or_provider, signer_address, hash_hex))
     ).encode(encoding="utf_8")

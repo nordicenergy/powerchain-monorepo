@@ -1,15 +1,15 @@
-import { promisify } from '@0x/utils';
+import {promisify} from '@powerchain/utils';
 import chalk from 'chalk';
-import { stripHexPrefix } from 'ethereumjs-util';
+import {stripHexPrefix} from 'ethereumjs-util';
 import * as fs from 'fs';
-import { Collector } from 'istanbul';
+import {Collector} from 'istanbul';
 import * as _ from 'lodash';
-import { getLogger, levels, Logger } from 'loglevel';
+import {getLogger, levels, Logger} from 'loglevel';
 import * as mkdirp from 'mkdirp';
 
-import { AbstractArtifactAdapter } from './artifact_adapters/abstract_artifact_adapter';
-import { constants } from './constants';
-import { parseSourceMap } from './source_maps';
+import {AbstractArtifactAdapter} from './artifact_adapters/abstract_artifact_adapter';
+import {constants} from './constants';
+import {parseSourceMap} from './source_maps';
 import {
     ContractData,
     Coverage,
@@ -19,7 +19,7 @@ import {
     SubTraceInfoExistingContract,
     SubTraceInfoNewContract,
 } from './types';
-import { utils } from './utils';
+import {utils} from './utils';
 
 const mkdirpAsync = promisify<undefined>(mkdirp);
 
@@ -42,7 +42,7 @@ export class TraceCollector {
 
     /**
      * Instantiates a TraceCollector instance
-     * @param artifactAdapter Adapter for used artifacts format (0x, truffle, giveth, etc.)
+     * @param artifactAdapter Adapter for used artifacts format (powerchain, truffle, giveth, etc.)
      * @param isVerbose If true, we will log any unknown transactions. Otherwise we will ignore them
      * @param singleFileSubtraceHandler A handler function for computing partial coverage for a single file & subtrace
      */

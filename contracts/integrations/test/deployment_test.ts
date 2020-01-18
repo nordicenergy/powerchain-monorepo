@@ -5,7 +5,7 @@ import {
     ERC721ProxyContract,
     MultiAssetProxyContract,
     StaticCallProxyContract,
-} from '@0x/contracts-asset-proxy';
+} from '@powerchain/contracts-asset-proxy';
 import {
     artifacts as exchangeArtifacts,
     ExchangeAssetProxyRegisteredEventArgs,
@@ -13,8 +13,8 @@ import {
     ExchangeEvents,
     ExchangeProtocolFeeCollectorAddressEventArgs,
     ExchangeProtocolFeeMultiplierEventArgs,
-} from '@0x/contracts-exchange';
-import { artifacts as multisigArtifacts, ZeroExGovernorContract } from '@0x/contracts-multisig';
+} from '@powerchain/contracts-exchange';
+import {artifacts as multisigArtifacts, ZeroExGovernorContract} from '@powerchain/contracts-multisig';
 import {
     artifacts as stakingArtifacts,
     constants as stakingConstants,
@@ -22,18 +22,18 @@ import {
     StakingEvents,
     StakingExchangeAddedEventArgs,
     StakingProxyContract,
-} from '@0x/contracts-staking';
-import { blockchainTests, constants, expect, filterLogsToArguments } from '@0x/contracts-test-utils';
+} from '@powerchain/contracts-staking';
+import {blockchainTests, constants, expect, filterLogsToArguments} from '@powerchain/contracts-test-utils';
 import {
     AuthorizableAuthorizedAddressAddedEventArgs,
     AuthorizableAuthorizedAddressRemovedEventArgs,
     AuthorizableEvents,
-} from '@0x/contracts-utils';
-import { AssetProxyId } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { TxData } from 'ethereum-types';
+} from '@powerchain/contracts-utils';
+import {AssetProxyId} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {TxData} from 'ethereum-types';
 
-import { AssetProxyDispatcher, Authorizable, Ownable } from './framework/utils/wrapper_interfaces';
+import {AssetProxyDispatcher, Authorizable, Ownable} from './framework/utils/wrapper_interfaces';
 
 // tslint:disable:no-unnecessary-type-assertion
 blockchainTests('Deployment and Configuration End to End Tests', env => {
@@ -75,7 +75,7 @@ blockchainTests('Deployment and Configuration End to End Tests', env => {
         // Deploy ZeroExGovernor. For the purposes of this test, we will assume that
         // the ZeroExGovernor does not know what destinations will be needed during
         // construction.
-        governor = await ZeroExGovernorContract.deployFrom0xArtifactAsync(
+        governor = await ZeroExGovernorContract.deployFrompowerchainArtifactAsync(
             multisigArtifacts.ZeroExGovernor,
             env.provider,
             txDefaults,
@@ -89,7 +89,7 @@ blockchainTests('Deployment and Configuration End to End Tests', env => {
         );
 
         // Deploy Exchange.
-        exchange = await ExchangeContract.deployFrom0xArtifactAsync(
+        exchange = await ExchangeContract.deployFrompowerchainArtifactAsync(
             exchangeArtifacts.Exchange,
             env.provider,
             txDefaults,
@@ -98,7 +98,7 @@ blockchainTests('Deployment and Configuration End to End Tests', env => {
         );
 
         // Deploy Staking.
-        staking = await StakingContract.deployFrom0xArtifactAsync(
+        staking = await StakingContract.deployFrompowerchainArtifactAsync(
             stakingArtifacts.Staking,
             env.provider,
             txDefaults,
@@ -106,7 +106,7 @@ blockchainTests('Deployment and Configuration End to End Tests', env => {
         );
 
         // Deploy the staking proxy.
-        stakingProxy = await StakingProxyContract.deployFrom0xArtifactAsync(
+        stakingProxy = await StakingProxyContract.deployFrompowerchainArtifactAsync(
             stakingArtifacts.StakingProxy,
             env.provider,
             txDefaults,
@@ -118,31 +118,31 @@ blockchainTests('Deployment and Configuration End to End Tests', env => {
         await stakingProxy.addAuthorizedAddress(owner).awaitTransactionSuccessAsync();
 
         // Deploy the asset proxy contracts.
-        erc20Proxy = await ERC20ProxyContract.deployFrom0xArtifactAsync(
+        erc20Proxy = await ERC20ProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.ERC20Proxy,
             env.provider,
             txDefaults,
             assetProxyArtifacts,
         );
-        erc721Proxy = await ERC721ProxyContract.deployFrom0xArtifactAsync(
+        erc721Proxy = await ERC721ProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.ERC721Proxy,
             env.provider,
             txDefaults,
             assetProxyArtifacts,
         );
-        erc1155Proxy = await ERC1155ProxyContract.deployFrom0xArtifactAsync(
+        erc1155Proxy = await ERC1155ProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.ERC1155Proxy,
             env.provider,
             txDefaults,
             assetProxyArtifacts,
         );
-        multiAssetProxy = await MultiAssetProxyContract.deployFrom0xArtifactAsync(
+        multiAssetProxy = await MultiAssetProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.MultiAssetProxy,
             env.provider,
             txDefaults,
             assetProxyArtifacts,
         );
-        staticCallProxy = await StaticCallProxyContract.deployFrom0xArtifactAsync(
+        staticCallProxy = await StaticCallProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.StaticCallProxy,
             env.provider,
             txDefaults,

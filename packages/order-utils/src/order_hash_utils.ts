@@ -1,8 +1,8 @@
-import { DevUtilsContract } from '@0x/contract-wrappers';
-import { Order } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {DevUtilsContract} from '@powerchain/contract-wrappers';
+import {Order} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { constants } from './constants';
+import {constants} from './constants';
 
 const devUtilsContract = new DevUtilsContract(constants.NULL_ADDRESS, constants.FAKED_PROVIDER as any);
 

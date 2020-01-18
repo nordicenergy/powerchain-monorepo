@@ -1,11 +1,11 @@
-import { NodeType } from '@0x/web3-wrapper';
+import {NodeType} from '@powerchain/web3-wrapper';
 import * as _ from 'lodash';
 
-import { constants } from './constants';
-import { getContractAddressToTraces } from './trace';
-import { TraceCollectionSubprovider } from './trace_collection_subprovider';
-import { SubTraceInfo, SubTraceInfoExistingContract, SubTraceInfoNewContract, TraceInfo } from './types';
-import { utils } from './utils';
+import {constants} from './constants';
+import {getContractAddressToTraces} from './trace';
+import {TraceCollectionSubprovider} from './trace_collection_subprovider';
+import {SubTraceInfo, SubTraceInfoExistingContract, SubTraceInfoNewContract, TraceInfo} from './types';
+import {utils} from './utils';
 
 // TraceInfoSubprovider is extended by subproviders which need to work with one
 // TraceInfo at a time. It has one abstract method: _handleTraceInfoAsync, which
@@ -36,7 +36,7 @@ export abstract class TraceInfoSubprovider extends TraceCollectionSubprovider {
                     extractStack: function (stack) {
                         var extract = [];
                         for (var i = 0; i < stack.length(); i++) {
-                            extract.push('0x' + stack.peek(i).toString(16));
+                            extract.push('powerchain' + stack.peek(i).toString(16));
                         }
                         return extract;
                     },
@@ -47,16 +47,16 @@ export abstract class TraceInfoSubprovider extends TraceCollectionSubprovider {
                         const depth = 0 | log.getDepth();
                         const gasCost = 0 | log.getCost();
                         const gas = 0 | log.getGas();
-                        const isCall = opn == 0xf1 || opn == 0xf2 || opn == 0xf4 || opn == 0xf5 || opn == 0xfa;
-                        const isMemoryAccess = opn == 0x51 || opn == 0x52 || opn == 0x53;
-                        const isCallDataAccess = opn == 0x37;
+                        const isCall = opn == powerchainf1 || opn == powerchainf2 || opn == powerchainf4 || opn == powerchainf5 || opn == powerchainfa;
+                        const isMemoryAccess = opn == powerchain51 || opn == powerchain52 || opn == powerchain53;
+                        const isCallDataAccess = opn == powerchain37;
                         var stack;
                         if (isCall) {
-                            stack = ['0x'+log.stack.peek(1).toString(16), null];
+                            stack = ['powerchain'+log.stack.peek(1).toString(16), null];
                         } else if (isMemoryAccess) {
-                            stack = ['0x'+log.stack.peek(0).toString(16)];
+                            stack = ['powerchain'+log.stack.peek(0).toString(16)];
                         } else if (isCallDataAccess) {
-                            stack = ['0x'+log.stack.peek(2).toString(16), '0x'+log.stack.peek(1).toString(16), '0x'+log.stack.peek(0).toString(16)];
+                            stack = ['powerchain'+log.stack.peek(2).toString(16), 'powerchain'+log.stack.peek(1).toString(16), 'powerchain'+log.stack.peek(0).toString(16)];
                         }
                         this.data.push({ pc, gasCost, depth, op, stack, gas });
                     },

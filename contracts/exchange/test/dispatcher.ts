@@ -4,9 +4,9 @@ import {
     ERC20Wrapper,
     ERC721ProxyContract,
     ERC721Wrapper,
-} from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { DummyERC20TokenContract } from '@0x/contracts-erc20';
+} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {DummyERC20TokenContract} from '@powerchain/contracts-erc20';
 import {
     chaiSetup,
     constants,
@@ -15,18 +15,18 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { OwnableRevertErrors } from '@0x/contracts-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { AssetProxyId, RevertReason } from '@0x/types';
-import { BigNumber, ExchangeRevertErrors, StringRevertError } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {OwnableRevertErrors} from '@powerchain/contracts-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {AssetProxyId, RevertReason} from '@powerchain/types';
+import {BigNumber, ExchangeRevertErrors, StringRevertError} from '@powerchain/utils';
 import * as chai from 'chai';
-import { LogWithDecodedArgs } from 'ethereum-types';
+import {LogWithDecodedArgs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
-import { dependencyArtifacts } from './utils/dependency_artifacts';
-import { TestAssetProxyDispatcherAssetProxyRegisteredEventArgs, TestAssetProxyDispatcherContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {dependencyArtifacts} from './utils/dependency_artifacts';
+import {TestAssetProxyDispatcherAssetProxyRegisteredEventArgs, TestAssetProxyDispatcherContract} from './wrappers';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -72,7 +72,7 @@ describe('AssetProxyDispatcher', () => {
 
         erc721Proxy = await erc721Wrapper.deployProxyAsync();
 
-        assetProxyDispatcher = await TestAssetProxyDispatcherContract.deployFrom0xArtifactAsync(
+        assetProxyDispatcher = await TestAssetProxyDispatcherContract.deployFrompowerchainArtifactAsync(
             artifacts.TestAssetProxyDispatcher,
             provider,
             txDefaults,
@@ -123,7 +123,7 @@ describe('AssetProxyDispatcher', () => {
             const proxyAddress = await assetProxyDispatcher.getAssetProxy(AssetProxyId.ERC20).callAsync();
             expect(proxyAddress).to.be.equal(erc20Proxy.address);
             // Deploy a new version of the ERC20 Transfer Proxy contract
-            const newErc20TransferProxy = await ERC20ProxyContract.deployFrom0xArtifactAsync(
+            const newErc20TransferProxy = await ERC20ProxyContract.deployFrompowerchainArtifactAsync(
                 proxyArtifacts.ERC20Proxy,
                 provider,
                 txDefaults,
@@ -312,7 +312,7 @@ describe('AssetProxyDispatcher', () => {
             await erc20TokenB.approve(erc20Proxy.address, constants.ZERO_AMOUNT).awaitTransactionSuccessAsync({
                 from: makerAddress,
             });
-            const transferIndexAsBytes32 = '0x0000000000000000000000000000000000000000000000000000000000000001';
+            const transferIndexAsBytes32 = 'powerchain0000000000000000000000000000000000000000000000000000000000000001';
             const nestedError = new StringRevertError(RevertReason.TransferFailed).encode();
             const expectedError = new ExchangeRevertErrors.AssetProxyTransferError(
                 transferIndexAsBytes32,
@@ -332,7 +332,7 @@ describe('AssetProxyDispatcher', () => {
         it('should forward the revert reason from the underlying failed transfer', async () => {
             const assetDataA = await devUtils.encodeERC20AssetData(erc20TokenA.address).callAsync();
             const assetDataB = await devUtils.encodeERC20AssetData(erc20TokenB.address).callAsync();
-            const transferIndexAsBytes32 = '0x0000000000000000000000000000000000000000000000000000000000000000';
+            const transferIndexAsBytes32 = 'powerchain0000000000000000000000000000000000000000000000000000000000000000';
             const expectedError = new ExchangeRevertErrors.AssetProxyDispatchError(
                 ExchangeRevertErrors.AssetProxyDispatchErrorCode.UnknownAssetProxy,
                 transferIndexAsBytes32,

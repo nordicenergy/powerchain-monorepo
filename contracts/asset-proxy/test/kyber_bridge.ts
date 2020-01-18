@@ -6,18 +6,18 @@ import {
     getRandomPortion,
     randomAddress,
     verifyEventsFromLogs,
-} from '@0x/contracts-test-utils';
-import { AssetProxyId } from '@0x/types';
-import { BigNumber, hexUtils } from '@0x/utils';
-import { DecodedLogs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {AssetProxyId} from '@powerchain/types';
+import {BigNumber, hexUtils} from '@powerchain/utils';
+import {DecodedLogs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { TestKyberBridgeContract, TestKyberBridgeEvents } from './wrappers';
+import {TestKyberBridgeContract, TestKyberBridgeEvents} from './wrappers';
 
 blockchainTests.resets('KyberBridge unit tests', env => {
-    const KYBER_ETH_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
+    const KYBER_ETH_ADDRESS = 'powerchaineeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
     const FROM_TOKEN_DECIMALS = 6;
     const TO_TOKEN_DECIMALS = 18;
     const FROM_TOKEN_BASE = new BigNumber(10).pow(FROM_TOKEN_DECIMALS);
@@ -27,7 +27,7 @@ blockchainTests.resets('KyberBridge unit tests', env => {
     let testContract: TestKyberBridgeContract;
 
     before(async () => {
-        testContract = await TestKyberBridgeContract.deployFrom0xArtifactAsync(
+        testContract = await TestKyberBridgeContract.deployFrompowerchainArtifactAsync(
             artifacts.TestKyberBridge,
             env.provider,
             env.txDefaults,
@@ -37,7 +37,7 @@ blockchainTests.resets('KyberBridge unit tests', env => {
 
     describe('isValidSignature()', () => {
         it('returns success bytes', async () => {
-            const LEGACY_WALLET_MAGIC_VALUE = '0xb0671381';
+            const LEGACY_WALLET_MAGIC_VALUE = 'powerchainb0671381';
             const result = await testContract
                 .isValidSignature(hexUtils.random(), hexUtils.random(_.random(0, 32)))
                 .callAsync();

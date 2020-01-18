@@ -6,19 +6,19 @@ import {
     Numberish,
     toDecimal,
     toFixed,
-} from '@0x/contracts-test-utils';
-import { BigNumber, FixedMathRevertErrors, hexUtils } from '@0x/utils';
-import { Decimal } from 'decimal.js';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber, FixedMathRevertErrors, hexUtils} from '@powerchain/utils';
+import {Decimal} from 'decimal.js';
 import * as _ from 'lodash';
 
-import { artifacts } from '../artifacts';
-import { TestLibFixedMathContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {TestLibFixedMathContract} from '../wrappers';
 
 blockchainTests('LibFixedMath unit tests', env => {
     let testContract: TestLibFixedMathContract;
 
     before(async () => {
-        testContract = await TestLibFixedMathContract.deployFrom0xArtifactAsync(
+        testContract = await TestLibFixedMathContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibFixedMath,
             env.provider,
             env.txDefaults,

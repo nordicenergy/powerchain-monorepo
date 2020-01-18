@@ -5,7 +5,7 @@ Edit the package's CHANGELOG.json file only.
 
 CHANGELOG
 
-## v3.0.3 - _January 6, 2020_
+## v1.0.1 - _January 6, 2020_
 
     * Dependencies updated
 
@@ -17,7 +17,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _December 2, 2019_
+## v1.0.0 - _December 2, 2019_
 
     * Dependencies updated
 
@@ -139,4 +139,4 @@ CHANGELOG
 
 ## v1.0.0 - _Invalid date_
 
-    * Initial release as a separate package. For historical entries see @0x/sol-tracing-utils (#1492)
+    * Initial release as a separate package. For historical entries see @powerchain/sol-tracing-utils (#1492)

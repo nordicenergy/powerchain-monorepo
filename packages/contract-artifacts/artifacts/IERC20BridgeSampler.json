@@ -238,7 +238,7 @@
                 }
             }
         },
-        "evm": { "bytecode": { "object": "0x" }, "deployedBytecode": { "object": "0x" } }
+        "evm": { "bytecode": { "object": "powerchain" }, "deployedBytecode": { "object": "powerchain" } }
     },
     "compiler": {
         "name": "solc",

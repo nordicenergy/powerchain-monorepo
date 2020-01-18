@@ -1,10 +1,17 @@
-import { blockchainTests, constants, expect, OrderStatus, orderUtils, randomAddress } from '@0x/contracts-test-utils';
-import { generatePseudoRandomSalt } from '@0x/order-utils';
-import { BigNumber, ExchangeRevertErrors, hexUtils, RevertError } from '@0x/utils';
+import {
+    blockchainTests,
+    constants,
+    expect,
+    OrderStatus,
+    orderUtils,
+    randomAddress
+} from '@powerchain/contracts-test-utils';
+import {generatePseudoRandomSalt} from '@powerchain/order-utils';
+import {BigNumber, ExchangeRevertErrors, hexUtils, RevertError} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
-import { TestLibExchangeRichErrorDecoderContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestLibExchangeRichErrorDecoderContract} from './wrappers';
 
 blockchainTests.resets('LibExchangeRichErrorDecoder', ({ provider, txDefaults }) => {
     const ASSET_PROXY_ID_LENGTH = 4;
@@ -15,7 +22,7 @@ blockchainTests.resets('LibExchangeRichErrorDecoder', ({ provider, txDefaults })
     let decoder: TestLibExchangeRichErrorDecoderContract;
 
     before(async () => {
-        decoder = await TestLibExchangeRichErrorDecoderContract.deployFrom0xArtifactAsync(
+        decoder = await TestLibExchangeRichErrorDecoderContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibExchangeRichErrorDecoder,
             provider,
             txDefaults,
@@ -44,7 +51,7 @@ blockchainTests.resets('LibExchangeRichErrorDecoder', ({ provider, txDefaults })
             it('reverts if selector does not match', async () => {
                 // Replace the selector with null bytes.
                 const NULL_SELECTOR = '00000000';
-                const withBadSelector = `0x${NULL_SELECTOR}${encoded.substr(10)}`;
+                const withBadSelector = `powerchain${NULL_SELECTOR}${encoded.substr(10)}`;
                 return expect(callAsync(withBadSelector)).to.revertWith('BAD_SELECTOR');
             });
         });

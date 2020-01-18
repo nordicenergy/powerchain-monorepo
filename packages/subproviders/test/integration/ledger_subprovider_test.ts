@@ -1,18 +1,18 @@
-import { DoneCallback } from '@0x/types';
-import { promisify, providerUtils } from '@0x/utils';
+import {DoneCallback} from '@powerchain/types';
+import {promisify, providerUtils} from '@powerchain/utils';
 import Eth from '@ledgerhq/hw-app-eth';
 // HACK: This dependency is optional and tslint skips optional dependencies
 // tslint:disable-next-line:no-implicit-dependencies
 import TransportNodeHid from '@ledgerhq/hw-transport-node-hid';
 import * as chai from 'chai';
-import { JSONRPCResponsePayload } from 'ethereum-types';
+import {JSONRPCResponsePayload} from 'ethereum-types';
 import * as ethUtils from 'ethereumjs-util';
 
-import { LedgerSubprovider, RPCSubprovider, Web3ProviderEngine } from '../../src';
-import { LedgerEthereumClient } from '../../src/types';
-import { chaiSetup } from '../chai_setup';
-import { fixtureData } from '../utils/fixture_data';
-import { reportCallbackErrors } from '../utils/report_callback_errors';
+import {LedgerSubprovider, RPCSubprovider, Web3ProviderEngine} from '../../src';
+import {LedgerEthereumClient} from '../../src/types';
+import {chaiSetup} from '../chai_setup';
+import {fixtureData} from '../utils/fixture_data';
+import {reportCallbackErrors} from '../utils/report_callback_errors';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -120,7 +120,7 @@ describe('LedgerSubprovider', () => {
                 const callback = reportCallbackErrors(done)((err: Error, response: JSONRPCResponsePayload) => {
                     expect(err).to.be.a('null');
                     expect(response.result.length).to.be.equal(EXPECTED_SIGNATURE_LENGTH);
-                    expect(response.result.substr(0, 2)).to.be.equal('0x');
+                    expect(response.result.substr(0, 2)).to.be.equal('powerchain');
                     done();
                 });
                 ledgerProvider.sendAsync(payload, callback);
@@ -140,7 +140,7 @@ describe('LedgerSubprovider', () => {
                 const callback = reportCallbackErrors(done)((err: Error, response: JSONRPCResponsePayload) => {
                     expect(err).to.be.a('null');
                     expect(response.result.length).to.be.equal(EXPECTED_SIGNATURE_LENGTH);
-                    expect(response.result.substr(0, 2)).to.be.equal('0x');
+                    expect(response.result.substr(0, 2)).to.be.equal('powerchain');
                     done();
                 });
                 ledgerProvider.sendAsync(payload, callback);
@@ -168,7 +168,7 @@ describe('LedgerSubprovider', () => {
                 let tx = {
                     to: accounts[0],
                     from: fixtureData.TEST_RPC_ACCOUNT_0,
-                    value: '0x8ac7230489e80000', // 10 ETH
+                    value: 'powerchain8ac7230489e80000', // 10 ETH
                 };
                 let payload = {
                     jsonrpc: '2.0',
@@ -180,9 +180,9 @@ describe('LedgerSubprovider', () => {
 
                 // Send transaction from Ledger
                 tx = {
-                    to: '0xafa3f8684e54059998bc3a7b0d2b0da075154d66',
+                    to: 'powerchainafa3f8684e54059998bc3a7b0d2b0da075154d66',
                     from: accounts[0],
-                    value: '0xde0b6b3a7640000',
+                    value: 'powerchainde0b6b3a7640000',
                 };
                 payload = {
                     jsonrpc: '2.0',
@@ -195,7 +195,7 @@ describe('LedgerSubprovider', () => {
                     const result = response.result;
                     const signedTxLength = 66;
                     expect(result.length).to.be.equal(signedTxLength);
-                    expect(result.substr(0, 2)).to.be.equal('0x');
+                    expect(result.substr(0, 2)).to.be.equal('powerchain');
                     done();
                 });
                 ledgerProvider.sendAsync(payload, callback);

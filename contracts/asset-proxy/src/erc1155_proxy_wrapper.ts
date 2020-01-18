@@ -1,5 +1,5 @@
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { artifacts as erc1155Artifacts, ERC1155MintableContract, Erc1155Wrapper } from '@0x/contracts-erc1155';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {artifacts as erc1155Artifacts, ERC1155MintableContract, Erc1155Wrapper} from '@powerchain/contracts-erc1155';
 import {
     constants,
     ERC1155FungibleHoldingsByOwner,
@@ -7,15 +7,15 @@ import {
     ERC1155NonFungibleHoldingsByOwner,
     LogDecoder,
     txDefaults,
-} from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { Provider, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {Provider, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { ERC1155ProxyContract, IAssetProxyContract } from './wrappers';
+import {ERC1155ProxyContract, IAssetProxyContract} from './wrappers';
 
 export class ERC1155ProxyWrapper {
     private readonly _tokenOwnerAddresses: string[];
@@ -54,7 +54,7 @@ export class ERC1155ProxyWrapper {
     public async deployDummyContractsAsync(): Promise<Erc1155Wrapper[]> {
         // tslint:disable-next-line:no-unused-variable
         for (const i of _.times(constants.NUM_DUMMY_ERC1155_CONTRACTS_TO_DEPLOY)) {
-            const erc1155Contract = await ERC1155MintableContract.deployFrom0xArtifactAsync(
+            const erc1155Contract = await ERC1155MintableContract.deployFrompowerchainArtifactAsync(
                 erc1155Artifacts.ERC1155Mintable,
                 this._provider,
                 txDefaults,
@@ -70,7 +70,7 @@ export class ERC1155ProxyWrapper {
      * @return Deployed ERC1155 proxy contract instance
      */
     public async deployProxyAsync(): Promise<ERC1155ProxyContract> {
-        this._proxyContract = await ERC1155ProxyContract.deployFrom0xArtifactAsync(
+        this._proxyContract = await ERC1155ProxyContract.deployFrompowerchainArtifactAsync(
             artifacts.ERC1155Proxy,
             this._provider,
             txDefaults,

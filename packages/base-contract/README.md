@@ -1,25 +1,25 @@
-## @0x/base-contract
+## @powerchain/base-contract
 
 BaseContract to derive all auto-generated wrappers from
 
 ## Installation
 
 ```bash
-yarn add @0x/base-contract
+yarn add @powerchain/base-contract
 ```
 
 If your project is in [TypeScript](https://www.typescriptlang.org/), add the following to your `tsconfig.json`:
 
 ```json
 "compilerOptions": {
-    "typeRoots": ["node_modules/@0x/typescript-typings/types", "node_modules/@types"],
+    "typeRoots": ["node_modules/@powerchain/typescript-typings/types", "node_modules/@types"],
 }
 ```
 
 ## Usage
 
 ```javascript
-import { BaseContract } from '@0x/base-contract';
+import { BaseContract } from '@powerchain/base-contract';
 ```
 
 ## Contributing
@@ -47,13 +47,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/base-contract yarn build
+PKG=@powerchain/base-contract yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/base-contract yarn watch
+PKG=@powerchain/base-contract yarn watch
 ```
 
 ### Lint

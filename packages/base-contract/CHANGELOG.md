@@ -75,7 +75,7 @@ CHANGELOG
 
 ## v5.3.0 - _July 31, 2019_
 
-    * Updated interface to `deployFrom0xArtifactAsync` to include log decode dependencies. (#1995)
+    * Updated interface to `deployFrompowerchainArtifactAsync` to include log decode dependencies. (#1995)
     * Updated interface to `deployAsync` to include log decode dependencies. (#1995)
 
 ## v5.2.0 - _Invalid date_
@@ -175,7 +175,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.3 - _November 9, 2018_
+## v1.0.1 - _November 9, 2018_
 
     * Dependencies updated
 
@@ -187,7 +187,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _September 28, 2018_
+## v1.0.0 - _September 28, 2018_
 
     * Change the way we detect BN to work with the newest ethers.js (#1069)
     * Add baseContract._throwIfRevertWithReasonCallResult (#1069)

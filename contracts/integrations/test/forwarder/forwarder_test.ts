@@ -1,8 +1,8 @@
-import { artifacts as assetProxyArtifacts, TestStaticCallTargetContract } from '@0x/contracts-asset-proxy';
-import { DummyERC20TokenContract } from '@0x/contracts-erc20';
-import { DummyERC721TokenContract } from '@0x/contracts-erc721';
-import { artifacts as exchangeArtifacts, ExchangeContract } from '@0x/contracts-exchange';
-import { artifacts, ExchangeForwarderRevertErrors, ForwarderContract } from '@0x/contracts-exchange-forwarder';
+import {artifacts as assetProxyArtifacts, TestStaticCallTargetContract} from '@powerchain/contracts-asset-proxy';
+import {DummyERC20TokenContract} from '@powerchain/contracts-erc20';
+import {DummyERC721TokenContract} from '@powerchain/contracts-erc721';
+import {artifacts as exchangeArtifacts, ExchangeContract} from '@powerchain/contracts-exchange';
+import {artifacts, ExchangeForwarderRevertErrors, ForwarderContract} from '@powerchain/contracts-exchange-forwarder';
 import {
     blockchainTests,
     constants,
@@ -10,20 +10,20 @@ import {
     getLatestBlockTimestampAsync,
     randomAddress,
     toBaseUnitAmount,
-} from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { Actor } from '../framework/actors/base';
-import { FeeRecipient } from '../framework/actors/fee_recipient';
-import { Maker } from '../framework/actors/maker';
-import { Taker } from '../framework/actors/taker';
-import { actorAddressesByName } from '../framework/actors/utils';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { LocalBalanceStore } from '../framework/balances/local_balance_store';
-import { DeploymentManager } from '../framework/deployment_manager';
+import {Actor} from '../framework/actors/base';
+import {FeeRecipient} from '../framework/actors/fee_recipient';
+import {Maker} from '../framework/actors/maker';
+import {Taker} from '../framework/actors/taker';
+import {actorAddressesByName} from '../framework/actors/utils';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {LocalBalanceStore} from '../framework/balances/local_balance_store';
+import {DeploymentManager} from '../framework/deployment_manager';
 
-import { deployForwarderAsync } from './deploy_forwarder';
-import { ForwarderTestFactory } from './forwarder_test_factory';
+import {deployForwarderAsync} from './deploy_forwarder';
+import {ForwarderTestFactory} from './forwarder_test_factory';
 
 blockchainTests('Forwarder integration tests', env => {
     let deployment: DeploymentManager;
@@ -54,7 +54,7 @@ blockchainTests('Forwarder integration tests', env => {
         });
         forwarder = await deployForwarderAsync(deployment, env);
 
-        const staticCallTarget = await TestStaticCallTargetContract.deployFrom0xArtifactAsync(
+        const staticCallTarget = await TestStaticCallTargetContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.TestStaticCallTarget,
             env.provider,
             env.txDefaults,
@@ -136,14 +136,14 @@ blockchainTests('Forwarder integration tests', env => {
     blockchainTests.resets('constructor', () => {
         it('should revert if assetProxy is unregistered', async () => {
             const chainId = await env.getChainIdAsync();
-            const exchange = await ExchangeContract.deployFrom0xArtifactAsync(
+            const exchange = await ExchangeContract.deployFrompowerchainArtifactAsync(
                 exchangeArtifacts.Exchange,
                 env.provider,
                 env.txDefaults,
                 {},
                 new BigNumber(chainId),
             );
-            const deployForwarder = ForwarderContract.deployFrom0xArtifactAsync(
+            const deployForwarder = ForwarderContract.deployFrompowerchainArtifactAsync(
                 artifacts.Forwarder,
                 env.provider,
                 env.txDefaults,
@@ -595,7 +595,7 @@ blockchainTests('Forwarder integration tests', env => {
             await testFactory.marketBuyTestAsync([cancelledOrder, fillableOrder], 1.5, { noopOrders: [0] });
         });
         it('Should buy slightly greater makerAsset when exchange rate is rounded', async () => {
-            // The 0x Protocol contracts round the exchange rate in favor of the Maker.
+            // The powerchain Protocol contracts round the exchange rate in favor of the Maker.
             // In this case, the taker must round up how much they're going to spend, which
             // in turn increases the amount of MakerAsset being purchased.
             // Example:

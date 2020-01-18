@@ -1,9 +1,9 @@
-import { signingUtils } from '@0x/contracts-test-utils';
-import { SignatureType, SignedZeroExTransaction } from '@0x/types';
-import { hexUtils } from '@0x/utils';
+import {signingUtils} from '@powerchain/contracts-test-utils';
+import {SignatureType, SignedZeroExTransaction} from '@powerchain/types';
+import {hexUtils} from '@powerchain/utils';
 
-import { hashUtils } from './hash_utils';
-import { SignedCoordinatorApproval } from './types';
+import {hashUtils} from './hash_utils';
+import {SignedCoordinatorApproval} from './types';
 
 export class ApprovalFactory {
     private readonly _privateKey: Buffer;

@@ -77,7 +77,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.3 - _April 11, 2019_
+## v1.0.1 - _April 11, 2019_
 
     * Dependencies updated
 
@@ -89,7 +89,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _March 1, 2019_
+## v1.0.0 - _March 1, 2019_
 
     * Change the interface to accept a configuration object instead of `isVerbose` (#1656)
     * Add `ignoreFilesGlobs` property on a config object (#1656)
@@ -137,4 +137,4 @@ CHANGELOG
 
 ## v1.0.0 - _Invalid date_
 
-    * Initial release as a separate package. For historical entries see @0x/sol-tracing-utils (#1492)
+    * Initial release as a separate package. For historical entries see @powerchain/sol-tracing-utils (#1492)

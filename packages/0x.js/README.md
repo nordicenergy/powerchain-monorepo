@@ -1,19 +1,19 @@
-## 0x.js
+## powerchain.js
 
-A TypeScript/Javascript library for interacting with the 0x protocol. It is a high level package which combines a number of underlying packages such as order-utils and asset-data-utils.
+A TypeScript/Javascript library for interacting with the powerchain protocol. It is a high level package which combines a number of underlying packages such as order-utils and asset-data-utils.
 
-### Read the [Documentation](https://0x.org/docs/tools/0x.js).
+### Read the [Documentation](https://powerchain.org/docs/tools/powerchain.js).
 
 ## Installation
 
-0x.js ships as both a [UMD](https://github.com/umdjs/umd) module and a [CommonJS](https://en.wikipedia.org/wiki/CommonJS) package.
+powerchain.js ships as both a [UMD](https://github.com/umdjs/umd) module and a [CommonJS](https://en.wikipedia.org/wiki/CommonJS) package.
 
 #### CommonJS _(recommended)_:
 
 **Install**
 
 ```bash
-npm install 0x.js --save
+npm install powerchain.js --save
 ```
 
 **Import**
@@ -26,14 +26,14 @@ import {
     generatePseudoRandomSalt,
     orderHashUtils,
     signatureUtils,
-} from '0x.js';
+} from 'powerchain.js';
 ```
 
 If your project is in [TypeScript](https://www.typescriptlang.org/), add the following to your `tsconfig.json`:
 
 ```json
 "compilerOptions": {
-    "typeRoots": ["node_modules/@0x/typescript-typings/types", "node_modules/@types"],
+    "typeRoots": ["node_modules/@powerchain/typescript-typings/types", "node_modules/@types"],
 }
 ```
 
@@ -41,12 +41,12 @@ If your project is in [TypeScript](https://www.typescriptlang.org/), add the fol
 
 **Install**
 
-Download the UMD module from our [releases page](https://github.com/0xProject/0x-monorepo/releases) and add it to your project.
+Download the UMD module from our [releases page](https://github.com/nordicenergy/powerchain-protocol-dev-kit/releases) and add it to your project.
 
 **Import**
 
 ```html
-<script type="text/javascript" src="0x.js"></script>
+<script type="text/javascript" src="powerchain.js"></script>
 ```
 
 #### Webpack config
@@ -56,16 +56,18 @@ If bundling your project with [Webpack](https://webpack.js.org/), add the follow
 If building for web:
 
 ```js
-node: {
-    fs: 'empty';
+```js
+{
+    'empty';
 }
 ```
 
 If building a node library:
 
 ```js
-externals: {
-    fs: true;
+```js
+{
+    true;
 }
 ```
 
@@ -78,7 +80,7 @@ Also see:
 
 ## Contributing
 
-We strongly recommend that the community help us make improvements and determine the future direction of 0x protocol. To report bugs within this package, please create an issue in this repository.
+We strongly recommend that the community help us make improvements and determine the future direction of powerchain protocol. To report bugs within this package, please create an issue in this repository.
 
 Please read our [contribution guidelines](../../CONTRIBUTING.md) before getting started.
 
@@ -101,13 +103,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=0x.js yarn build
+PKG=powerchain.js yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=0x.js yarn watch
+PKG=powerchain.js yarn watch
 ```
 
 ### Clean

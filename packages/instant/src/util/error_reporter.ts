@@ -1,5 +1,4 @@
-import { logUtils } from '@0x/utils';
-import * as _ from 'lodash';
+import {logUtils} from '@powerchain/utils';
 
 import {
     GIT_SHA,

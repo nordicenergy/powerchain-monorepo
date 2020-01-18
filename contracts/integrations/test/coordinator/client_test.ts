@@ -1,16 +1,20 @@
-import { ContractAddresses, getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
-import { IAssetDataContract } from '@0x/contracts-asset-proxy';
-import { ExchangeContract } from '@0x/contracts-exchange';
-import { blockchainTests, constants, expect, OrderFactory } from '@0x/contracts-test-utils';
-import { defaultOrmConfig, getAppAsync } from '@0x/coordinator-server';
-import { devConstants, tokenUtils } from '@0x/dev-utils';
-import { runMigrationsOnceAsync } from '@0x/migrations';
-import { SignedOrder } from '@0x/types';
-import { BigNumber, fetchAsync, logUtils } from '@0x/utils';
+import {ContractAddresses, getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
+import {IAssetDataContract} from '@powerchain/contracts-asset-proxy';
+import {ExchangeContract} from '@powerchain/contracts-exchange';
+import {blockchainTests, constants, expect, OrderFactory} from '@powerchain/contracts-test-utils';
+import {defaultOrmConfig, getAppAsync} from '@powerchain/coordinator-server';
+import {devConstants, tokenUtils} from '@powerchain/dev-utils';
+import {runMigrationsOnceAsync} from '@powerchain/migrations';
+import {SignedOrder} from '@powerchain/types';
+import {BigNumber, fetchAsync, logUtils} from '@powerchain/utils';
 import * as nock from 'nock';
 
-import { CoordinatorClient, CoordinatorRegistryContract, CoordinatorServerErrorMsg } from '@0x/contracts-coordinator';
-import { DummyERC20TokenContract } from '@0x/contracts-erc20';
+import {
+    CoordinatorClient,
+    CoordinatorRegistryContract,
+    CoordinatorServerErrorMsg
+} from '@powerchain/contracts-coordinator';
+import {DummyERC20TokenContract} from '@powerchain/contracts-erc20';
 
 const coordinatorPort = '3000';
 const anotherCoordinatorPort = '4000';
@@ -78,7 +82,7 @@ blockchainTests('Coordinator Client', env => {
 
         // declare encoded asset data
         const [makerTokenAddress, takerTokenAddress] = tokenUtils.getDummyERC20TokenAddresses();
-        const feeTokenAddress = contractAddresses.zrxToken;
+        const feeTokenAddress = contractAddresses.netToken;
         [makerAssetData, takerAssetData, feeAssetData] = [
             assetDataEncoder.ERC20Token(makerTokenAddress).getABIEncodedTransactionData(),
             assetDataEncoder.ERC20Token(takerTokenAddress).getABIEncodedTransactionData(),
@@ -107,9 +111,9 @@ blockchainTests('Coordinator Client', env => {
 
         // configure mock coordinator servers
         const coordinatorServerConfigs = {
-            HTTP_PORT: 3000, // Only used in default instantiation in 0x-coordinator-server/server.js; not used here
+            HTTP_PORT: 3000, // Only used in default instantiation in powerchain-coordinator-server/server.js; not used here
             CHAIN_ID_TO_SETTINGS: {
-                // TODO: change to CHAIN_ID_TO_SETTINGS when @0x/coordinator-server is ready
+                // TODO: change to CHAIN_ID_TO_SETTINGS when @powerchain/coordinator-server is ready
                 [chainId]: {
                     FEE_RECIPIENTS: [feeRecipientAddressOne, feeRecipientAddressTwo, feeRecipientAddressThree].map(
                         address => {
@@ -121,13 +125,13 @@ blockchainTests('Coordinator Client', env => {
                             };
                         },
                     ),
-                    // Ethereum RPC url, only used in the default instantiation in 0x-coordinator-server/server.js
+                    // Ethereum RPC url, only used in the default instantiation in powerchain-coordinator-server/server.js
                     // Not used here when instantiating with the imported app
                     RPC_URL: 'http://ignore',
                 },
             },
             NETWORK_ID_TO_CONTRACT_ADDRESSES: {
-                // TODO: change to CHAIN_ID_TO_CONTRACT_ADDRESSES when @0x/coordinator-server is ready
+                // TODO: change to CHAIN_ID_TO_CONTRACT_ADDRESSES when @powerchain/coordinator-server is ready
                 [chainId]: getContractAddressesForChainOrThrow(chainId),
             },
             // Optional selective delay on fill requests
@@ -438,16 +442,16 @@ blockchainTests('Coordinator Client', env => {
             const serverCancellationSuccess = {
                 outstandingFillSignatures: [
                     {
-                        orderHash: '0xd1dc61f3e7e5f41d72beae7863487beea108971de678ca00d903756f842ef3ce',
+                        orderHash: 'powerchaind1dc61f3e7e5f41d72beae7863487beea108971de678ca00d903756f842ef3ce',
                         approvalSignatures: [
-                            '0x1c7383ca8ebd6de8b5b20b1c2d49bea166df7dfe4af1932c9c52ec07334e859cf2176901da35f4480ceb3ab63d8d0339d851c31929c40d88752689b9a8a535671303',
+                            'powerchain1c7383ca8ebd6de8b5b20b1c2d49bea166df7dfe4af1932c9c52ec07334e859cf2176901da35f4480ceb3ab63d8d0339d851c31929c40d88752689b9a8a535671303',
                         ],
                         expirationTimeSeconds: 1552390380,
                         takerAssetFillAmount: 100000000000000000000,
                     },
                 ],
                 cancellationSignatures: [
-                    '0x2ea3117a8ebd6de8b5b20b1c2d49bea166df7dfe4af1932c9c52ec07334e859cf2176901da35f4480ceb3ab63d8d0339d851c31929c40d88752689b9a855b5a7b401',
+                    'powerchain2ea3117a8ebd6de8b5b20b1c2d49bea166df7dfe4af1932c9c52ec07334e859cf2176901da35f4480ceb3ab63d8d0339d851c31929c40d88752689b9a855b5a7b401',
                 ],
             };
             nock(`${coordinatorEndpoint}${anotherCoordinatorPort}`)
@@ -557,7 +561,7 @@ blockchainTests('Coordinator Client', env => {
         it('should throw consolidated error when batch fill partially fails with different coordinator operators', async () => {
             const serverApprovalSuccess = {
                 signatures: [
-                    '0x1cc07d7ae39679690a91418d46491520f058e4fb14debdf2e98f2376b3970de8512ace44af0be6d1c65617f7aae8c2364ff63f241515ee1559c3eeecb0f671d9e903',
+                    'powerchain1cc07d7ae39679690a91418d46491520f058e4fb14debdf2e98f2376b3970de8512ace44af0be6d1c65617f7aae8c2364ff63f241515ee1559c3eeecb0f671d9e903',
                 ],
                 expirationTimeSeconds: 1552390014,
             };

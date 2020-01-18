@@ -1,5 +1,5 @@
-import { devConstants } from '@0x/dev-utils';
-import { ProfilerSubprovider, SolCompilerArtifactAdapter } from '@0x/sol-profiler';
+import {devConstants} from '@powerchain/dev-utils';
+import {ProfilerSubprovider, SolCompilerArtifactAdapter} from '@powerchain/sol-profiler';
 
 let profilerSubprovider: ProfilerSubprovider;
 

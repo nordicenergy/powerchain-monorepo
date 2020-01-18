@@ -2,21 +2,21 @@ import {
     AggregatedStats,
     IStakingEventsStakingPoolEarnedRewardsInEpochEventArgs,
     TestStakingEvents,
-} from '@0x/contracts-staking';
-import { filterLogsToArguments, web3Wrapper } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { BlockParamLiteral, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+} from '@powerchain/contracts-staking';
+import {filterLogsToArguments, web3Wrapper} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {BlockParamLiteral, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
 import {
     endEpochTooEarlyAssertion,
     endEpochUnfinalizedPoolsAssertion,
     validEndEpochAssertion,
 } from '../assertions/endEpoch';
-import { validFinalizePoolAssertion } from '../assertions/finalizePool';
-import { AssertionResult } from '../assertions/function_assertion';
-import { Pseudorandom } from '../utils/pseudorandom';
+import {validFinalizePoolAssertion} from '../assertions/finalizePool';
+import {AssertionResult} from '../assertions/function_assertion';
+import {Pseudorandom} from '../utils/pseudorandom';
 
-import { Actor, Constructor } from './base';
+import {Actor, Constructor} from './base';
 
 export interface KeeperInterface {
     endEpochAsync: (shouldFastForward?: boolean) => Promise<TransactionReceiptWithDecodedLogs>;
@@ -24,7 +24,7 @@ export interface KeeperInterface {
 }
 
 /**
- * This mixin encapsulates functionality associated with keepers within the 0x ecosystem.
+ * This mixin encapsulates functionality associated with keepers within the powerchain ecosystem.
  * This includes ending epochs sand finalizing pools in the staking system.
  */
 export function KeeperMixin<TBase extends Constructor>(Base: TBase): TBase & Constructor<KeeperInterface> {

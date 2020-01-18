@@ -1,5 +1,5 @@
 {
-    "name": "@0x/web3-wrapper",
+    "name": "@powerchain/web3-wrapper",
     "version": "7.0.3",
     "engines": {
         "node": ">=6.12"
@@ -32,15 +32,15 @@
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/web3-wrapper/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/web3-wrapper/README.md",
     "devDependencies": {
-        "@0x/ts-doc-gen": "^0.0.22",
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/ts-doc-gen": "^0.0.22",
+        "@powerchain/tslint-config": "^4.0.0",
         "@types/lodash": "4.14.104",
         "@types/mocha": "^5.2.7",
         "chai": "^4.0.1",
@@ -58,10 +58,10 @@
         "typescript": "3.0.1"
     },
     "dependencies": {
-        "@0x/assert": "^3.0.3",
-        "@0x/json-schemas": "^5.0.3",
-        "@0x/typescript-typings": "^5.0.1",
-        "@0x/utils": "^5.1.2",
+        "@powerchain/assert": "^3.0.3",
+        "@powerchain/json-schemas": "^5.0.3",
+        "@powerchain/typescript-typings": "^5.0.1",
+        "@powerchain/utils": "^5.1.2",
         "ethereum-types": "^3.0.0",
         "ethereumjs-util": "^5.1.1",
         "ethers": "~4.0.4",

@@ -5,12 +5,12 @@ import {
     getRandomInteger,
     randomAddress,
     verifyEventsFromLogs,
-} from '@0x/contracts-test-utils';
-import { hexUtils, RawRevertError, StringRevertError } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {hexUtils, RawRevertError, StringRevertError} from '@powerchain/utils';
 
-import { TestLibERC20TokenContract, TestLibERC20TokenTargetEvents } from './wrappers';
+import {TestLibERC20TokenContract, TestLibERC20TokenTargetEvents} from './wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 blockchainTests('LibERC20Token', env => {
     let testContract: TestLibERC20TokenContract;
@@ -23,7 +23,7 @@ blockchainTests('LibERC20Token', env => {
     const ENCODED_LONG_TRUE = hexUtils.leftPad(2, 33);
 
     before(async () => {
-        testContract = await TestLibERC20TokenContract.deployFrom0xArtifactAsync(
+        testContract = await TestLibERC20TokenContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibERC20Token,
             env.provider,
             env.txDefaults,

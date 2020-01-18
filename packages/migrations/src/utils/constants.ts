@@ -1,8 +1,8 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
 // tslint:disable custom-no-magic-numbers
 export const constants = {
-    NULL_ADDRESS: '0x0000000000000000000000000000000000000000',
+    NULL_ADDRESS: 'powerchain0000000000000000000000000000000000000000',
     MAINNET_CHAIN_ID: 1,
     ZERO_AMOUNT: new BigNumber(0),
     TWO_WEEKS_IN_SEC: new BigNumber(14)

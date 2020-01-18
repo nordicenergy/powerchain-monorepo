@@ -66,7 +66,7 @@ class SignatureError(RichRevert):  # noqa: D101 (missing docstring)
     signerAddress: str
     signature: bytes
 
-    selector = "0x7e5a2318"
+    selector = "powerchain7e5a2318"
 
 
 class SignatureValidatorNotApprovedError(
@@ -82,7 +82,7 @@ class SignatureValidatorNotApprovedError(
     signerAddress: str
     validatorAddress: str
 
-    selector = "0xa15c0d06"
+    selector = "powerchaina15c0d06"
 
 
 class EIP1271SignatureError(RichRevert):  # noqa: D101 (missing docstring)
@@ -98,7 +98,7 @@ class EIP1271SignatureError(RichRevert):  # noqa: D101 (missing docstring)
     signature: bytes
     errorData: bytes
 
-    selector = "0x5bd0428d"
+    selector = "powerchain5bd0428d"
 
 
 class SignatureWalletError(RichRevert):  # noqa: D101 (missing docstring)
@@ -114,7 +114,7 @@ class SignatureWalletError(RichRevert):  # noqa: D101 (missing docstring)
     signature: bytes
     errorData: bytes
 
-    selector = "0x1b8388f7"
+    selector = "powerchain1b8388f7"
 
 
 class OrderStatusError(RichRevert):  # noqa: D101 (missing docstring)
@@ -128,7 +128,7 @@ class OrderStatusError(RichRevert):  # noqa: D101 (missing docstring)
     orderHash: bytes
     orderStatus: int
 
-    selector = "0xfdb6ca8d"
+    selector = "powerchainfdb6ca8d"
 
 
 class ExchangeInvalidContextError(
@@ -145,7 +145,7 @@ class ExchangeInvalidContextError(
     orderHash: bytes
     contextAddress: str
 
-    selector = "0xe53c76c8"
+    selector = "powerchaine53c76c8"
 
 
 class FillError(RichRevert):  # noqa: D101 (missing docstring)
@@ -157,7 +157,7 @@ class FillError(RichRevert):  # noqa: D101 (missing docstring)
     errorCode: FillErrorCodes
     orderHash: bytes
 
-    selector = "0xe94a7ed0"
+    selector = "powerchaine94a7ed0"
 
 
 class OrderEpochError(RichRevert):  # noqa: D101 (missing docstring)
@@ -172,7 +172,7 @@ class OrderEpochError(RichRevert):  # noqa: D101 (missing docstring)
     orderSenderAddress: str
     currentEpoch: int
 
-    selector = "0x4ad31275"
+    selector = "powerchain4ad31275"
 
 
 class AssetProxyExistsError(RichRevert):  # noqa: D101 (missing docstring)
@@ -186,7 +186,7 @@ class AssetProxyExistsError(RichRevert):  # noqa: D101 (missing docstring)
     assetProxyId: bytes
     assetProxyAddress: str
 
-    selector = "0x11c7b720"
+    selector = "powerchain11c7b720"
 
 
 class AssetProxyDispatchError(RichRevert):  # noqa: D101 (missing docstring)
@@ -201,7 +201,7 @@ class AssetProxyDispatchError(RichRevert):  # noqa: D101 (missing docstring)
     orderHash: bytes
     assetData: bytes
 
-    selector = "0x488219a6"
+    selector = "powerchain488219a6"
 
 
 class AssetProxyTransferError(RichRevert):  # noqa: D101 (missing docstring)
@@ -216,7 +216,7 @@ class AssetProxyTransferError(RichRevert):  # noqa: D101 (missing docstring)
     assetData: bytes
     errorData: bytes
 
-    selector = "0x4678472b"
+    selector = "powerchain4678472b"
 
 
 class NegativeSpreadError(RichRevert):  # noqa: D101 (missing docstring)
@@ -230,7 +230,7 @@ class NegativeSpreadError(RichRevert):  # noqa: D101 (missing docstring)
     leftOrderHash: bytes
     rightOrderHash: bytes
 
-    selector = "0xb6555d6f"
+    selector = "powerchainb6555d6f"
 
 
 class TransactionError(RichRevert):  # noqa: D101 (missing docstring)
@@ -244,7 +244,7 @@ class TransactionError(RichRevert):  # noqa: D101 (missing docstring)
     errorCode: TransactionErrorCodes
     transactionHash: bytes
 
-    selector = "0xf5985184"
+    selector = "powerchainf5985184"
 
 
 class TransactionExecutionError(RichRevert):  # noqa: D101 (missing docstring)
@@ -258,7 +258,7 @@ class TransactionExecutionError(RichRevert):  # noqa: D101 (missing docstring)
     transactionHash: bytes
     errorData: bytes
 
-    selector = "0x20d11f61"
+    selector = "powerchain20d11f61"
 
 
 class TransactionGasPriceError(RichRevert):  # noqa: D101 (missing docstring)
@@ -273,7 +273,7 @@ class TransactionGasPriceError(RichRevert):  # noqa: D101 (missing docstring)
     actualGasPrice: int
     requiredGasPrice: int
 
-    selector = "0xa26dac09"
+    selector = "powerchaina26dac09"
 
 
 class TransactionInvalidContextError(
@@ -289,7 +289,7 @@ class TransactionInvalidContextError(
     transactionHash: bytes
     currentContextAddress: str
 
-    selector = "0xdec4aedf"
+    selector = "powerchaindec4aedf"
 
 
 class IncompleteFillError(RichRevert):  # noqa: D101 (missing docstring)
@@ -304,7 +304,7 @@ class IncompleteFillError(RichRevert):  # noqa: D101 (missing docstring)
     expectedAssetAmount: int
     actualAssetAmount: int
 
-    selector = "0x18e4b141"
+    selector = "powerchain18e4b141"
 
 
 class BatchMatchOrdersError(RichRevert):  # noqa: D101 (missing docstring)
@@ -315,7 +315,7 @@ class BatchMatchOrdersError(RichRevert):  # noqa: D101 (missing docstring)
 
     errorCode: BatchMatchOrdersErrorCodes
 
-    selector = "0xd4092f4f"
+    selector = "powerchaind4092f4f"
 
 
 class PayProtocolFeeError(RichRevert):  # noqa: D101 (missing docstring)
@@ -338,4 +338,4 @@ class PayProtocolFeeError(RichRevert):  # noqa: D101 (missing docstring)
     takerAddress: str
     errorData: bytes
 
-    selector = "0x87cb1e75"
+    selector = "powerchain87cb1e75"

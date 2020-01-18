@@ -317,7 +317,7 @@
         "version": "0.1.0",
         "changes": [
             {
-                "note": "Re-published TsLintConfig previously published under NPM package `tslint-config-0xproject`"
+                "note": "Re-published TsLintConfig previously published under NPM package `tslint-config-powerchainproject`"
             },
             {
                 "note": "Updated to TSLint v5.8.0, requiring several rule additions to keep our conventions aligned."

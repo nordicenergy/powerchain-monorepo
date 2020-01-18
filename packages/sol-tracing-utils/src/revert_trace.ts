@@ -1,11 +1,11 @@
-import { logUtils } from '@0x/utils';
-import { OpCode, StructLog } from 'ethereum-types';
+import {logUtils} from '@powerchain/utils';
+import {OpCode, StructLog} from 'ethereum-types';
 
 import * as _ from 'lodash';
 
-import { constants } from './constants';
-import { EvmCallStack } from './types';
-import { utils } from './utils';
+import {constants} from './constants';
+import {EvmCallStack} from './types';
+import {utils} from './utils';
 
 /**
  * Converts linear trace to a call stack by following calls and returns
@@ -78,7 +78,7 @@ export function getRevertTrace(structLogs: StructLog[], startAddress: string): E
             if (structLog !== _.last(structLogs)) {
                 const nextStructLog = structLogs[i + 1];
                 if (nextStructLog.depth === structLog.depth) {
-                    continue;
+
                 } else if (nextStructLog.depth === structLog.depth - 1) {
                     addressStack.pop();
                 } else {

@@ -30,7 +30,7 @@
                 }
             }
         },
-        "evm": { "bytecode": { "object": "0x" } }
+        "evm": { "bytecode": { "object": "powerchain" } }
     },
     "networks": {}
 }

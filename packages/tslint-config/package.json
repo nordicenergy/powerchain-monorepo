@@ -1,10 +1,10 @@
 {
-    "name": "@0x/tslint-config",
+    "name": "@powerchain/tslint-config",
     "version": "4.0.0",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "Lint rules related to 0xProject for TSLint",
+    "description": "Lint rules related to powerchainProject for TSLint",
     "main": "tslint.json",
     "scripts": {
         "build": "tsc -b",
@@ -15,24 +15,24 @@
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/0xProject/0x-monorepo.git"
+        "url": "git://github.com/powerchainProject/powerchain-monorepo.git"
     },
     "keywords": [
         "tslint",
         "config",
-        "0xProject",
+        "powerchainProject",
         "typescript",
         "ts"
     ],
     "author": {
         "name": "Fabio Berger",
-        "email": "fabio@0xproject.com"
+        "email": "fabio@powerchainproject.com"
     },
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/tslint-config/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/tslint-config/README.md",
     "devDependencies": {
         "@types/lodash": "4.14.104",
         "make-promises-safe": "^1.1.0",

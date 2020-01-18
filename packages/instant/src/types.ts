@@ -1,7 +1,7 @@
-import { BigNumber, SwapQuoteConsumer, SwapQuoter } from '@0x/asset-swapper';
-import { AssetProxyId, ObjectMap, SignedOrder } from '@0x/types';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { SupportedProvider, ZeroExProvider } from 'ethereum-types';
+import {BigNumber, SwapQuoteConsumer, SwapQuoter} from '@powerchain/asset-swapper';
+import {AssetProxyId, ObjectMap, SignedOrder} from '@powerchain/types';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {SupportedProvider, ZeroExProvider} from 'ethereum-types';
 
 // Reusable
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;

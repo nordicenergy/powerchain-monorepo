@@ -1,9 +1,9 @@
 import * as chai from 'chai';
 
-import { chaiSetup } from '../chai_setup';
-import { fixtureData } from '../utils/fixture_data';
+import {chaiSetup} from '../chai_setup';
+import {fixtureData} from '../utils/fixture_data';
 
-import { DebugPayload, DebugSubprovider } from './../../src/subproviders/debug_subprovider';
+import {DebugPayload, DebugSubprovider} from './../../src/subproviders/debug_subprovider';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -43,7 +43,7 @@ describe('DebugSubprovider', () => {
                     expect(rawTxnAttrs.gasPrice).to.eql('1000000000');
                     expect(rawTxnAttrs.nonce).to.eql('32');
                     expect(rawTxnAttrs.value).to.eql('0');
-                    expect(rawTxnAttrs.to).to.eql('0x2002d3812f58e35f0ea1ffbf80a75a38c32175fa');
+                    expect(rawTxnAttrs.to).to.eql('powerchain2002d3812f58e35f0ea1ffbf80a75a38c32175fa');
                 }
             }
         });
@@ -79,7 +79,7 @@ describe('DebugSubprovider', () => {
                     expect(rawTxnAttrs.gasPrice).to.eql('8000000000');
                     expect(rawTxnAttrs.nonce).to.eql('38');
                     expect(rawTxnAttrs.value).to.eql('410000000000000');
-                    expect(rawTxnAttrs.to).to.eql('0x8a333a18b924554d6e83ef9e9944de6260f61d3b');
+                    expect(rawTxnAttrs.to).to.eql('powerchain8a333a18b924554d6e83ef9e9944de6260f61d3b');
                 }
             }
         });

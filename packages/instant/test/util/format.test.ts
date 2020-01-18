@@ -1,8 +1,8 @@
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 
-import { ETH_DECIMALS } from '../../src/constants';
-import { format } from '../../src/util/format';
+import {ETH_DECIMALS} from '../../src/constants';
+import {format} from '../../src/util/format';
 
 const BIG_NUMBER_ONE = new BigNumber(1);
 const BIG_NUMBER_DECIMAL = new BigNumber(0.432414);

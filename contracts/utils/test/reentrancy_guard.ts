@@ -1,12 +1,11 @@
-import { chaiSetup, provider, txDefaults, web3Wrapper } from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
+import {chaiSetup, provider, txDefaults, web3Wrapper} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
 import * as chai from 'chai';
-import * as _ from 'lodash';
 
-import { ReentrancyGuardRevertErrors } from '@0x/utils';
+import {ReentrancyGuardRevertErrors} from '@powerchain/utils';
 
-import { artifacts } from './artifacts';
-import { TestReentrancyGuardContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestReentrancyGuardContract} from './wrappers';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -18,7 +17,7 @@ describe('ReentrancyGuard', () => {
     before(async () => {
         await blockchainLifecycle.startAsync();
         // Deploy TestReentrancyGuard
-        guard = await TestReentrancyGuardContract.deployFrom0xArtifactAsync(
+        guard = await TestReentrancyGuardContract.deployFrompowerchainArtifactAsync(
             artifacts.TestReentrancyGuard,
             provider,
             txDefaults,

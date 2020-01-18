@@ -1,9 +1,9 @@
-import { artifacts, CoordinatorContract } from '@0x/contracts-coordinator';
-import { artifacts as exchangeArtifacts } from '@0x/contracts-exchange';
-import { BlockchainTestsEnvironment } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+import {artifacts, CoordinatorContract} from '@powerchain/contracts-coordinator';
+import {artifacts as exchangeArtifacts} from '@powerchain/contracts-exchange';
+import {BlockchainTestsEnvironment} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { DeploymentManager } from '../framework/deployment_manager';
+import {DeploymentManager} from '../framework/deployment_manager';
 
 /**
  * Deploys a Coordinator contract configured to work alongside the provided `deployment`.
@@ -12,7 +12,7 @@ export async function deployCoordinatorAsync(
     deployment: DeploymentManager,
     environment: BlockchainTestsEnvironment,
 ): Promise<CoordinatorContract> {
-    return CoordinatorContract.deployFrom0xArtifactAsync(
+    return CoordinatorContract.deployFrompowerchainArtifactAsync(
         artifacts.Coordinator,
         environment.provider,
         deployment.txDefaults,

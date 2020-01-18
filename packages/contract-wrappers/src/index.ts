@@ -1,4 +1,4 @@
-export { ContractAddresses } from '@0x/contract-addresses';
+export { ContractAddresses } from '@powerchain/contract-addresses';
 
 export { ContractWrappers } from './contract_wrappers';
 export { DevUtilsContract } from './generated-wrappers/dev_utils';
@@ -145,9 +145,9 @@ export {
     EventCallback,
     DecodedLogEvent,
     IndexedFilterValues,
-} from '@0x/types';
+} from '@powerchain/types';
 
-export { AbiDecoder, DecodedCalldata } from '@0x/utils';
+export { AbiDecoder, DecodedCalldata } from '@powerchain/utils';
 export {
     ContractEvent,
     SendTransactionOpts,
@@ -155,4 +155,4 @@ export {
     ContractFunctionObj,
     ContractTxFunctionObj,
     SubscriptionErrors,
-} from '@0x/base-contract';
+} from '@powerchain/base-contract';

@@ -4,14 +4,14 @@ import {
     expect,
     filterLogsToArguments,
     verifyEventsFromLogs,
-} from '@0x/contracts-test-utils';
-import { SafeMathRevertErrors } from '@0x/contracts-utils';
-import { BigNumber, hexUtils } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {SafeMathRevertErrors} from '@powerchain/contracts-utils';
+import {BigNumber, hexUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { StakingRevertErrors } from '../../src';
+import {StakingRevertErrors} from '../../src';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 import {
     TestMixinStakingPoolContract,
     TestMixinStakingPoolEvents,
@@ -26,7 +26,7 @@ blockchainTests.resets('MixinStakingPool unit tests', env => {
 
     before(async () => {
         [operator, maker, notOperatorOrMaker] = await env.getAccountAddressesAsync();
-        testContract = await TestMixinStakingPoolContract.deployFrom0xArtifactAsync(
+        testContract = await TestMixinStakingPoolContract.deployFrompowerchainArtifactAsync(
             artifacts.TestMixinStakingPool,
             env.provider,
             env.txDefaults,

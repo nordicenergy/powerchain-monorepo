@@ -1,8 +1,7 @@
-import * as _ from 'lodash';
 import * as yargs from 'yargs';
 
-import { publishReleaseNotesAsync } from './utils/github_release_utils';
-import { utils } from './utils/utils';
+import {publishReleaseNotesAsync} from './utils/github_release_utils';
+import {utils} from './utils/utils';
 
 const args = yargs
     .option('isDryRun', {
@@ -15,7 +14,7 @@ const args = yargs
             'Space-separated list of packages to generated release notes for. If not supplied, it does all `Lerna updated` packages.',
         type: 'string',
     })
-    .example('$0 --isDryRun true --packages "0x.js @0x/web3-wrapper"', 'Full usage example').argv;
+    .example('$0 --isDryRun true --packages "powerchain.js @powerchain/web3-wrapper"', 'Full usage example').argv;
 
 (async () => {
     const isDryRun = args.isDryRun;

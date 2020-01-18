@@ -62,7 +62,7 @@ CHANGELOG
 
 ## v1.1.11 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies. (#1995)
 
 ## v1.1.10 - _July 24, 2019_
 

@@ -1,10 +1,9 @@
-import { chaiSetup, constants, getCodesizeFromArtifact } from '@0x/contracts-test-utils';
+import {chaiSetup, constants, getCodesizeFromArtifact} from '@powerchain/contracts-test-utils';
 import * as chai from 'chai';
+import {artifacts} from './artifacts';
 
 chaiSetup.configure();
 const expect = chai.expect;
-
-import { artifacts } from './artifacts';
 
 describe('Contract Size Checks', () => {
     describe('Exchange', () => {

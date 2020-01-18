@@ -1,5 +1,5 @@
-import { APIOrder, SignedOrder } from '@0x/connect';
-import { orderHashUtils } from '@0x/order-utils';
+import {APIOrder, SignedOrder} from '@powerchain/connect';
+import {orderHashUtils} from '@powerchain/order-utils';
 
 export const utils = {
     async getOrderHashAsync(order: APIOrder | SignedOrder): Promise<string> {

@@ -1,10 +1,10 @@
-import { AbstractAssetWrapper, constants } from '@0x/contracts-test-utils';
-import { AssetProxyId } from '@0x/types';
-import { BigNumber, errorUtils } from '@0x/utils';
+import {AbstractAssetWrapper, constants} from '@powerchain/contracts-test-utils';
+import {AssetProxyId} from '@powerchain/types';
+import {BigNumber, errorUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { ERC1155ProxyWrapper, ERC20Wrapper, ERC721Wrapper } from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
+import {ERC1155ProxyWrapper, ERC20Wrapper, ERC721Wrapper} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
 
 interface ProxyIdToAssetWrappers {
     [proxyId: string]: AbstractAssetWrapper;

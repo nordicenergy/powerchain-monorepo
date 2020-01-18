@@ -1,17 +1,17 @@
-import { DummyERC20TokenContract } from '@0x/contracts-erc20';
-import { ExchangeRevertErrors } from '@0x/contracts-exchange';
-import { blockchainTests, constants, expect, toBaseUnitAmount } from '@0x/contracts-test-utils';
-import { Order, SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {DummyERC20TokenContract} from '@powerchain/contracts-erc20';
+import {ExchangeRevertErrors} from '@powerchain/contracts-exchange';
+import {blockchainTests, constants, expect, toBaseUnitAmount} from '@powerchain/contracts-test-utils';
+import {Order, SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { Actor } from '../framework/actors/base';
-import { Maker } from '../framework/actors/maker';
-import { actorAddressesByName } from '../framework/actors/utils';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { TokenIds } from '../framework/balances/types';
-import { DeploymentManager } from '../framework/deployment_manager';
+import {Actor} from '../framework/actors/base';
+import {Maker} from '../framework/actors/maker';
+import {actorAddressesByName} from '../framework/actors/utils';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {TokenIds} from '../framework/balances/types';
+import {DeploymentManager} from '../framework/deployment_manager';
 
-import { MatchOrderTester, MatchTransferAmounts } from './match_order_tester';
+import {MatchOrderTester, MatchTransferAmounts} from './match_order_tester';
 
 blockchainTests.resets('matchOrders integration tests', env => {
     // The fee recipient addresses.
@@ -813,7 +813,7 @@ blockchainTests.resets('matchOrders integration tests', env => {
     describe('token sanity checks', () => {
         it('should be able to match ERC721 tokens with ERC1155 tokens', async () => {
             const leftMakerAssetData = deployment.assetDataEncoder
-                .ERC1155Assets(deployment.tokens.erc1155[0].address, [leftId], [new BigNumber(1)], '0x')
+                .ERC1155Assets(deployment.tokens.erc1155[0].address, [leftId], [new BigNumber(1)], 'powerchain')
                 .getABIEncodedTransactionData();
             const rightMakerAssetData = deployment.assetDataEncoder
                 .ERC721Token(deployment.tokens.erc721[0].address, rightId)

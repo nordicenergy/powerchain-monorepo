@@ -1,5 +1,5 @@
-import { SignedZeroExTransaction } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {SignedZeroExTransaction} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
 export interface CoordinatorApproval {
     transaction: SignedZeroExTransaction;

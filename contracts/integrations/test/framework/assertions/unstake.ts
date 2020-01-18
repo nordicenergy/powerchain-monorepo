@@ -3,20 +3,20 @@ import {
     OwnerStakeByStatus,
     StakeStatus,
     StakingRevertErrors,
-} from '@0x/contracts-staking';
-import { expect } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { TxData } from 'ethereum-types';
+} from '@powerchain/contracts-staking';
+import {expect} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {TxData} from 'ethereum-types';
 
-import { LocalBalanceStore } from '../balances/local_balance_store';
-import { DeploymentManager } from '../deployment_manager';
-import { SimulationEnvironment } from '../simulation';
+import {LocalBalanceStore} from '../balances/local_balance_store';
+import {DeploymentManager} from '../deployment_manager';
+import {SimulationEnvironment} from '../simulation';
 
-import { FunctionAssertion, FunctionResult } from './function_assertion';
+import {FunctionAssertion, FunctionResult} from './function_assertion';
 
 /**
  * Returns a FunctionAssertion for `unstake` which assumes valid input is provided. The
- * FunctionAssertion checks that the staker and zrxVault's balances of ZRX increase and decrease,
+ * FunctionAssertion checks that the staker and zrxVault's balances of NET increase and decrease,
  * respectively, by the input amount.
  */
 /* tslint:disable:no-unnecessary-type-assertion */
@@ -32,7 +32,7 @@ export function validUnstakeAssertion(
             const [amount] = args;
             const { balanceStore } = simulationEnvironment;
 
-            // Simulates the transfer of ZRX from vault to staker
+            // Simulates the transfer of NET from vault to staker
             const expectedBalances = LocalBalanceStore.create(balanceStore);
             expectedBalances.transferAsset(
                 zrxVault.address,
@@ -54,7 +54,7 @@ export function validUnstakeAssertion(
             const [amount] = args;
             const { balanceStore, currentEpoch, globalStake } = simulationEnvironment;
 
-            // Checks that the ZRX transfer updated balances as expected.
+            // Checks that the NET transfer updated balances as expected.
             await balanceStore.updateErc20BalancesAsync();
             balanceStore.assertEquals(expectedBalances);
 

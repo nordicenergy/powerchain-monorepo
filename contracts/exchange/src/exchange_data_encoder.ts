@@ -1,7 +1,7 @@
-import { constants, ExchangeFunctionName, orderHashUtils, provider } from '@0x/contracts-test-utils';
-import { SignedOrder } from '@0x/types';
+import {constants, ExchangeFunctionName, orderHashUtils, provider} from '@powerchain/contracts-test-utils';
+import {SignedOrder} from '@powerchain/types';
 
-import { IExchangeContract } from './wrappers';
+import {IExchangeContract} from './wrappers';
 
 export const exchangeDataEncoder = {
     encodeOrdersToExchangeData(fnName: ExchangeFunctionName, orders: SignedOrder[] = []): string {

@@ -1,20 +1,20 @@
-import { AssetProxyId } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {AssetProxyId} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import { SelectedERC20AssetAmountInput } from '../containers/selected_erc20_asset_amount_input';
-import { ColorOption } from '../style/theme';
-import { Asset, AsyncProcessState, ERC20Asset, ERC721Asset, OrderProcessState, OrderState } from '../types';
-import { format } from '../util/format';
+import {SelectedERC20AssetAmountInput} from '../containers/selected_erc20_asset_amount_input';
+import {ColorOption} from '../style/theme';
+import {Asset, AsyncProcessState, ERC20Asset, ERC721Asset, OrderProcessState, OrderState} from '../types';
+import {format} from '../util/format';
 
-import { AmountPlaceholder } from './amount_placeholder';
-import { Container } from './ui/container';
-import { Flex } from './ui/flex';
-import { Icon } from './ui/icon';
-import { Image } from './ui/image';
-import { Spinner } from './ui/spinner';
-import { Text } from './ui/text';
+import {AmountPlaceholder} from './amount_placeholder';
+import {Container} from './ui/container';
+import {Flex} from './ui/flex';
+import {Icon} from './ui/icon';
+import {Image} from './ui/image';
+import {Spinner} from './ui/spinner';
+import {Text} from './ui/text';
 
 export interface InstantHeadingProps {
     selectedAsset?: Asset;

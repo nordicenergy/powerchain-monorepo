@@ -8,14 +8,14 @@ import {
     Numberish,
     shortZip,
     toBaseUnitAmount,
-} from '@0x/contracts-test-utils';
-import { BigNumber, hexUtils, StakingRevertErrors } from '@0x/utils';
-import { LogEntry } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber, hexUtils, StakingRevertErrors} from '@powerchain/utils';
+import {LogEntry} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { constants as stakingConstants } from '../../src/constants';
+import {constants as stakingConstants} from '../../src/constants';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 
 import {
     IStakingEventsEpochEndedEventArgs,
@@ -37,7 +37,7 @@ blockchainTests.resets('Finalizer unit tests', env => {
     before(async () => {
         operatorRewardsReceiver = hexUtils.random(constants.ADDRESS_LENGTH);
         membersRewardsReceiver = hexUtils.random(constants.ADDRESS_LENGTH);
-        testContract = await TestFinalizerContract.deployFrom0xArtifactAsync(
+        testContract = await TestFinalizerContract.deployFrompowerchainArtifactAsync(
             artifacts.TestFinalizer,
             env.provider,
             env.txDefaults,

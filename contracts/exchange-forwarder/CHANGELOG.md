@@ -63,7 +63,7 @@ CHANGELOG
 
 ## v3.0.8 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies. (#1995)
 
 ## v3.0.7 - _July 24, 2019_
 
@@ -81,7 +81,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.3 - _May 24, 2019_
+## v1.0.1 - _May 24, 2019_
 
     * Dependencies updated
 
@@ -93,7 +93,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _May 10, 2019_
+## v1.0.0 - _May 10, 2019_
 
     * Update contracts to solidity ^0.5.5 and unpin dependencies (#1796)
 

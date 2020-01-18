@@ -1,7 +1,7 @@
-import { BigNumber, RevertError } from '@0x/utils';
+import {BigNumber, RevertError} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { expect } from './chai_setup';
+import {expect} from './chai_setup';
 
 export async function testWithReferenceFuncAsync<P0, R>(
     referenceFunc: (p0: P0) => Promise<R>,

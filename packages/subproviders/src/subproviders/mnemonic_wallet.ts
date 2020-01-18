@@ -1,15 +1,15 @@
-import { assert } from '@0x/assert';
-import { EIP712TypedData } from '@0x/types';
-import { addressUtils } from '@0x/utils';
+import {assert} from '@powerchain/assert';
+import {EIP712TypedData} from '@powerchain/types';
+import {addressUtils} from '@powerchain/utils';
 import * as bip39 from 'bip39';
-import HDNode = require('hdkey');
 import * as _ from 'lodash';
 
-import { DerivedHDKeyInfo, MnemonicWalletSubproviderConfigs, PartialTxParams, WalletSubproviderErrors } from '../types';
-import { walletUtils } from '../utils/wallet_utils';
+import {DerivedHDKeyInfo, MnemonicWalletSubproviderConfigs, PartialTxParams, WalletSubproviderErrors} from '../types';
+import {walletUtils} from '../utils/wallet_utils';
 
-import { BaseWalletSubprovider } from './base_wallet_subprovider';
-import { PrivateKeyWalletSubprovider } from './private_key_wallet';
+import {BaseWalletSubprovider} from './base_wallet_subprovider';
+import {PrivateKeyWalletSubprovider} from './private_key_wallet';
+import HDNode = require('hdkey');
 
 const DEFAULT_BASE_DERIVATION_PATH = `44'/60'/0'/0`;
 const DEFAULT_NUM_ADDRESSES_TO_FETCH = 10;

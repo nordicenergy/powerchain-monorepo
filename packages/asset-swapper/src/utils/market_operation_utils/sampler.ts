@@ -1,9 +1,9 @@
-import { IERC20BridgeSamplerContract } from '@0x/contract-wrappers';
-import { SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {IERC20BridgeSamplerContract} from '@powerchain/contract-wrappers';
+import {SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { constants as marketOperationUtilConstants } from './constants';
-import { DexSample, ERC20BridgeSource } from './types';
+import {constants as marketOperationUtilConstants} from './constants';
+import {DexSample, ERC20BridgeSource} from './types';
 
 const { SOURCE_TO_ADDRESS } = marketOperationUtilConstants;
 

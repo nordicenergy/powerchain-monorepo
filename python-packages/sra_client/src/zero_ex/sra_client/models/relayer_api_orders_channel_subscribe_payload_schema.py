@@ -90,10 +90,10 @@ class RelayerApiOrdersChannelSubscribePayloadSchema(object):
         :type: str
         """
         if maker_asset_proxy_id is not None and not re.search(
-            r"^0x(([0-9a-f][0-9a-f])+)?$", maker_asset_proxy_id
+            r"^powerchain(([0-9a-f][0-9a-f])+)?$", maker_asset_proxy_id
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `maker_asset_proxy_id`, must be a follow pattern or equal to `/^0x(([0-9a-f][0-9a-f])+)?$/`"
+                r"Invalid value for `maker_asset_proxy_id`, must be a follow pattern or equal to `/^powerchain(([0-9a-f][0-9a-f])+)?$/`"
             )  # noqa: E501
 
         self._maker_asset_proxy_id = maker_asset_proxy_id
@@ -117,10 +117,10 @@ class RelayerApiOrdersChannelSubscribePayloadSchema(object):
         :type: str
         """
         if taker_asset_proxy_id is not None and not re.search(
-            r"^0x(([0-9a-f][0-9a-f])+)?$", taker_asset_proxy_id
+            r"^powerchain(([0-9a-f][0-9a-f])+)?$", taker_asset_proxy_id
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `taker_asset_proxy_id`, must be a follow pattern or equal to `/^0x(([0-9a-f][0-9a-f])+)?$/`"
+                r"Invalid value for `taker_asset_proxy_id`, must be a follow pattern or equal to `/^powerchain(([0-9a-f][0-9a-f])+)?$/`"
             )  # noqa: E501
 
         self._taker_asset_proxy_id = taker_asset_proxy_id
@@ -144,10 +144,10 @@ class RelayerApiOrdersChannelSubscribePayloadSchema(object):
         :type: str
         """
         if maker_asset_address is not None and not re.search(
-            r"^0x[0-9a-f]{40}$", maker_asset_address
+            r"^powerchain[0-9a-f]{40}$", maker_asset_address
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `maker_asset_address`, must be a follow pattern or equal to `/^0x[0-9a-f]{40}$/`"
+                r"Invalid value for `maker_asset_address`, must be a follow pattern or equal to `/^powerchain[0-9a-f]{40}$/`"
             )  # noqa: E501
 
         self._maker_asset_address = maker_asset_address
@@ -171,10 +171,10 @@ class RelayerApiOrdersChannelSubscribePayloadSchema(object):
         :type: str
         """
         if taker_asset_address is not None and not re.search(
-            r"^0x[0-9a-f]{40}$", taker_asset_address
+            r"^powerchain[0-9a-f]{40}$", taker_asset_address
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `taker_asset_address`, must be a follow pattern or equal to `/^0x[0-9a-f]{40}$/`"
+                r"Invalid value for `taker_asset_address`, must be a follow pattern or equal to `/^powerchain[0-9a-f]{40}$/`"
             )  # noqa: E501
 
         self._taker_asset_address = taker_asset_address
@@ -198,10 +198,10 @@ class RelayerApiOrdersChannelSubscribePayloadSchema(object):
         :type: str
         """
         if maker_asset_data is not None and not re.search(
-            r"^0x(([0-9a-f][0-9a-f])+)?$", maker_asset_data
+            r"^powerchain(([0-9a-f][0-9a-f])+)?$", maker_asset_data
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `maker_asset_data`, must be a follow pattern or equal to `/^0x(([0-9a-f][0-9a-f])+)?$/`"
+                r"Invalid value for `maker_asset_data`, must be a follow pattern or equal to `/^powerchain(([0-9a-f][0-9a-f])+)?$/`"
             )  # noqa: E501
 
         self._maker_asset_data = maker_asset_data
@@ -225,10 +225,10 @@ class RelayerApiOrdersChannelSubscribePayloadSchema(object):
         :type: str
         """
         if taker_asset_data is not None and not re.search(
-            r"^0x(([0-9a-f][0-9a-f])+)?$", taker_asset_data
+            r"^powerchain(([0-9a-f][0-9a-f])+)?$", taker_asset_data
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `taker_asset_data`, must be a follow pattern or equal to `/^0x(([0-9a-f][0-9a-f])+)?$/`"
+                r"Invalid value for `taker_asset_data`, must be a follow pattern or equal to `/^powerchain(([0-9a-f][0-9a-f])+)?$/`"
             )  # noqa: E501
 
         self._taker_asset_data = taker_asset_data
@@ -252,10 +252,10 @@ class RelayerApiOrdersChannelSubscribePayloadSchema(object):
         :type: str
         """
         if trader_asset_data is not None and not re.search(
-            r"^0x(([0-9a-f][0-9a-f])+)?$", trader_asset_data
+            r"^powerchain(([0-9a-f][0-9a-f])+)?$", trader_asset_data
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `trader_asset_data`, must be a follow pattern or equal to `/^0x(([0-9a-f][0-9a-f])+)?$/`"
+                r"Invalid value for `trader_asset_data`, must be a follow pattern or equal to `/^powerchain(([0-9a-f][0-9a-f])+)?$/`"
             )  # noqa: E501
 
         self._trader_asset_data = trader_asset_data

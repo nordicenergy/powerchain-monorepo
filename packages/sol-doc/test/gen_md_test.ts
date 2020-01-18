@@ -1,11 +1,11 @@
-import { chaiSetup } from '@0x/dev-utils';
-import { expect } from 'chai';
+import {chaiSetup} from '@powerchain/dev-utils';
+import {expect} from 'chai';
 import * as _ from 'lodash';
 
-import { FunctionKind, SolidityDocs } from '../src/extract_docs';
-import { generateMarkdownFromDocs } from '../src/gen_md';
+import {FunctionKind, SolidityDocs} from '../src/extract_docs';
+import {generateMarkdownFromDocs} from '../src/gen_md';
 
-import { randomContract, randomWord } from './utils/random_docs';
+import {randomContract, randomWord} from './utils/random_docs';
 
 chaiSetup.configure();
 

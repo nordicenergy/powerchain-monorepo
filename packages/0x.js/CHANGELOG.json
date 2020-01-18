@@ -39,7 +39,7 @@
         "version": "9.0.0",
         "changes": [
             {
-                "note": "Remove ZRXToken contract wrapper",
+                "note": "Remove NETToken contract wrapper",
                 "pr": 2324
             },
             {
@@ -47,7 +47,7 @@
                 "pr": 2324
             },
             {
-                "note": "[Breaking] Big refactor of contract wrapper interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details",
+                "note": "[Breaking] Big refactor of contract wrapper interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details",
                 "pr": 2325
             },
             {
@@ -67,7 +67,7 @@
                 "pr": 2313
             },
             {
-                "note": "Updated to work with 0x v3"
+                "note": "Updated to work with powerchain v3"
             }
         ],
         "timestamp": 1575296764
@@ -94,7 +94,7 @@
         "version": "8.0.0-beta.1",
         "changes": [
             {
-                "note": "Remove ZRXToken contract wrapper",
+                "note": "Remove NETToken contract wrapper",
                 "pr": 2324
             },
             {
@@ -102,7 +102,7 @@
                 "pr": 2324
             },
             {
-                "note": "[Breaking] Big refactor of contract wrapper interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details",
+                "note": "[Breaking] Big refactor of contract wrapper interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details",
                 "pr": 2325
             },
             {
@@ -134,7 +134,7 @@
         "version": "7.1.0-beta.0",
         "changes": [
             {
-                "note": "Updated to work with 0x v3"
+                "note": "Updated to work with powerchain v3"
             }
         ],
         "timestamp": 1570135330
@@ -165,10 +165,10 @@
                 "pr": 2017
             },
             {
-                "note": "Removed @0x/order-watcher"
+                "note": "Removed @powerchain/order-watcher"
             },
             {
-                "note": "Update to latest @0x/contract-wrappers v11",
+                "note": "Update to latest @powerchain/contract-wrappers v11",
                 "pr": 2068
             }
         ],
@@ -496,7 +496,7 @@
                 "pr": 1102
             },
             {
-                "note": "Updated to use new modularized artifacts and the latest version of @0xproject/contract-wrappers",
+                "note": "Updated to use new modularized artifacts and the latest version of @powerchainproject/contract-wrappers",
                 "pr": 1105
             },
             {
@@ -568,7 +568,7 @@
         "version": "1.0.2",
         "changes": [
             {
-                "note": "Add ZRX & WETH mainnet contract addresses into the included artifacts"
+                "note": "Add NET & WETH mainnet contract addresses into the included artifacts"
             }
         ],
         "timestamp": 1537265493
@@ -603,7 +603,7 @@
         "version": "1.0.1-rc.4",
         "changes": [
             {
-                "note": "Re-organize the exported interface of 0x.js. Remove the `ZeroEx` class, and instead export the same exports as `0x.js`'s sub-packages: `@0xproject/contract-wrappers`, `@0xproject/order-utils` and `@0xproject/order-watcher`",
+                "note": "Re-organize the exported interface of powerchain.js. Remove the `ZeroEx` class, and instead export the same exports as `powerchain.js`'s sub-packages: `@powerchainproject/contract-wrappers`, `@powerchainproject/order-utils` and `@powerchainproject/order-watcher`",
                 "pr": 963
             }
         ],
@@ -687,11 +687,11 @@
                 "pr": 863
             },
             {
-                "note": "0x.js exports renamed contract events and event arg types",
+                "note": "powerchain.js exports renamed contract events and event arg types",
                 "pr": 863
             },
             {
-                "note": "Export `ZeroEx.assetData` with methods to decode/encode assetData fields found in 0x orders",
+                "note": "Export `ZeroEx.assetData` with methods to decode/encode assetData fields found in powerchain orders",
                 "pr": 884
             }
         ]
@@ -758,7 +758,7 @@
                 "pr": 579
             },
             {
-                "note": "Renamed ZeroExError to ContractWrappersErrors since they now lives in the @0xproject/contract-wrappers subpackage",
+                "note": "Renamed ZeroExError to ContractWrappersErrors since they now lives in the @powerchainproject/contract-wrappers subpackage",
                 "pr": 579
             }
         ],
@@ -798,7 +798,7 @@
                 "pr": 559
             },
             {
-                "note": "Move `ZeroExError.InvalidSignature` to `@0xproject/order-utils` `OrderError.InvalidSignature`",
+                "note": "Move `ZeroExError.InvalidSignature` to `@powerchainproject/order-utils` `OrderError.InvalidSignature`",
                 "pr": 559
             }
         ],
@@ -808,7 +808,7 @@
         "version": "0.36.3",
         "changes": [
             {
-                "note": "Move @0xproject/migrations to devDependencies"
+                "note": "Move @powerchainproject/migrations to devDependencies"
             }
         ],
         "timestamp": 1524079658
@@ -839,7 +839,7 @@
         "version": "0.36.0",
         "changes": [
             {
-                "note": "Moved Web3.Provider to `@0xproject/types:Provider`",
+                "note": "Moved Web3.Provider to `@powerchainproject/types:Provider`",
                 "pr": 501
             },
             {
@@ -853,7 +853,7 @@
         "version": "0.35.0",
         "changes": [
             {
-                "note": "Removed `ZeroExError.TransactionMiningTimeout` and moved it to '@0xproject/web3-wrapper' `Web3WrapperErrors.TransactionMiningTimeout`",
+                "note": "Removed `ZeroExError.TransactionMiningTimeout` and moved it to '@powerchainproject/web3-wrapper' `Web3WrapperErrors.TransactionMiningTimeout`",
                 "pr": 485
             }
         ],
@@ -885,11 +885,11 @@
         "version": "0.33.2",
         "changes": [
             {
-                "note": "Consolidate all `console.log` calls into `logUtils` in the `@0xproject/utils` package",
+                "note": "Consolidate all `console.log` calls into `logUtils` in the `@powerchainproject/utils` package",
                 "pr": 452
             },
             {
-                "note": "Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@0xproject/types` package",
+                "note": "Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@powerchainproject/types` package",
                 "pr": 456
             }
         ],
@@ -944,7 +944,7 @@
         "version": "0.32.1",
         "changes": [
             {
-                "note": "Reorganized `BlockParamLiteral` export into `@0xproject/types` package",
+                "note": "Reorganized `BlockParamLiteral` export into `@powerchainproject/types` package",
                 "pr": 355
             },
             {
@@ -996,7 +996,7 @@
                 "pr": 337
             },
             {
-                "note": "Move @0xproject/types to dependencies from devDependencies fixing missing type errors"
+                "note": "Move @powerchainproject/types to dependencies from devDependencies fixing missing type errors"
             }
         ],
         "timestamp": 1517151600
@@ -1009,7 +1009,7 @@
                 "pr": 212
             },
             {
-                "note": "Fix a bug that made it impossible to pass a custom ZRX address ",
+                "note": "Fix a bug that made it impossible to pass a custom NET address ",
                 "pr": 341
             }
         ],
@@ -1120,7 +1120,7 @@
                 "pr": 233
             },
             {
-                "note": "Make all `getContractAddress` functions, `zeroEx.exchange.subscribe`, `zeroEx.exchange.getZRXTokenAddress` sync",
+                "note": "Make all `getContractAddress` functions, `zeroEx.exchange.subscribe`, `zeroEx.exchange.getNETTokenAddress` sync",
                 "pr": 233
             },
             {
@@ -1162,7 +1162,7 @@
                 "pr": 222
             },
             {
-                "note": "In OrderWatcher subscribe to ZRX Token Transfer and Approval events when maker token is different",
+                "note": "In OrderWatcher subscribe to NET Token Transfer and Approval events when maker token is different",
                 "pr": 225
             }
         ],
@@ -1265,7 +1265,7 @@
         "version": "0.21.4",
         "changes": [
             {
-                "note": "Made 0x.js more type-safe by making `getLogsAsync` and `subscribe/subscribeAsync` generics parametrized with arg type",
+                "note": "Made powerchain.js more type-safe by making `getLogsAsync` and `subscribe/subscribeAsync` generics parametrized with arg type",
                 "pr": 194
             }
         ],
@@ -1357,7 +1357,7 @@
                 "pr": 178
             },
             {
-                "note": "Fixed fees validation when one of the tokens transferred is ZRX",
+                "note": "Fixed fees validation when one of the tokens transferred is NET",
                 "pr": 181
             }
         ],
@@ -1395,7 +1395,7 @@
         "version": "0.17.0",
         "changes": [
             {
-                "note": "Made `zeroEx.exchange.getZRXTokenAddressAsync` public",
+                "note": "Made `zeroEx.exchange.getNETTokenAddressAsync` public",
                 "pr": 171
             }
         ],
@@ -1405,7 +1405,7 @@
         "version": "0.16.0",
         "changes": [
             {
-                "note": "Added the ability to specify custom contract addresses to be used with 0x.js",
+                "note": "Added the ability to specify custom contract addresses to be used with powerchain.js",
                 "pr": 165
             },
             {
@@ -1657,7 +1657,7 @@
                 "pr": 104
             },
             {
-                "note": "Fixed an issue with incorrect balance/allowance validation when ZRX is one of the tokens traded",
+                "note": "Fixed an issue with incorrect balance/allowance validation when NET is one of the tokens traded",
                 "pr": 109
             }
         ],
@@ -1671,7 +1671,7 @@
                 "pr": 82
             },
             {
-                "note": "Updated contract artifacts to reflect latest changes to the smart contracts (0xproject/contracts#59)"
+                "note": "Updated contract artifacts to reflect latest changes to the smart contracts (powerchainproject/contracts#59)"
             },
             {
                 "note": "Added `zeroEx.proxy.isAuthorizedAsync` and `zeroEx.proxy.getAuthorizedAddressesAsync`",

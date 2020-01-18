@@ -1,41 +1,41 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { orderCoercionUtil } from '../../src/util/order_coercion';
+import {orderCoercionUtil} from '../../src/util/order_coercion';
 
 const ORDER = {
-    senderAddress: '0x0000000000000000000000000000000000000000',
-    makerAddress: '0x34a745008a643eebc58920eaa29fb1165b4a288e',
-    takerAddress: '0x0000000000000000000000000000000000000000',
+    senderAddress: 'powerchain0000000000000000000000000000000000000000',
+    makerAddress: 'powerchain34a745008a643eebc58920eaa29fb1165b4a288e',
+    takerAddress: 'powerchain0000000000000000000000000000000000000000',
     makerFee: new BigNumber('0'),
     takerFee: new BigNumber('0'),
     makerAssetAmount: new BigNumber('200000000000000000000'),
     takerAssetAmount: new BigNumber('10000000000000000000'),
-    makerAssetData: '0xf47261b00000000000000000000000008cb3971b8eb709c14616bd556ff6683019e90d9c',
-    takerAssetData: '0xf47261b0000000000000000000000000d0a1e359811322d97991e03f863a0c30c2cf029c',
+    makerAssetData: 'powerchainf47261b00000000000000000000000008cb3971b8eb709c14616bd556ff6683019e90d9c',
+    takerAssetData: 'powerchainf47261b0000000000000000000000000d0a1e359811322d97991e03f863a0c30c2cf029c',
     expirationTimeSeconds: new BigNumber('1601535600'),
-    feeRecipientAddress: '0x0000000000000000000000000000000000000000',
+    feeRecipientAddress: 'powerchain0000000000000000000000000000000000000000',
     salt: new BigNumber('3101985707338942582579795423923841749956600670712030922928319824580764688653'),
     signature:
-        '0x1bd4d5686fea801fe33c68c4944356085e7e6cb553eb7073160abd815609f714e85fb47f44b7ffd0a2a1321ac40d72d55163869d0a50fdb5a402132150fe33a08403',
-    exchangeAddress: '0x35dd2932454449b14cee11a94d3674a936d5d7b2',
+        'powerchain1bd4d5686fea801fe33c68c4944356085e7e6cb553eb7073160abd815609f714e85fb47f44b7ffd0a2a1321ac40d72d55163869d0a50fdb5a402132150fe33a08403',
+    exchangeAddress: 'powerchain35dd2932454449b14cee11a94d3674a936d5d7b2',
 };
 
 const STRING_ORDER = {
-    senderAddress: '0x0000000000000000000000000000000000000000',
-    makerAddress: '0x34a745008a643eebc58920eaa29fb1165b4a288e',
-    takerAddress: '0x0000000000000000000000000000000000000000',
+    senderAddress: 'powerchain0000000000000000000000000000000000000000',
+    makerAddress: 'powerchain34a745008a643eebc58920eaa29fb1165b4a288e',
+    takerAddress: 'powerchain0000000000000000000000000000000000000000',
     makerFee: '0',
     takerFee: '0',
     makerAssetAmount: '300000000000000000000',
     takerAssetAmount: '31000000000000000000',
-    makerAssetData: '0xf47261b00000000000000000000000002002d3812f58e35f0ea1ffbf80a75a38c32175fa',
-    takerAssetData: '0xf47261b0000000000000000000000000d0a1e359811322d97991e03f863a0c30c2cf029c',
+    makerAssetData: 'powerchainf47261b00000000000000000000000002002d3812f58e35f0ea1ffbf80a75a38c32175fa',
+    takerAssetData: 'powerchainf47261b0000000000000000000000000d0a1e359811322d97991e03f863a0c30c2cf029c',
     expirationTimeSeconds: '2524636800',
-    feeRecipientAddress: '0x0000000000000000000000000000000000000000',
+    feeRecipientAddress: 'powerchain0000000000000000000000000000000000000000',
     salt: '64592004666704945574675477805199411288137454783320798602050822322450089238268',
     signature:
-        '0x1c13cacddca8d7d8248e91f412377e68f8f1f9891a59a6c1b2eea9f7b33558c30c4fb86a448e08ab7def40a28fb3a3062dcb33bb3c45302447fce5c4288b7c7f5b03',
-    exchangeAddress: '0x35dd2932454449b14cee11a94d3674a936d5d7b2',
+        'powerchain1c13cacddca8d7d8248e91f412377e68f8f1f9891a59a6c1b2eea9f7b33558c30c4fb86a448e08ab7def40a28fb3a3062dcb33bb3c45302447fce5c4288b7c7f5b03',
+    exchangeAddress: 'powerchain35dd2932454449b14cee11a94d3674a936d5d7b2',
 };
 
 const ORDERS = [ORDER, STRING_ORDER];
@@ -60,7 +60,7 @@ describe('orderCoercionUtil', () => {
             });
         });
     });
-    // Note: this doesn't test coercing pre v8.0.0 BigNumber versions to specified one used by 0x
+    // Note: this doesn't test coercing pre v8.0.0 BigNumber versions to specified one used by powerchain
     describe('coerceOrderFieldsToBigNumber', () => {
         it('should convert string values in order to big number', () => {
             const coercedOrder = orderCoercionUtil.coerceOrderFieldsToBigNumber(STRING_ORDER);
@@ -81,7 +81,7 @@ describe('orderCoercionUtil', () => {
             expect(coercedOrder.expirationTimeSeconds).toEqual(ORDER.expirationTimeSeconds);
         });
     });
-    // Note: this doesn't test coercing pre v8.0.0 BigNumber versions to specified one used by 0x
+    // Note: this doesn't test coercing pre v8.0.0 BigNumber versions to specified one used by powerchain
     describe('coerceOrderArrayFieldsToBigNumber', () => {
         it('should convert string values and big numbers in orders to big number', () => {
             const coercedOrders = orderCoercionUtil.coerceOrderArrayFieldsToBigNumber(ORDERS);

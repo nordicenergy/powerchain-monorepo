@@ -1,15 +1,15 @@
-import { PackageJSON } from '@0x/types';
-import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'fs';
+import {PackageJSON} from '@powerchain/types';
+import {existsSync, readFileSync, unlinkSync, writeFileSync} from 'fs';
 import * as _ from 'lodash';
 import * as path from 'path';
-import { exec as execAsync } from 'promisify-child-process';
+import {exec as execAsync} from 'promisify-child-process';
 import * as ts from 'typescript';
 
-import { constants } from '../constants';
-import { docGenConfigs } from '../doc_gen_configs';
-import { ExportInfo, ExportNameToTypedocNames, ExportPathToExportedItems } from '../types';
+import {constants} from '../constants';
+import {docGenConfigs} from '../doc_gen_configs';
+import {ExportInfo, ExportNameToTypedocNames, ExportPathToExportedItems} from '../types';
 
-import { utils } from './utils';
+import {utils} from './utils';
 
 export class DocGenerateUtils {
     private readonly _packageName: string;
@@ -387,7 +387,7 @@ export class DocGenerateUtils {
                 sanitizedExportPathToExportPath[sanitizedExportPath] = exportPath;
                 return sanitizedExportPath;
             }
-            const monorepoPrefix = '@0x/';
+            const monorepoPrefix = '@powerchain/';
             if (_.startsWith(exportPath, monorepoPrefix)) {
                 let sanitizedExportPath = exportPath.split(monorepoPrefix)[1];
                 if (sanitizedExportPath.startsWith('contracts-')) {
@@ -455,7 +455,7 @@ export class DocGenerateUtils {
                 });
             });
 
-            // @0x/types & ethereum-types are examples of packages where their index.ts exports types
+            // @powerchain/types & ethereum-types are examples of packages where their index.ts exports types
             // directly, meaning no internal paths will exist to follow. Other packages also have direct exports
             // in their index.ts, so we always add it to the source files passed to TypeDoc
             if (typeDocSourceIncludes.size === 0) {

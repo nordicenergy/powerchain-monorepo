@@ -1,13 +1,13 @@
-import { artifacts as erc721Artifacts, DummyERC721TokenContract } from '@0x/contracts-erc721';
-import { constants, ERC721TokenIdsByOwner, txDefaults } from '@0x/contracts-test-utils';
-import { generatePseudoRandomSalt } from '@0x/order-utils';
-import { BigNumber } from '@0x/utils';
-import { ZeroExProvider } from 'ethereum-types';
+import {artifacts as erc721Artifacts, DummyERC721TokenContract} from '@powerchain/contracts-erc721';
+import {constants, ERC721TokenIdsByOwner, txDefaults} from '@powerchain/contracts-test-utils';
+import {generatePseudoRandomSalt} from '@powerchain/order-utils';
+import {BigNumber} from '@powerchain/utils';
+import {ZeroExProvider} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { ERC721ProxyContract } from './wrappers';
+import {ERC721ProxyContract} from './wrappers';
 
 export class ERC721Wrapper {
     private readonly _tokenOwnerAddresses: string[];
@@ -27,7 +27,7 @@ export class ERC721Wrapper {
         // tslint:disable-next-line:no-unused-variable
         for (const i of _.times(constants.NUM_DUMMY_ERC721_TO_DEPLOY)) {
             this._dummyTokenContracts.push(
-                await DummyERC721TokenContract.deployFrom0xArtifactAsync(
+                await DummyERC721TokenContract.deployFrompowerchainArtifactAsync(
                     erc721Artifacts.DummyERC721Token,
                     this._provider,
                     txDefaults,
@@ -40,7 +40,7 @@ export class ERC721Wrapper {
         return this._dummyTokenContracts;
     }
     public async deployProxyAsync(): Promise<ERC721ProxyContract> {
-        this._proxyContract = await ERC721ProxyContract.deployFrom0xArtifactAsync(
+        this._proxyContract = await ERC721ProxyContract.deployFrompowerchainArtifactAsync(
             artifacts.ERC721Proxy,
             this._provider,
             txDefaults,

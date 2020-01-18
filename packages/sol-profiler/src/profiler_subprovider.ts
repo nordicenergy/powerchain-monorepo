@@ -11,12 +11,12 @@ import {
     TraceInfo,
     TraceInfoSubprovider,
     utils,
-} from '@0x/sol-tracing-utils';
-import { logUtils } from '@0x/utils';
-import { stripHexPrefix } from 'ethereumjs-util';
+} from '@powerchain/sol-tracing-utils';
+import {logUtils} from '@powerchain/utils';
+import {stripHexPrefix} from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { costUtils } from './cost_utils';
+import {costUtils} from './cost_utils';
 
 const CREATE_COST = 32000;
 const BASE_COST = 21000;
@@ -30,7 +30,7 @@ export class ProfilerSubprovider extends TraceInfoSubprovider {
     private readonly _profilerCollector: TraceCollector;
     /**
      * Instantiates a ProfilerSubprovider instance
-     * @param artifactAdapter Adapter for used artifacts format (0x, truffle, giveth, etc.)
+     * @param artifactAdapter Adapter for used artifacts format (powerchain, truffle, giveth, etc.)
      * @param defaultFromAddress default from address to use when sending transactions
      * @param isVerbose If true, we will log any unknown transactions. Otherwise we will ignore them
      */

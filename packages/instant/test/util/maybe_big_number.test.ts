@@ -1,6 +1,6 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { maybeBigNumberUtil } from '../../src/util/maybe_big_number';
+import {maybeBigNumberUtil} from '../../src/util/maybe_big_number';
 
 const BIG_NUMBER_1 = new BigNumber('10.1');
 const BIG_NUMBER_2 = new BigNumber('10.1');

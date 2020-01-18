@@ -1,9 +1,8 @@
-import { BigNumber } from '@0x/utils';
-import * as _ from 'lodash';
+import {BigNumber} from '@powerchain/utils';
 
-import { SignedOrderWithFillableAmounts } from '../types';
+import {SignedOrderWithFillableAmounts} from '../types';
 
-import { utils } from './utils';
+import {utils} from './utils';
 
 export const fillableAmountsUtils = {
     getTakerAssetAmountSwappedAfterFees(order: SignedOrderWithFillableAmounts): BigNumber {

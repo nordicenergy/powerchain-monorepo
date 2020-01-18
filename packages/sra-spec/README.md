@@ -1,4 +1,4 @@
-## @0x/sra-spec
+## @powerchain/sra-spec
 
 Contains the Standard Relayer API [OpenAPI Spec](https://github.com/OAI/OpenAPI-Specification).
 
@@ -9,7 +9,7 @@ A deployed [ReDoc](https://github.com/Rebilly/ReDoc) static site with the API ca
 ## Usage
 
 ```
-import { api } from '@0x/sra-spec';
+import { api } from '@powerchain/sra-spec';
 ```
 
 ## Installation
@@ -53,13 +53,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/sra-spec yarn build
+PKG=@powerchain/sra-spec yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/sra-spec yarn watch
+PKG=@powerchain/sra-spec yarn watch
 ```
 
 ### Static Site

@@ -1,9 +1,9 @@
-import { logUtils } from '@0x/utils';
-import { OpCode, StructLog } from 'ethereum-types';
+import {logUtils} from '@powerchain/utils';
+import {OpCode, StructLog} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { constants } from './constants';
-import { utils } from './utils';
+import {constants} from './constants';
+import {utils} from './utils';
 
 export interface ContractAddressToTraces {
     [contractAddress: string]: StructLog[];
@@ -75,7 +75,7 @@ export function getContractAddressToTraces(structLogs: StructLog[], startAddress
             if (structLog !== _.last(structLogs)) {
                 const nextStructLog = structLogs[i + 1];
                 if (nextStructLog.depth === structLog.depth) {
-                    continue;
+
                 } else if (nextStructLog.depth === structLog.depth - 1) {
                     const currentAddress = addressStack.pop() as string;
                     contractAddressToTraces[currentAddress] = (contractAddressToTraces[currentAddress] || []).concat(

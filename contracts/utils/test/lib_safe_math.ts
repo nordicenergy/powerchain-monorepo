@@ -1,11 +1,10 @@
-import { blockchainTests, constants, describe, expect } from '@0x/contracts-test-utils';
-import { BigNumber, SafeMathRevertErrors } from '@0x/utils';
-import * as _ from 'lodash';
+import {blockchainTests, constants, describe, expect} from '@powerchain/contracts-test-utils';
+import {BigNumber, SafeMathRevertErrors} from '@powerchain/utils';
 
 import * as ReferenceFunctions from '../src/reference_functions';
 
-import { artifacts } from './artifacts';
-import { TestLibSafeMathContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestLibSafeMathContract} from './wrappers';
 
 function toBigNumber(a: number | string): BigNumber {
     return new BigNumber(a);
@@ -17,7 +16,7 @@ blockchainTests('SafeMath', env => {
 
     before(async () => {
         // Deploy SafeMath
-        safeMath = await TestLibSafeMathContract.deployFrom0xArtifactAsync(
+        safeMath = await TestLibSafeMathContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibSafeMath,
             env.provider,
             env.txDefaults,
@@ -45,7 +44,7 @@ blockchainTests('SafeMath', env => {
         });
 
         it('should revert if the multiplication overflows', async () => {
-            const a = toBigNumber('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'); // The largest uint256 number
+            const a = toBigNumber('powerchainffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'); // The largest uint256 number
             const b = toBigNumber(2);
             const expectedError = new SafeMathRevertErrors.Uint256BinOpError(
                 SafeMathRevertErrors.BinOpErrorCodes.MultiplicationOverflow,
@@ -143,7 +142,7 @@ blockchainTests('SafeMath', env => {
         });
 
         it('should revert if the addition overflows', async () => {
-            const a = toBigNumber('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'); // The largest uint256 number
+            const a = toBigNumber('powerchainffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'); // The largest uint256 number
             const b = toBigNumber(1);
             const expectedError = new SafeMathRevertErrors.Uint256BinOpError(
                 SafeMathRevertErrors.BinOpErrorCodes.AdditionOverflow,

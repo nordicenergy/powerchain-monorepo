@@ -1,10 +1,10 @@
-import { OpenApiSpec } from '@loopback/openapi-v3-types';
+import {OpenApiSpec} from '@loopback/openapi-v3-types';
 
-import { examples } from './examples';
-import { schemas } from './json-schemas';
-import { md } from './md';
-import { generateParameters } from './parameters';
-import { generateResponses } from './responses';
+import {examples} from './examples';
+import {schemas} from './json-schemas';
+import {md} from './md';
+import {generateParameters} from './parameters';
+import {generateResponses} from './responses';
 
 export const api: OpenApiSpec = {
     openapi: '3.0.0',
@@ -29,7 +29,7 @@ export const api: OpenApiSpec = {
                             name: 'assetDataA',
                             in: 'query',
                             description: 'The assetData value for the first asset in the pair.',
-                            example: '0xf47261b04c32345ced77393b3530b1eed0f346429d',
+                            example: 'powerchainf47261b04c32345ced77393b3530b1eed0f346429d',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -38,7 +38,7 @@ export const api: OpenApiSpec = {
                             name: 'assetDataB',
                             in: 'query',
                             description: 'The assetData value for the second asset in the pair.',
-                            example: '0x0257179264389b814a946f3e92105513705ca6b990',
+                            example: 'powerchain0257179264389b814a946f3e92105513705ca6b990',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -63,8 +63,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'makerAssetProxyId',
                             in: 'query',
-                            description: `The maker asset proxy id (example: "0xf47261b0" for ERC20, "0x02571792" for ERC721).`,
-                            example: '0xf47261b0',
+                            description: `The maker asset proxy id (example: "powerchainf47261b0" for ERC20, "powerchain02571792" for ERC721).`,
+                            example: 'powerchainf47261b0',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -72,8 +72,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'takerAssetProxyId',
                             in: 'query',
-                            description: `The taker asset asset proxy id (example: "0xf47261b0" for ERC20, "0x02571792" for ERC721).`,
-                            example: '0x02571792',
+                            description: `The taker asset asset proxy id (example: "powerchainf47261b0" for ERC20, "powerchain02571792" for ERC721).`,
+                            example: 'powerchain02571792',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -82,7 +82,7 @@ export const api: OpenApiSpec = {
                             name: 'makerAssetAddress',
                             in: 'query',
                             description: `The contract address for the maker asset.`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/addressSchema',
                             },
@@ -91,7 +91,7 @@ export const api: OpenApiSpec = {
                             name: 'takerAssetAddress',
                             in: 'query',
                             description: `The contract address for the taker asset.`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/addressSchema',
                             },
@@ -99,8 +99,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'exchangeAddress',
                             in: 'query',
-                            description: `Same as exchangeAddress in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as exchangeAddress in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/addressSchema',
                             },
@@ -108,8 +108,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'senderAddress',
                             in: 'query',
-                            description: `Same as senderAddress in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as senderAddress in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/addressSchema',
                             },
@@ -117,8 +117,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'makerAssetData',
                             in: 'query',
-                            description: `Same as makerAssetData in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as makerAssetData in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -126,8 +126,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'takerAssetData',
                             in: 'query',
-                            description: `Same as takerAssetData in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as takerAssetData in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -135,8 +135,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'traderAssetData',
                             in: 'query',
-                            description: `Same as traderAssetData in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as traderAssetData in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -144,8 +144,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'makerAddress',
                             in: 'query',
-                            description: `Same as makerAddress in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as makerAddress in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/addressSchema',
                             },
@@ -153,8 +153,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'takerAddress',
                             in: 'query',
-                            description: `Same as takerAddress in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as takerAddress in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/addressSchema',
                             },
@@ -162,8 +162,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'traderAddress',
                             in: 'query',
-                            description: `Same as traderAddress in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as traderAddress in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/addressSchema',
                             },
@@ -171,8 +171,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'feeRecipientAddress',
                             in: 'query',
-                            description: `Same as feeRecipientAddress in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as feeRecipientAddress in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/addressSchema',
                             },
@@ -180,8 +180,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'makerFeeAssetData',
                             in: 'query',
-                            description: `Same as makerFeeAssetData in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as makerFeeAssetData in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -189,8 +189,8 @@ export const api: OpenApiSpec = {
                         {
                             name: 'takerFeeAssetData',
                             in: 'query',
-                            description: `Same as takerFeeAssetData in the [0x Protocol v3 Specification](https://github.com/0xProject/0x-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
-                            example: '0xe41d2489571d322189246dafa5ebde1f4699f498',
+                            description: `Same as takerFeeAssetData in the [powerchain Protocol v3 Specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v3/v3-specification.md#order-message-format)`,
+                            example: 'powerchaine41d2489571d322189246dafa5ebde1f4699f498',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -201,21 +201,21 @@ export const api: OpenApiSpec = {
                 responses: generateResponses(
                     'relayerApiOrdersResponseSchema',
                     examples.relayerApiOrdersResponse,
-                    `A collection of 0x orders with meta-data as specified by query params`,
+                    `A collection of powerchain orders with meta-data as specified by query params`,
                 ),
             },
         },
         '/v3/order/{orderHash}': {
             get: {
-                description: 'Retrieves the 0x order with meta info that is associated with the hash.',
+                description: 'Retrieves the powerchain order with meta info that is associated with the hash.',
                 operationId: 'getOrder',
                 parameters: generateParameters(
                     [
                         {
                             name: 'orderHash',
                             in: 'path',
-                            description: 'The hash of the desired 0x order.',
-                            example: '0xd4b103c42d2512eef3fee775e097f044291615d25f5d71e0ac70dbd49d223591',
+                            description: 'The hash of the desired powerchain order.',
+                            example: 'powerchaind4b103c42d2512eef3fee775e097f044291615d25f5d71e0ac70dbd49d223591',
                             schema: {
                                 $ref: '#/components/schemas/orderHashSchema',
                             },
@@ -241,7 +241,7 @@ export const api: OpenApiSpec = {
                             in: 'query',
                             description: `assetData (makerAssetData or takerAssetData) designated as the base currency in the [currency pair calculation](https://en.wikipedia.org/wiki/Currency_pair) of price.`,
                             required: true,
-                            example: '0xf47261b04c32345ced77393b3530b1eed0f346429d',
+                            example: 'powerchainf47261b04c32345ced77393b3530b1eed0f346429d',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -251,7 +251,7 @@ export const api: OpenApiSpec = {
                             in: 'query',
                             description: `assetData (makerAssetData or takerAssetData) designated as the quote currency in the currency pair calculation of price (required).`,
                             required: true,
-                            example: '0xf47261b04c32345ced77393b3530b1eed0f346429d',
+                            example: 'powerchainf47261b04c32345ced77393b3530b1eed0f346429d',
                             schema: {
                                 $ref: '#/components/schemas/hexSchema',
                             },
@@ -273,7 +273,7 @@ export const api: OpenApiSpec = {
                 parameters: generateParameters([], false),
                 requestBody: {
                     description:
-                        'The fields of a 0x order the relayer may want to decide what configuration to send back.',
+                        'The fields of a powerchain order the relayer may want to decide what configuration to send back.',
                     content: {
                         'application/json': {
                             schema: {
@@ -308,7 +308,7 @@ export const api: OpenApiSpec = {
                 operationId: 'postOrder',
                 parameters: generateParameters([], false),
                 requestBody: {
-                    description: 'A valid signed 0x order based on the schema.',
+                    description: 'A valid signed powerchain order based on the schema.',
                     content: {
                         'application/json': {
                             schema: {

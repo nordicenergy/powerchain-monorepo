@@ -1,7 +1,7 @@
-import { MarketBuySwapQuote } from '@0x/asset-swapper';
-import { BigNumber } from '@0x/utils';
+import {MarketBuySwapQuote} from '@powerchain/asset-swapper';
+import {BigNumber} from '@powerchain/utils';
 
-import { ActionsUnion, AddressAndEthBalanceInWei, Asset, BaseCurrency, StandardSlidingPanelContent } from '../types';
+import {ActionsUnion, AddressAndEthBalanceInWei, Asset, BaseCurrency, StandardSlidingPanelContent} from '../types';
 
 export interface PlainAction<T extends string> {
     type: T;

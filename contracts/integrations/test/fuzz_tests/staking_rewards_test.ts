@@ -1,28 +1,22 @@
-import { blockchainTests } from '@0x/contracts-test-utils';
+import {blockchainTests} from '@powerchain/contracts-test-utils';
 import * as _ from 'lodash';
 
-import { Actor } from '../framework/actors/base';
-import {
-    MakerTaker,
-    OperatorStakerMaker,
-    StakerKeeper,
-    StakerMaker,
-    StakerOperator,
-} from '../framework/actors/hybrids';
-import { Keeper } from '../framework/actors/keeper';
-import { Maker } from '../framework/actors/maker';
-import { PoolOperator } from '../framework/actors/pool_operator';
-import { Staker } from '../framework/actors/staker';
-import { Taker } from '../framework/actors/taker';
-import { filterActorsByRole } from '../framework/actors/utils';
-import { AssertionResult } from '../framework/assertions/function_assertion';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { DeploymentManager } from '../framework/deployment_manager';
-import { Simulation, SimulationEnvironment } from '../framework/simulation';
-import { Pseudorandom } from '../framework/utils/pseudorandom';
+import {Actor} from '../framework/actors/base';
+import {MakerTaker, OperatorStakerMaker, StakerKeeper, StakerMaker, StakerOperator,} from '../framework/actors/hybrids';
+import {Keeper} from '../framework/actors/keeper';
+import {Maker} from '../framework/actors/maker';
+import {PoolOperator} from '../framework/actors/pool_operator';
+import {Staker} from '../framework/actors/staker';
+import {Taker} from '../framework/actors/taker';
+import {filterActorsByRole} from '../framework/actors/utils';
+import {AssertionResult} from '../framework/assertions/function_assertion';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {DeploymentManager} from '../framework/deployment_manager';
+import {Simulation, SimulationEnvironment} from '../framework/simulation';
+import {Pseudorandom} from '../framework/utils/pseudorandom';
 
-import { PoolMembershipSimulation } from './pool_membership_test';
-import { StakeManagementSimulation } from './stake_management_test';
+import {PoolMembershipSimulation} from './pool_membership_test';
+import {StakeManagementSimulation} from './stake_management_test';
 
 export class StakingRewardsSimulation extends Simulation {
     protected async *_assertionGenerator(): AsyncIterableIterator<AssertionResult | void> {
@@ -78,11 +72,11 @@ blockchainTests('Staking rewards fuzz test', env => {
         const balanceStore = new BlockchainBalanceStore(
             {
                 StakingProxy: deployment.staking.stakingProxy.address,
-                ZRXVault: deployment.staking.zrxVault.address,
+                NETVault: deployment.staking.zrxVault.address,
             },
             {
                 erc20: {
-                    ZRX: deployment.tokens.zrx,
+                    NET: deployment.tokens.zrx,
                     WETH: deployment.tokens.weth,
                     ERC20TokenA,
                     ERC20TokenB,
@@ -117,7 +111,7 @@ blockchainTests('Staking rewards fuzz test', env => {
         for (const taker of takers) {
             await taker.configureERC20TokenAsync(deployment.tokens.weth, deployment.staking.stakingProxy.address);
         }
-        // Stakers need to set a ZRX allowance to deposit their ZRX into the zrxVault
+        // Stakers need to set a NET allowance to deposit their NET into the zrxVault
         const stakers = filterActorsByRole(actors, Staker);
         for (const staker of stakers) {
             await staker.configureERC20TokenAsync(deployment.tokens.zrx);

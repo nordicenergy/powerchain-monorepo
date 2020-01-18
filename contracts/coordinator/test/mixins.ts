@@ -1,4 +1,4 @@
-import { exchangeDataEncoder } from '@0x/contracts-exchange';
+import {exchangeDataEncoder} from '@powerchain/contracts-exchange';
 import {
     blockchainTests,
     constants,
@@ -7,16 +7,16 @@ import {
     randomAddress,
     TransactionFactory,
     transactionHashUtils,
-} from '@0x/contracts-test-utils';
-import { LibBytesRevertErrors } from '@0x/contracts-utils';
-import { SignatureType, SignedOrder } from '@0x/types';
-import { BigNumber, CoordinatorRevertErrors, hexUtils } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {LibBytesRevertErrors} from '@powerchain/contracts-utils';
+import {SignatureType, SignedOrder} from '@powerchain/types';
+import {BigNumber, CoordinatorRevertErrors, hexUtils} from '@powerchain/utils';
 
-import { ApprovalFactory } from '../src/approval_factory';
+import {ApprovalFactory} from '../src/approval_factory';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { CoordinatorContract } from './wrappers';
+import {CoordinatorContract} from './wrappers';
 
 blockchainTests.resets('Mixins tests', env => {
     let chainId: number;
@@ -32,7 +32,7 @@ blockchainTests.resets('Mixins tests', env => {
 
     before(async () => {
         chainId = await env.getChainIdAsync();
-        mixins = await CoordinatorContract.deployFrom0xArtifactAsync(
+        mixins = await CoordinatorContract.deployFrompowerchainArtifactAsync(
             artifacts.Coordinator,
             env.provider,
             env.txDefaults,
@@ -214,13 +214,13 @@ blockchainTests.resets('Mixins tests', env => {
             });
         }
         it('should decode an empty array for invalid data', async () => {
-            const data = '0x0123456789';
+            const data = 'powerchain0123456789';
             const decodedOrders = await mixins.decodeOrdersFromFillData(data).callAsync();
             const emptyArray: any[] = [];
             expect(emptyArray).to.deep.eq(decodedOrders);
         });
         it('should revert if data is less than 4 bytes long', async () => {
-            const data = '0x010203';
+            const data = 'powerchain010203';
             const expectedError = new LibBytesRevertErrors.InvalidByteOperationError(
                 LibBytesRevertErrors.InvalidByteOperationErrorCodes.LengthGreaterThanOrEqualsFourRequired,
                 new BigNumber(3), // the length of data
@@ -296,7 +296,7 @@ blockchainTests.resets('Mixins tests', env => {
                 const approval = await approvalFactory1.newSignedApprovalAsync(transaction, transactionSignerAddress);
                 const signature = hexUtils.concat(
                     hexUtils.slice(approval.signature, 0, 2),
-                    '0xFFFFFFFF',
+                    'powerchainFFFFFFFF',
                     hexUtils.slice(approval.signature, 6),
                 );
                 const tx = mixins
@@ -432,7 +432,7 @@ blockchainTests.resets('Mixins tests', env => {
                 const approval = await approvalFactory1.newSignedApprovalAsync(transaction, transactionSignerAddress);
                 const signature = hexUtils.concat(
                     hexUtils.slice(approval.signature, 0, 2),
-                    '0xFFFFFFFF',
+                    'powerchainFFFFFFFF',
                     hexUtils.slice(approval.signature, 6),
                 );
                 const tx = mixins
@@ -454,7 +454,7 @@ blockchainTests.resets('Mixins tests', env => {
                 const approval2 = await approvalFactory2.newSignedApprovalAsync(transaction, transactionSignerAddress);
                 const approvalSignature2 = hexUtils.concat(
                     hexUtils.slice(approval2.signature, 0, 2),
-                    '0xFFFFFFFF',
+                    'powerchainFFFFFFFF',
                     hexUtils.slice(approval2.signature, 6),
                 );
                 const tx = mixins
@@ -476,7 +476,7 @@ blockchainTests.resets('Mixins tests', env => {
                 const approval2 = await approvalFactory2.newSignedApprovalAsync(transaction, transactionSignerAddress);
                 const approvalSignature2 = hexUtils.concat(
                     hexUtils.slice(approval2.signature, 0, 2),
-                    '0xFFFFFFFF',
+                    'powerchainFFFFFFFF',
                     hexUtils.slice(approval2.signature, 6),
                 );
                 const tx = mixins

@@ -1,10 +1,7 @@
-import { assert } from '@0x/assert';
-import { addressUtils } from '@0x/utils';
-import EthereumTx = require('ethereumjs-tx');
-import ethUtil = require('ethereumjs-util');
-import HDNode = require('hdkey');
+import {assert} from '@powerchain/assert';
+import {addressUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
-import { Lock } from 'semaphore-async-await';
+import {Lock} from 'semaphore-async-await';
 
 import {
     DerivedHDKeyInfo,
@@ -15,9 +12,12 @@ import {
     PartialTxParams,
     WalletSubproviderErrors,
 } from '../types';
-import { walletUtils } from '../utils/wallet_utils';
+import {walletUtils} from '../utils/wallet_utils';
 
-import { BaseWalletSubprovider } from './base_wallet_subprovider';
+import {BaseWalletSubprovider} from './base_wallet_subprovider';
+import EthereumTx = require('ethereumjs-tx');
+import ethUtil = require('ethereumjs-util');
+import HDNode = require('hdkey');
 
 const DEFAULT_BASE_DERIVATION_PATH = `44'/60'/0'`;
 const ASK_FOR_ON_DEVICE_CONFIRMATION = false;
@@ -136,7 +136,7 @@ export class LedgerSubprovider extends BaseWalletSubprovider {
                 throw err;
             }
 
-            const signedTxHex = `0x${tx.serialize().toString('hex')}`;
+            const signedTxHex = `powerchain${tx.serialize().toString('hex')}`;
             await this._destroyLedgerClientAsync();
             return signedTxHex;
         } catch (err) {
@@ -178,7 +178,7 @@ export class LedgerSubprovider extends BaseWalletSubprovider {
             if (vHex.length < 2) {
                 vHex = `0${v}`;
             }
-            const signature = `0x${result.r}${result.s}${vHex}`;
+            const signature = `powerchain${result.r}${result.s}${vHex}`;
             await this._destroyLedgerClientAsync();
             return signature;
         } catch (err) {

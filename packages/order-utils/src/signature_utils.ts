@@ -1,5 +1,5 @@
-import { DevUtilsContract } from '@0x/contract-wrappers';
-import { schemas } from '@0x/json-schemas';
+import {DevUtilsContract} from '@powerchain/contract-wrappers';
+import {schemas} from '@powerchain/json-schemas';
 import {
     ECSignature,
     Order,
@@ -8,18 +8,18 @@ import {
     SignedZeroExTransaction,
     ValidatorSignature,
     ZeroExTransaction,
-} from '@0x/types';
-import { BigNumber, providerUtils } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { SupportedProvider } from 'ethereum-types';
+} from '@powerchain/types';
+import {BigNumber, providerUtils} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {SupportedProvider} from 'ethereum-types';
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { assert } from './assert';
-import { constants } from './constants';
-import { eip712Utils } from './eip712_utils';
-import { orderHashUtils } from './order_hash_utils';
-import { TypedDataError } from './types';
+import {assert} from './assert';
+import {constants} from './constants';
+import {eip712Utils} from './eip712_utils';
+import {orderHashUtils} from './order_hash_utils';
+import {TypedDataError} from './types';
 
 const devUtilsContract = new DevUtilsContract(constants.NULL_ADDRESS, constants.FAKED_PROVIDER as any);
 
@@ -89,7 +89,7 @@ export const signatureUtils = {
                 ethUtil.toBuffer(ecSignatureRSV.s),
                 ethUtil.toBuffer(SignatureType.EIP712),
             ]);
-            const signatureHex = `0x${signatureBuffer.toString('hex')}`;
+            const signatureHex = `powerchain${signatureBuffer.toString('hex')}`;
             return {
                 ...order,
                 signature: signatureHex,
@@ -182,7 +182,7 @@ export const signatureUtils = {
                 ethUtil.toBuffer(ecSignatureRSV.s),
                 ethUtil.toBuffer(SignatureType.EIP712),
             ]);
-            const signatureHex = `0x${signatureBuffer.toString('hex')}`;
+            const signatureHex = `powerchain${signatureBuffer.toString('hex')}`;
             return {
                 ...transaction,
                 signature: signatureHex,
@@ -249,7 +249,7 @@ export const signatureUtils = {
         }
     },
     /**
-     * Combines ECSignature with V,R,S and the EthSign signature type for use in 0x protocol
+     * Combines ECSignature with V,R,S and the EthSign signature type for use in powerchain protocol
      * @param ecSignature The ECSignature of the signed data
      * @return Hex encoded string of signature (v,r,s) with Signature Type
      */
@@ -259,7 +259,7 @@ export const signatureUtils = {
             ethUtil.toBuffer(ecSignature.r),
             ethUtil.toBuffer(ecSignature.s),
         ]);
-        const signatureHex = `0x${signatureBuffer.toString('hex')}`;
+        const signatureHex = `powerchain${signatureBuffer.toString('hex')}`;
         const signatureWithType = signatureUtils.convertToSignatureWithType(signatureHex, SignatureType.EthSign);
         return signatureWithType;
     },
@@ -271,7 +271,7 @@ export const signatureUtils = {
      */
     convertToSignatureWithType(signature: string, signatureType: SignatureType): string {
         const signatureBuffer = Buffer.concat([ethUtil.toBuffer(signature), ethUtil.toBuffer(signatureType)]);
-        const signatureHex = `0x${signatureBuffer.toString('hex')}`;
+        const signatureHex = `powerchain${signatureBuffer.toString('hex')}`;
         return signatureHex;
     },
     /**
@@ -288,14 +288,14 @@ export const signatureUtils = {
     },
     /**
      * Parse a hex-encoded Validator signature into validator address and signature components
-     * @param signature A hex encoded Validator 0x Protocol signature
+     * @param signature A hex encoded Validator powerchain Protocol signature
      * @return A ValidatorSignature with validatorAddress and signature parameters
      */
     parseValidatorSignature(signature: string): ValidatorSignature {
         assert.isOneOfExpectedSignatureTypes(signature, [SignatureType.Validator]);
         // tslint:disable:custom-no-magic-numbers
         const validatorSignature = {
-            validatorAddress: `0x${signature.slice(-42, -2)}`,
+            validatorAddress: `powerchain${signature.slice(-42, -2)}`,
             signature: signature.slice(0, -42),
         };
         // tslint:enable:custom-no-magic-numbers

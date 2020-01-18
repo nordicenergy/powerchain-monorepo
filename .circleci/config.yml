@@ -4,13 +4,13 @@ jobs:
     build:
         resource_class: medium+
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         environment:
             CONTRACTS_COMMIT_HASH: '9ed05f5'
         working_directory: ~/repo
         steps:
             - checkout
-            - run: echo 'export PATH=$HOME/CIRCLE_PROJECT_REPONAME/node_modules/.bin:$PATH' >> $BASH_ENV
+            - run: echo 'export PATH=$HOME/CIRCLE_PROJECT_PWRCONAME/node_modules/.bin:$PATH' >> $BASH_ENV
             # HACK(feuGeneA): commented out this hack as we're changing
             # from a circleci-maintained container to a different
             # container, and this hack may not apply anymore, as
@@ -41,52 +41,52 @@ jobs:
     test-contracts-ganache:
         resource_class: medium+
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         working_directory: ~/repo
         steps:
             - restore_cache:
                   keys:
                       - repo-{{ .Environment.CIRCLE_SHA1 }}
-            - run: yarn wsrun test:circleci @0x/contracts-multisig @0x/contracts-utils @0x/contracts-exchange-libs @0x/contracts-erc20 @0x/contracts-erc721 @0x/contracts-erc1155 @0x/contracts-extensions @0x/contracts-asset-proxy @0x/contracts-exchange @0x/contracts-exchange-forwarder @0x/contracts-coordinator @0x/contracts-tests @0x/contracts-staking
+            - run: yarn wsrun test:circleci @powerchain/contracts-multisig @powerchain/contracts-utils @powerchain/contracts-exchange-libs @powerchain/contracts-erc20 @powerchain/contracts-erc721 @powerchain/contracts-erc1155 @powerchain/contracts-extensions @powerchain/contracts-asset-proxy @powerchain/contracts-exchange @powerchain/contracts-exchange-forwarder @powerchain/contracts-coordinator @powerchain/contracts-tests @powerchain/contracts-staking
     test-exchange-ganache-3.0:
         resource_class: medium+
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         working_directory: ~/repo
         steps:
             - restore_cache:
                   keys:
                       - repo-{{ .Environment.CIRCLE_SHA1 }}
-            - run: yarn wsrun test:circleci @0x/contracts-exchange
+            - run: yarn wsrun test:circleci @powerchain/contracts-exchange
     test-integrations-ganache-3.0:
         resource_class: medium+
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         working_directory: ~/repo
         steps:
             - restore_cache:
                   keys:
                       - repo-{{ .Environment.CIRCLE_SHA1 }}
-            - run: yarn wsrun test:circleci @0x/contracts-integrations
+            - run: yarn wsrun test:circleci @powerchain/contracts-integrations
     test-contracts-rest-ganache-3.0:
         resource_class: medium+
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         working_directory: ~/repo
         steps:
             - restore_cache:
                   keys:
                       - repo-{{ .Environment.CIRCLE_SHA1 }}
-            - run: yarn wsrun test:circleci @0x/contracts-multisig @0x/contracts-utils @0x/contracts-exchange-libs @0x/contracts-erc20 @0x/contracts-erc721 @0x/contracts-erc1155 @0x/contracts-asset-proxy @0x/contracts-exchange-forwarder @0x/contracts-tests @0x/contracts-staking @0x/contracts-coordinator @0x/contracts-erc20-bridge-sampler
+            - run: yarn wsrun test:circleci @powerchain/contracts-multisig @powerchain/contracts-utils @powerchain/contracts-exchange-libs @powerchain/contracts-erc20 @powerchain/contracts-erc721 @powerchain/contracts-erc1155 @powerchain/contracts-asset-proxy @powerchain/contracts-exchange-forwarder @powerchain/contracts-tests @powerchain/contracts-staking @powerchain/contracts-coordinator @powerchain/contracts-erc20-bridge-sampler
             # TODO(dorothy-zbornak): Re-enable after updating this package for
             # 3.0. At that time, also remove exclusion from monorepo
             # package.json's test script.
-            # - run: yarn wsrun test:circleci @0x/contracts-extensions
+            # - run: yarn wsrun test:circleci @powerchain/contracts-extensions
     test-publish:
         resource_class: medium+
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
-            - image: 0xorg/verdaccio
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/verdaccio
         working_directory: ~/repo
         steps:
             - restore_cache:
@@ -97,7 +97,7 @@ jobs:
                   no_output_timeout: 1800
     test-doc-generation:
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         working_directory: ~/repo
         steps:
             - restore_cache:
@@ -108,31 +108,31 @@ jobs:
                   no_output_timeout: 1200
     test-rest:
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         working_directory: ~/repo
         steps:
             - restore_cache:
                   keys:
                       - repo-{{ .Environment.CIRCLE_SHA1 }}
-            - run: yarn wsrun test:circleci @0x/contracts-test-utils
-            - run: yarn wsrun test:circleci @0x/abi-gen
-            - run: yarn wsrun test:circleci @0x/asset-swapper
-            - run: yarn wsrun test:circleci @0x/contract-artifacts
-            - run: yarn wsrun test:circleci @0x/assert
-            - run: yarn wsrun test:circleci @0x/base-contract
-            - run: yarn wsrun test:circleci @0x/connect
-            - run: yarn wsrun test:circleci @0x/contract-wrappers-test
-            - run: yarn wsrun test:circleci @0x/dev-utils
-            - run: yarn wsrun test:circleci @0x/json-schemas
-            - run: yarn wsrun test:circleci @0x/order-utils
-            - run: yarn wsrun test:circleci @0x/orderbook
-            - run: yarn wsrun test:circleci @0x/sol-compiler
-            - run: yarn wsrun test:circleci @0x/sol-tracing-utils
-            - run: yarn wsrun test:circleci @0x/sol-doc
-            - run: yarn wsrun test:circleci @0x/subproviders
-            - run: yarn wsrun test:circleci @0x/web3-wrapper
-            - run: yarn wsrun test:circleci @0x/utils
-            - run: yarn wsrun test:circleci @0x/instant
+            - run: yarn wsrun test:circleci @powerchain/contracts-test-utils
+            - run: yarn wsrun test:circleci @powerchain/abi-gen
+            - run: yarn wsrun test:circleci @powerchain/asset-swapper
+            - run: yarn wsrun test:circleci @powerchain/contract-artifacts
+            - run: yarn wsrun test:circleci @powerchain/assert
+            - run: yarn wsrun test:circleci @powerchain/base-contract
+            - run: yarn wsrun test:circleci @powerchain/connect
+            - run: yarn wsrun test:circleci @powerchain/contract-wrappers-test
+            - run: yarn wsrun test:circleci @powerchain/dev-utils
+            - run: yarn wsrun test:circleci @powerchain/json-schemas
+            - run: yarn wsrun test:circleci @powerchain/order-utils
+            - run: yarn wsrun test:circleci @powerchain/orderbook
+            - run: yarn wsrun test:circleci @powerchain/sol-compiler
+            - run: yarn wsrun test:circleci @powerchain/sol-tracing-utils
+            - run: yarn wsrun test:circleci @powerchain/sol-doc
+            - run: yarn wsrun test:circleci @powerchain/subproviders
+            - run: yarn wsrun test:circleci @powerchain/web3-wrapper
+            - run: yarn wsrun test:circleci @powerchain/utils
+            - run: yarn wsrun test:circleci @powerchain/instant
             - save_cache:
                   key: coverage-abi-gen-{{ .Environment.CIRCLE_SHA1 }}
                   paths:
@@ -192,23 +192,23 @@ jobs:
     test-python:
         working_directory: ~/repo
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
-            - image: 0xorg/ganache-cli
-            - image: 0xorg/mesh:0xV3
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/ganache-cli
+            - image: nordicenergy/mesh:powerchainV1
               environment:
-                  ETHEREUM_RPC_URL: 'http://localhost:8545'
-                  ETHEREUM_CHAIN_ID: '1337'
+                  ETHEREUM_RPC_URL: 'http://localhost:8700'
+                  ETHEREUM_CHAIN_ID: '1087'
                   VERBOSITY: 5
                   BLOCK_POLLING_INTERVAL: '50ms'
                   ETHEREUM_RPC_MAX_REQUESTS_PER_24_HR_UTC: '1778000'
               command: |
                   sh -c "waitForGanache () { until printf 'POST /\r\nContent-Length: 26\r\n\r\n{\"method\":\"net_listening\"}' | nc localhost 8545 | grep true; do continue; done }; waitForGanache && ./mesh"
-            - image: 0xorg/launch-kit-backend:v3
+            - image: nordicenergy/launch-kit-backend:v3
               environment:
-                  RPC_URL: 'http://localhost:8545'
-                  CHAIN_ID: 1337
+                  RPC_URL: 'http://localhost:8700'
+                  CHAIN_ID: 1087
                   WHITELIST_ALL_TOKENS: True
-                  FEE_RECIPIENT: '0x0000000000000000000000000000000000000001'
+                  FEE_RECIPIENT: 'powerchain0000000000000000000000000000000000000001'
                   MAKER_FEE_UNIT_AMOUNT: 0
                   TAKER_FEE_UNIT_AMOUNT: 0
                   MESH_ENDPOINT: 'ws://localhost:60557'
@@ -284,7 +284,7 @@ jobs:
     test-rest-python:
         working_directory: ~/repo
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         steps:
             - checkout
             - restore_cache:
@@ -310,7 +310,7 @@ jobs:
     static-tests-python:
         working_directory: ~/repo
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         steps:
             - checkout
             - restore_cache:
@@ -329,7 +329,7 @@ jobs:
         resource_class: large
         working_directory: ~/repo
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         steps:
             - restore_cache:
                   keys:
@@ -338,11 +338,11 @@ jobs:
             - run: yarn prettier:ci
             - run: yarn deps_versions:ci
             - run: yarn diff_md_docs:ci
-            - run: cd packages/0x.js && yarn build:umd:prod
+            - run: cd packages/powerchain.js && yarn build:umd:prod
             - run: yarn bundlewatch
     submit-coverage:
         docker:
-            - image: nikolaik/python-nodejs:python3.7-nodejs8
+            - image: nordicenergy/python-nodejs:python3.7-nodejs8
         working_directory: ~/repo
         steps:
             - restore_cache:

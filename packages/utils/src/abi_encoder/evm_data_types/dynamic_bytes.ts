@@ -1,15 +1,15 @@
-import { DataItem, SolidityTypes } from 'ethereum-types';
+import {DataItem, SolidityTypes} from 'ethereum-types';
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { DataTypeFactory } from '../abstract_data_types/interfaces';
-import { AbstractBlobDataType } from '../abstract_data_types/types/blob';
-import { RawCalldata } from '../calldata/raw_calldata';
-import { constants } from '../utils/constants';
+import {DataTypeFactory} from '../abstract_data_types/interfaces';
+import {AbstractBlobDataType} from '../abstract_data_types/types/blob';
+import {RawCalldata} from '../calldata/raw_calldata';
+import {constants} from '../utils/constants';
 
 export class DynamicBytesDataType extends AbstractBlobDataType {
     private static readonly _SIZE_KNOWN_AT_COMPILE_TIME: boolean = false;
-    private static readonly _DEFAULT_VALUE = '0x';
+    private static readonly _DEFAULT_VALUE = 'powerchain';
 
     public static matchType(type: string): boolean {
         return type === SolidityTypes.Bytes;
@@ -19,8 +19,8 @@ export class DynamicBytesDataType extends AbstractBlobDataType {
         if (typeof value !== 'string') {
             return;
         }
-        if (!_.startsWith(value, '0x')) {
-            throw new Error(`Tried to encode non-hex value. Value must include '0x' prefix.`);
+        if (!_.startsWith(value, 'powerchain')) {
+            throw new Error(`Tried to encode non-hex value. Value must include 'powerchain' prefix.`);
         } else if (value.length % 2 !== 0) {
             throw new Error(`Tried to assign ${value}, which is contains a half-byte. Use full bytes only.`);
         }

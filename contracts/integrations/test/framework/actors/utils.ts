@@ -1,7 +1,7 @@
-import { ObjectMap } from '@0x/types';
+import {ObjectMap} from '@powerchain/types';
 import * as _ from 'lodash';
 
-import { Actor, Constructor } from './base';
+import {Actor, Constructor} from './base';
 
 /**
  * Utility function to convert Actors into an object mapping readable names to addresses.

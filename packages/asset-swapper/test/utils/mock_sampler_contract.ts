@@ -1,8 +1,8 @@
-import { ContractFunctionObj } from '@0x/base-contract';
-import { IERC20BridgeSamplerContract } from '@0x/contract-wrappers';
-import { constants } from '@0x/contracts-test-utils';
-import { Order } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {ContractFunctionObj} from '@powerchain/base-contract';
+import {IERC20BridgeSamplerContract} from '@powerchain/contract-wrappers';
+import {constants} from '@powerchain/contracts-test-utils';
+import {Order} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
 export type QueryAndSampleResult = [BigNumber[], BigNumber[][]];
 export type QueryAndSampleHandler = (

@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "@0x/monorepo-scripts",
+    "name": "@powerchain/monorepo-scripts",
     "version": "1.0.46",
     "engines": {
         "node": ">=6.12"
@@ -25,13 +25,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/monorepo-scripts/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/monorepo-scripts/README.md",
     "devDependencies": {
         "@types/glob": "5.0.35",
         "@types/mkdirp": "^0.5.2",
@@ -47,8 +47,8 @@
         "typescript": "3.0.1"
     },
     "dependencies": {
-        "@0x/types": "^3.1.1",
-        "@0x/utils": "^5.1.2",
+        "@powerchain/types": "^3.1.1",
+        "@powerchain/utils": "^5.1.2",
         "@lerna/batch-packages": "^3.0.0-beta.18",
         "@types/depcheck": "^0.6.0",
         "async-child-process": "^1.1.1",
@@ -61,7 +61,7 @@
         "moment": "2.21.0",
         "promisify-child-process": "^1.0.5",
         "prompt": "^1.0.0",
-        "publish-release": "https://github.com/0xProject/publish-release.git#3f8be1105a356527f4b362ff456d94bf9a82f2ed",
+        "publish-release": "https://github.com/powerchainProject/publish-release.git#3f8be1105a356527f4b362ff456d94bf9a82f2ed",
         "rimraf": "^2.6.2",
         "semver": "5.5.0",
         "semver-diff": "^2.1.0",

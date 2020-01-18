@@ -1,8 +1,8 @@
-import { blockchainTests, constants, expect, filterLogsToArguments } from '@0x/contracts-test-utils';
-import { OwnableRevertErrors } from '@0x/utils';
+import {blockchainTests, constants, expect, filterLogsToArguments} from '@powerchain/contracts-test-utils';
+import {OwnableRevertErrors} from '@powerchain/utils';
 
-import { artifacts } from './artifacts';
-import { IOwnableEvents, IOwnableOwnershipTransferredEventArgs, TestOwnableContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {IOwnableEvents, IOwnableOwnershipTransferredEventArgs, TestOwnableContract} from './wrappers';
 
 blockchainTests.resets('Ownable', env => {
     let ownable: TestOwnableContract;
@@ -13,7 +13,7 @@ blockchainTests.resets('Ownable', env => {
         const accounts = await env.getAccountAddressesAsync();
         owner = await accounts[0];
         nonOwner = await accounts[1];
-        ownable = await TestOwnableContract.deployFrom0xArtifactAsync(
+        ownable = await TestOwnableContract.deployFrompowerchainArtifactAsync(
             artifacts.TestOwnable,
             env.provider,
             { ...env.txDefaults, from: owner },

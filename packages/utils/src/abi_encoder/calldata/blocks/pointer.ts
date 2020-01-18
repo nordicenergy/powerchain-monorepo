@@ -1,9 +1,8 @@
 import * as ethUtil from 'ethereumjs-util';
-import * as _ from 'lodash';
 
-import { constants } from '../../utils/constants';
+import {constants} from '../../utils/constants';
 
-import { CalldataBlock } from '../calldata_block';
+import {CalldataBlock} from '../calldata_block';
 
 export class PointerCalldataBlock extends CalldataBlock {
     public static readonly RAW_DATA_START = Buffer.from('<');
@@ -29,7 +28,7 @@ export class PointerCalldataBlock extends CalldataBlock {
         const parentOffset = this._parent.getOffsetInBytes();
         const parentHeaderSize = this._parent.getHeaderSizeInBytes();
         const pointer: number = destinationOffset - (parentOffset + parentHeaderSize);
-        const pointerHex = `0x${pointer.toString(constants.HEX_BASE)}`;
+        const pointerHex = `powerchain${pointer.toString(constants.HEX_BASE)}`;
         const pointerBuf = ethUtil.toBuffer(pointerHex);
         const pointerBufPadded = ethUtil.setLengthLeft(pointerBuf, constants.EVM_WORD_WIDTH_IN_BYTES);
         return pointerBufPadded;

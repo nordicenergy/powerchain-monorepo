@@ -1,6 +1,6 @@
-import { eip712Utils } from '@0x/order-utils';
-import { SignedZeroExTransaction } from '@0x/types';
-import { hexUtils, signTypedDataUtils } from '@0x/utils';
+import {eip712Utils} from '@powerchain/order-utils';
+import {SignedZeroExTransaction} from '@powerchain/types';
+import {hexUtils, signTypedDataUtils} from '@powerchain/utils';
 
 export const hashUtils = {
     async getApprovalHashBufferAsync(

@@ -1,10 +1,10 @@
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { constants } from '@0x/contracts-test-utils';
-import { AssetProxyId, ExchangeContractErrs } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {constants} from '@powerchain/contracts-test-utils';
+import {AssetProxyId, ExchangeContractErrs} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { AbstractBalanceAndProxyAllowanceLazyStore } from './abstract/abstract_balance_and_proxy_allowance_lazy_store';
-import { TradeSide, TransferType } from './types';
+import {AbstractBalanceAndProxyAllowanceLazyStore} from './abstract/abstract_balance_and_proxy_allowance_lazy_store';
+import {TradeSide, TransferType} from './types';
 
 enum FailureReason {
     Balance = 'balance',
@@ -36,7 +36,7 @@ const ERR_MSG_MAPPING = {
 
 /**
  * An exchange transfer simulator which simulates asset transfers exactly how the
- * 0x exchange contract would do them.
+ * powerchain exchange contract would do them.
  */
 export class ExchangeTransferSimulator {
     private readonly _store: AbstractBalanceAndProxyAllowanceLazyStore;

@@ -33,7 +33,7 @@ def exception_class_from_rich_revert_selector(
 ) -> RichRevert:
     """Return the appropriate exception class.
 
-    :param selector: A string of the format '0xffffffff' which indicates the
+    :param selector: A string of the format 'powerchainffffffff' which indicates the
         4-byte ABI function selector of a rich revert error type, which is
         expected to be found as a class attribute on some class in
         `exceptions_module`:code:.

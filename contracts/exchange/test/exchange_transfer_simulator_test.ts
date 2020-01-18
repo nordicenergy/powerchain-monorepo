@@ -1,15 +1,15 @@
-import { artifacts as assetProxyArtifacts, ERC20ProxyContract } from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { artifacts as erc20Artifacts, DummyERC20TokenContract, ERC20TokenContract } from '@0x/contracts-erc20';
-import { blockchainTests, chaiSetup, constants } from '@0x/contracts-test-utils';
-import { ExchangeContractErrs } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {artifacts as assetProxyArtifacts, ERC20ProxyContract} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {artifacts as erc20Artifacts, DummyERC20TokenContract, ERC20TokenContract} from '@powerchain/contracts-erc20';
+import {blockchainTests, chaiSetup, constants} from '@powerchain/contracts-test-utils';
+import {ExchangeContractErrs} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 
-import { ExchangeTransferSimulator } from './utils/exchange_transfer_simulator';
-import { SimpleERC20BalanceAndProxyAllowanceFetcher } from './utils/simple_erc20_balance_and_proxy_allowance_fetcher';
-import { BalanceAndProxyAllowanceLazyStore } from './utils/store/balance_and_proxy_allowance_lazy_store';
-import { TradeSide, TransferType } from './utils/types';
+import {ExchangeTransferSimulator} from './utils/exchange_transfer_simulator';
+import {SimpleERC20BalanceAndProxyAllowanceFetcher} from './utils/simple_erc20_balance_and_proxy_allowance_fetcher';
+import {BalanceAndProxyAllowanceLazyStore} from './utils/store/balance_and_proxy_allowance_lazy_store';
+import {TradeSide, TransferType} from './utils/types';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -40,7 +40,7 @@ blockchainTests('ExchangeTransferSimulator', env => {
         };
 
         await env.blockchainLifecycle.startAsync();
-        const erc20Proxy = await ERC20ProxyContract.deployFrom0xArtifactAsync(
+        const erc20Proxy = await ERC20ProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.ERC20Proxy,
             env.provider,
             txDefaults,
@@ -53,7 +53,7 @@ blockchainTests('ExchangeTransferSimulator', env => {
         const symbol = 'TST';
         const decimals = new BigNumber(18);
         // tslint:disable-next-line:no-unused-variable
-        dummyERC20Token = await DummyERC20TokenContract.deployFrom0xArtifactAsync(
+        dummyERC20Token = await DummyERC20TokenContract.deployFrompowerchainArtifactAsync(
             erc20Artifacts.DummyERC20Token,
             env.provider,
             txDefaults,

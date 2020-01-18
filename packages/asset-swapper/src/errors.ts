@@ -1,6 +1,6 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { SwapQuoterError } from './types';
+import {SwapQuoterError} from './types';
 
 /**
  * Error class representing insufficient asset liquidity

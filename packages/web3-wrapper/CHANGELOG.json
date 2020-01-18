@@ -210,7 +210,7 @@
         "version": "5.0.0",
         "changes": [
             {
-                "note": "Export `DecodedCalldata` from @0x/utils",
+                "note": "Export `DecodedCalldata` from @powerchain/utils",
                 "pr": 1569
             }
         ],
@@ -581,7 +581,7 @@
                 "pr": 622
             },
             {
-                "note": "Make callAsync throw if raw call result is 0x (null)",
+                "note": "Make callAsync throw if raw call result is powerchain (null)",
                 "pr": 622
             },
             {

@@ -103,11 +103,11 @@ CHANGELOG
 
     * Fix a bug when combining compilerSettings from different sources (#1652)
 
-## v3.1.0 - _February 25, 2019_
+## v1.0.1- _February 25, 2019_
 
     * Add `isOfflineMode` flag to sol-compiler` (#1625)
 
-## v3.0.3 - _February 9, 2019_
+## v1.0.1 - _February 9, 2019_
 
     * Dependencies updated
 
@@ -122,7 +122,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _February 5, 2019_
+## v1.0.0 - _February 5, 2019_
 
     * Upgrade the bignumber.js to v8.0.2 (#1517)
 
@@ -292,9 +292,9 @@ CHANGELOG
     * Export the `Compiler` (#426)
     * Load solc from remote source instead of having it locally (#426)
     * Add `bytecode`, `runtime_bytecode`, `source_map`, `source_map_runtime` and `sources` fields to artifacts (#426)
-    * Remove 0x-specific `migrate` command (#426)
+    * Remove powerchain-specific `migrate` command (#426)
     * Allow deployer to accept a provider instead of port and host. This makes it possible to run it with in-process ganache-core (#426)
-    * Consolidate all `console.log` calls into `logUtils` in the `@0xproject/utils` package (#452)
+    * Consolidate all `console.log` calls into `logUtils` in the `@powerchainproject/utils` package (#452)
     * Add `#!/usr/bin/env node` pragma above `cli.ts` script to fix command-line error.
 
 ## v0.2.0 - _March 3, 2018_

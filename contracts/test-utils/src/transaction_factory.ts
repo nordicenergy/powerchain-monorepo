@@ -1,13 +1,13 @@
-import { generatePseudoRandomSalt } from '@0x/order-utils';
-import { SignatureType, SignedZeroExTransaction, ZeroExTransaction } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {generatePseudoRandomSalt} from '@powerchain/order-utils';
+import {SignatureType, SignedZeroExTransaction, ZeroExTransaction} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as ethUtil from 'ethereumjs-util';
 
-import { transactionHashUtils } from '../src';
+import {transactionHashUtils} from '../src';
 
-import { getLatestBlockTimestampAsync } from './block_timestamp';
-import { constants } from './constants';
-import { signingUtils } from './signing_utils';
+import {getLatestBlockTimestampAsync} from './block_timestamp';
+import {constants} from './constants';
+import {signingUtils} from './signing_utils';
 
 export class TransactionFactory {
     private readonly _signerBuff: Buffer;
@@ -31,7 +31,7 @@ export class TransactionFactory {
         const tenMinutesInSeconds = 10 * 60;
         const currentBlockTimestamp = await getLatestBlockTimestampAsync();
         const salt = generatePseudoRandomSalt();
-        const signerAddress = `0x${this._signerBuff.toString('hex')}`;
+        const signerAddress = `powerchain${this._signerBuff.toString('hex')}`;
         const transaction = {
             salt,
             signerAddress,
@@ -49,7 +49,7 @@ export class TransactionFactory {
         const signature = signingUtils.signMessage(transactionHashBuffer, this._privateKey, signatureType);
         const signedTransaction = {
             ...transaction,
-            signature: `0x${signature.toString('hex')}`,
+            signature: `powerchain${signature.toString('hex')}`,
         };
         return signedTransaction;
     }

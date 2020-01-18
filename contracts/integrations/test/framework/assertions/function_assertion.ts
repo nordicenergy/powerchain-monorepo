@@ -1,8 +1,7 @@
-import { BaseContract, ContractFunctionObj, ContractTxFunctionObj } from '@0x/base-contract';
-import { TransactionReceiptWithDecodedLogs, TxData } from 'ethereum-types';
-import * as _ from 'lodash';
+import {BaseContract, ContractFunctionObj, ContractTxFunctionObj} from '@powerchain/base-contract';
+import {TransactionReceiptWithDecodedLogs, TxData} from 'ethereum-types';
 
-import { logger } from '../utils/logger';
+import {logger} from '../utils/logger';
 
 // tslint:disable:max-classes-per-file
 export type GenericContractFunction<T> = (...args: any[]) => ContractFunctionObj<T>;

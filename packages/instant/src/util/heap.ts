@@ -1,11 +1,10 @@
-import { ObjectMap } from '@0x/types';
-import { logUtils } from '@0x/utils';
-import * as _ from 'lodash';
+import {ObjectMap} from '@powerchain/types';
+import {logUtils} from '@powerchain/utils';
 
-import { HEAP_ANALYTICS_ID } from '../constants';
+import {HEAP_ANALYTICS_ID} from '../constants';
 
-import { AnalyticsEventOptions, AnalyticsUserOptions } from './analytics';
-import { errorReporter } from './error_reporter';
+import {AnalyticsEventOptions, AnalyticsUserOptions} from './analytics';
+import {errorReporter} from './error_reporter';
 
 export type EventProperties = ObjectMap<string | number>;
 

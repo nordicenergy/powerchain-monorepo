@@ -1,10 +1,10 @@
 {
-    "name": "@0x/assert",
+    "name": "@powerchain/assert",
     "version": "3.0.3",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "Provides a standard way of performing type and schema validation across 0x projects",
+    "description": "Provides a standard way of performing type and schema validation across powerchain projects",
     "main": "lib/src/index.js",
     "types": "lib/src/index.d.ts",
     "scripts": {
@@ -23,14 +23,14 @@
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/assert/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/assert/README.md",
     "devDependencies": {
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/tslint-config": "^4.0.0",
         "@types/lodash": "4.14.104",
         "@types/mocha": "^5.2.7",
         "@types/valid-url": "^1.0.2",
@@ -45,9 +45,9 @@
         "typescript": "3.0.1"
     },
     "dependencies": {
-        "@0x/json-schemas": "^5.0.3",
-        "@0x/typescript-typings": "^5.0.1",
-        "@0x/utils": "^5.1.2",
+        "@powerchain/json-schemas": "^5.0.3",
+        "@powerchain/typescript-typings": "^5.0.1",
+        "@powerchain/utils": "^5.1.2",
         "lodash": "^4.17.11",
         "valid-url": "^1.0.9"
     },

@@ -1,13 +1,12 @@
-import { blockchainTests, constants, describe, expect, transactionHashUtils } from '@0x/contracts-test-utils';
-import { eip712Utils } from '@0x/order-utils';
-import { ZeroExTransaction } from '@0x/types';
-import { BigNumber, hexUtils, signTypedDataUtils } from '@0x/utils';
+import {blockchainTests, constants, describe, expect, transactionHashUtils} from '@powerchain/contracts-test-utils';
+import {eip712Utils} from '@powerchain/order-utils';
+import {ZeroExTransaction} from '@powerchain/types';
+import {BigNumber, hexUtils, signTypedDataUtils} from '@powerchain/utils';
 import * as ethUtil from 'ethereumjs-util';
-import * as _ from 'lodash';
 
-import { TestLibZeroExTransactionContract } from './wrappers';
+import {TestLibZeroExTransactionContract} from './wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 blockchainTests('LibZeroExTransaction', env => {
     let libZeroExTransactionContract: TestLibZeroExTransactionContract;
@@ -30,7 +29,7 @@ blockchainTests('LibZeroExTransaction', env => {
     };
 
     before(async () => {
-        libZeroExTransactionContract = await TestLibZeroExTransactionContract.deployFrom0xArtifactAsync(
+        libZeroExTransactionContract = await TestLibZeroExTransactionContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibZeroExTransaction,
             env.provider,
             env.txDefaults,

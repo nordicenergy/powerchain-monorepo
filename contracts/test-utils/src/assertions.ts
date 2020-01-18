@@ -1,11 +1,11 @@
-import { RevertReason } from '@0x/types';
-import { logUtils } from '@0x/utils';
-import { NodeType } from '@0x/web3-wrapper';
+import {RevertReason} from '@powerchain/types';
+import {logUtils} from '@powerchain/utils';
+import {NodeType} from '@powerchain/web3-wrapper';
 import * as chai from 'chai';
-import { TransactionReceipt, TransactionReceiptStatus, TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+import {TransactionReceipt, TransactionReceiptStatus, TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { web3Wrapper } from './web3_wrapper';
+import {web3Wrapper} from './web3_wrapper';
 
 const expect = chai.expect;
 

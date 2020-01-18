@@ -1,7 +1,7 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { maybeBigNumberUtil } from './maybe_big_number';
+import {maybeBigNumberUtil} from './maybe_big_number';
 
 const coerceBigNumberOrString = (value: any): BigNumber => {
     const bn = maybeBigNumberUtil.toMaybeBigNumber(value);
@@ -10,7 +10,7 @@ const coerceBigNumberOrString = (value: any): BigNumber => {
 
 // function implies that the signed order already has been validated
 export const orderCoercionUtil = {
-    // coerces order big number values to the BigNumber version utilized by 0x
+    // coerces order big number values to the BigNumber version utilized by powerchain
     coerceFieldsToBigNumbers(obj: any, fields: string[]): any {
         const result = _.assign({}, obj);
         _.each(fields, field => {

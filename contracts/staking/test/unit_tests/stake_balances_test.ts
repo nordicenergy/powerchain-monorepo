@@ -1,12 +1,12 @@
-import { blockchainTests, constants, expect, getRandomInteger, randomAddress } from '@0x/contracts-test-utils';
-import { SafeMathRevertErrors } from '@0x/contracts-utils';
-import { BigNumber, hexUtils } from '@0x/utils';
+import {blockchainTests, constants, expect, getRandomInteger, randomAddress} from '@powerchain/contracts-test-utils';
+import {SafeMathRevertErrors} from '@powerchain/contracts-utils';
+import {BigNumber, hexUtils} from '@powerchain/utils';
 
-import { artifacts } from '../artifacts';
-import { TestMixinStakeBalancesContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {TestMixinStakeBalancesContract} from '../wrappers';
 
-import { constants as stakingConstants } from '../../src/constants';
-import { StakeStatus, StoredBalance } from '../../src/types';
+import {constants as stakingConstants} from '../../src/constants';
+import {StakeStatus, StoredBalance} from '../../src/types';
 
 blockchainTests.resets('MixinStakeBalances unit tests', env => {
     let testContract: TestMixinStakeBalancesContract;
@@ -19,7 +19,7 @@ blockchainTests.resets('MixinStakeBalances unit tests', env => {
     };
 
     before(async () => {
-        testContract = await TestMixinStakeBalancesContract.deployFrom0xArtifactAsync(
+        testContract = await TestMixinStakeBalancesContract.deployFrompowerchainArtifactAsync(
             artifacts.TestMixinStakeBalances,
             env.provider,
             env.txDefaults,
@@ -58,7 +58,7 @@ blockchainTests.resets('MixinStakeBalances unit tests', env => {
             await testContract
                 .setGlobalStakeByStatus(StakeStatus.Delegated, delegatedBalance)
                 .awaitTransactionSuccessAsync();
-            await testContract.setBalanceOfZrxVault(zrxVaultBalance).awaitTransactionSuccessAsync();
+            await testContract.setBalanceOfNetVault(zrxVaultBalance).awaitTransactionSuccessAsync();
         });
 
         it('undelegated stake is the difference between zrx vault balance and global delegated stake', async () => {
@@ -81,7 +81,7 @@ blockchainTests.resets('MixinStakeBalances unit tests', env => {
                 delegatedBalance.currentEpochBalance,
                 delegatedBalance.nextEpochBalance,
             ).minus(1);
-            await testContract.setBalanceOfZrxVault(_zrxVaultBalance).awaitTransactionSuccessAsync();
+            await testContract.setBalanceOfNetVault(_zrxVaultBalance).awaitTransactionSuccessAsync();
             const tx = testContract.getGlobalStakeByStatus(StakeStatus.Undelegated).callAsync();
             const expectedError = new SafeMathRevertErrors.Uint256BinOpError(
                 SafeMathRevertErrors.BinOpErrorCodes.SubtractionUnderflow,
@@ -146,7 +146,7 @@ blockchainTests.resets('MixinStakeBalances unit tests', env => {
         const stakerAmount = randomAmount();
 
         before(async () => {
-            await testContract.setZrxBalanceOf(staker, stakerAmount).awaitTransactionSuccessAsync();
+            await testContract.setNetBalanceOf(staker, stakerAmount).awaitTransactionSuccessAsync();
         });
 
         it('returns empty for unstaked owner', async () => {

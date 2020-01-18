@@ -1,10 +1,10 @@
-import { web3Wrapper } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+import {web3Wrapper} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 import * as combinatorics from 'js-combinatorics';
 import * as _ from 'lodash';
 
-import { BalanceStore } from './balance_store';
-import { TokenContracts, TokenContractsByName, TokenIds, TokenOwnersByName } from './types';
+import {BalanceStore} from './balance_store';
+import {TokenContracts, TokenContractsByName, TokenIds, TokenOwnersByName} from './types';
 
 export class BlockchainBalanceStore extends BalanceStore {
     private readonly _tokenContracts: TokenContracts;

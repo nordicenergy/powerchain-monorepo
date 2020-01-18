@@ -18,7 +18,7 @@ from urllib.error import URLError
 from setuptools import setup, find_packages  # noqa: H301
 from setuptools.command.test import test as TestCommand
 
-NAME = "0x-sra-client"
+NAME = "powerchain-sra-client"
 VERSION = "4.0.0"
 # To install the library, run the following
 #
@@ -43,7 +43,7 @@ class CleanCommandExtension(clean):
         rmtree(".mypy_cache", ignore_errors=True)
         rmtree(".tox", ignore_errors=True)
         rmtree(".pytest_cache", ignore_errors=True)
-        rmtree("src/0x_sra_client.egg-info", ignore_errors=True)
+        rmtree("src/powerchain_sra_client.egg-info", ignore_errors=True)
         rmtree("build", ignore_errors=True)
         rmtree("dist", ignore_errors=True)
         subprocess.check_call(  # nosec
@@ -65,7 +65,7 @@ class TestCommandExtension(TestCommand):
         #        show short test summary at end ^
         # above call commented out due to a problem with launch kit,
         # documented at
-        # https://github.com/0xProject/0x-launch-kit-backend/issues/73
+        # https://github.com/powerchainProject/powerchain-launch-kit-backend/issues/73
 
 
 class TestPublishCommand(distutils.command.build_py.build_py):
@@ -86,7 +86,7 @@ class TestPublishCommand(distutils.command.build_py.build_py):
 
 
 class StartTestRelayerCommand(distutils.command.build_py.build_py):
-    """Custom command to boot up a local 0x-launch-kit-backend in docker."""
+    """Custom command to boot up a local powerchain-launch-kit-backend in docker."""
 
     description = "Run launch-kit daemon to support tests."
 
@@ -117,7 +117,7 @@ class StartTestRelayerCommand(distutils.command.build_py.build_py):
 
 
 class StopTestRelayerCommand(distutils.command.build_py.build_py):
-    """Custom command to tear down the 0x-launch-kit-backend test relayer."""
+    """Custom command to tear down the powerchain-launch-kit-backend test relayer."""
 
     description = "Tear down launch-kit daemon."
 
@@ -175,7 +175,7 @@ class PublishDocsCommand(distutils.command.build_py.build_py):
 
     description = (
         "Publish docs to "
-        + "http://0x-sra-client-py.s3-website-us-east-1.amazonaws.com/"
+        + "http://powerchain-sra-client-py.s3-website-us-east-1.amazonaws.com/"
     )
 
     def run(self):
@@ -190,7 +190,7 @@ setup(
     author="F. Eugene Aumson",
     author_email="feuGeneA@users.noreply.github.com",
     url=(
-        "https://github.com/0xproject/0x-monorepo/tree/development"
+        "https://github.com/powerchainproject/powerchain-monorepo/tree/development"
         "/python-packages/sra_client"
     ),
     keywords=["OpenAPI", "OpenAPI-Generator", "Standard Relayer REST API"],
@@ -213,10 +213,10 @@ setup(
     },
     extras_require={
         "dev": [
-            "0x-contract-artifacts",
-            "0x-contract-addresses",
-            "0x-contract-wrappers",
-            "0x-order-utils",
+            "powerchain-contract-artifacts",
+            "powerchain-contract-addresses",
+            "powerchain-contract-wrappers",
+            "powerchain-order-utils",
             "web3",
             "bandit",
             "black",

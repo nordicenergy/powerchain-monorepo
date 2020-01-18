@@ -1,24 +1,24 @@
 ## Extensions
 
-This package implements various extensions to the 0x protocol. Extension contracts can add various rules around how orders are settled while still getting the interoperability and security benefits of using the underlying 0x protocol contracts. Addresses of the deployed contracts can be found in this 0x [guide](https://0x.org/docs/guides/0x-cheat-sheet) or the [DEPLOYS](./DEPLOYS.json) file within this package.
+This package implements various extensions to the powerchain protocol. Extension contracts can add various rules around how orders are settled while still getting the interoperability and security benefits of using the underlying powerchain protocol contracts. Addresses of the deployed contracts can be found in this powerchain [guide](https://powerchain.org/docs/guides/powerchain-cheat-sheet) or the [DEPLOYS](./DEPLOYS.json) file within this package.
 
 ## Installation
 
 **Install**
 
 ```bash
-npm install @0x/contracts-extensions --save
+npm install @powerchain/contracts-extensions --save
 ```
 
 ## Bug bounty
 
-A bug bounty for the 2.0.0 contracts is ongoing! Instructions can be found [here](https://0x.org/docs/guides/bug-bounty-program).
+A bug bounty for the 2.0.0 contracts is ongoing! Instructions can be found [here](https://powerchain.org/docs/guides/bug-bounty-program).
 
 ## Contributing
 
 We strongly recommend that the community help us make improvements and determine the future direction of the protocol. To report bugs within this package, please create an issue in this repository.
 
-For proposals regarding the 0x protocol's smart contract architecture, message format, or additional functionality, go to the [0x Improvement Proposals (ZEIPs)](https://github.com/0xProject/ZEIPs) repository and follow the contribution guidelines provided therein.
+For proposals regarding the powerchain protocol's smart contract architecture, message format, or additional functionality, go to the [powerchain Improvement Proposals (ZEIPs)](https://github.com/powerchainProject/ZEIPs) repository and follow the contribution guidelines provided therein.
 
 Please read our [contribution guidelines](../../CONTRIBUTING.md) before getting started.
 
@@ -41,13 +41,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/contracts-extensions yarn build
+PKG=@powerchain/contracts-extensions yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/contracts-extensions yarn watch
+PKG=@powerchain/contracts-extensions yarn watch
 ```
 
 ### Clean

@@ -9,17 +9,22 @@ import {
     MultiAssetProxyContract,
     StaticCallProxyContract,
     TestStaticCallTargetContract,
-} from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { ERC1155MintableContract, Erc1155Wrapper } from '@0x/contracts-erc1155';
+} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {ERC1155MintableContract, Erc1155Wrapper} from '@powerchain/contracts-erc1155';
 import {
     artifacts as erc20Artifacts,
     DummyERC20TokenContract,
     DummyNoReturnERC20TokenContract,
-} from '@0x/contracts-erc20';
-import { DummyERC721TokenContract } from '@0x/contracts-erc721';
-import { artifacts, ExchangeCancelEventArgs, ExchangeContract, ExchangeRevertErrors } from '@0x/contracts-exchange';
-import { LibMathRevertErrors } from '@0x/contracts-exchange-libs';
+} from '@powerchain/contracts-erc20';
+import {DummyERC721TokenContract} from '@powerchain/contracts-erc721';
+import {
+    artifacts,
+    ExchangeCancelEventArgs,
+    ExchangeContract,
+    ExchangeRevertErrors
+} from '@powerchain/contracts-exchange';
+import {LibMathRevertErrors} from '@powerchain/contracts-exchange-libs';
 import {
     blockchainTests,
     constants,
@@ -34,14 +39,14 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { RevertReason, SignedOrder } from '@0x/types';
-import { BigNumber, providerUtils, StringRevertError } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { LogWithDecodedArgs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {RevertReason, SignedOrder} from '@powerchain/types';
+import {BigNumber, providerUtils, StringRevertError} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {LogWithDecodedArgs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { FillOrderWrapper } from './fill_order_wrapper';
+import {FillOrderWrapper} from './fill_order_wrapper';
 
 // tslint:disable:no-unnecessary-type-assertion
 blockchainTests.resets('Exchange core', () => {
@@ -99,13 +104,13 @@ blockchainTests.resets('Exchange core', () => {
         // Deploy AssetProxies, Exchange, tokens, and malicious contracts
         erc20Proxy = await erc20Wrapper.deployProxyAsync();
         erc721Proxy = await erc721Wrapper.deployProxyAsync();
-        multiAssetProxy = await MultiAssetProxyContract.deployFrom0xArtifactAsync(
+        multiAssetProxy = await MultiAssetProxyContract.deployFrompowerchainArtifactAsync(
             proxyArtifacts.MultiAssetProxy,
             provider,
             txDefaults,
             {},
         );
-        staticCallProxy = await StaticCallProxyContract.deployFrom0xArtifactAsync(
+        staticCallProxy = await StaticCallProxyContract.deployFrompowerchainArtifactAsync(
             proxyArtifacts.StaticCallProxy,
             provider,
             txDefaults,
@@ -116,7 +121,7 @@ blockchainTests.resets('Exchange core', () => {
             numDummyErc20ToDeploy,
             constants.DUMMY_TOKEN_DECIMALS,
         );
-        noReturnErc20Token = await DummyNoReturnERC20TokenContract.deployFrom0xArtifactAsync(
+        noReturnErc20Token = await DummyNoReturnERC20TokenContract.deployFrompowerchainArtifactAsync(
             erc20Artifacts.DummyNoReturnERC20Token,
             provider,
             txDefaults,
@@ -131,7 +136,7 @@ blockchainTests.resets('Exchange core', () => {
         erc1155Proxy = await erc1155ProxyWrapper.deployProxyAsync();
         [erc1155Wrapper] = await erc1155ProxyWrapper.deployDummyContractsAsync();
         erc1155Contract = erc1155Wrapper.getContract();
-        exchange = await ExchangeContract.deployFrom0xArtifactAsync(
+        exchange = await ExchangeContract.deployFrompowerchainArtifactAsync(
             artifacts.Exchange,
             provider,
             txDefaults,
@@ -778,7 +783,7 @@ blockchainTests.resets('Exchange core', () => {
             const takerValuesToTransfer = [new BigNumber(200)];
             const makerAssetAmount = new BigNumber(1);
             const takerAssetAmount = new BigNumber(1);
-            const receiverCallbackData = '0x';
+            const receiverCallbackData = 'powerchain';
             const makerAssetData = await devUtils
                 .encodeERC1155AssetData(
                     erc1155Contract.address,
@@ -817,7 +822,7 @@ blockchainTests.resets('Exchange core', () => {
             const takerValuesToTransfer = [new BigNumber(1)];
             const makerAssetAmount = new BigNumber(1);
             const takerAssetAmount = new BigNumber(1);
-            const receiverCallbackData = '0x';
+            const receiverCallbackData = 'powerchain';
             const makerAssetData = await devUtils
                 .encodeERC1155AssetData(
                     erc1155Contract.address,
@@ -855,7 +860,7 @@ blockchainTests.resets('Exchange core', () => {
             const takerValuesToTransfer = [new BigNumber(1)];
             const makerAssetAmount = new BigNumber(1);
             const takerAssetAmount = new BigNumber(1);
-            const receiverCallbackData = '0x';
+            const receiverCallbackData = 'powerchain';
             const makerAssetData = await devUtils
                 .encodeERC1155AssetData(
                     erc1155Contract.address,
@@ -899,7 +904,7 @@ blockchainTests.resets('Exchange core', () => {
             const takerValuesToTransfer = [new BigNumber(900), new BigNumber(1), new BigNumber(1)];
             const makerAssetAmount = new BigNumber(1);
             const takerAssetAmount = new BigNumber(1);
-            const receiverCallbackData = '0x';
+            const receiverCallbackData = 'powerchain';
             const makerAssetData = await devUtils
                 .encodeERC1155AssetData(
                     erc1155Contract.address,
@@ -948,7 +953,7 @@ blockchainTests.resets('Exchange core', () => {
             const takerValuesToTransfer = [new BigNumber(900)];
             const makerAssetAmount = new BigNumber(10);
             const takerAssetAmount = new BigNumber(20);
-            const receiverCallbackData = '0x';
+            const receiverCallbackData = 'powerchain';
             const makerAssetData = await devUtils
                 .encodeERC1155AssetData(
                     erc1155Contract.address,
@@ -981,7 +986,7 @@ blockchainTests.resets('Exchange core', () => {
 
     describe('Testing orders that utilize StaticCallProxy', () => {
         before(async () => {
-            staticCallTarget = await TestStaticCallTargetContract.deployFrom0xArtifactAsync(
+            staticCallTarget = await TestStaticCallTargetContract.deployFrompowerchainArtifactAsync(
                 proxyArtifacts.TestStaticCallTarget,
                 provider,
                 txDefaults,

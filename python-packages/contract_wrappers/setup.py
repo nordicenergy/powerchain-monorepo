@@ -106,7 +106,7 @@ class CleanCommandExtension(clean):
         rmtree(".tox", ignore_errors=True)
         rmtree(".pytest_cache", ignore_errors=True)
         rmtree(
-            path.join("src", "0x_contract_wrappers.egg-info"),
+            path.join("src", "powerchain_contract_wrappers.egg-info"),
             ignore_errors=True,
         )
         # generated files:
@@ -162,7 +162,7 @@ class PublishDocsCommand(distutils.command.build_py.build_py):
 
     description = (
         "Publish docs to "
-        + "http://0x-contract-wrappers-py.s3-website-us-east-1.amazonaws.com/"
+        + "http://powerchain-contract-wrappers-py.s3-website-us-east-1.amazonaws.com/"
     )
 
     def run(self):
@@ -177,9 +177,9 @@ class GanacheCommand(distutils.command.build_py.build_py):
 
     def run(self):
         """Run ganache."""
-        subprocess.call(("docker pull 0xorg/ganache-cli").split())  # nosec
+        subprocess.call(("docker pull nordicenergy/ganache-cli").split())  # nosec
         subprocess.call(  # nosec
-            ("docker run -d -p 8545:8545 0xorg/ganache-cli").split()
+            ("docker run -d -p 8545:8545 nordicenergy/ganache-cli").split()
         )
 
 
@@ -188,13 +188,13 @@ with open("README.md", "r") as file_handle:
 
 
 setup(
-    name="0x-contract-wrappers",
+    name="powerchain-contract-wrappers",
     version="2.0.0",
-    description="Python wrappers for 0x smart contracts",
+    description="Python wrappers for powerchain smart contracts",
     long_description=README_MD,
     long_description_content_type="text/markdown",
     url=(
-        "https://github.com/0xproject/0x-monorepo/tree/development"
+        "https://github.com/powerchainproject/powerchain-monorepo/tree/development"
         + "/python-packages/contract_wrappers"
     ),
     author="F. Eugene Aumson",
@@ -210,10 +210,10 @@ setup(
         "ganache": GanacheCommand,
     },
     install_requires=[
-        "0x-contract-addresses",
-        "0x-contract-artifacts",
-        "0x-json-schemas",
-        "0x-order-utils",
+        "powerchain-contract-addresses",
+        "powerchain-contract-artifacts",
+        "powerchain-json-schemas",
+        "powerchain-order-utils",
         "web3",
         "attrs",
         "eth_utils",
@@ -242,7 +242,7 @@ setup(
     package_dir={"": "src"},
     license="Apache 2.0",
     keywords=(
-        "ethereum cryptocurrency 0x decentralized blockchain dex exchange"
+        "ethereum cryptocurrency powerchain decentralized blockchain dex exchange"
     ),
     namespace_packages=["zero_ex"],
     packages=find_packages("src"),

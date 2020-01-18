@@ -1,21 +1,21 @@
-import { SendTransactionOpts } from '@0x/base-contract';
-import { getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
-import { ExchangeContract } from '@0x/contracts-exchange';
-import { ExchangeFunctionName } from '@0x/contracts-test-utils';
-import { devConstants } from '@0x/dev-utils';
-import { schemas } from '@0x/json-schemas';
-import { generatePseudoRandomSalt, signatureUtils } from '@0x/order-utils';
-import { Order, SignedOrder, SignedZeroExTransaction, ZeroExTransaction } from '@0x/types';
-import { BigNumber, fetchAsync } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { CallData, ContractAbi, SupportedProvider, TxData } from 'ethereum-types';
+import {SendTransactionOpts} from '@powerchain/base-contract';
+import {getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
+import {ExchangeContract} from '@powerchain/contracts-exchange';
+import {ExchangeFunctionName} from '@powerchain/contracts-test-utils';
+import {devConstants} from '@powerchain/dev-utils';
+import {schemas} from '@powerchain/json-schemas';
+import {generatePseudoRandomSalt, signatureUtils} from '@powerchain/order-utils';
+import {Order, SignedOrder, SignedZeroExTransaction, ZeroExTransaction} from '@powerchain/types';
+import {BigNumber, fetchAsync} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {CallData, ContractAbi, SupportedProvider, TxData} from 'ethereum-types';
 import * as HttpStatus from 'http-status-codes';
-import { flatten } from 'lodash';
+import {flatten} from 'lodash';
 
-import { artifacts } from '../artifacts';
-import { CoordinatorContract, CoordinatorRegistryContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {CoordinatorContract, CoordinatorRegistryContract} from '../wrappers';
 
-import { assert } from './utils/assert';
+import {assert} from './utils/assert';
 import {
     CoordinatorServerApprovalResponse,
     CoordinatorServerCancellationResponse,
@@ -24,7 +24,7 @@ import {
     CoordinatorServerResponse,
 } from './utils/coordinator_server_types';
 
-import { decorators } from './utils/decorators';
+import {decorators} from './utils/decorators';
 
 export { CoordinatorServerErrorMsg, CoordinatorServerCancellationResponse };
 
@@ -40,7 +40,7 @@ const DEFAULT_EXPIRATION_TIME_BUFFER_SECONDS = 30;
 
 /**
  * This class includes all the functionality related to filling or cancelling orders through
- * the 0x V2 Coordinator extension contract.
+ * the powerchain V2 Coordinator extension contract.
  */
 export class CoordinatorClient {
     public abi: ContractAbi = artifacts.Coordinator.compilerOutput.abi;
@@ -57,9 +57,9 @@ export class CoordinatorClient {
     private readonly _txDefaults: CallData = DEFAULT_TX_DATA;
 
     /**
-     * Validates that the 0x transaction has been approved by all of the feeRecipients that correspond to each order in the transaction's Exchange calldata.
+     * Validates that the powerchain transaction has been approved by all of the feeRecipients that correspond to each order in the transaction's Exchange calldata.
      * Throws an error if the transaction approvals are not valid. Will not detect failures that would occur when the transaction is executed on the Exchange contract.
-     * @param transaction 0x transaction containing salt, signerAddress, and data.
+     * @param transaction powerchain transaction containing salt, signerAddress, and data.
      * @param txOrigin Required signer of Ethereum transaction calling this function.
      * @param transactionSignature Proof that the transaction has been signed by the signer.
      * @param approvalSignatures Array of signatures that correspond to the feeRecipients of each order in the transaction's Exchange calldata.
@@ -128,7 +128,7 @@ export class CoordinatorClient {
      * Fills a signed order with an amount denominated in baseUnits of the taker asset. Under-the-hood, this
      * method uses the `feeRecipientAddress` of the order to look up the coordinator server endpoint registered in the
      * coordinator registry contract. It requests an approval from that coordinator server before
-     * submitting the order and approval as a 0x transaction to the coordinator extension contract. The coordinator extension
+     * submitting the order and approval as a powerchain transaction to the coordinator extension contract. The coordinator extension
      * contract validates approvals and then fills the order via the Exchange contract.
      * @param   order                   An object that conforms to the Order interface.
      * @param   takerAssetFillAmount    The amount of the order (in taker asset baseUnits) that you wish to fill.
@@ -466,9 +466,9 @@ export class CoordinatorClient {
     /**
      * Soft cancel a given order.
      * Soft cancels are recorded only on coordinator operator servers and do not involve an Ethereum transaction.
-     * See [soft cancels](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/coordinator-specification.md#soft-cancels).
+     * See [soft cancels](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/coordinator-specification.md#soft-cancels).
      * @param   order           An object that conforms to the Order or SignedOrder interface. The order you would like to cancel.
-     * @return  CoordinatorServerCancellationResponse. See [Cancellation Response](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/coordinator-specification.md#response).
+     * @return  CoordinatorServerCancellationResponse. See [Cancellation Response](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/coordinator-specification.md#response).
      */
     @decorators.asyncZeroExErrorHandler
     public async softCancelAsync(order: Order): Promise<CoordinatorServerCancellationResponse> {
@@ -482,8 +482,8 @@ export class CoordinatorClient {
 
         const response = await this._executeServerRequestAsync(transaction, order.makerAddress, endpoint);
         if (response.isError) {
-            const approvedOrders = new Array();
-            const cancellations = new Array();
+            const approvedOrders = [];
+            const cancellations = [];
             const errors = [
                 {
                     ...response,
@@ -503,7 +503,7 @@ export class CoordinatorClient {
     /**
      * Batch version of softCancelOrderAsync. Requests multiple soft cancels
      * @param   orders                An array of orders to cancel.
-     * @return  CoordinatorServerCancellationResponse. See [Cancellation Response](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/coordinator-specification.md#response).
+     * @return  CoordinatorServerCancellationResponse. See [Cancellation Response](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/coordinator-specification.md#response).
      */
     @decorators.asyncZeroExErrorHandler
     public async batchSoftCancelAsync(orders: SignedOrder[]): Promise<CoordinatorServerCancellationResponse[]> {
@@ -540,7 +540,7 @@ export class CoordinatorClient {
                 };
             });
 
-            const approvedOrders = new Array();
+            const approvedOrders = [];
             const cancellations = successResponses;
             // return errors and approvals
             throw new CoordinatorServerError(
@@ -624,10 +624,10 @@ export class CoordinatorClient {
         const data = (this._exchangeInstance as any)[exchangeFn](...args).getABIEncodedTransactionData();
 
         // generate and sign a ZeroExTransaction
-        const signedZrxTx = await this._generateSignedZeroExTransactionAsync(data, txData.from, txData.gasPrice);
+        const signedNetTx = await this._generateSignedZeroExTransactionAsync(data, txData.from, txData.gasPrice);
 
         // get approval signatures from registered coordinator operators
-        const approvalSignatures = await this._getApprovalsAsync(signedZrxTx, ordersNeedingApprovals, txData.from);
+        const approvalSignatures = await this._getApprovalsAsync(signedNetTx, ordersNeedingApprovals, txData.from);
 
         // execute the transaction through the Coordinator Contract
         const txDataWithDefaults = {
@@ -635,7 +635,7 @@ export class CoordinatorClient {
             ...txData, // override defaults
         };
         const txHash = this._contractInstance
-            .executeTransaction(signedZrxTx, txData.from, signedZrxTx.signature, approvalSignatures)
+            .executeTransaction(signedNetTx, txData.from, signedNetTx.signature, approvalSignatures)
             .sendTransactionAsync(txDataWithDefaults, sendTxOpts);
         return txHash;
     }
@@ -660,12 +660,12 @@ export class CoordinatorClient {
             ),
             gasPrice: gasPrice ? new BigNumber(gasPrice) : new BigNumber(1),
         };
-        const signedZrxTx = await signatureUtils.ecSignTransactionAsync(
+        const signedNetTx = await signatureUtils.ecSignTransactionAsync(
             this._web3Wrapper.getProvider(),
             transaction,
             transaction.signerAddress,
         );
-        return signedZrxTx;
+        return signedNetTx;
     }
 
     private async _getApprovalsAsync(
@@ -719,7 +719,7 @@ export class CoordinatorClient {
             });
 
             // throw informative error
-            const cancellations = new Array();
+            const cancellations = [];
             throw new CoordinatorServerError(
                 CoordinatorServerErrorMsg.FillFailed,
                 approvedOrders,

@@ -1,25 +1,25 @@
-## @0x/connect
+## @powerchain/connect
 
-This repository contains a Javascript library that makes it easy to interact with Relayers that conform to the [Standard Relayer API](https://github.com/0xProject/standard-relayer-api)
+This repository contains a Javascript library that makes it easy to interact with Relayers that conform to the [Standard Relayer API](https://github.com/powerchainProject/standard-relayer-api)
 
 ## Installation
 
 ```bash
-yarn add @0x/connect
+yarn add @powerchain/connect
 ```
 
 If your project is in [TypeScript](https://www.typescriptlang.org/), add the following to your `tsconfig.json`:
 
 ```json
 "compilerOptions": {
-    "typeRoots": ["node_modules/@0x/typescript-typings/types", "node_modules/@types"],
+    "typeRoots": ["node_modules/@powerchain/typescript-typings/types", "node_modules/@types"],
 }
 ```
 
 ## Usage
 
--   [Docs](https://0x.org/docs/tools/connect)
--   [Tutorials](https://0x.org/docs/guides/using-the-standard-relayer-api)
+-   [Docs](https://powerchain.org/docs/tools/connect)
+-   [Tutorials](https://powerchain.org/docs/guides/using-the-standard-relayer-api)
 
 ## Contributing
 
@@ -46,13 +46,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/connect yarn build
+PKG=@powerchain/connect yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/connect yarn watch
+PKG=@powerchain/connect yarn watch
 ```
 
 ### Clean

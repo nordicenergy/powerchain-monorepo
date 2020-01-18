@@ -1,12 +1,11 @@
 #!/usr/bin/env node
-import { devConstants, web3Factory } from '@0x/dev-utils';
-import { Web3ProviderEngine } from '@0x/subproviders';
-import { logUtils } from '@0x/utils';
+import {devConstants, web3Factory} from '@powerchain/dev-utils';
+import {Web3ProviderEngine} from '@powerchain/subproviders';
+import {logUtils} from '@powerchain/utils';
 import * as fs from 'fs';
-import * as _ from 'lodash';
 import * as path from 'path';
 
-import { runMigrationsAsync } from './migration';
+import {runMigrationsAsync} from './migration';
 
 (async () => {
     let providerConfigs;

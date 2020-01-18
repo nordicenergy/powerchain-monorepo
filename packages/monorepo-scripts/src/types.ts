@@ -1,4 +1,4 @@
-import { PackageJSON } from '@0x/types';
+import {PackageJSON} from '@powerchain/types';
 
 export interface UpdatedPackage {
     name: string;

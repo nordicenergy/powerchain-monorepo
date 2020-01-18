@@ -13,6 +13,6 @@ export {
     AddedRemovedOrders,
     RejectedOrder,
 } from './types';
-export { SignedOrder, AssetPairsItem, APIOrder, Asset } from '@0x/types';
+export { SignedOrder, AssetPairsItem, APIOrder, Asset } from '@powerchain/types';
 
-export { WSOpts } from '@0x/mesh-rpc-client';
+export { WSOpts } from '@powerchain/mesh-rpc-client';

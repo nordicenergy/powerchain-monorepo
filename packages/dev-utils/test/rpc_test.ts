@@ -1,9 +1,9 @@
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as chai from 'chai';
-import { BlockParamLiteral } from 'ethereum-types';
+import {BlockParamLiteral} from 'ethereum-types';
 import 'mocha';
 
-import { web3Factory } from '../src';
+import {web3Factory} from '../src';
 
 const expect = chai.expect;
 

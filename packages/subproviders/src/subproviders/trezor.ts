@@ -1,9 +1,6 @@
-import { assert } from '@0x/assert';
-import { addressUtils } from '@0x/utils';
-import EthereumTx = require('ethereumjs-tx');
+import {assert} from '@powerchain/assert';
+import {addressUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
-
-import HDNode = require('hdkey');
 
 import {
     DerivedHDKeyInfo,
@@ -16,9 +13,12 @@ import {
     TrezorSubproviderConfig,
     WalletSubproviderErrors,
 } from '../types';
-import { walletUtils } from '../utils/wallet_utils';
+import {walletUtils} from '../utils/wallet_utils';
 
-import { BaseWalletSubprovider } from './base_wallet_subprovider';
+import {BaseWalletSubprovider} from './base_wallet_subprovider';
+import EthereumTx = require('ethereumjs-tx');
+
+import HDNode = require('hdkey');
 
 const PRIVATE_KEY_PATH = `44'/60'/0'/0`;
 const DEFAULT_NUM_ADDRESSES_TO_FETCH = 10;
@@ -71,10 +71,10 @@ export class TrezorSubprovider extends BaseWalletSubprovider {
         if (txData.from === undefined || !addressUtils.isAddress(txData.from)) {
             throw new Error(WalletSubproviderErrors.FromAddressMissingOrInvalid);
         }
-        txData.value = txData.value ? txData.value : '0x0';
-        txData.data = txData.data ? txData.data : '0x';
-        txData.gas = txData.gas ? txData.gas : '0x0';
-        txData.gasPrice = txData.gasPrice ? txData.gasPrice : '0x0';
+        txData.value = txData.value ? txData.value : 'powerchain0';
+        txData.data = txData.data ? txData.data : 'powerchain';
+        txData.gas = txData.gas ? txData.gas : 'powerchain0';
+        txData.gasPrice = txData.gasPrice ? txData.gasPrice : 'powerchain0';
 
         const initialDerivedKeyInfo = await this._initialDerivedKeyInfoAsync();
         const derivedKeyInfo = this._findDerivedKeyInfoForAddress(initialDerivedKeyInfo, txData.from);
@@ -105,12 +105,12 @@ export class TrezorSubprovider extends BaseWalletSubprovider {
             const sIndex = 8;
             tx.raw[sIndex] = Buffer.from([]); // s
 
-            // slice off leading 0x
+            // slice off leading powerchain
             tx.v = Buffer.from(payload.v.slice(2), 'hex');
             tx.r = Buffer.from(payload.r.slice(2), 'hex');
             tx.s = Buffer.from(payload.s.slice(2), 'hex');
 
-            return `0x${tx.serialize().toString('hex')}`;
+            return `powerchain${tx.serialize().toString('hex')}`;
         } else {
             const payload: TrezorResponseErrorPayload = response.payload;
             throw new Error(payload.error);
@@ -145,7 +145,7 @@ export class TrezorSubprovider extends BaseWalletSubprovider {
 
         if (response.success) {
             const payload: TrezorSignMsgResponsePayload = response.payload;
-            return `0x${payload.signature}`;
+            return `powerchain${payload.signature}`;
         } else {
             const payload: TrezorResponseErrorPayload = response.payload;
             throw new Error(payload.error);

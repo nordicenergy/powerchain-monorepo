@@ -1,9 +1,6 @@
-import { assert as sharedAssert } from '@0x/assert';
+import {assert as sharedAssert} from '@powerchain/assert';
 // HACK: We need those two unused imports because they're actually used by sharedAssert which gets injected here
-import { Schema } from '@0x/json-schemas'; // tslint:disable-line:no-unused-variable
-import { Order } from '@0x/types'; // tslint:disable-line:no-unused-variable
-import { BigNumber } from '@0x/utils'; // tslint:disable-line:no-unused-variable
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 
 export const assert = {
     ...sharedAssert,

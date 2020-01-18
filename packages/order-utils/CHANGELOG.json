@@ -88,7 +88,7 @@
                 "pr": 1790
             },
             {
-                "note": "Use arbitrary fee tokens instead of ZRX (ZEIP-28) for tools needed by contracts packages.",
+                "note": "Use arbitrary fee tokens instead of NET (ZEIP-28) for tools needed by contracts packages.",
                 "pr": 1819
             },
             {
@@ -264,7 +264,7 @@
                 "pr": 1790
             },
             {
-                "note": "Use arbitrary fee tokens instead of ZRX (ZEIP-28) for tools needed by contracts packages.",
+                "note": "Use arbitrary fee tokens instead of NET (ZEIP-28) for tools needed by contracts packages.",
                 "pr": 1819
             },
             {
@@ -400,7 +400,7 @@
         "version": "8.2.4",
         "changes": [
             {
-                "note": "Updated calls to <contract wrapper>.deploy0xArtifactAsync to include log decode dependencies.",
+                "note": "Updated calls to <contract wrapper>.deploypowerchainArtifactAsync to include log decode dependencies.",
                 "pr": 1995
             }
         ],
@@ -563,7 +563,7 @@
         "version": "6.1.0",
         "changes": [
             {
-                "note": "Updated implementation of `generatePseudoRandomSalt` to use generator from @0x/utils",
+                "note": "Updated implementation of `generatePseudoRandomSalt` to use generator from @powerchain/utils",
                 "pr": 1569
             }
         ],
@@ -945,7 +945,7 @@
         "version": "1.0.0-rc.1",
         "changes": [
             {
-                "note": "Refactor to work with V2 of 0x protocol",
+                "note": "Refactor to work with V2 of powerchain protocol",
                 "pr": 636
             },
             {

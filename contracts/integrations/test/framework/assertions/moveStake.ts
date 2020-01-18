@@ -7,16 +7,16 @@ import {
     StakeStatus,
     StakingRevertErrors,
     StoredBalance,
-} from '@0x/contracts-staking';
-import { expect } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { TxData } from 'ethereum-types';
+} from '@powerchain/contracts-staking';
+import {expect} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {TxData} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { DeploymentManager } from '../deployment_manager';
-import { SimulationEnvironment } from '../simulation';
+import {DeploymentManager} from '../deployment_manager';
+import {SimulationEnvironment} from '../simulation';
 
-import { FunctionAssertion, FunctionResult } from './function_assertion';
+import {FunctionAssertion, FunctionResult} from './function_assertion';
 
 function updateNextEpochBalances(
     ownerStake: OwnerStakeByStatus,

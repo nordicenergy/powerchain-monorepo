@@ -1,9 +1,9 @@
-import { chaiSetup } from '@0x/dev-utils';
-import { expect } from 'chai';
+import {chaiSetup} from '@powerchain/dev-utils';
+import {expect} from 'chai';
 import * as _ from 'lodash';
 import * as path from 'path';
 
-import { extractDocsAsync, MethodDocs, SolidityDocs, StorageLocation, Visibility } from '../src/extract_docs';
+import {extractDocsAsync, MethodDocs, SolidityDocs, StorageLocation, Visibility} from '../src/extract_docs';
 
 chaiSetup.configure();
 

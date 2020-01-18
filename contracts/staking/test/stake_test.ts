@@ -1,12 +1,11 @@
-import { ERC20Wrapper } from '@0x/contracts-asset-proxy';
-import { blockchainTests, describe, toBaseUnitAmount } from '@0x/contracts-test-utils';
-import { BigNumber, StakingRevertErrors } from '@0x/utils';
-import * as _ from 'lodash';
+import {ERC20Wrapper} from '@powerchain/contracts-asset-proxy';
+import {blockchainTests, describe, toBaseUnitAmount} from '@powerchain/contracts-test-utils';
+import {BigNumber, StakingRevertErrors} from '@powerchain/utils';
 
-import { StakeInfo, StakeStatus } from '../src/types';
+import {StakeInfo, StakeStatus} from '../src/types';
 
-import { StakerActor } from './actors/staker_actor';
-import { deployAndConfigureContractsAsync, StakingApiWrapper } from './utils/api_wrapper';
+import {StakerActor} from './actors/staker_actor';
+import {deployAndConfigureContractsAsync, StakingApiWrapper} from './utils/api_wrapper';
 
 // tslint:disable:no-unnecessary-type-assertion
 blockchainTests.resets('Stake Statuses', env => {
@@ -44,17 +43,17 @@ blockchainTests.resets('Stake Statuses', env => {
             await stakingApiWrapper.utils.createStakingPoolAsync(poolOperator, 5, false),
         ]);
         const lastPoolId = await stakingApiWrapper.stakingContract.lastPoolId().callAsync();
-        unusedPoolId = `0x${new BigNumber(lastPoolId)
+        unusedPoolId = `powerchain${new BigNumber(lastPoolId)
             .plus(1)
             .toString(16)
             .padStart(64, '0')}`;
     });
     describe('Stake', () => {
-        it('should successfully stake zero ZRX', async () => {
+        it('should successfully stake zero NET', async () => {
             const amount = toBaseUnitAmount(0);
             await staker.stakeAsync(amount);
         });
-        it('should successfully stake non-zero ZRX', async () => {
+        it('should successfully stake non-zero NET', async () => {
             const amount = toBaseUnitAmount(10);
             await staker.stakeAsync(amount);
         });
@@ -259,7 +258,7 @@ blockchainTests.resets('Stake Statuses', env => {
         });
     });
     describe('Unstake', () => {
-        it('should successfully unstake zero ZRX', async () => {
+        it('should successfully unstake zero NET', async () => {
             const amount = toBaseUnitAmount(0);
             await staker.unstakeAsync(amount);
         });
@@ -336,7 +335,7 @@ blockchainTests.resets('Stake Statuses', env => {
     });
     describe('Simulations', () => {
         // it('Simulation from Staking Spec', async () => {
-        //     // Epoch 1: Stake some ZRX
+        //     // Epoch 1: Stake some NET
         //     await staker.stakeAsync(toBaseUnitAmount(4));
         //     // Later in Epoch 1: User delegates and deactivates some stake
         //     await staker.moveStakeAsync(

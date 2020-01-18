@@ -1,4 +1,4 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
 import {
     ExtensionContractType,
@@ -11,12 +11,12 @@ import {
     SwapQuoterOpts,
 } from './types';
 
-import { constants as marketOperationUtilConstants } from './utils/market_operation_utils/constants';
+import {constants as marketOperationUtilConstants} from './utils/market_operation_utils/constants';
 
 const ETH_GAS_STATION_API_BASE_URL = 'https://ethgasstation.info';
-const NULL_BYTES = '0x';
-const NULL_ERC20_ASSET_DATA = '0xf47261b00000000000000000000000000000000000000000000000000000000000000000';
-const NULL_ADDRESS = '0x0000000000000000000000000000000000000000';
+const NULL_BYTES = 'powerchain';
+const NULL_ERC20_ASSET_DATA = 'powerchainf47261b00000000000000000000000000000000000000000000000000000000000000000';
+const NULL_ADDRESS = 'powerchain0000000000000000000000000000000000000000';
 const MAINNET_CHAIN_ID = 1;
 const ONE_SECOND_MS = 1000;
 const DEFAULT_PER_PAGE = 1000;
@@ -82,5 +82,5 @@ export const constants = {
     NULL_ERC20_ASSET_DATA,
     PROTOCOL_FEE_UTILS_POLLING_INTERVAL_IN_MS,
     MARKET_UTILS_AMOUNT_BUFFER_PERCENTAGE,
-    BRIDGE_ASSET_DATA_PREFIX: '0xdc1600f3',
+    BRIDGE_ASSET_DATA_PREFIX: 'powerchaindc1600f3',
 };

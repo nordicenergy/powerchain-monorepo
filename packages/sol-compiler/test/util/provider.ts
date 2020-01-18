@@ -1,4 +1,4 @@
-import { web3Factory } from '@0x/dev-utils';
+import {web3Factory} from '@powerchain/dev-utils';
 import Web3ProviderEngine = require('web3-provider-engine');
 
 const providerConfigs = { shouldUseInProcessGanache: true };

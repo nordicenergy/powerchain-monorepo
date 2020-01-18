@@ -1,4 +1,4 @@
-import { APIOrder } from '@0x/connect';
+import {APIOrder} from '@powerchain/connect';
 import {
     AcceptedOrderInfo,
     OrderEvent,
@@ -6,15 +6,15 @@ import {
     OrderInfo,
     RejectedOrderInfo,
     WSClient,
-} from '@0x/mesh-rpc-client';
-import { Asset, AssetPairsItem, SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/mesh-rpc-client';
+import {Asset, AssetPairsItem, SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { OrderStore } from '../order_store';
-import { AcceptedRejectedOrders, AddedRemovedOrders, MeshOrderProviderOpts } from '../types';
-import { utils } from '../utils';
+import {OrderStore} from '../order_store';
+import {AcceptedRejectedOrders, AddedRemovedOrders, MeshOrderProviderOpts} from '../types';
+import {utils} from '../utils';
 
-import { BaseOrderProvider, DEFAULT_TOKEN_PRECISION } from './base_order_provider';
+import {BaseOrderProvider, DEFAULT_TOKEN_PRECISION} from './base_order_provider';
 
 export class MeshOrderProvider extends BaseOrderProvider {
     private readonly _wsClient: WSClient;
@@ -44,7 +44,7 @@ export class MeshOrderProvider extends BaseOrderProvider {
     }
 
     /**
-     * Instantiates a [Mesh](https://github.com/0xProject/0x-mesh) Order Provider. This provider writes
+     * Instantiates a [Mesh](https://github.com/powerchainProject/powerchain-mesh) Order Provider. This provider writes
      * all orders stored in Mesh to the OrderStore and subscribes all Mesh updates.
      * @param opts `MeshOrderProviderOpts` containing the websocketEndpoint and additional Mesh options
      * @param orderStore The `OrderStore` where orders are added and removed from

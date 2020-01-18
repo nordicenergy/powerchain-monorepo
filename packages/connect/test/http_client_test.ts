@@ -1,23 +1,24 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as dirtyChai from 'dirty-chai';
 import * as fetchMock from 'fetch-mock';
 import 'mocha';
 
-import { HttpClient } from '../src/index';
+import {HttpClient} from '../src/index';
 
-import { assetDataPairsResponse } from './fixtures/standard_relayer_api/asset_pairs';
+import {assetDataPairsResponse} from './fixtures/standard_relayer_api/asset_pairs';
 import * as assetDataPairsResponseJSON from './fixtures/standard_relayer_api/asset_pairs.json';
-import { feeRecipientsResponse } from './fixtures/standard_relayer_api/fee_recipients';
+import {feeRecipientsResponse} from './fixtures/standard_relayer_api/fee_recipients';
 import * as feeRecipientsResponseJSON from './fixtures/standard_relayer_api/fee_recipients.json';
-import { orderResponse } from './fixtures/standard_relayer_api/order/0xabc67323774bdbd24d94f977fa9ac94a50f016026fd13f42990861238897721f';
-import * as orderResponseJSON from './fixtures/standard_relayer_api/order/0xabc67323774bdbd24d94f977fa9ac94a50f016026fd13f42990861238897721f.json';
-import { orderConfigResponse } from './fixtures/standard_relayer_api/order_config';
+import {orderResponse} from './fixtures/standard_relayer_api/order/powerchainabc67323774bdbd24d94f977fa9ac94a50f016026fd13f42990861238897721f';
+import * as orderResponseJSON
+    from './fixtures/standard_relayer_api/order/powerchainabc67323774bdbd24d94f977fa9ac94a50f016026fd13f42990861238897721f.json';
+import {orderConfigResponse} from './fixtures/standard_relayer_api/order_config';
 import * as orderConfigResponseJSON from './fixtures/standard_relayer_api/order_config.json';
-import { orderbookResponse } from './fixtures/standard_relayer_api/orderbook';
+import {orderbookResponse} from './fixtures/standard_relayer_api/orderbook';
 import * as orderbookJSON from './fixtures/standard_relayer_api/orderbook.json';
-import { ordersResponse } from './fixtures/standard_relayer_api/orders';
+import {ordersResponse} from './fixtures/standard_relayer_api/orders';
 import * as ordersResponseJSON from './fixtures/standard_relayer_api/orders.json';
 
 chai.config.includeStack = true;
@@ -48,7 +49,7 @@ describe('HttpClient', () => {
             expect(assetDataPairs).to.be.deep.equal(assetDataPairsResponse);
         });
         it('gets assetData pairs with specified request options', async () => {
-            const assetData = '0xf47261b04c32345ced77393b3530b1eed0f346429d';
+            const assetData = 'powerchainf47261b04c32345ced77393b3530b1eed0f346429d';
             const assetPairsRequestOpts = {
                 assetDataA: assetData,
                 page: 3,
@@ -72,7 +73,7 @@ describe('HttpClient', () => {
             expect(orders).to.be.deep.equal(ordersResponse);
         });
         it('gets orders with specified request options', async () => {
-            const assetDataAddress = '0x323b5d4c32345ced77393b3530b1eed0f346429d';
+            const assetDataAddress = 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d';
             const ordersRequest = {
                 assetDataAddress,
                 page: 3,
@@ -89,7 +90,7 @@ describe('HttpClient', () => {
         });
     });
     describe('#getOrderAsync', () => {
-        const orderHash = '0xabc67323774bdbd24d94f977fa9ac94a50f016026fd13f42990861238897721f';
+        const orderHash = 'powerchainabc67323774bdbd24d94f977fa9ac94a50f016026fd13f42990861238897721f';
         const url = `${relayUrl}/order/${orderHash}`;
         it('gets order', async () => {
             fetchMock.get(url, orderResponseJSON);
@@ -103,8 +104,8 @@ describe('HttpClient', () => {
     });
     describe('#getOrderBookAsync', () => {
         const request = {
-            baseAssetData: '0x323b5d4c32345ced77393b3530b1eed0f346429d',
-            quoteAssetData: '0xa2b31dacf30a9c50ca473337c01d8a201ae33e32',
+            baseAssetData: 'powerchain323b5d4c32345ced77393b3530b1eed0f346429d',
+            quoteAssetData: 'powerchaina2b31dacf30a9c50ca473337c01d8a201ae33e32',
         };
         const url = `${relayUrl}/orderbook`;
         it('gets orderbook with default page options when none are provided', async () => {
@@ -134,14 +135,14 @@ describe('HttpClient', () => {
     });
     describe('#getOrderConfigAsync', () => {
         const request = {
-            makerAddress: '0x9e56625509c2f60af937f23b7b532600390e8c8b',
-            takerAddress: '0xa2b31dacf30a9c50ca473337c01d8a201ae33e32',
+            makerAddress: 'powerchain9e56625509c2f60af937f23b7b532600390e8c8b',
+            takerAddress: 'powerchaina2b31dacf30a9c50ca473337c01d8a201ae33e32',
             makerAssetAmount: new BigNumber('10000000000000000'),
             takerAssetAmount: new BigNumber('20000000000000000'),
             expirationTimeSeconds: new BigNumber('1532560590'),
-            makerAssetData: '0xf47261b04c32345ced77393b3530b1eed0f346429d',
-            takerAssetData: '0x0257179264389b814a946f3e92105513705ca6b990',
-            exchangeAddress: '0x12459c951127e0c374ff9105dda097662a027093',
+            makerAssetData: 'powerchainf47261b04c32345ced77393b3530b1eed0f346429d',
+            takerAssetData: 'powerchain0257179264389b814a946f3e92105513705ca6b990',
+            exchangeAddress: 'powerchain12459c951127e0c374ff9105dda097662a027093',
         };
         const url = `${relayUrl}/order_config`;
         it('gets order config', async () => {

@@ -1,9 +1,9 @@
-import { marshaller, Web3Wrapper } from '@0x/web3-wrapper';
-import { JSONRPCRequestPayload, SupportedProvider } from 'ethereum-types';
+import {marshaller, Web3Wrapper} from '@powerchain/web3-wrapper';
+import {JSONRPCRequestPayload, SupportedProvider} from 'ethereum-types';
 
-import { Callback, ErrorCallback } from '../types';
+import {Callback, ErrorCallback} from '../types';
 
-import { Subprovider } from './subprovider';
+import {Subprovider} from './subprovider';
 
 /**
  * This class implements the [web3-provider-engine](https://github.com/MetaMask/provider-engine)

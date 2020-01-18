@@ -1,7 +1,7 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { Maybe } from '../types';
+import {Maybe} from '../types';
 
 export const maybeBigNumberUtil = {
     // converts a string to a Maybe<BigNumber>
@@ -22,7 +22,7 @@ export const maybeBigNumberUtil = {
         }
         return val1 === undefined && val2 === undefined;
     },
-    // converts a BigNumber or String to the BigNumber used by 0x libraries
+    // converts a BigNumber or String to the BigNumber used by powerchain libraries
     toMaybeBigNumber: (value: any): Maybe<BigNumber> => {
         if (_.isString(value)) {
             return maybeBigNumberUtil.stringToMaybeBigNumber(value);

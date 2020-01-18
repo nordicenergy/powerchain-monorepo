@@ -1,8 +1,7 @@
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import * as _ from 'lodash';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 
-import { BIG_NUMBER_ZERO, ETH_DECIMALS } from '../constants';
+import {BIG_NUMBER_ZERO, ETH_DECIMALS} from '../constants';
 
 export const format = {
     ethBaseUnitAmount: (
@@ -71,6 +70,6 @@ export const format = {
         }
     },
     ethAddress: (address: string): string => {
-        return `0x${address.slice(2, 7)}…${address.slice(-5)}`;
+        return `powerchain${address.slice(2, 7)}…${address.slice(-5)}`;
     },
 };

@@ -53,7 +53,7 @@ typings/
 # Optional eslint cache
 .eslintcache
 
-# Optional REPL history
+# Optional PWRCL history
 .node_repl_history
 
 # Output of 'npm pack'
@@ -185,4 +185,4 @@ packages/*/docs/README.md
 .DS_Store
 
 # the snapshot that gets built for migrations sure does have a ton of files
-packages/migrations/0x_ganache_snapshot*
+packages/migrations/powerchain_ganache_snapshot*

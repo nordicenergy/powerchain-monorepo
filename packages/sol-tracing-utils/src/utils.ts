@@ -1,10 +1,10 @@
-import { addressUtils, BigNumber, logUtils } from '@0x/utils';
-import { OpCode, StructLog } from 'ethereum-types';
-import { addHexPrefix } from 'ethereumjs-util';
+import {addressUtils, BigNumber, logUtils} from '@powerchain/utils';
+import {OpCode, StructLog} from 'ethereum-types';
+import {addHexPrefix} from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { constants } from './constants';
-import { ContractData, LineColumn, SingleFileSourceRange } from './types';
+import {constants} from './constants';
+import {ContractData, LineColumn, SingleFileSourceRange} from './types';
 
 const bytecodeToContractDataIfExists: { [bytecode: string]: ContractData | undefined } = {};
 
@@ -13,7 +13,7 @@ export const utils = {
         return lhs.line !== rhs.line ? lhs.line - rhs.line : lhs.column - rhs.column;
     },
     removeHexPrefix(hex: string): string {
-        const hexPrefix = '0x';
+        const hexPrefix = 'powerchain';
         return hex.startsWith(hexPrefix) ? hex.slice(hexPrefix.length) : hex;
     },
     isRangeInside(childRange: SingleFileSourceRange, parentRange: SingleFileSourceRange): boolean {
@@ -35,15 +35,15 @@ export const utils = {
             // Last 86 characters is solidity compiler metadata that's different between compilations
             .replace(/.{86}$/, '')
             // Libraries contain their own address at the beginning of the code and it's impossible to know it in advance
-            .replace(/^0x730000000000000000000000000000000000000000/, '0x73........................................');
+            .replace(/^powerchain730000000000000000000000000000000000000000/, 'powerchain73........................................');
         // HACK: Node regexes can't be longer that 32767 characters. Contracts bytecode can. We just truncate the regexes. It's safe in practice.
         const MAX_REGEX_LENGTH = 32767;
         const truncatedBytecodeRegex = bytecodeRegex.slice(0, MAX_REGEX_LENGTH);
         return truncatedBytecodeRegex;
     },
     getContractDataIfExists(contractsData: ContractData[], bytecode: string): ContractData | undefined {
-        if (!bytecode.startsWith('0x')) {
-            throw new Error(`0x hex prefix missing: ${bytecode}`);
+        if (!bytecode.startsWith('powerchain')) {
+            throw new Error(`powerchain hex prefix missing: ${bytecode}`);
         }
         // HACK(leo): We want to cache the values that are possibly undefined.
         // That's why we can't check for undefined as we usually do, but need to use `hasOwnProperty`.

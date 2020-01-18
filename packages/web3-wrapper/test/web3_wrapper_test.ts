@@ -1,13 +1,14 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
-import { BlockParamLiteral, JSONRPCErrorCallback, JSONRPCRequestPayload, TransactionReceipt } from 'ethereum-types';
+import {BlockParamLiteral, JSONRPCErrorCallback, JSONRPCRequestPayload, TransactionReceipt} from 'ethereum-types';
 import * as Ganache from 'ganache-core';
 import * as _ from 'lodash';
 import 'mocha';
 
-import { Web3Wrapper } from '../src/web3_wrapper';
+import {Web3Wrapper} from '../src/web3_wrapper';
 
-import { chaiSetup } from './utils/chai_setup';
+import {chaiSetup} from './utils/chai_setup';
+
 chaiSetup.configure();
 
 const { expect } = chai;
@@ -24,12 +25,12 @@ describe('Web3Wrapper tests', () => {
     });
     describe('#isAddress', () => {
         it('correctly checks if a string is a valid ethereum address', () => {
-            expect(Web3Wrapper.isAddress('0x0')).to.be.false();
-            expect(Web3Wrapper.isAddress('0xdeadbeef')).to.be.false();
+            expect(Web3Wrapper.isAddress('powerchain0')).to.be.false();
+            expect(Web3Wrapper.isAddress('powerchaindeadbeef')).to.be.false();
             expect(Web3Wrapper.isAddress('42')).to.be.false();
             expect(Web3Wrapper.isAddress('weth.thetoken.eth')).to.be.false();
-            expect(Web3Wrapper.isAddress('0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2')).to.be.true();
-            expect(Web3Wrapper.isAddress('0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2')).to.be.true();
+            expect(Web3Wrapper.isAddress('powerchainc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2')).to.be.true();
+            expect(Web3Wrapper.isAddress('powerchainC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2')).to.be.true();
         });
     });
     describe('#getNodeVersionAsync', () => {
@@ -72,14 +73,14 @@ describe('Web3Wrapper tests', () => {
     });
     describe('#signMessageAsync', () => {
         it('should sign message', async () => {
-            const message = '0xdeadbeef';
+            const message = 'powerchaindeadbeef';
             const signer = addresses[1];
             const signature = await web3Wrapper.signMessageAsync(signer, message);
             const signatureLength = 132;
             expect(signature.length).to.be.equal(signatureLength);
         });
         it('should throw if the provider returns an error', async () => {
-            const message = '0xdeadbeef';
+            const message = 'powerchaindeadbeef';
             const signer = addresses[1];
             const fakeProvider = {
                 async sendAsync(payload: JSONRPCRequestPayload, callback: JSONRPCErrorCallback): Promise<void> {

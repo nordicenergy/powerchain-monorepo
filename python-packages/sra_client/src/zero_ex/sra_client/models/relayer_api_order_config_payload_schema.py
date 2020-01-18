@@ -92,10 +92,10 @@ class RelayerApiOrderConfigPayloadSchema(object):
                 "Invalid value for `maker_address`, must not be `None`"
             )  # noqa: E501
         if maker_address is not None and not re.search(
-            r"^0x[0-9a-f]{40}$", maker_address
+            r"^powerchain[0-9a-f]{40}$", maker_address
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `maker_address`, must be a follow pattern or equal to `/^0x[0-9a-f]{40}$/`"
+                r"Invalid value for `maker_address`, must be a follow pattern or equal to `/^powerchain[0-9a-f]{40}$/`"
             )  # noqa: E501
 
         self._maker_address = maker_address
@@ -123,10 +123,10 @@ class RelayerApiOrderConfigPayloadSchema(object):
                 "Invalid value for `taker_address`, must not be `None`"
             )  # noqa: E501
         if taker_address is not None and not re.search(
-            r"^0x[0-9a-f]{40}$", taker_address
+            r"^powerchain[0-9a-f]{40}$", taker_address
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `taker_address`, must be a follow pattern or equal to `/^0x[0-9a-f]{40}$/`"
+                r"Invalid value for `taker_address`, must be a follow pattern or equal to `/^powerchain[0-9a-f]{40}$/`"
             )  # noqa: E501
 
         self._taker_address = taker_address
@@ -216,10 +216,10 @@ class RelayerApiOrderConfigPayloadSchema(object):
                 "Invalid value for `maker_asset_data`, must not be `None`"
             )  # noqa: E501
         if maker_asset_data is not None and not re.search(
-            r"^0x(([0-9a-f][0-9a-f])+)?$", maker_asset_data
+            r"^powerchain(([0-9a-f][0-9a-f])+)?$", maker_asset_data
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `maker_asset_data`, must be a follow pattern or equal to `/^0x(([0-9a-f][0-9a-f])+)?$/`"
+                r"Invalid value for `maker_asset_data`, must be a follow pattern or equal to `/^powerchain(([0-9a-f][0-9a-f])+)?$/`"
             )  # noqa: E501
 
         self._maker_asset_data = maker_asset_data
@@ -247,10 +247,10 @@ class RelayerApiOrderConfigPayloadSchema(object):
                 "Invalid value for `taker_asset_data`, must not be `None`"
             )  # noqa: E501
         if taker_asset_data is not None and not re.search(
-            r"^0x(([0-9a-f][0-9a-f])+)?$", taker_asset_data
+            r"^powerchain(([0-9a-f][0-9a-f])+)?$", taker_asset_data
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `taker_asset_data`, must be a follow pattern or equal to `/^0x(([0-9a-f][0-9a-f])+)?$/`"
+                r"Invalid value for `taker_asset_data`, must be a follow pattern or equal to `/^powerchain(([0-9a-f][0-9a-f])+)?$/`"
             )  # noqa: E501
 
         self._taker_asset_data = taker_asset_data
@@ -278,10 +278,10 @@ class RelayerApiOrderConfigPayloadSchema(object):
                 "Invalid value for `exchange_address`, must not be `None`"
             )  # noqa: E501
         if exchange_address is not None and not re.search(
-            r"^0x[0-9a-f]{40}$", exchange_address
+            r"^powerchain[0-9a-f]{40}$", exchange_address
         ):  # noqa: E501
             raise ValueError(
-                r"Invalid value for `exchange_address`, must be a follow pattern or equal to `/^0x[0-9a-f]{40}$/`"
+                r"Invalid value for `exchange_address`, must be a follow pattern or equal to `/^powerchain[0-9a-f]{40}$/`"
             )  # noqa: E501
 
         self._exchange_address = exchange_address

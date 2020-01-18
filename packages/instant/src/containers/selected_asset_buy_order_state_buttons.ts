@@ -1,17 +1,16 @@
-import { MarketBuySwapQuote, SwapQuoteConsumer, SwapQuoteConsumerError, SwapQuoter } from '@0x/asset-swapper';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import * as _ from 'lodash';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import {MarketBuySwapQuote, SwapQuoteConsumer, SwapQuoteConsumerError, SwapQuoter} from '@powerchain/asset-swapper';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
 
-import { BuyOrderStateButtons } from '../components/buy_order_state_buttons';
-import { Action, actions } from '../redux/actions';
-import { State } from '../redux/reducer';
-import { AccountState, AffiliateInfo, Asset, OrderProcessState, ZeroExInstantError } from '../types';
-import { analytics } from '../util/analytics';
-import { errorFlasher } from '../util/error_flasher';
-import { etherscanUtil } from '../util/etherscan';
+import {BuyOrderStateButtons} from '../components/buy_order_state_buttons';
+import {Action, actions} from '../redux/actions';
+import {State} from '../redux/reducer';
+import {AccountState, AffiliateInfo, Asset, OrderProcessState, ZeroExInstantError} from '../types';
+import {analytics} from '../util/analytics';
+import {errorFlasher} from '../util/error_flasher';
+import {etherscanUtil} from '../util/etherscan';
 
 interface ConnectedState {
     accountAddress?: string;

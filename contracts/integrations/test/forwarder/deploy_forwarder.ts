@@ -1,8 +1,8 @@
-import { artifacts as exchangeArtifacts } from '@0x/contracts-exchange';
-import { artifacts, ForwarderContract } from '@0x/contracts-exchange-forwarder';
-import { BlockchainTestsEnvironment, constants } from '@0x/contracts-test-utils';
+import {artifacts as exchangeArtifacts} from '@powerchain/contracts-exchange';
+import {artifacts, ForwarderContract} from '@powerchain/contracts-exchange-forwarder';
+import {BlockchainTestsEnvironment, constants} from '@powerchain/contracts-test-utils';
 
-import { DeploymentManager } from '../framework/deployment_manager';
+import {DeploymentManager} from '../framework/deployment_manager';
 
 /**
  * Deploys a Forwarder contract configured to work alongside the provided `deployment`.
@@ -11,7 +11,7 @@ export async function deployForwarderAsync(
     deployment: DeploymentManager,
     environment: BlockchainTestsEnvironment,
 ): Promise<ForwarderContract> {
-    return ForwarderContract.deployFrom0xArtifactAsync(
+    return ForwarderContract.deployFrompowerchainArtifactAsync(
         artifacts.Forwarder,
         environment.provider,
         deployment.txDefaults,

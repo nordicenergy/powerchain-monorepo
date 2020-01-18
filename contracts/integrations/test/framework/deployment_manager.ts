@@ -7,26 +7,26 @@ import {
     IAssetDataContract,
     MultiAssetProxyContract,
     StaticCallProxyContract,
-} from '@0x/contracts-asset-proxy';
-import { artifacts as devUtilsArtifacts, DevUtilsContract } from '@0x/contracts-dev-utils';
-import { artifacts as ERC1155Artifacts, ERC1155MintableContract } from '@0x/contracts-erc1155';
-import { artifacts as ERC20Artifacts, DummyERC20TokenContract, WETH9Contract } from '@0x/contracts-erc20';
-import { artifacts as ERC721Artifacts, DummyERC721TokenContract } from '@0x/contracts-erc721';
-import { artifacts as exchangeArtifacts, ExchangeContract } from '@0x/contracts-exchange';
-import { artifacts as multisigArtifacts, ZeroExGovernorContract } from '@0x/contracts-multisig';
+} from '@powerchain/contracts-asset-proxy';
+import {artifacts as devUtilsArtifacts, DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {artifacts as ERC1155Artifacts, ERC1155MintableContract} from '@powerchain/contracts-erc1155';
+import {artifacts as ERC20Artifacts, DummyERC20TokenContract, WETH9Contract} from '@powerchain/contracts-erc20';
+import {artifacts as ERC721Artifacts, DummyERC721TokenContract} from '@powerchain/contracts-erc721';
+import {artifacts as exchangeArtifacts, ExchangeContract} from '@powerchain/contracts-exchange';
+import {artifacts as multisigArtifacts, ZeroExGovernorContract} from '@powerchain/contracts-multisig';
 import {
     artifacts as stakingArtifacts,
+    NetVaultContract,
     StakingProxyContract,
     TestStakingContract,
-    ZrxVaultContract,
-} from '@0x/contracts-staking';
-import { BlockchainTestsEnvironment, constants } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { TxData } from 'ethereum-types';
+} from '@powerchain/contracts-staking';
+import {BlockchainTestsEnvironment, constants} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {TxData} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { AssetProxyDispatcher, Authorizable, Ownable } from './utils/wrapper_interfaces';
+import {AssetProxyDispatcher, Authorizable, Ownable} from './utils/wrapper_interfaces';
 
 /**
  * Adds a batch of authorities to a list of authorizable contracts.
@@ -95,7 +95,7 @@ interface StakingContracts {
     stakingLogic: TestStakingContract;
     stakingProxy: StakingProxyContract;
     stakingWrapper: TestStakingContract;
-    zrxVault: ZrxVaultContract;
+    NetVault: NetVaultContract;
 }
 
 // Contract wrappers for tokens.
@@ -121,7 +121,7 @@ export class DeploymentManager {
     public static readonly protocolFee = DeploymentManager.gasPrice.times(DeploymentManager.protocolFeeMultiplier);
 
     /**
-     * Fully deploy the 0x exchange and staking contracts and configure the system with the
+     * Fully deploy the powerchain exchange and staking contracts and configure the system with the
      * asset proxy owner multisig.
      * @param environment A blockchain test environment to use for contracts deployment.
      * @param options Specifies the owner address and number of tokens to deploy.
@@ -142,14 +142,14 @@ export class DeploymentManager {
 
         // Deploy the contracts using the same owner and environment.
         const assetProxies = await DeploymentManager._deployAssetProxyContractsAsync(environment, txDefaults);
-        const exchange = await ExchangeContract.deployFrom0xArtifactAsync(
+        const exchange = await ExchangeContract.deployFrompowerchainArtifactAsync(
             exchangeArtifacts.Exchange,
             environment.provider,
             txDefaults,
             { ...ERC20Artifacts, ...exchangeArtifacts, ...stakingArtifacts, ...assetProxyArtifacts },
             new BigNumber(chainId),
         );
-        const governor = await ZeroExGovernorContract.deployFrom0xArtifactAsync(
+        const governor = await ZeroExGovernorContract.deployFrompowerchainArtifactAsync(
             multisigArtifacts.ZeroExGovernor,
             environment.provider,
             txDefaults,
@@ -197,7 +197,7 @@ export class DeploymentManager {
             staking.stakingProxy,
         ]);
 
-        const devUtils = await DevUtilsContract.deployFrom0xArtifactAsync(
+        const devUtils = await DevUtilsContract.deployFrompowerchainArtifactAsync(
             devUtilsArtifacts.DevUtils,
             environment.provider,
             environment.txDefaults,
@@ -317,37 +317,37 @@ export class DeploymentManager {
         environment: BlockchainTestsEnvironment,
         txDefaults: Partial<TxData>,
     ): Promise<AssetProxyContracts> {
-        const erc20Proxy = await ERC20ProxyContract.deployFrom0xArtifactAsync(
+        const erc20Proxy = await ERC20ProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.ERC20Proxy,
             environment.provider,
             txDefaults,
             assetProxyArtifacts,
         );
-        const erc721Proxy = await ERC721ProxyContract.deployFrom0xArtifactAsync(
+        const erc721Proxy = await ERC721ProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.ERC721Proxy,
             environment.provider,
             txDefaults,
             assetProxyArtifacts,
         );
-        const erc1155Proxy = await ERC1155ProxyContract.deployFrom0xArtifactAsync(
+        const erc1155Proxy = await ERC1155ProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.ERC1155Proxy,
             environment.provider,
             txDefaults,
             assetProxyArtifacts,
         );
-        const multiAssetProxy = await MultiAssetProxyContract.deployFrom0xArtifactAsync(
+        const multiAssetProxy = await MultiAssetProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.MultiAssetProxy,
             environment.provider,
             txDefaults,
             assetProxyArtifacts,
         );
-        const staticCallProxy = await StaticCallProxyContract.deployFrom0xArtifactAsync(
+        const staticCallProxy = await StaticCallProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.StaticCallProxy,
             environment.provider,
             txDefaults,
             assetProxyArtifacts,
         );
-        const erc20BridgeProxy = await ERC20BridgeProxyContract.deployFrom0xArtifactAsync(
+        const erc20BridgeProxy = await ERC20BridgeProxyContract.deployFrompowerchainArtifactAsync(
             assetProxyArtifacts.ERC20BridgeProxy,
             environment.provider,
             txDefaults,
@@ -378,15 +378,15 @@ export class DeploymentManager {
         tokens: TokenContracts,
         assetProxies: AssetProxyContracts,
     ): Promise<StakingContracts> {
-        const zrxVault = await ZrxVaultContract.deployFrom0xArtifactAsync(
-            stakingArtifacts.ZrxVault,
+        const zrxVault = await NetVaultContract.deployFrompowerchainArtifactAsync(
+            stakingArtifacts.NetVault,
             environment.provider,
             txDefaults,
             stakingArtifacts,
             assetProxies.erc20Proxy.address,
             tokens.zrx.address,
         );
-        const stakingLogic = await TestStakingContract.deployFrom0xArtifactAsync(
+        const stakingLogic = await TestStakingContract.deployFrompowerchainArtifactAsync(
             stakingArtifacts.TestStaking,
             environment.provider,
             txDefaults,
@@ -394,7 +394,7 @@ export class DeploymentManager {
             tokens.weth.address,
             zrxVault.address,
         );
-        const stakingProxy = await StakingProxyContract.deployFrom0xArtifactAsync(
+        const stakingProxy = await StakingProxyContract.deployFrompowerchainArtifactAsync(
             stakingArtifacts.StakingProxy,
             environment.provider,
             txDefaults,
@@ -415,7 +415,7 @@ export class DeploymentManager {
 
         // Add the zrx vault and the weth contract to the staking proxy.
         await stakingWrapper.setWethContract(tokens.weth.address).awaitTransactionSuccessAsync({ from: owner });
-        await stakingWrapper.setZrxVault(zrxVault.address).awaitTransactionSuccessAsync({ from: owner });
+        await stakingWrapper.setNetVault(zrxVault.address).awaitTransactionSuccessAsync({ from: owner });
 
         // Authorize the owner address in the staking proxy and the zrx vault.
         await stakingProxy.addAuthorizedAddress(owner).awaitTransactionSuccessAsync({ from: owner });
@@ -463,7 +463,7 @@ export class DeploymentManager {
 
         const erc20 = await Promise.all(
             _.times(numErc20TokensToDeploy, async () =>
-                DummyERC20TokenContract.deployFrom0xArtifactAsync(
+                DummyERC20TokenContract.deployFrompowerchainArtifactAsync(
                     ERC20Artifacts.DummyERC20Token,
                     environment.provider,
                     txDefaults,
@@ -477,7 +477,7 @@ export class DeploymentManager {
         );
         const erc721 = await Promise.all(
             _.times(numErc721TokensToDeploy, async () =>
-                DummyERC721TokenContract.deployFrom0xArtifactAsync(
+                DummyERC721TokenContract.deployFrompowerchainArtifactAsync(
                     ERC721Artifacts.DummyERC721Token,
                     environment.provider,
                     txDefaults,
@@ -489,7 +489,7 @@ export class DeploymentManager {
         );
         const erc1155 = await Promise.all(
             _.times(numErc1155TokensToDeploy, async () =>
-                ERC1155MintableContract.deployFrom0xArtifactAsync(
+                ERC1155MintableContract.deployFrompowerchainArtifactAsync(
                     ERC1155Artifacts.ERC1155Mintable,
                     environment.provider,
                     txDefaults,
@@ -498,13 +498,13 @@ export class DeploymentManager {
             ),
         );
 
-        const weth = await WETH9Contract.deployFrom0xArtifactAsync(
+        const weth = await WETH9Contract.deployFrompowerchainArtifactAsync(
             ERC20Artifacts.WETH9,
             environment.provider,
             txDefaults,
             ERC20Artifacts,
         );
-        const zrx = await DummyERC20TokenContract.deployFrom0xArtifactAsync(
+        const zrx = await DummyERC20TokenContract.deployFrompowerchainArtifactAsync(
             ERC20Artifacts.DummyERC20Token,
             environment.provider,
             txDefaults,

@@ -1,11 +1,11 @@
-## @0x/tslint-config
+## @powerchain/tslint-config
 
-TSLint configuration and custom linter rules used by 0xProject.
+TSLint configuration and custom linter rules used by powerchainProject.
 
 ## Installation
 
 ```bash
-yarn add --dev @0x/tslint-config
+yarn add --dev @powerchain/tslint-config
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ Add the following to your `tslint.json` file
 
 ```json
 {
-    "extends": ["@0x/tslint-config"]
+    "extends": ["@powerchain/tslint-config"]
 }
 ```
 
@@ -43,13 +43,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/tslint-config yarn build
+PKG=@powerchain/tslint-config yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/tslint-config yarn watch
+PKG=@powerchain/tslint-config yarn watch
 ```
 
 ### Clean

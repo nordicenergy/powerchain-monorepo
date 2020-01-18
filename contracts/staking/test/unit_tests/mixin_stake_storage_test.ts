@@ -1,13 +1,13 @@
-import { blockchainTests, expect, Numberish } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+import {blockchainTests, expect, Numberish} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { constants } from '../../src/constants';
-import { StoredBalance } from '../../src/types';
+import {constants} from '../../src/constants';
+import {StoredBalance} from '../../src/types';
 
-import { StakingRevertErrors } from '../../src';
+import {StakingRevertErrors} from '../../src';
 
-import { artifacts } from '../artifacts';
-import { TestMixinStakeStorageContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {TestMixinStakeStorageContract} from '../wrappers';
 
 blockchainTests.resets('MixinStakeStorage unit tests', env => {
     let testContract: TestMixinStakeStorageContract;
@@ -20,7 +20,7 @@ blockchainTests.resets('MixinStakeStorage unit tests', env => {
     const INDEX_ONE = new BigNumber(1);
 
     before(async () => {
-        testContract = await TestMixinStakeStorageContract.deployFrom0xArtifactAsync(
+        testContract = await TestMixinStakeStorageContract.deployFrompowerchainArtifactAsync(
             artifacts.TestMixinStakeStorage,
             env.provider,
             env.txDefaults,

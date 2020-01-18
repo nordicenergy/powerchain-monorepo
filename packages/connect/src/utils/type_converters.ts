@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
 
-import { APIOrder } from '@0x/types';
+import {APIOrder} from '@powerchain/types';
 
-import { orderParsingUtils } from './order_parsing_utils';
+import {orderParsingUtils} from './order_parsing_utils';
 
 export const typeConverters = {
     convertOrderbookStringFieldsToBigNumber(orderbook: any): any {

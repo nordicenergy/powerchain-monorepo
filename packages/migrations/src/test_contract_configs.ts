@@ -1,22 +1,22 @@
 #!/usr/bin/env node
-import { getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
+import {getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
 import {
     ERC1155ProxyContract,
     ERC20ProxyContract,
     ERC721ProxyContract,
     MultiAssetProxyContract,
-} from '@0x/contracts-asset-proxy';
-import { ExchangeContract } from '@0x/contracts-exchange';
-import { ZeroExGovernorContract } from '@0x/contracts-multisig';
-import { StakingContract, StakingProxyContract, ZrxVaultContract } from '@0x/contracts-staking';
-import { EmptyWalletSubprovider, RPCSubprovider, Web3ProviderEngine } from '@0x/subproviders';
-import { AssetProxyId } from '@0x/types';
-import { logUtils, providerUtils } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { SupportedProvider } from 'ethereum-types';
+} from '@powerchain/contracts-asset-proxy';
+import {ExchangeContract} from '@powerchain/contracts-exchange';
+import {ZeroExGovernorContract} from '@powerchain/contracts-multisig';
+import {NetVaultContract, StakingContract, StakingProxyContract} from '@powerchain/contracts-staking';
+import {EmptyWalletSubprovider, RPCSubprovider, Web3ProviderEngine} from '@powerchain/subproviders';
+import {AssetProxyId} from '@powerchain/types';
+import {logUtils, providerUtils} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {SupportedProvider} from 'ethereum-types';
 
-import { getConfigsByChainId } from './utils/configs_by_chain';
-import { getTimelockRegistrationsByChainId } from './utils/timelocks';
+import {getConfigsByChainId} from './utils/configs_by_chain';
+import {getTimelockRegistrationsByChainId} from './utils/timelocks';
 
 // NOTE: add your own Infura Project ID to RPC urls before running
 const INFURA_PROJECT_ID = '';
@@ -51,7 +51,7 @@ async function testContractConfigsAsync(provider: SupportedProvider): Promise<vo
     const governor = new ZeroExGovernorContract(addresses.zeroExGovernor, provider);
     const stakingProxy = new StakingProxyContract(addresses.stakingProxy, provider);
     const stakingContract = new StakingContract(addresses.stakingProxy, provider);
-    const zrxVault = new ZrxVaultContract(addresses.zrxVault, provider);
+    const zrxVault = new NetVaultContract(addresses.zrxVault, provider);
 
     async function verifyExchangeV2ConfigsAsync(): Promise<void> {
         const exchangeOwner = await exchangeV2.owner().callAsync();
@@ -143,8 +143,8 @@ async function testContractConfigsAsync(provider: SupportedProvider): Promise<vo
         const isMAPAuthorizedInER20Proxy = await erc20Proxy.authorized(multiAssetProxy.address).callAsync();
         warnIfMismatch(isMAPAuthorizedInER20Proxy, true, 'MultiAssetProxy not authorized in ERC20Proxy');
 
-        const isZrxVaultAuthorizedInER20Proxy = await erc20Proxy.authorized(zrxVault.address).callAsync();
-        warnIfMismatch(isZrxVaultAuthorizedInER20Proxy, true, 'ZrxVault not authorized in ERC20Proxy');
+        const isNetVaultAuthorizedInER20Proxy = await erc20Proxy.authorized(zrxVault.address).callAsync();
+        warnIfMismatch(isNetVaultAuthorizedInER20Proxy, true, 'NetVault not authorized in ERC20Proxy');
 
         // Verify ERC721Proxy configs
         const erc721ProxyOwner = await erc721Proxy.owner().callAsync();
@@ -265,8 +265,8 @@ async function testContractConfigsAsync(provider: SupportedProvider): Promise<vo
         const isExchangeRegistered = await stakingContract.validExchanges(addresses.exchange).callAsync();
         warnIfMismatch(isExchangeRegistered, true, 'Exchange not registered in StakingProxy');
 
-        const zrxVaultAddress = await stakingContract.getZrxVault().callAsync();
-        warnIfMismatch(zrxVaultAddress, addresses.zrxVault, 'Unexpected ZrxVault set in StakingProxy');
+        const zrxVaultAddress = await stakingContract.getNetVault().callAsync();
+        warnIfMismatch(zrxVaultAddress, addresses.zrxVault, 'Unexpected NetVault set in StakingProxy');
 
         const wethAddress = await stakingContract.getWethContract().callAsync();
         warnIfMismatch(wethAddress, addresses.etherToken, 'Unexpected WETH contract set in StakingProxy');
@@ -284,19 +284,19 @@ async function testContractConfigsAsync(provider: SupportedProvider): Promise<vo
         warnIfMismatch(isGovernorAuthorizedInStakingProxy, true, 'ZeroExGovernor not authorized in StakingProxy');
 
         const zrxVaultOwner = await zrxVault.owner().callAsync();
-        warnIfMismatch(zrxVaultOwner, addresses.zeroExGovernor, 'Unexpected ZrxVault owner');
+        warnIfMismatch(zrxVaultOwner, addresses.zeroExGovernor, 'Unexpected NetVault owner');
 
         const zrxVaultAuthorizedAddresses = await zrxVault.getAuthorizedAddresses().callAsync();
-        warnIfMismatch(zrxVaultAuthorizedAddresses.length, 1, 'Unexpected number of authorized addresses in ZrxVault');
+        warnIfMismatch(zrxVaultAuthorizedAddresses.length, 1, 'Unexpected number of authorized addresses in NetVault');
 
-        const isGovernorAuthorizedInZrxVault = await zrxVault.authorized(addresses.zeroExGovernor).callAsync();
-        warnIfMismatch(isGovernorAuthorizedInZrxVault, true, 'ZeroExGovernor not authorized in ZrxVault');
+        const isGovernorAuthorizedInNetVault = await zrxVault.authorized(addresses.zeroExGovernor).callAsync();
+        warnIfMismatch(isGovernorAuthorizedInNetVault, true, 'ZeroExGovernor not authorized in NetVault');
 
-        const zrxAssetProxy = await zrxVault.zrxAssetProxy().callAsync();
-        warnIfMismatch(zrxAssetProxy, addresses.erc20Proxy, 'Unexpected ERC20Proxy set in ZrxVault');
+        const netAssetProxy = await zrxVault.netAssetProxy().callAsync();
+        warnIfMismatch(netAssetProxy, addresses.erc20Proxy, 'Unexpected ERC20Proxy set in NetVault');
 
         const zrxVaultStakingProxy = await zrxVault.stakingProxyAddress().callAsync();
-        warnIfMismatch(zrxVaultStakingProxy, addresses.stakingProxy, 'Unexpected StakingProxy set in ZrxVault');
+        warnIfMismatch(zrxVaultStakingProxy, addresses.stakingProxy, 'Unexpected StakingProxy set in NetVault');
 
         const params = await stakingContract.getParams().callAsync();
         warnIfMismatch(

@@ -1,7 +1,7 @@
-import { Compiler } from '@0x/sol-compiler';
+import {Compiler} from '@powerchain/sol-compiler';
 import * as fs from 'fs';
 import * as path from 'path';
-import { promisify } from 'util';
+import {promisify} from 'util';
 
 import {
     ArrayTypeNameNode,

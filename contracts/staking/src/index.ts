@@ -2,10 +2,10 @@ export {
     IStakingContract,
     IStakingEventsContract,
     IStakingProxyContract,
-    IZrxVaultContract,
+    INetVaultContract,
     LibStakingRichErrorsContract,
     TestStakingContract,
-    ZrxVaultContract,
+    NetVaultContract,
     StakingAuthorizedAddressAddedEventArgs,
     StakingAuthorizedAddressRemovedEventArgs,
     StakingContract,
@@ -41,7 +41,7 @@ export {
     IStakingEventsRewardsPaidEventArgs,
 } from './wrappers';
 export { artifacts } from './artifacts';
-export { StakingRevertErrors, FixedMathRevertErrors } from '@0x/utils';
+export { StakingRevertErrors, FixedMathRevertErrors } from '@powerchain/utils';
 export { constants } from './constants';
 export {
     AggregatedStats,

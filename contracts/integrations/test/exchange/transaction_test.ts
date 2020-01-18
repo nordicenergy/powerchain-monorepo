@@ -1,5 +1,5 @@
 // tslint:disable: max-file-line-count
-import { IAssetDataContract } from '@0x/contracts-asset-proxy';
+import {IAssetDataContract} from '@powerchain/contracts-asset-proxy';
 import {
     ExchangeCancelEventArgs,
     ExchangeCancelUpToEventArgs,
@@ -9,8 +9,8 @@ import {
     ExchangeRevertErrors,
     ExchangeSignatureValidatorApprovalEventArgs,
     ExchangeTransactionExecutionEventArgs,
-} from '@0x/contracts-exchange';
-import { ReferenceFunctions } from '@0x/contracts-exchange-libs';
+} from '@powerchain/contracts-exchange';
+import {ReferenceFunctions} from '@powerchain/contracts-exchange-libs';
 import {
     blockchainTests,
     constants,
@@ -22,16 +22,16 @@ import {
     randomAddress,
     transactionHashUtils,
     verifyEventsFromLogs,
-} from '@0x/contracts-test-utils';
-import { FillResults, OrderStatus, SignatureType, SignedOrder } from '@0x/types';
-import { BigNumber, hexUtils } from '@0x/utils';
-import { LogWithDecodedArgs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {FillResults, OrderStatus, SignatureType, SignedOrder} from '@powerchain/types';
+import {BigNumber, hexUtils} from '@powerchain/utils';
+import {LogWithDecodedArgs} from 'ethereum-types';
 
-import { Actor } from '../framework/actors/base';
-import { FeeRecipient } from '../framework/actors/fee_recipient';
-import { Maker } from '../framework/actors/maker';
-import { Taker } from '../framework/actors/taker';
-import { DeploymentManager } from '../framework/deployment_manager';
+import {Actor} from '../framework/actors/base';
+import {FeeRecipient} from '../framework/actors/fee_recipient';
+import {Maker} from '../framework/actors/maker';
+import {Taker} from '../framework/actors/taker';
+import {DeploymentManager} from '../framework/deployment_manager';
 
 // tslint:disable:no-unnecessary-type-assertion
 blockchainTests.resets('Transaction integration tests', env => {

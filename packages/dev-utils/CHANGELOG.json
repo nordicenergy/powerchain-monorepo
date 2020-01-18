@@ -163,7 +163,7 @@
         "version": "2.3.0",
         "changes": [
             {
-                "note": "Move `tokenUtils` here from `@0x/contract-wrappers`",
+                "note": "Move `tokenUtils` here from `@powerchain/contract-wrappers`",
                 "pr": 2037
             }
         ],
@@ -582,7 +582,7 @@
                 "pr": 589
             },
             {
-                "note": "Move callbackErrorReporter over from 0x.js",
+                "note": "Move callbackErrorReporter over from powerchain.js",
                 "pr": 579
             }
         ],
@@ -651,7 +651,7 @@
                 "note": "Reduce npm package size by adding an `.npmignore` file."
             },
             {
-                "note": "Move `@0xproject/web3-wrapper` to dependencies from devDependencies."
+                "note": "Move `@powerchainproject/web3-wrapper` to dependencies from devDependencies."
             }
         ],
         "timestamp": 1521298800

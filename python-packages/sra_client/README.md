@@ -1,37 +1,37 @@
-# 0x-sra-client
+# powerchain-sra-client
 
-A Python client for interacting with servers conforming to [the Standard Relayer API specification](https://github.com/0xProject/0x-monorepo/tree/development/packages/sra-spec).
+A Python client for interacting with servers conforming to [the Standard Relayer API specification](https://github.com/nordicenergy/powerchain-protocol-dev-kit/tree/development/packages/sra-spec).
 
-Read the [documentation](http://0x-sra-client-py.s3-website-us-east-1.amazonaws.com/)
+Read the [documentation](http://powerchain-sra-client-py.s3-website-us-east-1.amazonaws.com/)
 
 # Schemas
 
-The [JSON schemas](http://json-schema.org/) for the API payloads and responses can be found in [@0xproject/json-schemas](https://github.com/0xProject/0x-monorepo/tree/development/packages/json-schemas). Examples of each payload and response can be found in the 0x.js library's [test suite](https://github.com/0xProject/0x-monorepo/blob/development/packages/json-schemas/test/schema_test.ts#L1).
+The [JSON schemas](http://json-schema.org/) for the API payloads and responses can be found in [@powerchainproject/json-schemas](https://github.com/nordicenergy/powerchain-protocol-dev-kit/tree/development/packages/json-schemas). Examples of each payload and response can be found in the powerchain.js library's [test suite](https://github.com/nordicenergy/powerchain-protocol-dev-kit/blob/development/packages/json-schemas/test/schema_test.ts#L1).
 
 ```bash
-pip install 0x-json-schemas
+pip install powerchain-json-schemas
 ```
 
-You can easily validate your API's payloads and responses using the [0x-json-schemas](https://github.com/0xProject/0x.js/tree/development/python-packages/json_schemas) package:
+You can easily validate your API's payloads and responses using the [powerchain-json-schemas](https://github.com/powerchainProject/powerchain.js/tree/development/python-packages/json_schemas) package:
 
 ```python
 from zero_ex.json_schemas import assert_valid
 from zero_ex.order_utils import Order
 
 order: Order = {
-    'makerAddress': "0x0000000000000000000000000000000000000000",
-    'takerAddress': "0x0000000000000000000000000000000000000000",
-    'feeRecipientAddress': "0x0000000000000000000000000000000000000000",
-    'senderAddress': "0x0000000000000000000000000000000000000000",
+    'makerAddress': "powerchain0000000000000000000000000000000000000000",
+    'takerAddress': "powerchain0000000000000000000000000000000000000000",
+    'feeRecipientAddress': "powerchain0000000000000000000000000000000000000000",
+    'senderAddress': "powerchain0000000000000000000000000000000000000000",
     'makerAssetAmount': "1000000000000000000",
     'takerAssetAmount': "1000000000000000000",
     'makerFee': "0",
     'takerFee': "0",
     'expirationTimeSeconds': "12345",
     'salt': "12345",
-    'makerAssetData': "0x0000000000000000000000000000000000000000",
-    'takerAssetData': "0x0000000000000000000000000000000000000000",
-    'exchangeAddress': "0x0000000000000000000000000000000000000000",
+    'makerAssetData': "powerchain0000000000000000000000000000000000000000",
+    'takerAssetData': "powerchain0000000000000000000000000000000000000000",
+    'exchangeAddress': "powerchain0000000000000000000000000000000000000000",
 }
 
 assert_valid(order, "/orderSchema")
@@ -147,7 +147,7 @@ Unless the spec defines otherwise, errors to bad requests should respond with HT
 
 ## Error reporting format
 
-For all **400** responses, see the [error response schema](https://github.com/0xProject/0x-monorepo/blob/development/packages/json-schemas/schemas/relayer_api_error_response_schema.ts#L1).
+For all **400** responses, see the [error response schema](https://github.com/nordicenergy/powerchain-protocol-dev-kit/blob/development/packages/json-schemas/schemas/relayer_api_error_response_schema.ts#L1).
 
 ```json
 {
@@ -186,44 +186,44 @@ Validation error codes:
 
 # Asset Data Encoding
 
-As we now support multiple [token transfer proxies](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#assetproxy), the identifier of which proxy to use for the token transfer must be encoded, along with the token information. Each proxy in 0x v2 has a unique identifier. If you're using 0x.js there will be helper methods for this [encoding](https://0x.org/docs/tools/0x.js#zeroEx-encodeERC20AssetData) and [decoding](https://0x.org/docs/tools/0x.js#zeroEx-decodeAssetProxyId).
+As we now support multiple [token transfer proxies](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#assetproxy), the identifier of which proxy to use for the token transfer must be encoded, along with the token information. Each proxy in powerchain v2 has a unique identifier. If you're using powerchain.js there will be helper methods for this [encoding](https://powerchain.org/docs/tools/powerchain.js#zeroEx-encodeERC20AssetData) and [decoding](https://powerchain.org/docs/tools/powerchain.js#zeroEx-decodeAssetProxyId).
 
 The identifier for the Proxy uses a similar scheme to [ABI function selectors](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI#function-selector).
 
 ```js
-// ERC20 Proxy ID  0xf47261b0
+// ERC20 Proxy ID  powerchainf47261b0
 bytes4(keccak256('ERC20Token(address)'));
-// ERC721 Proxy ID 0x02571792
+// ERC721 Proxy ID powerchain02571792
 bytes4(keccak256('ERC721Token(address,uint256)'));
 ```
 
 Asset data is encoded using [ABI encoding](https://solidity.readthedocs.io/en/develop/abi-spec.html).
 
-For example, encoding the ERC20 token contract (address: 0x1dc4c1cefef38a777b15aa20260a54e584b16c48) using the ERC20 Transfer Proxy (id: 0xf47261b0) would be:
+For example, encoding the ERC20 token contract (address: powerchain1dc4c1cefef38a777b15aa20260a54e584b16c48) using the ERC20 Transfer Proxy (id: powerchainf47261b0) would be:
 
 ```bash
-0xf47261b00000000000000000000000001dc4c1cefef38a777b15aa20260a54e584b16c48
+powerchainf47261b00000000000000000000000001dc4c1cefef38a777b15aa20260a54e584b16c48
 ```
 
-Encoding the ERC721 token contract (address: `0x371b13d97f4bf77d724e78c16b7dc74099f40e84`), token id (id: `99`, which hex encoded is `0x63`) and the ERC721 Transfer Proxy (id: 0x02571792) would be:
+Encoding the ERC721 token contract (address: `powerchain371b13d97f4bf77d724e78c16b7dc74099f40e84`), token id (id: `99`, which hex encoded is `powerchain63`) and the ERC721 Transfer Proxy (id: powerchain02571792) would be:
 
 ```bash
-0x02571792000000000000000000000000371b13d97f4bf77d724e78c16b7dc74099f40e840000000000000000000000000000000000000000000000000000000000000063
+powerchain02571792000000000000000000000000371b13d97f4bf77d724e78c16b7dc74099f40e840000000000000000000000000000000000000000000000000000000000000063
 ```
 
-For more information see [the Asset Proxy](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#erc20proxy) section of the v2 spec and the [Ethereum ABI Spec](https://solidity.readthedocs.io/en/develop/abi-spec.html).
+For more information see [the Asset Proxy](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#erc20proxy) section of the v2 spec and the [Ethereum ABI Spec](https://solidity.readthedocs.io/en/develop/abi-spec.html).
 
 # Meta Data in Order Responses
 
 In v2 of the standard relayer API we added the `metaData` field. It is meant to provide a standard place for relayers to put optional, custom or non-standard fields that may of interest to the consumer of the API.
 
-A good example of such a field is `remainingTakerAssetAmount`, which is a convenience field that communicates how much of a 0x order is potentially left to be filled. Unlike the other fields in a 0x order, it is not guaranteed to be correct as it is derived from whatever mechanism the implementer (ie. the relayer) is using. While convenient for prototyping and low stakes situations, we recommend validating the value of the field by checking the state of the blockchain yourself.
+A good example of such a field is `remainingTakerAssetAmount`, which is a convenience field that communicates how much of a powerchain order is potentially left to be filled. Unlike the other fields in a powerchain order, it is not guaranteed to be correct as it is derived from whatever mechanism the implementer (ie. the relayer) is using. While convenient for prototyping and low stakes situations, we recommend validating the value of the field by checking the state of the blockchain yourself.
 
 # Misc.
 
 -   All requests and responses should be of **application/json** content type
 -   All token amounts are sent in amounts of the smallest level of precision (base units). (e.g if a token has 18 decimal places, selling 1 token would show up as selling `'1000000000000000000'` units by this API).
--   All addresses are sent as lower-case (non-checksummed) Ethereum addresses with the `0x` prefix.
+-   All addresses are sent as lower-case (non-checksummed) Ethereum addresses with the `powerchain` prefix.
 -   All parameters are to be written in `lowerCamelCase`.
 
 This Python package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
@@ -243,10 +243,10 @@ Python 2.7 and 3.4+
 If the python package is hosted on Github, you can install directly from Github
 
 ```sh
-pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+pip install git+https://github.com/GIT_USER_ID/GIT_PWRCO_ID.git
 ```
 
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_PWRCO_ID.git`)
 
 Then import the package:
 
@@ -283,8 +283,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = sra_client.DefaultApi(sra_client.ApiClient(configuration))
-asset_data_a = 0xf47261b04c32345ced77393b3530b1eed0f346429d # str | The assetData value for the first asset in the pair. (optional)
-asset_data_b = 0x0257179264389b814a946f3e92105513705ca6b990 # str | The assetData value for the second asset in the pair. (optional)
+asset_data_a = powerchainf47261b04c32345ced77393b3530b1eed0f346429d # str | The assetData value for the first asset in the pair. (optional)
+asset_data_b = powerchain0257179264389b814a946f3e92105513705ca6b990 # str | The assetData value for the second asset in the pair. (optional)
 network_id = 42 # float | The id of the Ethereum network (optional) (default to 1)
 page = 3 # float | The number of the page to request in the collection. (optional) (default to 1)
 per_page = 10 # float | The number of records to return per page. (optional) (default to 100)
@@ -312,7 +312,7 @@ pip install -e .[dev]
 
 ### Test
 
-Tests depend on a running instance of 0x-launch-kit-backend, backed by a Ganache node with the 0x contracts deployed in it. For convenience, a docker-compose file is provided that creates this environment. And a shortcut is provided to interface with that file: `./setup.py start_test_relayer` will start those services. With them running, the tests can be run with `./setup.py test`. When you're done with testing, you can `./setup.py stop_test_relayer`.
+Tests depend on a running instance of powerchain-launch-kit-backend, backed by a Ganache node with the powerchain contracts deployed in it. For convenience, a docker-compose file is provided that creates this environment. And a shortcut is provided to interface with that file: `./setup.py start_test_relayer` will start those services. With them running, the tests can be run with `./setup.py test`. When you're done with testing, you can `./setup.py stop_test_relayer`.
 
 ### Clean
 

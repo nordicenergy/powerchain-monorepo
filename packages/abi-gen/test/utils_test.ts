@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import 'mocha';
 import * as tmp from 'tmp';
 
-import { utils } from '../src/utils';
+import {utils} from '../src/utils';
 
 tmp.setGracefulCleanup(); // remove tmp files even if there are failures
 
@@ -16,8 +16,8 @@ describe('makeOutputFileName()', () => {
     it('should handle Metacoin usage', () => {
         expect(utils.makeOutputFileName('Metacoin')).to.equal('metacoin');
     });
-    it('should handle special zrx_token case', () => {
-        expect(utils.makeOutputFileName('ZRXToken')).to.equal('zrx_token');
+    it('should handle special net_token case', () => {
+        expect(utils.makeOutputFileName('NETToken')).to.equal('net_token');
     });
     it('should handle special erc_token case', () => {
         expect(utils.makeOutputFileName('ERC20Token')).to.equal('erc20_token');

@@ -1,8 +1,8 @@
-import { Order } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { AbiDefinition } from 'ethereum-types';
+import {Order} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {AbiDefinition} from 'ethereum-types';
 
-export { OrderStatus } from '@0x/types';
+export { OrderStatus } from '@powerchain/types';
 
 export interface ERC20BalancesByOwner {
     [ownerAddress: string]: {

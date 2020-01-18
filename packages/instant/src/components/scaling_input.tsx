@@ -1,11 +1,11 @@
-import { ObjectMap } from '@0x/types';
+import {ObjectMap} from '@powerchain/types';
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import { ColorOption } from '../style/theme';
-import { util } from '../util/util';
+import {ColorOption} from '../style/theme';
+import {util} from '../util/util';
 
-import { Input } from './ui/input';
+import {Input} from './ui/input';
 
 export enum ScalingInputPhase {
     FixedFontSize,

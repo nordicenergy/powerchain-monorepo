@@ -107,7 +107,7 @@
                 "pr": 1793
             },
             {
-                "note": "Remove ZRX fees in lieu of arbitrary maker and taker fee tokens.",
+                "note": "Remove NET fees in lieu of arbitrary maker and taker fee tokens.",
                 "pr": 1819
             },
             {
@@ -359,7 +359,7 @@
                 "pr": 1793
             },
             {
-                "note": "Remove ZRX fees in lieu of arbitrary maker and taker fee tokens.",
+                "note": "Remove NET fees in lieu of arbitrary maker and taker fee tokens.",
                 "pr": 1819
             },
             {
@@ -549,7 +549,7 @@
         "version": "2.1.10",
         "changes": [
             {
-                "note": "Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies.",
+                "note": "Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies.",
                 "pr": 1995
             }
         ],

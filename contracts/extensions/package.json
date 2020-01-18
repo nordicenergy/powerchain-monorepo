@@ -1,10 +1,10 @@
 {
-    "name": "@0x/contracts-extensions",
+    "name": "@powerchain/contracts-extensions",
     "version": "5.1.2",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "Smart contract extensions of 0x protocol",
+    "description": "Smart contract extensions of powerchain protocol",
     "main": "lib/src/index.js",
     "directories": {
         "test": "test"
@@ -44,32 +44,32 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/contracts/extensions/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/contracts/extensions/README.md",
     "devDependencies": {
-        "@0x/abi-gen": "^5.0.3",
-        "@0x/contracts-asset-proxy": "^3.1.0",
-        "@0x/contracts-dev-utils": "^1.0.3",
-        "@0x/contracts-erc20": "^3.0.3",
-        "@0x/contracts-erc721": "^3.0.3",
-        "@0x/contracts-exchange": "^3.0.3",
-        "@0x/contracts-exchange-libs": "^4.0.3",
-        "@0x/contracts-gen": "^2.0.3",
-        "@0x/contracts-test-utils": "^5.1.0",
-        "@0x/contracts-utils": "^4.0.3",
-        "@0x/dev-utils": "^3.1.0",
-        "@0x/order-utils": "^10.1.0",
-        "@0x/sol-compiler": "^4.0.3",
-        "@0x/ts-doc-gen": "^0.0.22",
-        "@0x/tslint-config": "^4.0.0",
-        "@0x/types": "^3.1.1",
-        "@0x/utils": "^5.1.2",
-        "@0x/web3-wrapper": "^7.0.3",
+        "@powerchain/abi-gen": "^5.0.3",
+        "@powerchain/contracts-asset-proxy": "^3.1.0",
+        "@powerchain/contracts-dev-utils": "^1.0.3",
+        "@powerchain/contracts-erc20": "^3.0.3",
+        "@powerchain/contracts-erc721": "^3.0.3",
+        "@powerchain/contracts-exchange": "^3.0.3",
+        "@powerchain/contracts-exchange-libs": "^4.0.3",
+        "@powerchain/contracts-gen": "^2.0.3",
+        "@powerchain/contracts-test-utils": "^5.1.0",
+        "@powerchain/contracts-utils": "^4.0.3",
+        "@powerchain/dev-utils": "^3.1.0",
+        "@powerchain/order-utils": "^10.1.0",
+        "@powerchain/sol-compiler": "^4.0.3",
+        "@powerchain/ts-doc-gen": "^0.0.22",
+        "@powerchain/tslint-config": "^4.0.0",
+        "@powerchain/types": "^3.1.1",
+        "@powerchain/utils": "^5.1.2",
+        "@powerchain/web3-wrapper": "^7.0.3",
         "@types/lodash": "4.14.104",
         "@types/mocha": "^5.2.7",
         "@types/node": "*",
@@ -91,8 +91,8 @@
         "typescript": "3.0.1"
     },
     "dependencies": {
-        "@0x/base-contract": "^6.0.3",
-        "@0x/typescript-typings": "^5.0.1",
+        "@powerchain/base-contract": "^6.0.3",
+        "@powerchain/typescript-typings": "^5.0.1",
         "ethereum-types": "^3.0.0"
     },
     "publishConfig": {

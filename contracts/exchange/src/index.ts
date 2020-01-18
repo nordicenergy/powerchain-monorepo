@@ -15,11 +15,11 @@ export {
     ExchangeProtocolFeeMultiplierEventArgs,
     ExchangeTransactionExecutionEventArgs,
 } from './wrappers';
-export { ExchangeRevertErrors } from '@0x/utils';
+export { ExchangeRevertErrors } from '@powerchain/utils';
 export { exchangeDataEncoder } from './exchange_data_encoder';
-export { SignedOrder } from '@0x/types';
-export { ExchangeFunctionName } from '@0x/contracts-test-utils';
-export { DevUtilsContract } from '@0x/contracts-dev-utils';
+export { SignedOrder } from '@powerchain/types';
+export { ExchangeFunctionName } from '@powerchain/contracts-test-utils';
+export { DevUtilsContract } from '@powerchain/contracts-dev-utils';
 export {
     ContractArtifact,
     ContractChains,

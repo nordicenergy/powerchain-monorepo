@@ -1,17 +1,17 @@
-import { ContractSource, Resolver } from '@0x/sol-resolver';
-import { fetchAsync, logUtils } from '@0x/utils';
+import {ContractSource, Resolver} from '@powerchain/sol-resolver';
+import {fetchAsync, logUtils} from '@powerchain/utils';
 import chalk from 'chalk';
-import { execSync } from 'child_process';
-import { ContractArtifact } from 'ethereum-types';
+import {execSync} from 'child_process';
+import {ContractArtifact} from 'ethereum-types';
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 import * as path from 'path';
 import * as requireFromString from 'require-from-string';
 import * as solc from 'solc';
 
-import { constants } from './constants';
-import { fsWrapper } from './fs_wrapper';
-import { BinaryPaths, CompilationError } from './types';
+import {constants} from './constants';
+import {fsWrapper} from './fs_wrapper';
+import {BinaryPaths, CompilationError} from './types';
 
 /**
  * Gets contract data or returns if an artifact does not exist.
@@ -168,8 +168,8 @@ export async function compileDockerAsync(
 
 /**
  * Example "relative" paths:
- * /user/leo/0x-monorepo/contracts/extensions/contracts/extension.sol -> extension.sol
- * /user/leo/0x-monorepo/node_modules/@0x/contracts-protocol/contracts/exchange.sol -> @0x/contracts-protocol/contracts/exchange.sol
+ * /user/leo/powerchain-monorepo/contracts/extensions/contracts/extension.sol -> extension.sol
+ * /user/leo/powerchain-monorepo/node_modules/@powerchain/contracts-protocol/contracts/exchange.sol -> @powerchain/contracts-protocol/contracts/exchange.sol
  */
 function makeContractPathRelative(
     absolutePath: string,
@@ -306,7 +306,7 @@ function recursivelyGatherDependencySources(
         if (importPath.startsWith('.')) {
             /**
              * Some imports path are relative ("../Token.sol", "./Wallet.sol")
-             * while others are absolute ("Token.sol", "@0x/contracts/Wallet.sol")
+             * while others are absolute ("Token.sol", "@powerchain/contracts/Wallet.sol")
              * And we need to append the base path for relative imports.
              */
             importPath = path.resolve(`/${contractFolder}`, importPath).replace('/', '');
@@ -379,7 +379,7 @@ export function getSolcJSVersionFromPath(modulePath: string): string {
 }
 
 /**
- * Solidity compiler emits the bytecode without a 0x prefix for a hex. This function fixes it if bytecode is present.
+ * Solidity compiler emits the bytecode without a powerchain prefix for a hex. This function fixes it if bytecode is present.
  * @param compiledContract The standard JSON output section for a contract. Geth modified in place.
  */
 export function addHexPrefixToContractBytecode(compiledContract: solc.StandardContractOutput): void {

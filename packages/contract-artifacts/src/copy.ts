@@ -1,26 +1,26 @@
-import { logUtils } from '@0x/utils';
+import {logUtils} from '@powerchain/utils';
 import * as fs from 'fs';
 import * as path from 'path';
 
 import * as artifacts from './index';
 
-const MONOREPO_ROOT = path.join(__dirname, '../../../..');
+const MONOPWRCO_ROOT = path.join(__dirname, '../../../..');
 
 // HACK (xianny): can't import the root package.json normally because it is outside rootDir of this project
-const pkgJson = JSON.parse(fs.readFileSync(path.join(MONOREPO_ROOT, 'package.json')).toString());
+const pkgJson = JSON.parse(fs.readFileSync(path.join(MONOPWRCO_ROOT, 'package.json')).toString());
 const pkgNames = pkgJson.config.contractsPackages.split(' ');
 
 const artifactsToPublish = Object.keys(artifacts);
 
 const contractsDirs = [];
 for (const pkgName of pkgNames) {
-    if (!pkgName.startsWith('@0x/contracts-')) {
+    if (!pkgName.startsWith('@powerchain/contracts-')) {
         throw new Error(`Invalid package name: [${pkgName}]. Contracts packages must be prefixed with 'contracts-'`);
     }
     contractsDirs.push(pkgName.split('/contracts-')[1]);
 }
 
-const contractsPath = path.join(MONOREPO_ROOT, 'contracts');
+const contractsPath = path.join(MONOPWRCO_ROOT, 'contracts');
 const allArtifactPaths = [];
 for (const dir of contractsDirs) {
     const artifactsDir = path.join(contractsPath, dir, 'generated-artifacts');

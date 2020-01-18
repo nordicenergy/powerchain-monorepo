@@ -1,24 +1,24 @@
-import { AssetProxyId } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {AssetProxyId} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Provider as ReduxProvider } from 'react-redux';
+import {Provider as ReduxProvider} from 'react-redux';
 
-import { ACCOUNT_UPDATE_INTERVAL_TIME_MS, SWAP_QUOTE_UPDATE_INTERVAL_TIME_MS } from '../constants';
-import { SelectedAssetThemeProvider } from '../containers/selected_asset_theme_provider';
-import { asyncData } from '../redux/async_data';
-import { DEFAULT_STATE, DefaultState, State } from '../redux/reducer';
-import { store, Store } from '../redux/store';
-import { fonts } from '../style/fonts';
-import { AccountState, Network, QuoteFetchOrigin, ZeroExInstantBaseConfig } from '../types';
-import { analytics, disableAnalytics } from '../util/analytics';
-import { assetUtils } from '../util/asset';
-import { errorFlasher } from '../util/error_flasher';
-import { setupRollbar } from '../util/error_reporter';
-import { gasPriceEstimator } from '../util/gas_price_estimator';
-import { Heartbeater } from '../util/heartbeater';
-import { generateAccountHeartbeater, generateSwapQuoteHeartbeater } from '../util/heartbeater_factory';
-import { providerStateFactory } from '../util/provider_state_factory';
+import {ACCOUNT_UPDATE_INTERVAL_TIME_MS, SWAP_QUOTE_UPDATE_INTERVAL_TIME_MS} from '../constants';
+import {SelectedAssetThemeProvider} from '../containers/selected_asset_theme_provider';
+import {asyncData} from '../redux/async_data';
+import {DEFAULT_STATE, DefaultState, State} from '../redux/reducer';
+import {store, Store} from '../redux/store';
+import {fonts} from '../style/fonts';
+import {AccountState, Network, QuoteFetchOrigin, ZeroExInstantBaseConfig} from '../types';
+import {analytics, disableAnalytics} from '../util/analytics';
+import {assetUtils} from '../util/asset';
+import {errorFlasher} from '../util/error_flasher';
+import {setupRollbar} from '../util/error_reporter';
+import {gasPriceEstimator} from '../util/gas_price_estimator';
+import {Heartbeater} from '../util/heartbeater';
+import {generateAccountHeartbeater, generateSwapQuoteHeartbeater} from '../util/heartbeater_factory';
+import {providerStateFactory} from '../util/provider_state_factory';
 
 export type ZeroExInstantProviderProps = ZeroExInstantBaseConfig;
 

@@ -1,6 +1,6 @@
-import { ERC20TokenEvents, ERC20TokenTransferEventArgs } from '@0x/contracts-erc20';
-import { ExchangeEvents, ExchangeFillEventArgs } from '@0x/contracts-exchange';
-import { ReferenceFunctions } from '@0x/contracts-exchange-libs';
+import {ERC20TokenEvents, ERC20TokenTransferEventArgs} from '@powerchain/contracts-erc20';
+import {ExchangeEvents, ExchangeFillEventArgs} from '@powerchain/contracts-exchange';
+import {ReferenceFunctions} from '@powerchain/contracts-exchange-libs';
 import {
     constants as stakingConstants,
     IStakingEventsEpochEndedEventArgs,
@@ -8,7 +8,7 @@ import {
     IStakingEventsEvents,
     IStakingEventsRewardsPaidEventArgs,
     IStakingEventsStakingPoolEarnedRewardsInEpochEventArgs,
-} from '@0x/contracts-staking';
+} from '@powerchain/contracts-staking';
 import {
     blockchainTests,
     constants,
@@ -16,20 +16,20 @@ import {
     orderHashUtils,
     toBaseUnitAmount,
     verifyEvents,
-} from '@0x/contracts-test-utils';
-import { SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { Actor } from '../framework/actors/base';
-import { FeeRecipient } from '../framework/actors/fee_recipient';
-import { OperatorStakerMaker, StakerKeeper } from '../framework/actors/hybrids';
-import { Maker } from '../framework/actors/maker';
-import { Taker } from '../framework/actors/taker';
-import { actorAddressesByName } from '../framework/actors/utils';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { LocalBalanceStore } from '../framework/balances/local_balance_store';
-import { DeploymentManager } from '../framework/deployment_manager';
+import {Actor} from '../framework/actors/base';
+import {FeeRecipient} from '../framework/actors/fee_recipient';
+import {OperatorStakerMaker, StakerKeeper} from '../framework/actors/hybrids';
+import {Maker} from '../framework/actors/maker';
+import {Taker} from '../framework/actors/taker';
+import {actorAddressesByName} from '../framework/actors/utils';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {LocalBalanceStore} from '../framework/balances/local_balance_store';
+import {DeploymentManager} from '../framework/deployment_manager';
 
 blockchainTests.resets('fillOrder integration tests', env => {
     let deployment: DeploymentManager;
@@ -99,10 +99,10 @@ blockchainTests.resets('fillOrder integration tests', env => {
         const tokenOwners = {
             ...actorAddressesByName([feeRecipient, operator, maker, taker, delegator]),
             StakingProxy: deployment.staking.stakingProxy.address,
-            ZrxVault: deployment.staking.zrxVault.address,
+            NetVault: deployment.staking.zrxVault.address,
         };
         const tokenContracts = {
-            erc20: { makerToken, takerToken, ZRX: deployment.tokens.zrx, WETH: deployment.tokens.weth },
+            erc20: { makerToken, takerToken, NET: deployment.tokens.zrx, WETH: deployment.tokens.weth },
         };
         balanceStore = new BlockchainBalanceStore(tokenOwners, tokenContracts);
         await balanceStore.updateBalancesAsync();
@@ -211,7 +211,7 @@ blockchainTests.resets('fillOrder integration tests', env => {
         );
     });
     it('should pay out rewards to operator and delegator', async () => {
-        // Operator and delegator each stake some ZRX; wait an epoch so that the stake is active.
+        // Operator and delegator each stake some NET; wait an epoch so that the stake is active.
         await operator.stakeAsync(toBaseUnitAmount(100), poolId);
         await delegator.stakeAsync(toBaseUnitAmount(50), poolId);
         await delegator.endEpochAsync();
@@ -316,7 +316,7 @@ blockchainTests.resets('fillOrder integration tests', env => {
         expect(poolStats.feesCollected).to.bignumber.equal(DeploymentManager.protocolFee);
     });
     it('should collect WETH fees and pay out rewards', async () => {
-        // Operator and delegator each stake some ZRX; wait an epoch so that the stake is active.
+        // Operator and delegator each stake some NET; wait an epoch so that the stake is active.
         await operator.stakeAsync(toBaseUnitAmount(100), poolId);
         await delegator.stakeAsync(toBaseUnitAmount(50), poolId);
         await delegator.endEpochAsync();

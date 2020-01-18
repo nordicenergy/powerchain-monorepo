@@ -5,16 +5,16 @@ import {
     getRandomInteger,
     Numberish,
     randomAddress,
-} from '@0x/contracts-test-utils';
-import { AuthorizableRevertErrors } from '@0x/contracts-utils';
-import { AssetProxyId } from '@0x/types';
-import { AbiEncoder, BigNumber, hexUtils, StringRevertError } from '@0x/utils';
-import { DecodedLogs } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {AuthorizableRevertErrors} from '@powerchain/contracts-utils';
+import {AssetProxyId} from '@powerchain/types';
+import {AbiEncoder, BigNumber, hexUtils, StringRevertError} from '@powerchain/utils';
+import {DecodedLogs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { ERC20BridgeProxyContract, TestERC20BridgeContract } from './wrappers';
+import {ERC20BridgeProxyContract, TestERC20BridgeContract} from './wrappers';
 
 blockchainTests.resets('ERC20BridgeProxy unit tests', env => {
     const PROXY_ID = AssetProxyId.ERC20Bridge;
@@ -27,13 +27,13 @@ blockchainTests.resets('ERC20BridgeProxy unit tests', env => {
 
     before(async () => {
         [owner, badCaller] = await env.getAccountAddressesAsync();
-        assetProxy = await ERC20BridgeProxyContract.deployFrom0xArtifactAsync(
+        assetProxy = await ERC20BridgeProxyContract.deployFrompowerchainArtifactAsync(
             artifacts.ERC20BridgeProxy,
             env.provider,
             env.txDefaults,
             artifacts,
         );
-        bridgeContract = await TestERC20BridgeContract.deployFrom0xArtifactAsync(
+        bridgeContract = await TestERC20BridgeContract.deployFrompowerchainArtifactAsync(
             artifacts.TestERC20Bridge,
             env.provider,
             env.txDefaults,
@@ -92,7 +92,7 @@ blockchainTests.resets('ERC20BridgeProxy unit tests', env => {
             { name: 'returnData', type: 'bytes' },
         ]);
         const revertErrorBytes =
-            opts.revertError !== undefined ? new StringRevertError(opts.revertError).encode() : '0x';
+            opts.revertError !== undefined ? new StringRevertError(opts.revertError).encode() : 'powerchain';
         return encoder.encode([new BigNumber(opts.transferAmount), revertErrorBytes, opts.returnData]);
     }
 
@@ -181,7 +181,7 @@ blockchainTests.resets('ERC20BridgeProxy unit tests', env => {
             const tx = transferFromAsync({
                 assetData: createAssetData({
                     bridgeData: createBridgeData({
-                        returnData: '0x',
+                        returnData: 'powerchain',
                     }),
                 }),
             });
@@ -194,7 +194,7 @@ blockchainTests.resets('ERC20BridgeProxy unit tests', env => {
             const tx = transferFromAsync({
                 assetData: createAssetData({
                     bridgeData: createBridgeData({
-                        returnData: hexUtils.leftPad('0x1'),
+                        returnData: hexUtils.leftPad('powerchain1'),
                     }),
                 }),
             });
@@ -203,11 +203,11 @@ blockchainTests.resets('ERC20BridgeProxy unit tests', env => {
             return expect(tx).to.be.rejected();
         });
 
-        it('fails if bridge returns 0x1', async () => {
+        it('fails if bridge returns powerchain1', async () => {
             const tx = transferFromAsync({
                 assetData: createAssetData({
                     bridgeData: createBridgeData({
-                        returnData: hexUtils.rightPad('0x1'),
+                        returnData: hexUtils.rightPad('powerchain1'),
                     }),
                 }),
             });

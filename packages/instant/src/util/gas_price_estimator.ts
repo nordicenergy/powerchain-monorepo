@@ -1,4 +1,4 @@
-import { BigNumber, fetchAsync } from '@0x/utils';
+import {BigNumber, fetchAsync} from '@powerchain/utils';
 
 import {
     DEFAULT_ESTIMATED_TRANSACTION_TIME_MS,
@@ -7,7 +7,7 @@ import {
     GWEI_IN_WEI,
 } from '../constants';
 
-import { errorReporter } from './error_reporter';
+import {errorReporter} from './error_reporter';
 
 interface EthGasStationResult {
     average: number;

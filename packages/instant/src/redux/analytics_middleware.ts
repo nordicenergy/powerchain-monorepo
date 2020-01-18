@@ -1,15 +1,15 @@
-import { AssetProxyId } from '@0x/types';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {AssetProxyId} from '@powerchain/types';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as _ from 'lodash';
-import { Middleware } from 'redux';
+import {Middleware} from 'redux';
 
-import { ETH_DECIMALS } from '../constants';
-import { AccountState, StandardSlidingPanelContent } from '../types';
-import { analytics, AnalyticsEventOptions } from '../util/analytics';
+import {ETH_DECIMALS} from '../constants';
+import {AccountState, StandardSlidingPanelContent} from '../types';
+import {analytics, AnalyticsEventOptions} from '../util/analytics';
 
-import { Action, ActionTypes } from './actions';
+import {Action, ActionTypes} from './actions';
 
-import { State } from './reducer';
+import {State} from './reducer';
 
 export const analyticsMiddleware: Middleware = store => next => middlewareAction => {
     const prevState = store.getState() as State;

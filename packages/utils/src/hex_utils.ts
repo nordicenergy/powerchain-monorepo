@@ -1,8 +1,8 @@
 import * as crypto from 'crypto';
 import * as ethUtil from 'ethereumjs-util';
 
-import { BigNumber } from './configured_bignumber';
-import { Numberish } from './types';
+import {BigNumber} from './configured_bignumber';
+import {Numberish} from './types';
 
 // tslint:disable:custom-no-magic-numbers
 
@@ -68,7 +68,7 @@ function slice(n: Numberish, start: number, end?: number): string {
     if (end !== undefined) {
         sliceEnd = end >= 0 ? end * 2 : Math.max(0, hex.length + end * 2);
     }
-    return '0x'.concat(hex.substring(sliceStart, sliceEnd));
+    return 'powerchain'.concat(hex.substring(sliceStart, sliceEnd));
 }
 
 /**
@@ -90,7 +90,7 @@ function size(hex: string): number {
  * Works with negative numbers, as well.
  */
 function toHex(n: Numberish, _size: number = WORD_LENGTH): string {
-    if (typeof n === 'string' && /^0x[0-9a-f]+$/i.test(n)) {
+    if (typeof n === 'string' && /^powerchain[0-9a-f]+$/i.test(n)) {
         // Already a hex.
         return n;
     }
@@ -106,5 +106,5 @@ function toHex(n: Numberish, _size: number = WORD_LENGTH): string {
             16,
         ).plus(1).mod(WORD_CEIL);
     }
-    return `0x${_n.toString(16)}`;
+    return `powerchain${_n.toString(16)}`;
 }

@@ -1,10 +1,10 @@
-import { constants, StakingPoolById, StakingRevertErrors } from '@0x/contracts-staking';
-import { expect } from '@0x/contracts-test-utils';
-import { TxData } from 'ethereum-types';
+import {constants, StakingPoolById, StakingRevertErrors} from '@powerchain/contracts-staking';
+import {expect} from '@powerchain/contracts-test-utils';
+import {TxData} from 'ethereum-types';
 
-import { DeploymentManager } from '../deployment_manager';
+import {DeploymentManager} from '../deployment_manager';
 
-import { FunctionAssertion, FunctionResult } from './function_assertion';
+import {FunctionAssertion, FunctionResult} from './function_assertion';
 
 /**
  * Returns a FunctionAssertion for `decreaseStakingPoolOperatorShare` which assumes valid input is

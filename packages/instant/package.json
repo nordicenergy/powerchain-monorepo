@@ -1,11 +1,11 @@
 {
-    "name": "@0x/instant",
+    "name": "@powerchain/instant",
     "version": "1.0.40",
     "engines": {
         "node": ">=6.12"
     },
     "private": true,
-    "description": "0x Instant React Component",
+    "description": "powerchain Instant React Component",
     "main": "umd/instant.js",
     "scripts": {
         "build": "NODE_ENV=production node --max_old_space_size=8192 ../../node_modules/.bin/webpack --mode production",
@@ -34,22 +34,22 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "author": "Francesco Agosti",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/instant/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/instant/README.md",
     "dependencies": {
-        "@0x/assert": "^3.0.3",
-        "@0x/asset-swapper": "^3.0.3",
-        "@0x/contract-wrappers": "^13.3.0",
-        "@0x/json-schemas": "^5.0.3",
-        "@0x/subproviders": "^6.0.3",
-        "@0x/utils": "^5.1.2",
-        "@0x/web3-wrapper": "^7.0.3",
+        "@powerchain/assert": "^3.0.3",
+        "@powerchain/asset-swapper": "^3.0.3",
+        "@powerchain/contract-wrappers": "^13.3.0",
+        "@powerchain/json-schemas": "^5.0.3",
+        "@powerchain/subproviders": "^6.0.3",
+        "@powerchain/utils": "^5.1.2",
+        "@powerchain/web3-wrapper": "^7.0.3",
         "babel-runtime": "^6.26.0",
         "bowser": "^1.9.4",
         "copy-to-clipboard": "^3.0.8",
@@ -65,10 +65,10 @@
         "ts-optchain": "^0.1.1"
     },
     "devDependencies": {
-        "@0x/tslint-config": "^4.0.0",
-        "@0x/types": "^3.1.1",
-        "@0x/typescript-typings": "^5.0.1",
-        "@static/discharge": "https://github.com/0xProject/discharge.git",
+        "@powerchain/tslint-config": "^4.0.0",
+        "@powerchain/types": "^3.1.1",
+        "@powerchain/typescript-typings": "^5.0.1",
+        "@static/discharge": "https://github.com/powerchainProject/discharge.git",
         "@types/enzyme": "^3.1.14",
         "@types/enzyme-adapter-react-16": "^1.0.3",
         "@types/jest": "^23.3.5",

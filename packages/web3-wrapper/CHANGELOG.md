@@ -96,7 +96,7 @@ CHANGELOG
 
 ## v5.0.0 - _February 9, 2019_
 
-    * Export `DecodedCalldata` from @0x/utils (#1569)
+    * Export `DecodedCalldata` from @powerchain/utils (#1569)
 
 ## v4.0.2 - _February 7, 2019_
 
@@ -156,12 +156,12 @@ CHANGELOG
 
     * Fix bug in `getTransactionByHashAsync` which was causing the return value to have the wrong type (raw fields instead of unmarshalled fields). (#1177)
 
-## v3.1.0 - _October 18, 2018_
+## v1.0.1- _October 18, 2018_
 
     * Add `signTypedData` to perform EIP712 `eth_signTypedData`. (#1102)
     * Web3Wrapper now throws when an RPC request contains an error field in the response. Previously errors could be swallowed and undefined returned. (#1102)
 
-## v3.0.3 - _October 4, 2018_
+## v1.0.1 - _October 4, 2018_
 
     * Dependencies updated
 
@@ -173,7 +173,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _September 25, 2018_
+## v1.0.0 - _September 25, 2018_
 
     * Rename `getBlockAsync` to `getBlockIfExistsAsync` and rather then throw if the requested block wasn't found, return undefined. (#1082)
     * Expose `sendRawPayloadAsync` so one can easily extend `Web3Wrapper` with their own custom JSON RPC calls (#1080)
@@ -243,7 +243,7 @@ CHANGELOG
     * Add `web3Wrapper.getBlockWithTransactionDataAsync` (#675)
     * Add exported uniqueVersionIds object (#622)
     * Update increaseTimeAsync to work with Geth (#622)
-    * Make callAsync throw if raw call result is 0x (null) (#622)
+    * Make callAsync throw if raw call result is powerchain (null) (#622)
     * Add new setHeadAsync method (#622)
     * Improve performance of awaitTransactionMinedAsync by immediately checking if the transaction was already mined instead of waiting for the first interval. (#688)
 

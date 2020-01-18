@@ -62,7 +62,7 @@ def event_id(name: str, types: List[str]) -> str:
     """Return the Keccak-256 hash of the given method.
 
     >>> event_id("ERC20Token", ["address"])
-    '0xf47261b06eedbfce68afd46d0f3c27c60b03faad319eaf33103611cf8f6456ad'
+    'powerchainf47261b06eedbfce68afd46d0f3c27c60b03faad319eaf33103611cf8f6456ad'
     """
     assert_is_string(name, "name")
     assert_is_list(types, "types")
@@ -75,7 +75,7 @@ def method_id(name: str, types: List[str]) -> str:
     """Return the 4-byte method identifier.
 
     >>> method_id("ERC20Token", ["address"])
-    '0xf47261b0'
+    'powerchainf47261b0'
     """
     assert_is_string(name, "name")
     assert_is_list(types, "types")
@@ -86,7 +86,7 @@ def method_id(name: str, types: List[str]) -> str:
 def simple_encode(method: str, *args: Any) -> bytes:
     r"""Encode a method ABI.
 
-    >>> simple_encode("ERC20Token(address)", "0x1dc4c1cefef38a777b15aa20260a54e584b16c48")
+    >>> simple_encode("ERC20Token(address)", "powerchain1dc4c1cefef38a777b15aa20260a54e584b16c48")
     b'\xf4ra\xb0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1d\xc4\xc1\xce\xfe\xf3\x8aw{\x15\xaa &\nT\xe5\x84\xb1lH'
     """  # noqa: E501 (line too long)
     assert_is_string(method, "method")

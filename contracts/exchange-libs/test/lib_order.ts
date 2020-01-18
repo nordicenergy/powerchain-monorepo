@@ -1,13 +1,12 @@
-import { blockchainTests, constants, describe, expect, orderHashUtils } from '@0x/contracts-test-utils';
-import { eip712Utils } from '@0x/order-utils';
-import { Order } from '@0x/types';
-import { BigNumber, hexUtils, signTypedDataUtils } from '@0x/utils';
+import {blockchainTests, constants, describe, expect, orderHashUtils} from '@powerchain/contracts-test-utils';
+import {eip712Utils} from '@powerchain/order-utils';
+import {Order} from '@powerchain/types';
+import {BigNumber, hexUtils, signTypedDataUtils} from '@powerchain/utils';
 import * as ethUtil from 'ethereumjs-util';
-import * as _ from 'lodash';
 
-import { TestLibOrderContract } from './wrappers';
+import {TestLibOrderContract} from './wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 blockchainTests('LibOrder', env => {
     let libOrderContract: TestLibOrderContract;
@@ -37,7 +36,7 @@ blockchainTests('LibOrder', env => {
     };
 
     before(async () => {
-        libOrderContract = await TestLibOrderContract.deployFrom0xArtifactAsync(
+        libOrderContract = await TestLibOrderContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibOrder,
             env.provider,
             env.txDefaults,

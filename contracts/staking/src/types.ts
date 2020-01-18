@@ -1,8 +1,8 @@
-import { constants, Numberish } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { DecodedLogArgs, LogWithDecodedArgs } from 'ethereum-types';
+import {constants, Numberish} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {DecodedLogArgs, LogWithDecodedArgs} from 'ethereum-types';
 
-import { constants as stakingConstants } from './constants';
+import {constants as stakingConstants} from './constants';
 
 // tslint:disable:max-classes-per-file
 

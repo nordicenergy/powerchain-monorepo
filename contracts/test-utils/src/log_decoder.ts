@@ -1,5 +1,5 @@
-import { AbiDecoder, BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {AbiDecoder, BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import {
     AbiDefinition,
     ContractArtifact,

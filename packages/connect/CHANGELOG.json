@@ -30,7 +30,7 @@
         "version": "6.0.0",
         "changes": [
             {
-                "note": "Removed dependency on @0x/order-utils",
+                "note": "Removed dependency on @powerchain/order-utils",
                 "pr": 2321
             },
             {
@@ -53,7 +53,7 @@
         "version": "5.1.0-beta.2",
         "changes": [
             {
-                "note": "Removed dependency on @0x/order-utils",
+                "note": "Removed dependency on @powerchain/order-utils",
                 "pr": 2321
             }
         ],
@@ -441,7 +441,7 @@
         "version": "2.0.3",
         "changes": [
             {
-                "note": "Import SRA-related types from @0xproject/types",
+                "note": "Import SRA-related types from @powerchainproject/types",
                 "pr": 1085
             }
         ],
@@ -655,7 +655,7 @@
         "version": "0.6.4",
         "changes": [
             {
-                "note": "Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@0xproject/types` package",
+                "note": "Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@powerchainproject/types` package",
                 "pr": 456
             }
         ],
@@ -747,7 +747,7 @@
                 "note": "Add ECSignature and Order to the public interface"
             },
             {
-                "note": "Remove dependency on 0x.js"
+                "note": "Remove dependency on powerchain.js"
             }
         ],
         "timestamp": 1511881200

@@ -1,13 +1,13 @@
-import { blockchainTests, expect } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
+import {blockchainTests, expect} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { TestContractWrapperContract } from './wrappers';
+import {TestContractWrapperContract} from './wrappers';
 
 blockchainTests.live('Contract wrapper mainnet callAsync revert behavior tests', env => {
     // Mainnet address of the `TestContractWrapper` contract.
-    const TEST_CONTRACT_ADDRESS = '0x3C120F51aa2360E6C7078dbc849591dd14F21405';
+    const TEST_CONTRACT_ADDRESS = 'powerchain3C120F51aa2360E6C7078dbc849591dd14F21405';
     const REVERT_STRING = 'ERROR';
-    const VALID_RESULT = new BigNumber('0xf984f922a56ea9a20a32a32f0f60f2d216ff0c0a0d16c986a97a7f1897a6613b');
+    const VALID_RESULT = new BigNumber('powerchainf984f922a56ea9a20a32a32f0f60f2d216ff0c0a0d16c986a97a7f1897a6613b');
     let testContract: TestContractWrapperContract;
 
     before(async () => {

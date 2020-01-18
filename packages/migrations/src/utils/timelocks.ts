@@ -1,11 +1,11 @@
-import { getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
-import { ExchangeContract } from '@0x/contracts-exchange';
-import { StakingContract, StakingProxyContract, ZrxVaultContract } from '@0x/contracts-staking';
-import { IAuthorizableContract, IOwnableContract } from '@0x/contracts-utils';
-import { Web3ProviderEngine } from '@0x/subproviders';
-import { BigNumber } from '@0x/utils';
+import {getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
+import {ExchangeContract} from '@powerchain/contracts-exchange';
+import {NetVaultContract, StakingContract, StakingProxyContract} from '@powerchain/contracts-staking';
+import {IAuthorizableContract, IOwnableContract} from '@powerchain/contracts-utils';
+import {Web3ProviderEngine} from '@powerchain/subproviders';
+import {BigNumber} from '@powerchain/utils';
 
-import { constants } from './constants';
+import {constants} from './constants';
 
 export interface TimelockRegistration {
     functionSelector: string;
@@ -23,7 +23,7 @@ export function getTimelockRegistrationsByChainId(chainId: number): TimelockRegi
     const provider = new Web3ProviderEngine();
     const authorizableInterface = new IAuthorizableContract(constants.NULL_ADDRESS, provider);
     const ownableInterface = new IOwnableContract(constants.NULL_ADDRESS, provider);
-    const zrxVault = new ZrxVaultContract(constants.NULL_ADDRESS, provider);
+    const zrxVault = new NetVaultContract(constants.NULL_ADDRESS, provider);
     const stakingProxy = new StakingProxyContract(constants.NULL_ADDRESS, provider);
     const exchange = new ExchangeContract(constants.NULL_ADDRESS, provider);
     const stakingLogic = new StakingContract(constants.NULL_ADDRESS, provider);
@@ -80,7 +80,7 @@ export function getTimelockRegistrationsByChainId(chainId: number): TimelockRegi
             functionSelector: authorizableInterface.getSelector('removeAuthorizedAddressAtIndex'),
             secondsTimeLocked: constants.ZERO_AMOUNT,
         },
-        // ZrxVault timelocks
+        // NetVault timelocks
         {
             destination: deployedAddresses.zrxVault,
             functionSelector: zrxVault.getSelector('enterCatastrophicFailure'),
@@ -96,7 +96,7 @@ export function getTimelockRegistrationsByChainId(chainId: number): TimelockRegi
     ];
 
     const customTimelockRegistrations = [
-        // ZrxVault timelocks
+        // NetVault timelocks
         {
             destination: deployedAddresses.zrxVault,
             functionSelector: zrxVault.getSelector('setStakingProxy'),
@@ -105,7 +105,7 @@ export function getTimelockRegistrationsByChainId(chainId: number): TimelockRegi
         },
         {
             destination: deployedAddresses.zrxVault,
-            functionSelector: zrxVault.getSelector('setZrxProxy'),
+            functionSelector: zrxVault.getSelector('setNetProxy'),
             secondsTimeLocked:
                 chainId === constants.MAINNET_CHAIN_ID ? constants.TWENTY_DAYS_IN_SEC : constants.ZERO_AMOUNT,
         },

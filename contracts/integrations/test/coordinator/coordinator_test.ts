@@ -1,11 +1,15 @@
-import { CoordinatorContract, CoordinatorRevertErrors, SignedCoordinatorApproval } from '@0x/contracts-coordinator';
+import {
+    CoordinatorContract,
+    CoordinatorRevertErrors,
+    SignedCoordinatorApproval
+} from '@powerchain/contracts-coordinator';
 import {
     ExchangeCancelEventArgs,
     ExchangeCancelUpToEventArgs,
     exchangeDataEncoder,
     ExchangeEvents,
     ExchangeFillEventArgs,
-} from '@0x/contracts-exchange';
+} from '@powerchain/contracts-exchange';
 import {
     blockchainTests,
     constants,
@@ -14,19 +18,19 @@ import {
     orderHashUtils,
     transactionHashUtils,
     verifyEvents,
-} from '@0x/contracts-test-utils';
-import { SignedOrder, SignedZeroExTransaction } from '@0x/types';
-import { BigNumber, hexUtils } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {SignedOrder, SignedZeroExTransaction} from '@powerchain/types';
+import {BigNumber, hexUtils} from '@powerchain/utils';
 
-import { Actor } from '../framework/actors/base';
-import { FeeRecipient } from '../framework/actors/fee_recipient';
-import { Maker } from '../framework/actors/maker';
-import { actorAddressesByName } from '../framework/actors/utils';
-import { BlockchainBalanceStore } from '../framework/balances/blockchain_balance_store';
-import { LocalBalanceStore } from '../framework/balances/local_balance_store';
-import { DeploymentManager } from '../framework/deployment_manager';
+import {Actor} from '../framework/actors/base';
+import {FeeRecipient} from '../framework/actors/fee_recipient';
+import {Maker} from '../framework/actors/maker';
+import {actorAddressesByName} from '../framework/actors/utils';
+import {BlockchainBalanceStore} from '../framework/balances/blockchain_balance_store';
+import {LocalBalanceStore} from '../framework/balances/local_balance_store';
+import {DeploymentManager} from '../framework/deployment_manager';
 
-import { deployCoordinatorAsync } from './deploy_coordinator';
+import {deployCoordinatorAsync} from './deploy_coordinator';
 
 // tslint:disable:no-unnecessary-type-assertion
 blockchainTests.resets('Coordinator integration tests', env => {
@@ -225,7 +229,7 @@ blockchainTests.resets('Coordinator integration tests', env => {
             it(`${fnName} should revert with an invalid approval signature`, async () => {
                 const approvalSignature = hexUtils.concat(
                     hexUtils.slice(approval.signature, 0, 2),
-                    '0xFFFFFFFF',
+                    'powerchainFFFFFFFF',
                     hexUtils.slice(approval.signature, 6),
                 );
                 const transactionHash = transactionHashUtils.getTransactionHashHex(transaction);
@@ -305,7 +309,7 @@ blockchainTests.resets('Coordinator integration tests', env => {
             it(`${fnName} should revert with an invalid approval signature`, async () => {
                 const approvalSignature = hexUtils.concat(
                     hexUtils.slice(approval.signature, 0, 2),
-                    '0xFFFFFFFF',
+                    'powerchainFFFFFFFF',
                     hexUtils.slice(approval.signature, 6),
                 );
                 const transactionHash = transactionHashUtils.getTransactionHashHex(transaction);

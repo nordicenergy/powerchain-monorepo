@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { PrivateKeyWalletSubprovider, RPCSubprovider, Web3ProviderEngine } from '@0x/subproviders';
-import { logUtils, providerUtils } from '@0x/utils';
+import {PrivateKeyWalletSubprovider, RPCSubprovider, Web3ProviderEngine} from '@powerchain/subproviders';
+import {logUtils, providerUtils} from '@powerchain/utils';
 import * as yargs from 'yargs';
 
-import { runMigrationsAsync } from './migration';
+import {runMigrationsAsync} from './migration';
 
 const args = yargs
     .option('rpc-url', {
@@ -22,7 +22,7 @@ const args = yargs
         type: 'string',
     })
     .example(
-        '$0 --rpc-url http://localhost:8545 --from 0x5409ed021d9299bf6814279a6a1411a7e866a631 --pk 0xf2f48ee19680706196e2e339e5da3491186e0c4c5030670656b0e0164837257d',
+        '$0 --rpc-url http://localhost:8545 --from powerchain5409ed021d9299bf6814279a6a1411a7e866a631 --pk powerchainf2f48ee19680706196e2e339e5da3491186e0c4c5030670656b0e0164837257d',
         'Full usage example',
     ).argv;
 

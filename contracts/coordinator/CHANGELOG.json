@@ -38,7 +38,7 @@
                 "pr": 2321
             },
             {
-                "note": "Added dependency on @0x/contracts-utils",
+                "note": "Added dependency on @powerchain/contracts-utils",
                 "pr": 2321
             },
             {
@@ -114,7 +114,7 @@
                 "pr": 2321
             },
             {
-                "note": "Added dependency on @0x/contracts-utils",
+                "note": "Added dependency on @powerchain/contracts-utils",
                 "pr": 2321
             }
         ],
@@ -215,7 +215,7 @@
         "version": "2.0.9",
         "changes": [
             {
-                "note": "Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies.",
+                "note": "Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies.",
                 "pr": 1995
             }
         ],

@@ -1,10 +1,10 @@
-import { LogDecoder, Web3ProviderEngine } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { TransactionReceiptWithDecodedLogs } from 'ethereum-types';
+import {LogDecoder, Web3ProviderEngine} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { artifacts } from '../artifacts';
-import { MultiSigWalletContract, MultiSigWalletWithTimeLockContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {MultiSigWalletContract, MultiSigWalletWithTimeLockContract} from '../wrappers';
 
 export class MultiSigWrapper {
     private readonly _multiSig: MultiSigWalletContract | MultiSigWalletWithTimeLockContract;

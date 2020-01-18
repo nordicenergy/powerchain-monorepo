@@ -1,11 +1,11 @@
-import { DataItem, SolidityTypes } from 'ethereum-types';
+import {DataItem, SolidityTypes} from 'ethereum-types';
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { DataTypeFactory } from '../abstract_data_types/interfaces';
-import { AbstractBlobDataType } from '../abstract_data_types/types/blob';
-import { RawCalldata } from '../calldata/raw_calldata';
-import { constants } from '../utils/constants';
+import {DataTypeFactory} from '../abstract_data_types/interfaces';
+import {AbstractBlobDataType} from '../abstract_data_types/types/blob';
+import {RawCalldata} from '../calldata/raw_calldata';
+import {constants} from '../utils/constants';
 
 export class StaticBytesDataType extends AbstractBlobDataType {
     private static readonly _SIZE_KNOWN_AT_COMPILE_TIME: boolean = true;
@@ -67,8 +67,8 @@ export class StaticBytesDataType extends AbstractBlobDataType {
 
     private _sanityCheckValue(value: string | Buffer): void {
         if (typeof value === 'string') {
-            if (!_.startsWith(value, '0x')) {
-                throw new Error(`Tried to encode non-hex value. Value must include '0x' prefix.`);
+            if (!_.startsWith(value, 'powerchain')) {
+                throw new Error(`Tried to encode non-hex value. Value must include 'powerchain' prefix.`);
             } else if (value.length % 2 !== 0) {
                 throw new Error(`Tried to assign ${value}, which is contains a half-byte. Use full bytes only.`);
             }

@@ -1,11 +1,11 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import 'mocha';
 
-import { rateUtils } from '../src';
+import {rateUtils} from '../src';
 
-import { chaiSetup } from './utils/chai_setup';
-import { testOrderFactory } from './utils/test_order_factory';
+import {chaiSetup} from './utils/chai_setup';
+import {testOrderFactory} from './utils/test_order_factory';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -24,7 +24,7 @@ describe('rateUtils', () => {
             );
         });
         it('correctly calculates fee adjusted rate when feeRate is provided', async () => {
-            const feeRate = new BigNumber(2); // ZRX costs 2 units of takerAsset per 1 unit of ZRX
+            const feeRate = new BigNumber(2); // NET costs 2 units of takerAsset per 1 unit of NET
             const feeAdjustedRate = rateUtils.getFeeAdjustedRateOfOrder(testOrder, feeRate);
             // the order actually takes 100 + (2 * 20) takerAsset units to fill 100 units of makerAsset
             expect(feeAdjustedRate).to.bignumber.equal(new BigNumber(1.4));

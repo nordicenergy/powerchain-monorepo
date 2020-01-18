@@ -1,13 +1,13 @@
-## 0x-order-utils
+## powerchain-order-utils
 
-0x order-related utilities for those developing on top of 0x protocol.
+powerchain order-related utilities for those developing on top of powerchain protocol.
 
-Read the [documentation](http://0x-order-utils-py.s3-website-us-east-1.amazonaws.com/)
+Read the [documentation](http://powerchain-order-utils-py.s3-website-us-east-1.amazonaws.com/)
 
 ## Installing
 
 ```bash
-pip install 0x-order-utils
+pip install powerchain-order-utils
 ```
 
 ## Contributing
@@ -26,7 +26,7 @@ pip install -e .[dev]
 
 ### Test
 
-Tests depend on a running ganache instance with the 0x contracts deployed in it. For convenience, a docker container is provided that has ganache-cli and a snapshot containing the necessary contracts. A shortcut is provided to run that docker container: `./setup.py ganache`. With that running, the tests can be run with `./setup.py test`.
+Tests depend on a running ganache instance with the powerchain contracts deployed in it. For convenience, a docker container is provided that has ganache-cli and a snapshot containing the necessary contracts. A shortcut is provided to run that docker container: `./setup.py ganache`. With that running, the tests can be run with `./setup.py test`.
 
 ### Clean
 

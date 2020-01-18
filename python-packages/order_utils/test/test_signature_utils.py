@@ -15,12 +15,12 @@ def test_is_valid_signature__provider_wrong_type():
     with pytest.raises(TypeError):
         is_valid_signature(
             123,
-            "0x6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
+            "powerchain6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
             + "0",
-            "0x1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
+            "powerchain1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
             + "c3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace"
             + "225403",
-            "0x5409ed021d9299bf6814279a6a1411a7e866a631",
+            "powerchain5409ed021d9299bf6814279a6a1411a7e866a631",
         )
 
 
@@ -30,10 +30,10 @@ def test_is_valid_signature__data_not_string():
         is_valid_signature(
             Web3.HTTPProvider("http://127.0.0.1:8545"),
             123,
-            "0x1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
+            "powerchain1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
             + "c3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace"
             + "225403",
-            "0x5409ed021d9299bf6814279a6a1411a7e866a631",
+            "powerchain5409ed021d9299bf6814279a6a1411a7e866a631",
         )
 
 
@@ -43,10 +43,10 @@ def test_is_valid_signature__data_not_hex_string():
         is_valid_signature(
             Web3.HTTPProvider("http://127.0.0.1:8545"),
             "jjj",
-            "0x1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
+            "powerchain1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
             + "c3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace"
             + "225403",
-            "0x5409ed021d9299bf6814279a6a1411a7e866a631",
+            "powerchain5409ed021d9299bf6814279a6a1411a7e866a631",
         )
 
 
@@ -55,10 +55,10 @@ def test_is_valid_signature__signature_not_string():
     with pytest.raises(TypeError):
         is_valid_signature(
             Web3.HTTPProvider("http://127.0.0.1:8545"),
-            "0x6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
+            "powerchain6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
             + "0",
             123,
-            "0x5409ed021d9299bf6814279a6a1411a7e866a631",
+            "powerchain5409ed021d9299bf6814279a6a1411a7e866a631",
         )
 
 
@@ -67,10 +67,10 @@ def test_is_valid_signature__signature_not_hex_string():
     with pytest.raises(ValueError):
         is_valid_signature(
             Web3.HTTPProvider("http://127.0.0.1:8545"),
-            "0x6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
+            "powerchain6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
             + "0",
             "jjj",
-            "0x5409ed021d9299bf6814279a6a1411a7e866a631",
+            "powerchain5409ed021d9299bf6814279a6a1411a7e866a631",
         )
 
 
@@ -79,9 +79,9 @@ def test_is_valid_signature__signer_address_not_string():
     with pytest.raises(TypeError):
         is_valid_signature(
             Web3.HTTPProvider("http://127.0.0.1:8545"),
-            "0x6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
+            "powerchain6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
             + "0",
-            "0x1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
+            "powerchain1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
             + "c3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace"
             + "225403",
             123,
@@ -93,9 +93,9 @@ def test_is_valid_signature__signer_address_not_hex_string():
     with pytest.raises(ValueError):
         is_valid_signature(
             Web3.HTTPProvider("http://127.0.0.1:8545"),
-            "0x6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
+            "powerchain6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
             + "0",
-            "0x1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
+            "powerchain1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
             + "c3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace"
             + "225403",
             "jjj",
@@ -107,12 +107,12 @@ def test_is_valid_signature__signer_address_not_valid_address():
     with pytest.raises(ValueError):
         is_valid_signature(
             Web3.HTTPProvider("http://127.0.0.1:8545"),
-            "0x6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
+            "powerchain6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b"
             + "0",
-            "0x1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
+            "powerchain1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
             + "c3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace"
             + "225403",
-            "0xff",
+            "powerchainff",
         )
 
 
@@ -124,12 +124,12 @@ def test_is_valid_signature__unsupported_sig_types():
     try:
         is_valid_signature(
             Web3.HTTPProvider("http://127.0.0.1:8545"),
-            "0x6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222"
+            "powerchain6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222"
             + "b0",
-            "0x1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
+            "powerchain1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351b"
             + "c3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace"
             + "225401",
-            "0x5409ed021d9299bf6814279a6a1411a7e866a631",
+            "powerchain5409ed021d9299bf6814279a6a1411a7e866a631",
         )
     except SignatureError as signature_error:
         assert (
@@ -149,7 +149,7 @@ def test_sign_hash_to_bytes_and_validate__golden_path():
     ).geth.personal.listAccounts()[0]
 
     order_hash_hex = (
-        "0x34decbedc118904df65f379a175bb39ca18209d6ce41d5ed549d54e6e0a95004"
+        "powerchain34decbedc118904df65f379a175bb39ca18209d6ce41d5ed549d54e6e0a95004"
     )
 
     signature = sign_hash_to_bytes(provider, signing_address, order_hash_hex)

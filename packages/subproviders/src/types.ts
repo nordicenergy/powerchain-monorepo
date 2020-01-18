@@ -1,6 +1,7 @@
-import { ECSignature } from '@0x/types';
-import { JSONRPCRequestPayload } from 'ethereum-types';
+import {ECSignature} from '@powerchain/types';
+import {JSONRPCRequestPayload} from 'ethereum-types';
 import HDNode = require('hdkey');
+
 export interface LedgerCommunicationClient {
     close: () => Promise<void>;
 }

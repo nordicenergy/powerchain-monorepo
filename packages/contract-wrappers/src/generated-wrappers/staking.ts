@@ -3,18 +3,17 @@
 // tslint:disable:no-unused-variable
 import {
     AwaitTransactionSuccessOpts,
+    BaseContract,
     ContractFunctionObj,
     ContractTxFunctionObj,
-    SendTransactionOpts,
-    BaseContract,
-    SubscriptionManager,
-    PromiseWithTransactionHash,
     methodAbiToFunctionSignature,
-} from '@0x/base-contract';
-import { schemas } from '@0x/json-schemas';
+    PromiseWithTransactionHash,
+    SendTransactionOpts,
+    SubscriptionManager,
+} from '@powerchain/base-contract';
+import {schemas} from '@powerchain/json-schemas';
 import {
     BlockParam,
-    BlockParamLiteral,
     BlockRange,
     CallData,
     ContractAbi,
@@ -22,15 +21,14 @@ import {
     DecodedLogArgs,
     LogWithDecodedArgs,
     MethodAbi,
+    SupportedProvider,
     TransactionReceiptWithDecodedLogs,
     TxData,
-    TxDataPayable,
-    SupportedProvider,
 } from 'ethereum-types';
-import { BigNumber, classUtils, logUtils, providerUtils } from '@0x/utils';
-import { EventCallback, IndexedFilterValues, SimpleContractArtifact } from '@0x/types';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { assert } from '@0x/assert';
+import {BigNumber, classUtils, logUtils, providerUtils} from '@powerchain/utils';
+import {EventCallback, IndexedFilterValues, SimpleContractArtifact} from '@powerchain/types';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {assert} from '@powerchain/assert';
 import * as ethers from 'ethers';
 // tslint:enable:no-unused-variable
 
@@ -175,7 +173,7 @@ export class StakingContract extends BaseContract {
     public static contractName = 'Staking';
     private readonly _methodABIIndex: { [name: string]: number } = {};
     private readonly _subscriptionManager: SubscriptionManager<StakingEventArgs, StakingEvents>;
-    public static async deployFrom0xArtifactAsync(
+    public static async deployFrompowerchainArtifactAsync(
         artifact: ContractArtifact | SimpleContractArtifact,
         supportedProvider: SupportedProvider,
         txDefaults: Partial<TxData>,
@@ -1177,7 +1175,7 @@ export class StakingContract extends BaseContract {
             {
                 constant: true,
                 inputs: [],
-                name: 'getZrxVault',
+                name: 'getNetVault',
                 outputs: [
                     {
                         name: 'zrxVault',
@@ -2414,7 +2412,7 @@ export class StakingContract extends BaseContract {
     /**
      * Returns the total stake for a given staker.
      * @param staker of stake.
-     * @returns Total ZRX staked by &#x60;staker&#x60;.
+     * @returns Total NET staked by &#x60;staker&#x60;.
      */
     public getTotalStake(staker: string): ContractFunctionObj<BigNumber> {
         const self = (this as any) as StakingContract;
@@ -2503,9 +2501,9 @@ export class StakingContract extends BaseContract {
      * Must be view to allow overrides to access state.
      * @returns zrxVault The zrxVault contract.
      */
-    public getZrxVault(): ContractFunctionObj<string> {
+    public getNetVault(): ContractFunctionObj<string> {
         const self = (this as any) as StakingContract;
-        const functionSignature = 'getZrxVault()';
+        const functionSignature = 'getNetVault()';
 
         return {
             async callAsync(callData: Partial<CallData> = {}, defaultBlock?: BlockParam): Promise<string> {
@@ -2747,7 +2745,7 @@ export class StakingContract extends BaseContract {
     }
     /**
      * Pays a protocol fee in ETH or WETH.
-     * Only a known 0x exchange can call this method. See
+     * Only a known powerchain exchange can call this method. See
      * (MixinExchangeManager).
      * @param makerAddress The address of the order's maker.
      * @param payerAddress The address of the protocol fee payer.
@@ -3131,9 +3129,9 @@ export class StakingContract extends BaseContract {
         };
     }
     /**
-     * Stake ZRX tokens. Tokens are deposited into the ZRX Vault.
-     * Unstake to retrieve the ZRX. Stake is in the 'Active' status.
-     * @param amount Amount of ZRX to stake.
+     * Stake NET tokens. Tokens are deposited into the NET Vault.
+     * Unstake to retrieve the NET. Stake is in the 'Active' status.
+     * @param amount Amount of NET to stake.
      */
     public stake(amount: BigNumber): ContractTxFunctionObj<void> {
         const self = (this as any) as StakingContract;
@@ -3254,10 +3252,10 @@ export class StakingContract extends BaseContract {
         };
     }
     /**
-     * Unstake. Tokens are withdrawn from the ZRX Vault and returned to
+     * Unstake. Tokens are withdrawn from the NET Vault and returned to
      * the staker. Stake must be in the 'undelegated' status in both the
      * current and next epoch in order to be unstaked.
-     * @param amount Amount of ZRX to unstake.
+     * @param amount Amount of NET to unstake.
      */
     public unstake(amount: BigNumber): ContractTxFunctionObj<void> {
         const self = (this as any) as StakingContract;

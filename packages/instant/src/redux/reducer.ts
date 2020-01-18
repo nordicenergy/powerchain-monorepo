@@ -1,11 +1,10 @@
-import { MarketBuySwapQuote } from '@0x/asset-swapper';
-import { AssetProxyId, ObjectMap } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import * as _ from 'lodash';
+import {MarketBuySwapQuote} from '@powerchain/asset-swapper';
+import {AssetProxyId, ObjectMap} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 
-import { LOADING_ACCOUNT, LOCKED_ACCOUNT } from '../constants';
-import { assetMetaDataMap } from '../data/asset_meta_data_map';
+import {LOADING_ACCOUNT, LOCKED_ACCOUNT} from '../constants';
+import {assetMetaDataMap} from '../data/asset_meta_data_map';
 import {
     Account,
     AccountReady,
@@ -24,7 +23,7 @@ import {
     StandardSlidingPanelSettings,
 } from '../types';
 
-import { Action, ActionTypes } from './actions';
+import {Action, ActionTypes} from './actions';
 
 // State that is required and we have defaults for, before props are passed in
 export interface DefaultState {

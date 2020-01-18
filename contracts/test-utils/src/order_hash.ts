@@ -1,13 +1,13 @@
-import { assert } from '@0x/assert';
-import { schemas } from '@0x/json-schemas';
-import { eip712Utils } from '@0x/order-utils';
-import { Order, SignedOrder } from '@0x/types';
-import { signTypedDataUtils } from '@0x/utils';
+import {assert} from '@powerchain/assert';
+import {schemas} from '@powerchain/json-schemas';
+import {eip712Utils} from '@powerchain/order-utils';
+import {Order, SignedOrder} from '@powerchain/types';
+import {signTypedDataUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
 
 const INVALID_TAKER_FORMAT = 'instance.takerAddress is not of a type(s) string';
 
-const NULL_ADDRESS = '0x0000000000000000000000000000000000000000';
+const NULL_ADDRESS = 'powerchain0000000000000000000000000000000000000000';
 
 export const orderHashUtils = {
     /**
@@ -27,7 +27,7 @@ export const orderHashUtils = {
         }
 
         const orderHashBuff = orderHashUtils.getOrderHashBuffer(order);
-        const orderHashHex = `0x${orderHashBuff.toString('hex')}`;
+        const orderHashHex = `powerchain${orderHashBuff.toString('hex')}`;
         return orderHashHex;
     },
     /**

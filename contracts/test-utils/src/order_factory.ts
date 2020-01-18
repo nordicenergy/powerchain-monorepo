@@ -1,11 +1,11 @@
-import { generatePseudoRandomSalt } from '@0x/order-utils';
-import { Order, SignatureType, SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {generatePseudoRandomSalt} from '@powerchain/order-utils';
+import {Order, SignatureType, SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { getLatestBlockTimestampAsync } from './block_timestamp';
-import { constants } from './constants';
-import { orderHashUtils } from './order_hash';
-import { signingUtils } from './signing_utils';
+import {getLatestBlockTimestampAsync} from './block_timestamp';
+import {constants} from './constants';
+import {orderHashUtils} from './order_hash';
+import {signingUtils} from './signing_utils';
 
 export class OrderFactory {
     private readonly _defaultOrderParams: Partial<Order>;
@@ -34,7 +34,7 @@ export class OrderFactory {
         const signature = signingUtils.signMessage(orderHashBuff, this._privateKey, signatureType);
         const signedOrder = {
             ...order,
-            signature: `0x${signature.toString('hex')}`,
+            signature: `powerchain${signature.toString('hex')}`,
         };
         return signedOrder;
     }

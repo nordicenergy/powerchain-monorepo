@@ -1,5 +1,5 @@
 {
-    "name": "@0x/connect",
+    "name": "@powerchain/connect",
     "version": "6.0.3",
     "engines": {
         "node": ">=6.12"
@@ -7,7 +7,7 @@
     "description": "A javascript library for interacting with the standard relayer api",
     "keywords": [
         "connect",
-        "0xproject",
+        "powerchainproject",
         "ethereum",
         "tokens",
         "exchange"
@@ -28,7 +28,7 @@
         "coverage:report:lcov": "nyc report --reporter=text-lcov > coverage/lcov.info",
         "test:circleci": "yarn test:coverage",
         "diff_docs": "git diff --exit-code ./docs",
-        "s3:sync_md_docs": "aws s3 sync ./docs s3://docs-markdown/${npm_package_name}/v${npm_package_version} --profile 0xproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
+        "s3:sync_md_docs": "aws s3 sync ./docs s3://docs-markdown/${npm_package_name}/v${npm_package_version} --profile powerchainproject --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
         "docs:md": "ts-doc-gen --sourceDir='$PROJECT_FILES' --output=$MD_FILE_DIR --fileExtension=mdx --tsconfig=./typedoc-tsconfig.json",
         "docs:json": "typedoc --excludePrivate --excludeExternals --excludeProtected --ignoreCompilerErrors --target ES5 --tsconfig typedoc-tsconfig.json --json $JSON_FILE_PATH $PROJECT_FILES"
     },
@@ -39,20 +39,20 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "author": "Brandon Millman",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/connect/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/connect/README.md",
     "dependencies": {
-        "@0x/assert": "^3.0.3",
-        "@0x/json-schemas": "^5.0.3",
-        "@0x/types": "^3.1.1",
-        "@0x/typescript-typings": "^5.0.1",
-        "@0x/utils": "^5.1.2",
+        "@powerchain/assert": "^3.0.3",
+        "@powerchain/json-schemas": "^5.0.3",
+        "@powerchain/types": "^3.1.1",
+        "@powerchain/typescript-typings": "^5.0.1",
+        "@powerchain/utils": "^5.1.2",
         "lodash": "^4.17.11",
         "query-string": "^6.0.0",
         "sinon": "^4.0.0",
@@ -60,8 +60,8 @@
         "websocket": "^1.0.26"
     },
     "devDependencies": {
-        "@0x/ts-doc-gen": "^0.0.22",
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/ts-doc-gen": "^0.0.22",
+        "@powerchain/tslint-config": "^4.0.0",
         "@types/fetch-mock": "^6.0.3",
         "@types/lodash": "4.14.104",
         "@types/mocha": "^5.2.7",

@@ -97,13 +97,13 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.1.0 - _February 26, 2019_
+## v1.0.1- _February 26, 2019_
 
     * Add support for Ganache (#1647)
 
-## v3.0.0 - _February 25, 2019_
+## v1.0.0 - _February 25, 2019_
 
-    * Big @0x/sol-profiler overhaul. It now has a bunch of new features (#1638)
+    * Big @powerchain/sol-profiler overhaul. It now has a bunch of new features (#1638)
     * Added a CLI interface for reporting non line-based profiling info (#1638)
     * Add memory consumption analysis (#1638)
     * Add calldata analysis (#1638)
@@ -142,4 +142,4 @@ CHANGELOG
 
 ## v1.0.0 - _Invalid date_
 
-    * Initial release as a separate package. For historical entries see @0x/sol-tracing-utils (#1492)
+    * Initial release as a separate package. For historical entries see @powerchain/sol-tracing-utils (#1492)

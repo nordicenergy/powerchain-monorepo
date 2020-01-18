@@ -1,6 +1,6 @@
-import { constants, expect, getCodesizeFromArtifact } from '@0x/contracts-test-utils';
+import {constants, expect, getCodesizeFromArtifact} from '@powerchain/contracts-test-utils';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 describe('Contract Size Checks', () => {
     describe('Staking', () => {

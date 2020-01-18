@@ -124,7 +124,7 @@
         "version": "4.0.0",
         "changes": [
             {
-                "note": "Removed @0x/order-watcher"
+                "note": "Removed @powerchain/order-watcher"
             }
         ],
         "timestamp": 1566446343
@@ -340,7 +340,7 @@
                 "pr": 1173
             },
             {
-                "note": "Add schemas from @0x/connect",
+                "note": "Add schemas from @powerchain/connect",
                 "pr": 1250
             }
         ],
@@ -446,7 +446,7 @@
                 "pr": 938
             },
             {
-                "note": "Change hexSchema to match `0x`",
+                "note": "Change hexSchema to match `powerchain`",
                 "pr": 937
             },
             {
@@ -497,7 +497,7 @@
         "version": "1.0.0-rc.1",
         "changes": [
             {
-                "note": "Update schemas for V2 or 0x Protocol",
+                "note": "Update schemas for V2 or powerchain Protocol",
                 "pr": 615
             },
             {
@@ -634,7 +634,7 @@
         "version": "0.6.7",
         "changes": [
             {
-                "note": "Re-publish JSON-schema previously published under NPM package 0x-json-schemas"
+                "note": "Re-publish JSON-schema previously published under NPM package powerchain-json-schemas"
             }
         ],
         "timestamp": 1510585200

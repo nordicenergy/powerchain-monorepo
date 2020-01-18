@@ -14,7 +14,7 @@ import {
     TraceCollector,
     TraceInfoSubprovider,
     utils,
-} from '@0x/sol-tracing-utils';
+} from '@powerchain/sol-tracing-utils';
 import * as _ from 'lodash';
 import * as minimatch from 'minimatch';
 
@@ -44,7 +44,7 @@ export class CoverageSubprovider extends TraceInfoSubprovider {
     private readonly _coverageSubproviderCnfig: CoverageSubproviderConfig;
     /**
      * Instantiates a CoverageSubprovider instance
-     * @param artifactAdapter Adapter for used artifacts format (0x, truffle, giveth, etc.)
+     * @param artifactAdapter Adapter for used artifacts format (powerchain, truffle, giveth, etc.)
      * @param defaultFromAddress default from address to use when sending transactions
      * @param partialConfig Partial configuration object
      */

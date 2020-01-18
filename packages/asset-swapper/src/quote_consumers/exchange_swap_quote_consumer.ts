@@ -1,10 +1,10 @@
-import { ContractAddresses } from '@0x/contract-addresses';
-import { ExchangeContract } from '@0x/contract-wrappers';
-import { providerUtils } from '@0x/utils';
-import { SupportedProvider, ZeroExProvider } from '@0x/web3-wrapper';
+import {ContractAddresses} from '@powerchain/contract-addresses';
+import {ExchangeContract} from '@powerchain/contract-wrappers';
+import {providerUtils} from '@powerchain/utils';
+import {SupportedProvider, ZeroExProvider} from '@powerchain/web3-wrapper';
 import * as _ from 'lodash';
 
-import { constants } from '../constants';
+import {constants} from '../constants';
 import {
     CalldataInfo,
     MarketOperation,
@@ -14,8 +14,8 @@ import {
     SwapQuoteExecutionOpts,
     SwapQuoteGetOutputOpts,
 } from '../types';
-import { assert } from '../utils/assert';
-import { swapQuoteConsumerUtils } from '../utils/swap_quote_consumer_utils';
+import {assert} from '../utils/assert';
+import {swapQuoteConsumerUtils} from '../utils/swap_quote_consumer_utils';
 
 export class ExchangeSwapQuoteConsumer implements SwapQuoteConsumerBase {
     public readonly provider: ZeroExProvider;

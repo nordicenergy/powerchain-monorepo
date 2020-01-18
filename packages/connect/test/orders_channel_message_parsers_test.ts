@@ -2,10 +2,10 @@ import * as chai from 'chai';
 import * as dirtyChai from 'dirty-chai';
 import 'mocha';
 
-import { ordersChannelMessageParser } from '../src/utils/orders_channel_message_parser';
+import {ordersChannelMessageParser} from '../src/utils/orders_channel_message_parser';
 
-import { orderResponse } from './fixtures/standard_relayer_api/order/0xabc67323774bdbd24d94f977fa9ac94a50f016026fd13f42990861238897721f';
-import { unknownOrdersChannelMessage } from './fixtures/standard_relayer_api/unknown_orders_channel_message';
+import {orderResponse} from './fixtures/standard_relayer_api/order/powerchainabc67323774bdbd24d94f977fa9ac94a50f016026fd13f42990861238897721f';
+import {unknownOrdersChannelMessage} from './fixtures/standard_relayer_api/unknown_orders_channel_message';
 import {
     malformedUpdateOrdersChannelMessage,
     updateOrdersChannelMessage,

@@ -35,13 +35,13 @@ def accounts(web3_eth):  # pylint: disable=redefined-outer-name
 
 @pytest.fixture(scope="module")
 def erc20_proxy_address():
-    """Get the 0x ERC20 Proxy address."""
+    """Get the powerchain ERC20 Proxy address."""
     return chain_to_addresses(ChainId.GANACHE).erc20_proxy
 
 
 @pytest.fixture(scope="module")
 def weth_asset_data():  # pylint: disable=redefined-outer-name
-    """Get 0x asset data for Wrapped Ether (WETH) token."""
+    """Get powerchain asset data for Wrapped Ether (WETH) token."""
     return asset_data_utils.encode_erc20(
         chain_to_addresses(ChainId.GANACHE).ether_token
     )
@@ -60,11 +60,11 @@ def weth_instance(web3_eth):  # pylint: disable=redefined-outer-name
 
 @pytest.fixture(scope="module")
 def zrx_address():
-    """Get address of ZRX token for Ganache chain."""
-    return chain_to_addresses(ChainId.GANACHE).zrx_token
+    """Get address of NET token for Ganache chain."""
+    return chain_to_addresses(ChainId.GANACHE).net_token
 
 
 @pytest.fixture(scope="module")
 def zrx_asset_data(zrx_address):  # pylint: disable=redefined-outer-name
-    """Get 0x asset data for ZRX token."""
+    """Get powerchain asset data for NET token."""
     return asset_data_utils.encode_erc20(zrx_address)

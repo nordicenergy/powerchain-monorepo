@@ -1,18 +1,18 @@
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as _ from 'lodash';
-import { Dispatch } from 'redux';
+import {Dispatch} from 'redux';
 
-import { BIG_NUMBER_ZERO, SUPPORTED_TOKEN_ASSET_DATA_WITH_BRIDGE_ORDERS } from '../constants';
-import { AccountState, BaseCurrency, OrderProcessState, ProviderState, QuoteFetchOrigin } from '../types';
-import { analytics } from '../util/analytics';
-import { assetUtils } from '../util/asset';
-import { coinbaseApi } from '../util/coinbase_api';
-import { errorFlasher } from '../util/error_flasher';
-import { errorReporter } from '../util/error_reporter';
-import { swapQuoteUpdater } from '../util/swap_quote_updater';
+import {BIG_NUMBER_ZERO, SUPPORTED_TOKEN_ASSET_DATA_WITH_BRIDGE_ORDERS} from '../constants';
+import {AccountState, BaseCurrency, OrderProcessState, ProviderState, QuoteFetchOrigin} from '../types';
+import {analytics} from '../util/analytics';
+import {assetUtils} from '../util/asset';
+import {coinbaseApi} from '../util/coinbase_api';
+import {errorFlasher} from '../util/error_flasher';
+import {errorReporter} from '../util/error_reporter';
+import {swapQuoteUpdater} from '../util/swap_quote_updater';
 
-import { actions } from './actions';
-import { State } from './reducer';
+import {actions} from './actions';
+import {State} from './reducer';
 
 export const asyncData = {
     fetchEthPriceAndDispatchToStore: async (dispatch: Dispatch) => {

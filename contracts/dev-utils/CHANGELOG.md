@@ -77,7 +77,7 @@ CHANGELOG
 
 ## v0.0.5 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies. (#1995)
 
 ## v0.0.5 - _July 24, 2019_
 
@@ -99,9 +99,9 @@ CHANGELOG
 
     * Create dev-utils package (#1848)
     * Add `LibAssetData` and `LibTransactionDecoder` contracts (#1848)
-    * Refactor `LibAssetData` to only check 0x-specific allowances (#1848)
+    * Refactor `LibAssetData` to only check powerchain-specific allowances (#1848)
     * Refactor `LibAssetData` balance/allowance checks to never revert (#1848)
     * Refactor `OrderValidationUtils` to calculate `fillableTakerAssetAmount` (#1848)
     * Add support for StaticCallProxy (#1863)
     * Add `OrderTransferSimulationUtils` contract for simulating order transfers on-chain (#1868)
-    * Updated to use the new rich error pattern from @0x/contracts-exchange (#1913)
+    * Updated to use the new rich error pattern from @powerchain/contracts-exchange (#1913)

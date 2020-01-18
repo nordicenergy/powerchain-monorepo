@@ -1,14 +1,13 @@
-import { providerUtils } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { SupportedProvider, ZeroExProvider } from 'ethereum-types';
-import * as _ from 'lodash';
+import {providerUtils} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {SupportedProvider, ZeroExProvider} from 'ethereum-types';
 
-import { LOADING_ACCOUNT, NO_ACCOUNT } from '../constants';
-import { Maybe, Network, OrderSource, ProviderState } from '../types';
-import { envUtil } from '../util/env';
+import {LOADING_ACCOUNT, NO_ACCOUNT} from '../constants';
+import {Maybe, Network, OrderSource, ProviderState} from '../types';
+import {envUtil} from '../util/env';
 
-import { assetSwapperFactory } from './asset_swapper_factory';
-import { providerFactory } from './provider_factory';
+import {assetSwapperFactory} from './asset_swapper_factory';
+import {providerFactory} from './provider_factory';
 
 export const providerStateFactory = {
     getInitialProviderState: (

@@ -1,8 +1,7 @@
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { BigNumber } from '@0x/utils';
-import * as _ from 'lodash';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { AbstractBalanceAndProxyAllowanceFetcher } from './abstract/abstract_balance_and_proxy_allowance_fetcher';
+import {AbstractBalanceAndProxyAllowanceFetcher} from './abstract/abstract_balance_and_proxy_allowance_fetcher';
 
 export class AssetBalanceAndProxyAllowanceFetcher implements AbstractBalanceAndProxyAllowanceFetcher {
     private readonly _devUtilsContract: DevUtilsContract;

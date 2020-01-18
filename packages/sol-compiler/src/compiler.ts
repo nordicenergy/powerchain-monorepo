@@ -1,4 +1,4 @@
-import { assert } from '@0x/assert';
+import {assert} from '@powerchain/assert';
 import {
     FallthroughResolver,
     FSResolver,
@@ -8,19 +8,18 @@ import {
     Resolver,
     SpyResolver,
     URLResolver,
-} from '@0x/sol-resolver';
-import { logUtils } from '@0x/utils';
-import { execSync } from 'child_process';
+} from '@powerchain/sol-resolver';
+import {logUtils} from '@powerchain/utils';
+import {execSync} from 'child_process';
 import * as chokidar from 'chokidar';
-import { CompilerOptions, ContractArtifact, ContractVersionData, StandardOutput } from 'ethereum-types';
+import {CompilerOptions, ContractArtifact, ContractVersionData, StandardOutput} from 'ethereum-types';
 import * as fs from 'fs';
 import * as _ from 'lodash';
 import * as path from 'path';
 import * as pluralize from 'pluralize';
 import * as semver from 'semver';
-import solc = require('solc');
 
-import { compilerOptionsSchema } from './schemas/compiler_options_schema';
+import {compilerOptionsSchema} from './schemas/compiler_options_schema';
 import {
     addHexPrefixToContractBytecode,
     compileDockerAsync,
@@ -38,9 +37,10 @@ import {
     parseSolidityVersionRange,
     printCompilationErrorsAndWarnings,
 } from './utils/compiler';
-import { constants } from './utils/constants';
-import { fsWrapper } from './utils/fs_wrapper';
-import { utils } from './utils/utils';
+import {constants} from './utils/constants';
+import {fsWrapper} from './utils/fs_wrapper';
+import {utils} from './utils/utils';
+import solc = require('solc');
 
 type TYPE_ALL_FILES_IDENTIFIER = '*';
 const ALL_CONTRACTS_IDENTIFIER = '*';
@@ -241,7 +241,7 @@ export class Compiler {
             const contractData = {
                 contractName: path.basename(contractName, constants.SOLIDITY_FILE_EXTENSION),
                 currentArtifactIfExists: await getContractArtifactIfExistsAsync(this._artifactsDir, contractName),
-                sourceTreeHashHex: `0x${sourceTreeHashHex}`,
+                sourceTreeHashHex: `powerchain${sourceTreeHashHex}`,
             };
             if (!this._shouldCompile(contractData)) {
                 continue;

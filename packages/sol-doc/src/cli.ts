@@ -1,13 +1,13 @@
-import { logUtils } from '@0x/utils';
+import {logUtils} from '@powerchain/utils';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import 'source-map-support/register';
-import { promisify } from 'util';
+import {promisify} from 'util';
 import * as yargs from 'yargs';
 
-import { extractDocsAsync } from './extract_docs';
-import { generateMarkdownFromDocs } from './gen_md';
-import { transformDocs } from './transform_docs';
+import {extractDocsAsync} from './extract_docs';
+import {generateMarkdownFromDocs} from './gen_md';
+import {transformDocs} from './transform_docs';
 
 const JSON_TAB_WIDTH = 2;
 

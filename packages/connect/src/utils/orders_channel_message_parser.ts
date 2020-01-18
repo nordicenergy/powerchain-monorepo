@@ -1,10 +1,10 @@
-import { assert } from '@0x/assert';
-import { schemas } from '@0x/json-schemas';
+import {assert} from '@powerchain/assert';
+import {schemas} from '@powerchain/json-schemas';
 import * as _ from 'lodash';
 
-import { OrdersChannelMessage, OrdersChannelMessageTypes } from '@0x/types';
+import {OrdersChannelMessage, OrdersChannelMessageTypes} from '@powerchain/types';
 
-import { relayerResponseJsonParsers } from './relayer_response_json_parsers';
+import {relayerResponseJsonParsers} from './relayer_response_json_parsers';
 
 export const ordersChannelMessageParser = {
     parse(utf8Data: string): OrdersChannelMessage {

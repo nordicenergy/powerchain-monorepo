@@ -1,20 +1,20 @@
-import { chaiSetup } from '@0x/dev-utils';
-import { Order } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {chaiSetup} from '@powerchain/dev-utils';
+import {Order} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import 'mocha';
 
-import { orderHashUtils } from '../src';
+import {orderHashUtils} from '../src';
 
-import { constants } from '../src/constants';
+import {constants} from '../src/constants';
 
 chaiSetup.configure();
 const expect = chai.expect;
 
 describe('Order hashing', () => {
     describe('#getOrderHashHex', () => {
-        const expectedOrderHash = '0x331cb7e07a757bae130702da6646c26531798c92bcfaf671817268fd2c188531';
-        const fakeExchangeContractAddress = '0x1dc4c1cefef38a777b15aa20260a54e584b16c48';
+        const expectedOrderHash = 'powerchain331cb7e07a757bae130702da6646c26531798c92bcfaf671817268fd2c188531';
+        const fakeExchangeContractAddress = 'powerchain1dc4c1cefef38a777b15aa20260a54e584b16c48';
         const fakeChainID = 50;
         const order: Order = {
             makerAddress: constants.NULL_ADDRESS,

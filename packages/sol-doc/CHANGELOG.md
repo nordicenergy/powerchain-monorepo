@@ -5,7 +5,7 @@ Edit the package's CHANGELOG.json file only.
 
 CHANGELOG
 
-## v3.1.0 - _January 6, 2020_
+## v1.0.1- _January 6, 2020_
 
     * Rewrite the whole thing to use custom AST walker. (#2391)
 
@@ -17,7 +17,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _December 2, 2019_
+## v1.0.0 - _December 2, 2019_
 
     * Dependencies updated
 
@@ -179,4 +179,4 @@ CHANGELOG
 
 ## v1.0.0 - _Invalid date_
 
-    * Utility to generate documentation for Solidity smart contracts, outputting a format compliant with @0xproject/types.DocAgnosticFormat (#1004)
+    * Utility to generate documentation for Solidity smart contracts, outputting a format compliant with @powerchainproject/types.DocAgnosticFormat (#1004)

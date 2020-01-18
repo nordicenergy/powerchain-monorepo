@@ -1,15 +1,15 @@
-import { blockchainTests, expect, Numberish } from '@0x/contracts-test-utils';
-import { SafeMathRevertErrors } from '@0x/contracts-utils';
-import { BigNumber } from '@0x/utils';
+import {blockchainTests, expect, Numberish} from '@powerchain/contracts-test-utils';
+import {SafeMathRevertErrors} from '@powerchain/contracts-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { artifacts } from '../artifacts';
-import { TestLibSafeDowncastContract } from '../wrappers';
+import {artifacts} from '../artifacts';
+import {TestLibSafeDowncastContract} from '../wrappers';
 
 blockchainTests('LibSafeDowncast unit tests', env => {
     let testContract: TestLibSafeDowncastContract;
 
     before(async () => {
-        testContract = await TestLibSafeDowncastContract.deployFrom0xArtifactAsync(
+        testContract = await TestLibSafeDowncastContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibSafeDowncast,
             env.provider,
             env.txDefaults,

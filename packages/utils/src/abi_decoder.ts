@@ -12,8 +12,8 @@ import {
 import * as ethers from 'ethers';
 import * as _ from 'lodash';
 
-import { AbiEncoder } from '.';
-import { DecodedCalldata, SelectorToFunctionInfo } from './types';
+import {AbiEncoder} from '.';
+import {DecodedCalldata, SelectorToFunctionInfo} from './types';
 
 /**
  * AbiDecoder allows you to decode event logs given a set of supplied contract ABI's. It takes the contract's event
@@ -29,9 +29,9 @@ export class AbiDecoder {
      */
     private static _getFunctionSelector(calldata: string): string {
         const functionSelectorLength = 10;
-        if (!calldata.startsWith('0x') || calldata.length < functionSelectorLength) {
+        if (!calldata.startsWith('powerchain') || calldata.length < functionSelectorLength) {
             throw new Error(
-                `Malformed calldata. Must include a hex prefix '0x' and 4-byte function selector. Got '${calldata}'`,
+                `Malformed calldata. Must include a hex prefix 'powerchain' and 4-byte function selector. Got '${calldata}'`,
             );
         }
         const functionSelector = calldata.substr(0, functionSelectorLength);

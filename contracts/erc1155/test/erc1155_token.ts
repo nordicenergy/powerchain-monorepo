@@ -5,20 +5,20 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { SafeMathRevertErrors } from '@0x/contracts-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { RevertReason } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {SafeMathRevertErrors} from '@powerchain/contracts-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {RevertReason} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
-import { LogWithDecodedArgs } from 'ethereum-types';
-import * as _ from 'lodash';
+import {LogWithDecodedArgs} from 'ethereum-types';
 
-import { Erc1155Wrapper } from '../src/erc1155_wrapper';
-import { ERC1155MintableContract } from '../src/wrappers';
+import {Erc1155Wrapper} from '../src/erc1155_wrapper';
+import {ERC1155MintableContract} from '../src/wrappers';
 
-import { artifacts } from './artifacts';
-import { DummyERC1155ReceiverBatchTokenReceivedEventArgs, DummyERC1155ReceiverContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {DummyERC1155ReceiverBatchTokenReceivedEventArgs, DummyERC1155ReceiverContract} from './wrappers';
+
 chaiSetup.configure();
 const expect = chai.expect;
 const blockchainLifecycle = new BlockchainLifecycle(web3Wrapper);
@@ -31,7 +31,7 @@ describe('ERC1155Token', () => {
     const receiverInitialFungibleBalance = new BigNumber(0);
     const fungibleValueToTransfer = spenderInitialFungibleBalance.div(2);
     const nonFungibleValueToTransfer = nftOwnerBalance;
-    const receiverCallbackData = '0x01020304';
+    const receiverCallbackData = 'powerchain01020304';
     // tokens & addresses
     let owner: string;
     let spender: string;
@@ -53,13 +53,13 @@ describe('ERC1155Token', () => {
         // deploy erc1155 contract & receiver
         const accounts = await web3Wrapper.getAvailableAddressesAsync();
         [owner, spender, delegatedSpender] = accounts;
-        erc1155Contract = await ERC1155MintableContract.deployFrom0xArtifactAsync(
+        erc1155Contract = await ERC1155MintableContract.deployFrompowerchainArtifactAsync(
             artifacts.ERC1155Mintable,
             provider,
             txDefaults,
             artifacts,
         );
-        erc1155Receiver = await DummyERC1155ReceiverContract.deployFrom0xArtifactAsync(
+        erc1155Receiver = await DummyERC1155ReceiverContract.deployFrompowerchainArtifactAsync(
             artifacts.DummyERC1155Receiver,
             provider,
             txDefaults,

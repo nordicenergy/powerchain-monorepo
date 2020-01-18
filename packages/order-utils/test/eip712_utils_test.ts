@@ -1,11 +1,11 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import 'mocha';
 
-import { constants } from '../src/constants';
-import { eip712Utils } from '../src/eip712_utils';
+import {constants} from '../src/constants';
+import {eip712Utils} from '../src/eip712_utils';
 
-import { chaiSetup } from './utils/chai_setup';
+import {chaiSetup} from './utils/chai_setup';
 
 chaiSetup.configure();
 const expect = chai.expect;

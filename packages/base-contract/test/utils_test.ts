@@ -1,8 +1,8 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import 'mocha';
 
-import { formatABIDataItem } from '../src/utils';
+import {formatABIDataItem} from '../src/utils';
 
 const { expect } = chai;
 
@@ -42,7 +42,7 @@ describe('Utils tests', () => {
                 name: 'data',
                 type: 'tuple',
             };
-            const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+            const ZERO_ADDRESS = 'powerchain0000000000000000000000000000000000000000';
             const val = { to: ZERO_ADDRESS, amount: new BigNumber(1) };
             const formatted = formatABIDataItem(abi, val, (type: string, value: any) => {
                 calls.push({ type, value });
@@ -76,7 +76,7 @@ describe('Utils tests', () => {
                 name: 'data',
                 type: 'tuple[2][]',
             };
-            const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+            const ZERO_ADDRESS = 'powerchain0000000000000000000000000000000000000000';
             const val = [
                 [{ to: ZERO_ADDRESS, amount: new BigNumber(1) }, { to: ZERO_ADDRESS, amount: new BigNumber(2) }],
             ];

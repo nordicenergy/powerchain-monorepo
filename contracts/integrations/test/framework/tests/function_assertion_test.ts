@@ -1,10 +1,16 @@
-import { blockchainTests, constants, expect, filterLogsToArguments, getRandomInteger } from '@0x/contracts-test-utils';
-import { BigNumber, StringRevertError } from '@0x/utils';
-import { TransactionReceiptWithDecodedLogs, TxData } from 'ethereum-types';
+import {
+    blockchainTests,
+    constants,
+    expect,
+    filterLogsToArguments,
+    getRandomInteger
+} from '@powerchain/contracts-test-utils';
+import {BigNumber, StringRevertError} from '@powerchain/utils';
+import {TransactionReceiptWithDecodedLogs, TxData} from 'ethereum-types';
 
-import { artifacts } from '../../artifacts';
-import { TestFrameworkContract, TestFrameworkEventEventArgs, TestFrameworkEvents } from '../../wrappers';
-import { FunctionAssertion, FunctionResult } from '../assertions/function_assertion';
+import {artifacts} from '../../artifacts';
+import {TestFrameworkContract, TestFrameworkEventEventArgs, TestFrameworkEvents} from '../../wrappers';
+import {FunctionAssertion, FunctionResult} from '../assertions/function_assertion';
 
 const { ZERO_AMOUNT, MAX_UINT256 } = constants;
 
@@ -12,7 +18,7 @@ blockchainTests.resets('FunctionAssertion Unit Tests', env => {
     let exampleContract: TestFrameworkContract;
 
     before(async () => {
-        exampleContract = await TestFrameworkContract.deployFrom0xArtifactAsync(
+        exampleContract = await TestFrameworkContract.deployFrompowerchainArtifactAsync(
             artifacts.TestFramework,
             env.provider,
             env.txDefaults,

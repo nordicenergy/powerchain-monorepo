@@ -10,11 +10,11 @@ import pkg_resources
 # pylint: disable=invalid-name
 # because these variables are not named in upper case, as globals should be.
 
-project = "0x-contract-wrappers"
+project = "powerchain-contract-wrappers"
 # pylint: disable=redefined-builtin
 copyright = "2019, ZeroEx, Intl."
 author = "Michael Huang"
-version = pkg_resources.get_distribution("0x-contract-wrappers").version
+version = pkg_resources.get_distribution("powerchain-contract-wrappers").version
 release = ""  # The full version, including alpha/beta/rc tags
 
 extensions = [

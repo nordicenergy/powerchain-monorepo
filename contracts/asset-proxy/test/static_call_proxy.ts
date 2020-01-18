@@ -1,4 +1,4 @@
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
 import {
     chaiSetup,
     constants,
@@ -7,16 +7,16 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { AssetProxyId, RevertReason } from '@0x/types';
-import { AbiEncoder, BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {AssetProxyId, RevertReason} from '@powerchain/types';
+import {AbiEncoder, BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import * as ethUtil from 'ethereumjs-util';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { IAssetProxyContract, StaticCallProxyContract, TestStaticCallTargetContract } from './wrappers';
+import {IAssetProxyContract, StaticCallProxyContract, TestStaticCallTargetContract} from './wrappers';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -40,7 +40,7 @@ describe('StaticCallProxy', () => {
     before(async () => {
         const accounts = await web3Wrapper.getAvailableAddressesAsync();
         [fromAddress, toAddress] = accounts.slice(0, 2);
-        const staticCallProxyWithoutTransferFrom = await StaticCallProxyContract.deployFrom0xArtifactAsync(
+        const staticCallProxyWithoutTransferFrom = await StaticCallProxyContract.deployFrompowerchainArtifactAsync(
             artifacts.StaticCallProxy,
             provider,
             txDefaults,
@@ -54,7 +54,7 @@ describe('StaticCallProxy', () => {
             {},
             StaticCallProxyContract.deployedBytecode,
         );
-        staticCallTarget = await TestStaticCallTargetContract.deployFrom0xArtifactAsync(
+        staticCallTarget = await TestStaticCallTargetContract.deployFrompowerchainArtifactAsync(
             artifacts.TestStaticCallTarget,
             provider,
             txDefaults,
@@ -70,7 +70,7 @@ describe('StaticCallProxy', () => {
 
     describe('general', () => {
         it('should revert if undefined function is called', async () => {
-            const undefinedSelector = '0x01020304';
+            const undefinedSelector = 'powerchain01020304';
             await expectTransactionFailedWithoutReasonAsync(
                 web3Wrapper.sendTransactionAsync({
                     from: fromAddress,
@@ -80,7 +80,7 @@ describe('StaticCallProxy', () => {
                 }),
             );
         });
-        it('should have an id of 0xc339d10a', async () => {
+        it('should have an id of powerchainc339d10a', async () => {
             const proxyId = await staticCallProxy.getProxyId().callAsync();
             const expectedProxyId = AssetProxyId.StaticCall;
             expect(proxyId).to.equal(expectedProxyId);
@@ -164,7 +164,7 @@ describe('StaticCallProxy', () => {
         });
         it('should revert if the hash of the output is different than expected expected', async () => {
             const staticCallData = staticCallTarget.isOddNumber(new BigNumber(0)).getABIEncodedTransactionData();
-            const trueAsBuffer = ethUtil.toBuffer('0x0000000000000000000000000000000000000000000000000000000000000001');
+            const trueAsBuffer = ethUtil.toBuffer('powerchain0000000000000000000000000000000000000000000000000000000000000001');
             const expectedResultHash = ethUtil.bufferToHex(ethUtil.sha3(trueAsBuffer));
             const assetData = await devUtils
                 .encodeStaticCallAssetData(staticCallTarget.address, staticCallData, expectedResultHash)
@@ -185,7 +185,7 @@ describe('StaticCallProxy', () => {
                 .awaitTransactionSuccessAsync();
         });
         it('should be successful if the staticCallTarget is not a contract and no return value is expected', async () => {
-            const staticCallData = '0x0102030405060708';
+            const staticCallData = 'powerchain0102030405060708';
             const expectedResultHash = constants.KECCAK256_NULL;
             const assetData = await devUtils
                 .encodeStaticCallAssetData(toAddress, staticCallData, expectedResultHash)
@@ -196,7 +196,7 @@ describe('StaticCallProxy', () => {
         });
         it('should be successful if a function call with one static input returns the correct value', async () => {
             const staticCallData = staticCallTarget.isOddNumber(new BigNumber(1)).getABIEncodedTransactionData();
-            const trueAsBuffer = ethUtil.toBuffer('0x0000000000000000000000000000000000000000000000000000000000000001');
+            const trueAsBuffer = ethUtil.toBuffer('powerchain0000000000000000000000000000000000000000000000000000000000000001');
             const expectedResultHash = ethUtil.bufferToHex(ethUtil.sha3(trueAsBuffer));
             const assetData = await devUtils
                 .encodeStaticCallAssetData(staticCallTarget.address, staticCallData, expectedResultHash)
@@ -206,7 +206,7 @@ describe('StaticCallProxy', () => {
                 .awaitTransactionSuccessAsync();
         });
         it('should be successful if a function with one dynamic input is successful', async () => {
-            const dynamicInput = '0x0102030405060708';
+            const dynamicInput = 'powerchain0102030405060708';
             const staticCallData = staticCallTarget.dynamicInputFunction(dynamicInput).getABIEncodedTransactionData();
             const expectedResultHash = constants.KECCAK256_NULL;
             const assetData = await devUtils
@@ -228,7 +228,7 @@ describe('StaticCallProxy', () => {
             const bHex = '0000000000000000000000000000000000000000000000000000000000000002';
             const expectedResults = `${staticCallTarget.address}${aHex}${bHex}`;
             const offset = '0000000000000000000000000000000000000000000000000000000000000020';
-            const encodedExpectedResultWithOffset = `0x${offset}${abiEncoder.encode(expectedResults).slice(2)}`;
+            const encodedExpectedResultWithOffset = `powerchain${offset}${abiEncoder.encode(expectedResults).slice(2)}`;
             const expectedResultHash = ethUtil.bufferToHex(
                 ethUtil.sha3(ethUtil.toBuffer(encodedExpectedResultWithOffset)),
             );

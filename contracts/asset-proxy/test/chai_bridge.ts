@@ -1,10 +1,10 @@
-import { ERC20TokenContract } from '@0x/contracts-erc20';
-import { blockchainTests, constants, expect, randomAddress } from '@0x/contracts-test-utils';
-import { AssetProxyId, RevertReason } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {ERC20TokenContract} from '@powerchain/contracts-erc20';
+import {blockchainTests, constants, expect, randomAddress} from '@powerchain/contracts-test-utils';
+import {AssetProxyId, RevertReason} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { artifacts } from './artifacts';
-import { TestChaiBridgeContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestChaiBridgeContract} from './wrappers';
 
 blockchainTests.resets('ChaiBridge unit tests', env => {
     let chaiBridgeContract: TestChaiBridgeContract;
@@ -12,12 +12,12 @@ blockchainTests.resets('ChaiBridge unit tests', env => {
     let fromAddress: string;
     let toAddress: string;
 
-    const alwaysRevertAddress = '0x0000000000000000000000000000000000000001';
+    const alwaysRevertAddress = 'powerchain0000000000000000000000000000000000000001';
     const amount = new BigNumber(1);
 
     before(async () => {
         [fromAddress, toAddress] = await env.getAccountAddressesAsync();
-        chaiBridgeContract = await TestChaiBridgeContract.deployFrom0xArtifactAsync(
+        chaiBridgeContract = await TestChaiBridgeContract.deployFrompowerchainArtifactAsync(
             artifacts.TestChaiBridge,
             env.provider,
             env.txDefaults,

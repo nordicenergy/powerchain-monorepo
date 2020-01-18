@@ -1,10 +1,10 @@
-import { blockchainTests, constants, expect, filterLogsToArguments } from '@0x/contracts-test-utils';
-import { AuthorizableRevertErrors } from '@0x/contracts-utils';
-import { BigNumber, StakingRevertErrors, StringRevertError } from '@0x/utils';
+import {blockchainTests, constants, expect, filterLogsToArguments} from '@powerchain/contracts-test-utils';
+import {AuthorizableRevertErrors} from '@powerchain/contracts-utils';
+import {BigNumber, StakingRevertErrors, StringRevertError} from '@powerchain/utils';
 
-import { constants as stakingConstants } from '../src/constants';
+import {constants as stakingConstants} from '../src/constants';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 import {
     StakingContract,
     StakingProxyContract,
@@ -22,7 +22,7 @@ blockchainTests('Migration tests', env => {
 
     before(async () => {
         [authorizedAddress, notAuthorizedAddress] = await env.getAccountAddressesAsync();
-        stakingContract = await StakingContract.deployFrom0xArtifactAsync(
+        stakingContract = await StakingContract.deployFrompowerchainArtifactAsync(
             artifacts.TestStakingNoWETH,
             env.provider,
             env.txDefaults,
@@ -38,7 +38,7 @@ blockchainTests('Migration tests', env => {
         let revertAddress: string;
 
         async function deployStakingProxyAsync(stakingContractAddress?: string): Promise<TestStakingProxyContract> {
-            const proxyContract = await TestStakingProxyContract.deployFrom0xArtifactAsync(
+            const proxyContract = await TestStakingProxyContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestStakingProxy,
                 env.provider,
                 env.txDefaults,
@@ -51,7 +51,7 @@ blockchainTests('Migration tests', env => {
 
         before(async () => {
             [authorizedAddress, notAuthorizedAddress] = await env.getAccountAddressesAsync();
-            initTargetContract = await TestInitTargetContract.deployFrom0xArtifactAsync(
+            initTargetContract = await TestInitTargetContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestInitTarget,
                 env.provider,
                 env.txDefaults,
@@ -102,7 +102,7 @@ blockchainTests('Migration tests', env => {
             });
 
             it('should set the correct initial params', async () => {
-                const stakingProxyContractAddress = (await StakingProxyContract.deployFrom0xArtifactAsync(
+                const stakingProxyContractAddress = (await StakingProxyContract.deployFrompowerchainArtifactAsync(
                     artifacts.StakingProxy,
                     env.provider,
                     env.txDefaults,
@@ -207,7 +207,7 @@ blockchainTests('Migration tests', env => {
         const fiveDays = new BigNumber(5 * 24 * 60 * 60);
         const thirtyDays = new BigNumber(30 * 24 * 60 * 60);
         before(async () => {
-            proxyContract = await TestAssertStorageParamsContract.deployFrom0xArtifactAsync(
+            proxyContract = await TestAssertStorageParamsContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestAssertStorageParams,
                 env.provider,
                 env.txDefaults,

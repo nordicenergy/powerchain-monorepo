@@ -1,20 +1,19 @@
-import { LibMathRevertErrors } from '@0x/contracts-exchange-libs';
-import { blockchainTests, constants, expect, verifyEventsFromLogs } from '@0x/contracts-test-utils';
-import { AssetProxyId, RevertReason } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import * as _ from 'lodash';
+import {LibMathRevertErrors} from '@powerchain/contracts-exchange-libs';
+import {blockchainTests, constants, expect, verifyEventsFromLogs} from '@powerchain/contracts-test-utils';
+import {AssetProxyId, RevertReason} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 
-import { DydxBridgeActionType, DydxBridgeData, dydxBridgeDataEncoder } from '../src/dydx_bridge_encoder';
-import { ERC20BridgeProxyContract, IAssetDataContract } from '../src/wrappers';
+import {DydxBridgeActionType, DydxBridgeData, dydxBridgeDataEncoder} from '../src/dydx_bridge_encoder';
+import {ERC20BridgeProxyContract, IAssetDataContract} from '../src/wrappers';
 
-import { artifacts } from './artifacts';
-import { TestDydxBridgeContract, TestDydxBridgeEvents } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestDydxBridgeContract, TestDydxBridgeEvents} from './wrappers';
 
 blockchainTests.resets('DydxBridge unit tests', env => {
     const defaultAccountNumber = new BigNumber(1);
     const marketId = new BigNumber(2);
     const defaultAmount = new BigNumber(4);
-    const notAuthorized = '0x0000000000000000000000000000000000000001';
+    const notAuthorized = 'powerchain0000000000000000000000000000000000000001';
     const defaultDepositAction = {
         actionType: DydxBridgeActionType.Deposit,
         accountId: constants.ZERO_AMOUNT,
@@ -43,7 +42,7 @@ blockchainTests.resets('DydxBridge unit tests', env => {
         [owner, authorized, accountOwner, receiver] = accounts;
 
         // Deploy dydx bridge
-        testContract = await TestDydxBridgeContract.deployFrom0xArtifactAsync(
+        testContract = await TestDydxBridgeContract.deployFrompowerchainArtifactAsync(
             artifacts.TestDydxBridge,
             env.provider,
             env.txDefaults,
@@ -52,7 +51,7 @@ blockchainTests.resets('DydxBridge unit tests', env => {
         );
 
         // Deploy test erc20 bridge proxy
-        testProxyContract = await ERC20BridgeProxyContract.deployFrom0xArtifactAsync(
+        testProxyContract = await ERC20BridgeProxyContract.deployFrompowerchainArtifactAsync(
             artifacts.ERC20BridgeProxy,
             env.provider,
             env.txDefaults,
@@ -131,7 +130,7 @@ blockchainTests.resets('DydxBridge unit tests', env => {
                     secondaryMarketId: constants.ZERO_AMOUNT,
                     otherAddress: action.actionType === DydxBridgeActionType.Deposit ? from : to,
                     otherAccountId: constants.ZERO_AMOUNT,
-                    data: '0x',
+                    data: 'powerchain',
                 });
             }
             verifyEventsFromLogs(txReceipt.logs, expectedOperateActionEvents, TestDydxBridgeEvents.OperateAction);

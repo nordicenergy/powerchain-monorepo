@@ -5,7 +5,7 @@ Edit the package's CHANGELOG.json file only.
 
 CHANGELOG
 
-## v3.0.3 - _January 6, 2020_
+## v1.0.1 - _January 6, 2020_
 
     * Dependencies updated
 
@@ -17,11 +17,11 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _December 2, 2019_
+## v1.0.0 - _December 2, 2019_
 
     * Drastically reduced bundle size by adding .npmignore, only exporting specific artifacts/wrappers/utils (#2330)
     * Introduced new export CoordinatorRevertErrors (#2321)
-    * Added dependency on @0x/contracts-utils (#2321)
+    * Added dependency on @powerchain/contracts-utils (#2321)
     * Add chainId to domain separator (#1742)
     * Inherit Exchange domain constants from `exchange-libs` to reduce code duplication (#1742)
     * Update domain separator (#1742)
@@ -45,7 +45,7 @@ CHANGELOG
 
     * Drastically reduced bundle size by adding .npmignore, only exporting specific artifacts/wrappers/utils (#2330)
     * Introduced new export CoordinatorRevertErrors (#2321)
-    * Added dependency on @0x/contracts-utils (#2321)
+    * Added dependency on @powerchain/contracts-utils (#2321)
 
 ## v2.1.0-beta.1 - _November 7, 2019_
 
@@ -82,7 +82,7 @@ CHANGELOG
 
 ## v2.0.9 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies. (#1995)
 
 ## v2.0.8 - _July 24, 2019_
 

@@ -1,11 +1,11 @@
-import { chaiSetup, provider, randomAddress, txDefaults, web3Wrapper } from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { BigNumber, LibAddressArrayRevertErrors } from '@0x/utils';
+import {chaiSetup, provider, randomAddress, txDefaults, web3Wrapper} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {BigNumber, LibAddressArrayRevertErrors} from '@powerchain/utils';
 import * as chai from 'chai';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
-import { TestLibAddressArrayContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestLibAddressArrayContract} from './wrappers';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -17,7 +17,7 @@ describe('LibAddressArray', () => {
     before(async () => {
         await blockchainLifecycle.startAsync();
         // Deploy LibAddressArray
-        lib = await TestLibAddressArrayContract.deployFrom0xArtifactAsync(
+        lib = await TestLibAddressArrayContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibAddressArray,
             provider,
             txDefaults,

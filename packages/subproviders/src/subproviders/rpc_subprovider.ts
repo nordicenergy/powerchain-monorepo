@@ -1,12 +1,12 @@
-import { assert } from '@0x/assert';
-import { StatusCodes } from '@0x/types';
-import { fetchAsync } from '@0x/utils';
-import { JSONRPCRequestPayload } from 'ethereum-types';
+import {assert} from '@powerchain/assert';
+import {StatusCodes} from '@powerchain/types';
+import {fetchAsync} from '@powerchain/utils';
+import {JSONRPCRequestPayload} from 'ethereum-types';
+
+import {Callback, ErrorCallback} from '../types';
+
+import {Subprovider} from './subprovider';
 import JsonRpcError = require('json-rpc-error');
-
-import { Callback, ErrorCallback } from '../types';
-
-import { Subprovider } from './subprovider';
 
 /**
  * This class implements the [web3-provider-engine](https://github.com/MetaMask/provider-engine) subprovider interface.

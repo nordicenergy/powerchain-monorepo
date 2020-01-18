@@ -22,7 +22,7 @@ CHANGELOG
     * Remove dependency on `abi-gen-wrappers` (#2370)
     * Regenrate Forwarder wrapper (#2374)
     * [Breaking] Remove `erc20Proxy`, `erc721Proxy` and `dutchAuction` wrappers (#2324)
-    * [Breaking] Big refactor of contract wrapper interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details (#2325)
+    * [Breaking] Big refactor of contract wrapper interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details (#2325)
     * Export types `ContractFunctionObj` and `ContractTxFunctionObj` (#2325)
     * All references to network ID have been removed, and references to chain ID have been introduced instead (#2313)
     * Use new `Order` and `ZeroExTransaction` structures with `domain` field (#1742)
@@ -40,7 +40,7 @@ CHANGELOG
 ## v12.2.0-beta.2 - _November 17, 2019_
 
     * [Breaking] Remove `erc20Proxy`, `erc721Proxy` and `dutchAuction` wrappers (#2324)
-    * [Breaking] Big refactor of contract wrapper interface. See https://github.com/0xProject/0x-monorepo/pull/2325 for details (#2325)
+    * [Breaking] Big refactor of contract wrapper interface. See https://github.com/nordicenergy/powerchain-protocol-dev-kit/pull/2325 for details (#2325)
     * Export types `ContractFunctionObj` and `ContractTxFunctionObj` (#2325)
 
 ## v12.2.0-beta.1 - _November 7, 2019_
@@ -58,7 +58,7 @@ CHANGELOG
 
 ## v12.0.0 - _September 3, 2019_
 
-    * Import wrappers from @0x/abi-gen-wrappers instead of directly implementing within this package. (#2086)
+    * Import wrappers from @powerchain/abi-gen-wrappers instead of directly implementing within this package. (#2086)
     * Change CoordinatorWrapper constructor to take a provider instead of a Web3Wrapper instance (#2023)
 
 ## v11.1.0 - _August 22, 2019_
@@ -67,11 +67,11 @@ CHANGELOG
 
 ## v11.0.0 - _August 8, 2019_
 
-    * Use @0x/abi-gen to generate wrappers. For a full list of changes, see https://github.com/0xProject/0x-monorepo/issues/2040 (#2037)
+    * Use @powerchain/abi-gen to generate wrappers. For a full list of changes, see https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues/2040 (#2037)
 
 ## v10.1.0 - _July 31, 2019_
 
-    * Updated interface to `deployFrom0xArtifactAsync` to include log decode dependencies. (#1995)
+    * Updated interface to `deployFrompowerchainArtifactAsync` to include log decode dependencies. (#1995)
     * Updated interface to `deployAsync` to include log decode dependencies. (#1995)
 
 ## v10.0.0 - _Invalid date_
@@ -220,12 +220,12 @@ CHANGELOG
 
     * Fix bug in `ForwarderWrapper` where `feeRecipientAddress` was not correctly normalized. (#1178)
 
-## v3.0.0 - _October 18, 2018_
+## v1.0.0 - _October 18, 2018_
 
     * Add optional validation to the forwarder wrapper methods
     * Updated to use new modularized artifacts. (#1105)
     * Top-level `ContractWrappers` class has a new optional `contractAddresses` parameter. (#1105)
-    * Default contract addresses are no longer stored in artifacts and are instead loaded from the `@0xproject/contract-addresses` package. (#1105)
+    * Default contract addresses are no longer stored in artifacts and are instead loaded from the `@powerchainproject/contract-addresses` package. (#1105)
     * Most contract addresses are now defined at instantiation time and are available as properties (e.g., `exchangeWrapper.address`) instead of methods (e.g., `exchangeWrapper.getContractAddress()`). (#1105)
     * Removed `setProvider` method in top-level `ContractWrapper` class and added new `unsubscribeAll` method. (#1105)
     * Some properties and methods have been renamed. For example, some methods that previously could throw no longer can, and so their names have been updated accordingly. (#1105)
@@ -260,7 +260,7 @@ CHANGELOG
 
 ## v1.0.2 - _September 18, 2018_
 
-    * Add ZRX & WETH mainnet contract addresses into the included artifacts
+    * Add NET & WETH mainnet contract addresses into the included artifacts
 
 ## v1.0.1 - _September 5, 2018_
 
@@ -277,7 +277,7 @@ CHANGELOG
 
     * Export missing types: `TransactionEncoder`, `ContractAbi`, `JSONRPCRequestPayload`, `JSONRPCResponsePayload`, `JSONRPCErrorCallback`, `AbiDefinition`, `FunctionAbi`, `EventAbi`, `EventParameter`, `DecodedLogArgs`, `MethodAbi`, `ConstructorAbi`, `FallbackAbi`, `DataItem`, `ConstructorStateMutability`, `StateMutability` & `ExchangeSignatureValidatorApprovalEventArgs` (#924)
     * Remove superfluous exported types: `ContractEvent`, `Token`, `OrderFillRequest`, `ContractEventArgs`, `LogEvent`, `OnOrderStateChangeCallback`,     `ECSignature`, `OrderStateValid`, `OrderStateInvalid`, `OrderState`, `FilterObject`, `TransactionReceipt` & `TransactionReceiptWithDecodedLogs` (#924)
-    * Added Transaction Encoder for use with 0x Exchange executeTransaction (#975)
+    * Added Transaction Encoder for use with powerchain Exchange executeTransaction (#975)
 
 ## v1.0.1-rc.3 - _August 14, 2018_
 
@@ -300,7 +300,7 @@ CHANGELOG
 ## v1.0.0-rc.1 - _July 19, 2018_
 
     * Update blockstream to v5.0 and propogate up caught errors to active subscriptions (#815)
-    * Update to v2 of 0x rpotocol (#822)
+    * Update to v2 of powerchain rpotocol (#822)
 
 ## v0.1.1 - _July 18, 2018_
 
@@ -320,4 +320,4 @@ CHANGELOG
 
 ## v0.0.1 - _May 22, 2018_
 
-    * Moved contractWrappers out of 0x.js (#579)
+    * Moved contractWrappers out of powerchain.js (#579)

@@ -5,17 +5,17 @@ import {
     expect,
     testCombinatoriallyWithReferenceFunc,
     uint256Values,
-} from '@0x/contracts-test-utils';
-import { SafeMathRevertErrors } from '@0x/contracts-utils';
-import { FillResults, MatchedFillResults, Order } from '@0x/types';
-import { BigNumber, hexUtils, LibMathRevertErrors } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+} from '@powerchain/contracts-test-utils';
+import {SafeMathRevertErrors} from '@powerchain/contracts-utils';
+import {FillResults, MatchedFillResults, Order} from '@powerchain/types';
+import {BigNumber, hexUtils, LibMathRevertErrors} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as _ from 'lodash';
 
-import { addFillResults, calculateFillResults, getPartialAmountFloor } from '../src/reference_functions';
+import {addFillResults, calculateFillResults, getPartialAmountFloor} from '../src/reference_functions';
 
-import { artifacts } from './artifacts';
-import { TestLibFillResultsContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestLibFillResultsContract} from './wrappers';
 
 blockchainTests('LibFillResults', env => {
     interface PartialMatchedFillResults {
@@ -58,7 +58,7 @@ blockchainTests('LibFillResults', env => {
         makerAddressLeft = accounts[0];
         makerAddressRight = accounts[1];
 
-        libsContract = await TestLibFillResultsContract.deployFrom0xArtifactAsync(
+        libsContract = await TestLibFillResultsContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibFillResults,
             env.provider,
             env.txDefaults,

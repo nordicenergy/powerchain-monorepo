@@ -4,20 +4,20 @@ import {
     DydxBridgeContract,
     DydxBridgeData,
     dydxBridgeDataEncoder,
-} from '@0x/contracts-asset-proxy';
-import { artifacts as erc20Artifacts } from '@0x/contracts-erc20';
-import { blockchainTests, constants, describe, expect, toBaseUnitAmount } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import { DecodedLogArgs, LogWithDecodedArgs } from 'ethereum-types';
+} from '@powerchain/contracts-asset-proxy';
+import {artifacts as erc20Artifacts} from '@powerchain/contracts-erc20';
+import {blockchainTests, constants, describe, expect, toBaseUnitAmount} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
+import {DecodedLogArgs, LogWithDecodedArgs} from 'ethereum-types';
 
-import { contractAddresses, dydxAccountOwner } from '../mainnet_fork_utils';
+import {contractAddresses, dydxAccountOwner} from '../mainnet_fork_utils';
 
-import { dydxEvents } from './abi/dydxEvents';
+import {dydxEvents} from './abi/dydxEvents';
 
 blockchainTests.fork.skip('Mainnet dydx bridge tests', env => {
     let testContract: DydxBridgeContract;
     // random account to receive tokens from dydx
-    const receiver = '0x986ccf5234d9cfbb25246f1a5bfa51f4ccfcb308';
+    const receiver = 'powerchain986ccf5234d9cfbb25246f1a5bfa51f4ccfcb308';
     const defaultAccountNumber = new BigNumber(0);
     const daiMarketId = new BigNumber(3);
     const defaultAmount = toBaseUnitAmount(0.01);

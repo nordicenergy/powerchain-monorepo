@@ -3,18 +3,17 @@
 // tslint:disable:no-unused-variable
 import {
     AwaitTransactionSuccessOpts,
+    BaseContract,
     ContractFunctionObj,
     ContractTxFunctionObj,
-    SendTransactionOpts,
-    BaseContract,
-    SubscriptionManager,
-    PromiseWithTransactionHash,
     methodAbiToFunctionSignature,
-} from '@0x/base-contract';
-import { schemas } from '@0x/json-schemas';
+    PromiseWithTransactionHash,
+    SendTransactionOpts,
+    SubscriptionManager,
+} from '@powerchain/base-contract';
+import {schemas} from '@powerchain/json-schemas';
 import {
     BlockParam,
-    BlockParamLiteral,
     BlockRange,
     CallData,
     ContractAbi,
@@ -22,15 +21,14 @@ import {
     DecodedLogArgs,
     LogWithDecodedArgs,
     MethodAbi,
+    SupportedProvider,
     TransactionReceiptWithDecodedLogs,
     TxData,
-    TxDataPayable,
-    SupportedProvider,
 } from 'ethereum-types';
-import { BigNumber, classUtils, logUtils, providerUtils } from '@0x/utils';
-import { EventCallback, IndexedFilterValues, SimpleContractArtifact } from '@0x/types';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { assert } from '@0x/assert';
+import {BigNumber, classUtils, logUtils, providerUtils} from '@powerchain/utils';
+import {EventCallback, IndexedFilterValues, SimpleContractArtifact} from '@powerchain/types';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {assert} from '@powerchain/assert';
 import * as ethers from 'ethers';
 // tslint:enable:no-unused-variable
 
@@ -130,7 +128,7 @@ export class ExchangeContract extends BaseContract {
     public static contractName = 'Exchange';
     private readonly _methodABIIndex: { [name: string]: number } = {};
     private readonly _subscriptionManager: SubscriptionManager<ExchangeEventArgs, ExchangeEvents>;
-    public static async deployFrom0xArtifactAsync(
+    public static async deployFrompowerchainArtifactAsync(
         artifact: ContractArtifact | SimpleContractArtifact,
         supportedProvider: SupportedProvider,
         txDefaults: Partial<TxData>,
@@ -3273,7 +3271,7 @@ export class ExchangeContract extends BaseContract {
     }
     /**
      * Executes a batch of Exchange method calls in the context of signer(s).
-     * @param transactions Array of 0x transaction structures.
+     * @param transactions Array of powerchain transaction structures.
      * @param signatures Array of proofs that transactions have been signed by
      *     signer(s).
      * @returns returnData Array containing ABI encoded return data for each of the underlying Exchange function calls.
@@ -4175,7 +4173,7 @@ export class ExchangeContract extends BaseContract {
     }
     /**
      * Executes an Exchange method call in the context of signer.
-     * @param transaction 0x transaction structure.
+     * @param transaction powerchain transaction structure.
      * @param signature Proof that transaction has been signed by signer.
      * @returns ABI encoded return data of the underlying Exchange function call.
      */
@@ -4454,7 +4452,7 @@ export class ExchangeContract extends BaseContract {
     /**
      * Gets an asset proxy.
      * @param assetProxyId Id of the asset proxy.
-     * @returns assetProxy The asset proxy address registered to assetProxyId. Returns 0x0 if no proxy is registered.
+     * @returns assetProxy The asset proxy address registered to assetProxyId. Returns powerchain0 if no proxy is registered.
      */
     public getAssetProxy(assetProxyId: string): ContractFunctionObj<string> {
         const self = (this as any) as ExchangeContract;

@@ -1,13 +1,19 @@
-import { chaiSetup, expectTransactionFailedAsync, provider, txDefaults, web3Wrapper } from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { RevertReason } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+import {
+    chaiSetup,
+    expectTransactionFailedAsync,
+    provider,
+    txDefaults,
+    web3Wrapper
+} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {RevertReason} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { MixinAuthorizableContract } from './wrappers';
+import {MixinAuthorizableContract} from './wrappers';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -30,7 +36,7 @@ describe('Authorizable', () => {
     before(async () => {
         const accounts = await web3Wrapper.getAvailableAddressesAsync();
         [owner, address, notOwner] = _.slice(accounts, 0, 3);
-        authorizable = await MixinAuthorizableContract.deployFrom0xArtifactAsync(
+        authorizable = await MixinAuthorizableContract.deployFrompowerchainArtifactAsync(
             artifacts.MixinAuthorizable,
             provider,
             txDefaults,

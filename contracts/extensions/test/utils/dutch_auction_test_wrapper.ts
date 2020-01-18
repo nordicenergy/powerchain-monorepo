@@ -1,13 +1,12 @@
-import { artifacts as erc721Artifacts } from '@0x/contracts-erc721';
-import { artifacts as exchangeArtifacts } from '@0x/contracts-exchange';
-import { LogDecoder, Web3ProviderEngine } from '@0x/contracts-test-utils';
-import { DutchAuctionDetails, SignedOrder } from '@0x/types';
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { TransactionReceiptWithDecodedLogs } from 'ethereum-types';
-import * as _ from 'lodash';
+import {artifacts as erc721Artifacts} from '@powerchain/contracts-erc721';
+import {artifacts as exchangeArtifacts} from '@powerchain/contracts-exchange';
+import {LogDecoder, Web3ProviderEngine} from '@powerchain/contracts-test-utils';
+import {DutchAuctionDetails, SignedOrder} from '@powerchain/types';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
+import {TransactionReceiptWithDecodedLogs} from 'ethereum-types';
 
-import { DutchAuctionContract } from '../../generated-wrappers/dutch_auction';
-import { artifacts } from '../../src/artifacts';
+import {DutchAuctionContract} from '../../generated-wrappers/dutch_auction';
+import {artifacts} from '../../src/artifacts';
 
 export class DutchAuctionTestWrapper {
     private readonly _dutchAuctionContract: DutchAuctionContract;

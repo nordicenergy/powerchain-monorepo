@@ -1,6 +1,6 @@
 export { artifacts } from './artifacts';
 export { ForwarderContract, IExchangeV2Contract } from './wrappers';
-export { ExchangeForwarderRevertErrors } from '@0x/utils';
+export { ExchangeForwarderRevertErrors } from '@powerchain/utils';
 export {
     ContractArtifact,
     ContractChains,

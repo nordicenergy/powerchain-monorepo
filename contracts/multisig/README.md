@@ -1,20 +1,20 @@
 ## MultiSignature Contracts
 
-This package contains various types of multisignature wallet contracts, including the [`AssetProxyOwner`](https://github.com/0xProject/0x-protocol-specification/blob/master/v2/v2-specification.md#assetproxyowner) contract that is responsible for upgrading the 0x protocol smart contracts. Addresses of the deployed contracts can be found in this 0x [guide](https://0x.org/docs/guides/0x-cheat-sheet) or the [DEPLOYS](./DEPLOYS.json) file within this package.
+This package contains various types of multisignature wallet contracts, including the [`AssetProxyOwner`](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md#assetproxyowner) contract that is responsible for upgrading the powerchain protocol smart contracts. Addresses of the deployed contracts can be found in this powerchain [guide](https://powerchain.org/docs/guides/powerchain-cheat-sheet) or the [DEPLOYS](./DEPLOYS.json) file within this package.
 
 ## Installation
 
 **Install**
 
 ```bash
-npm install @0x/contracts-multisig --save
+npm install @powerchain/contracts-multisig --save
 ```
 
 ## Contributing
 
 We strongly recommend that the community help us make improvements and determine the future direction of the protocol. To report bugs within this package, please create an issue in this repository.
 
-For proposals regarding the 0x protocol's smart contract architecture, message format, or additional functionality, go to the [0x Improvement Proposals (ZEIPs)](https://github.com/0xProject/ZEIPs) repository and follow the contribution guidelines provided therein.
+For proposals regarding the powerchain protocol's smart contract architecture, message format, or additional functionality, go to the [powerchain Improvement Proposals (ZEIPs)](https://github.com/powerchainProject/ZEIPs) repository and follow the contribution guidelines provided therein.
 
 Please read our [contribution guidelines](../../CONTRIBUTING.md) before getting started.
 
@@ -37,13 +37,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/contracts-multisig yarn build
+PKG=@powerchain/contracts-multisig yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/contracts-multisig yarn watch
+PKG=@powerchain/contracts-multisig yarn watch
 ```
 
 ### Clean

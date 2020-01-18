@@ -1,11 +1,11 @@
-import { blockchainTests, constants, expect, filterLogsToArguments } from '@0x/contracts-test-utils';
+import {blockchainTests, constants, expect, filterLogsToArguments} from '@powerchain/contracts-test-utils';
 import {
     AuthorizableAuthorizedAddressAddedEventArgs,
     AuthorizableAuthorizedAddressRemovedEventArgs,
     OwnableRevertErrors,
-} from '@0x/contracts-utils';
+} from '@powerchain/contracts-utils';
 
-import { artifacts, TestStakingContract, TestStakingEvents } from '../../src';
+import {artifacts, TestStakingContract, TestStakingEvents} from '../../src';
 
 blockchainTests.resets('Staking Authorization Tests', env => {
     let testContract: TestStakingContract;
@@ -16,7 +16,7 @@ blockchainTests.resets('Staking Authorization Tests', env => {
     before(async () => {
         [owner, nonOwner] = await env.getAccountAddressesAsync();
 
-        testContract = await TestStakingContract.deployFrom0xArtifactAsync(
+        testContract = await TestStakingContract.deployFrompowerchainArtifactAsync(
             artifacts.TestStaking,
             env.provider,
             {

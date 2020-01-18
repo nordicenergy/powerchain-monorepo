@@ -1,19 +1,19 @@
-import { ObjectMap } from '@0x/types';
-import { DataItem } from 'ethereum-types';
+import {ObjectMap} from '@powerchain/types';
+import {DataItem} from 'ethereum-types';
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { BigNumber } from '../../../configured_bignumber';
-import { SetCalldataBlock } from '../../calldata/blocks/set';
-import { CalldataBlock } from '../../calldata/calldata_block';
-import { RawCalldata } from '../../calldata/raw_calldata';
-import { constants } from '../../utils/constants';
-import { DecodingRules } from '../../utils/rules';
+import {BigNumber} from '../../../configured_bignumber';
+import {SetCalldataBlock} from '../../calldata/blocks/set';
+import {CalldataBlock} from '../../calldata/calldata_block';
+import {RawCalldata} from '../../calldata/raw_calldata';
+import {constants} from '../../utils/constants';
+import {DecodingRules} from '../../utils/rules';
 
-import { DataType } from '../data_type';
-import { DataTypeFactory, MemberIndexByName } from '../interfaces';
+import {DataType} from '../data_type';
+import {DataTypeFactory, MemberIndexByName} from '../interfaces';
 
-import { AbstractPointerDataType } from './pointer';
+import {AbstractPointerDataType} from './pointer';
 
 export abstract class AbstractSetDataType extends DataType {
     protected readonly _arrayLength: number | undefined;
@@ -135,7 +135,7 @@ export abstract class AbstractSetDataType extends DataType {
         if (this._isArray && this._arrayLength === undefined) {
             [members] = this._createMembersWithLength(this.getDataItem(), value.length);
             const lenBuf = ethUtil.setLengthLeft(
-                ethUtil.toBuffer(`0x${value.length.toString(constants.HEX_BASE)}`),
+                ethUtil.toBuffer(`powerchain${value.length.toString(constants.HEX_BASE)}`),
                 constants.EVM_WORD_WIDTH_IN_BYTES,
             );
             block.setHeader(lenBuf);

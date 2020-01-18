@@ -7,12 +7,12 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { RevertReason } from '@0x/types';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {RevertReason} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
-import { LogWithDecodedArgs } from 'ethereum-types';
+import {LogWithDecodedArgs} from 'ethereum-types';
 
 import {
     DummyERC721ReceiverContract,
@@ -22,7 +22,7 @@ import {
     InvalidERC721ReceiverContract,
 } from './wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -45,7 +45,7 @@ describe('ERC721Token', () => {
         const accounts = await web3Wrapper.getAvailableAddressesAsync();
         owner = accounts[0];
         spender = accounts[1];
-        token = await DummyERC721TokenContract.deployFrom0xArtifactAsync(
+        token = await DummyERC721TokenContract.deployFrompowerchainArtifactAsync(
             artifacts.DummyERC721Token,
             provider,
             txDefaults,
@@ -53,7 +53,7 @@ describe('ERC721Token', () => {
             constants.DUMMY_TOKEN_NAME,
             constants.DUMMY_TOKEN_SYMBOL,
         );
-        erc721Receiver = await DummyERC721ReceiverContract.deployFrom0xArtifactAsync(
+        erc721Receiver = await DummyERC721ReceiverContract.deployFrompowerchainArtifactAsync(
             artifacts.DummyERC721Receiver,
             provider,
             txDefaults,
@@ -175,7 +175,7 @@ describe('ERC721Token', () => {
             expect(log.args._tokenId).to.be.bignumber.equal(tokenId);
         });
         it('should revert if transferring to a contract address without onERC721Received', async () => {
-            const contract = await DummyERC721TokenContract.deployFrom0xArtifactAsync(
+            const contract = await DummyERC721TokenContract.deployFrompowerchainArtifactAsync(
                 artifacts.DummyERC721Token,
                 provider,
                 txDefaults,
@@ -190,7 +190,7 @@ describe('ERC721Token', () => {
             );
         });
         it('should revert if onERC721Received does not return the correct value', async () => {
-            const invalidErc721Receiver = await InvalidERC721ReceiverContract.deployFrom0xArtifactAsync(
+            const invalidErc721Receiver = await InvalidERC721ReceiverContract.deployFrompowerchainArtifactAsync(
                 artifacts.InvalidERC721Receiver,
                 provider,
                 txDefaults,
@@ -223,7 +223,7 @@ describe('ERC721Token', () => {
         });
     });
     describe('safeTransferFrom with data', () => {
-        const data = '0x0102030405060708090a0b0c0d0e0f';
+        const data = 'powerchain0102030405060708090a0b0c0d0e0f';
         it('should transfer token to a non-contract address if called by owner', async () => {
             const from = owner;
             const to = spender;
@@ -238,7 +238,7 @@ describe('ERC721Token', () => {
             expect(log.args._tokenId).to.be.bignumber.equal(tokenId);
         });
         it('should revert if transferring to a contract address without onERC721Received', async () => {
-            const contract = await DummyERC721TokenContract.deployFrom0xArtifactAsync(
+            const contract = await DummyERC721TokenContract.deployFrompowerchainArtifactAsync(
                 artifacts.DummyERC721Token,
                 provider,
                 txDefaults,
@@ -253,7 +253,7 @@ describe('ERC721Token', () => {
             );
         });
         it('should revert if onERC721Received does not return the correct value', async () => {
-            const invalidErc721Receiver = await InvalidERC721ReceiverContract.deployFrom0xArtifactAsync(
+            const invalidErc721Receiver = await InvalidERC721ReceiverContract.deployFrompowerchainArtifactAsync(
                 artifacts.InvalidERC721Receiver,
                 provider,
                 txDefaults,

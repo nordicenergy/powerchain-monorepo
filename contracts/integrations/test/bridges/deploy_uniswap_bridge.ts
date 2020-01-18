@@ -1,13 +1,9 @@
-import { artifacts as ERC20Artifacts } from '@0x/contracts-erc20';
-import { BlockchainTestsEnvironment } from '@0x/contracts-test-utils';
+import {artifacts as ERC20Artifacts} from '@powerchain/contracts-erc20';
+import {BlockchainTestsEnvironment} from '@powerchain/contracts-test-utils';
 
-import { artifacts } from '../artifacts';
-import { DeploymentManager } from '../framework/deployment_manager';
-import {
-    TestUniswapBridgeContract,
-    TestUniswapExchangeContract,
-    TestUniswapExchangeFactoryContract,
-} from '../wrappers';
+import {artifacts} from '../artifacts';
+import {DeploymentManager} from '../framework/deployment_manager';
+import {TestUniswapBridgeContract, TestUniswapExchangeContract, TestUniswapExchangeFactoryContract,} from '../wrappers';
 
 /**
  * Deploys test Uniswap exchanges for the given tokens, a test UniswapExchangeFactory, and a test
@@ -18,7 +14,7 @@ export async function deployUniswapBridgeAsync(
     environment: BlockchainTestsEnvironment,
     tokenAddresses: string[],
 ): Promise<[TestUniswapBridgeContract, TestUniswapExchangeContract[], TestUniswapExchangeFactoryContract]> {
-    const uniswapExchangeFactory = await TestUniswapExchangeFactoryContract.deployFrom0xArtifactAsync(
+    const uniswapExchangeFactory = await TestUniswapExchangeFactoryContract.deployFrompowerchainArtifactAsync(
         artifacts.TestUniswapExchangeFactory,
         environment.provider,
         deployment.txDefaults,
@@ -27,7 +23,7 @@ export async function deployUniswapBridgeAsync(
 
     const uniswapExchanges = [];
     for (const tokenAddress of tokenAddresses) {
-        const uniswapExchange = await TestUniswapExchangeContract.deployFrom0xArtifactAsync(
+        const uniswapExchange = await TestUniswapExchangeContract.deployFrompowerchainArtifactAsync(
             artifacts.TestUniswapExchange,
             environment.provider,
             deployment.txDefaults,
@@ -38,7 +34,7 @@ export async function deployUniswapBridgeAsync(
         uniswapExchanges.push(uniswapExchange);
     }
 
-    const uniswapBridge = await TestUniswapBridgeContract.deployFrom0xArtifactAsync(
+    const uniswapBridge = await TestUniswapBridgeContract.deployFrompowerchainArtifactAsync(
         artifacts.TestUniswapBridge,
         environment.provider,
         deployment.txDefaults,

@@ -1,7 +1,7 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { AbstractBalanceAndProxyAllowanceFetcher } from './abstract/abstract_balance_and_proxy_allowance_fetcher';
-import { AssetWrapper } from './asset_wrapper';
+import {AbstractBalanceAndProxyAllowanceFetcher} from './abstract/abstract_balance_and_proxy_allowance_fetcher';
+import {AssetWrapper} from './asset_wrapper';
 
 export class SimpleAssetBalanceAndProxyAllowanceFetcher implements AbstractBalanceAndProxyAllowanceFetcher {
     private readonly _assetWrapper: AssetWrapper;

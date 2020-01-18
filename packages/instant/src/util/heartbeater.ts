@@ -1,4 +1,4 @@
-import { intervalUtils } from '@0x/utils';
+import {intervalUtils} from '@powerchain/utils';
 import * as _ from 'lodash';
 
 type HeartbeatableFunction = () => Promise<void>;

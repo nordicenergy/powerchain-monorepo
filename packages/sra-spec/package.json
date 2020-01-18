@@ -1,5 +1,5 @@
 {
-    "name": "@0x/sra-spec",
+    "name": "@powerchain/sra-spec",
     "version": "3.0.3",
     "engines": {
         "node": ">=6.12"
@@ -26,20 +26,20 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "author": "Francesco Agosti",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/sra-spec/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/sra-spec/README.md",
     "dependencies": {
-        "@0x/json-schemas": "^5.0.3",
+        "@powerchain/json-schemas": "^5.0.3",
         "@loopback/openapi-v3-types": "^0.8.2"
     },
     "devDependencies": {
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/tslint-config": "^4.0.0",
         "@types/mocha": "^5.2.7",
         "@types/node": "*",
         "chai": "^4.0.1",

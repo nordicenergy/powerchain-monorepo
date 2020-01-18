@@ -1,6 +1,6 @@
-## @0x/orderbook
+## @powerchain/orderbook
 
-Package to help fetch orders from a remote source ([Standard Relayer API](https://github.com/0xProject/standard-relayer-api), Mesh) and keep the local orderbook synced and up-to-date.
+Package to help fetch orders from a remote source ([Standard Relayer API](https://github.com/powerchainProject/standard-relayer-api), Mesh) and keep the local orderbook synced and up-to-date.
 
 Supported Order Providers:
 
@@ -11,26 +11,26 @@ Supported Order Providers:
 ## Installation
 
 ```bash
-yarn add @0x/orderbook
+yarn add @powerchain/orderbook
 ```
 
 **Import**
 
 ```typescript
-import { Orderbook } from '@0x/orderbook';
+import { Orderbook } from '@powerchain/orderbook';
 ```
 
 or
 
 ```javascript
-var Orderbook = require('@0x/orderbook').Orderbook;
+var Orderbook = require('@powerchain/orderbook').Orderbook;
 ```
 
 If your project is in [TypeScript](https://www.typescriptlang.org/), add the following to your `tsconfig.json`:
 
 ```json
 "compilerOptions": {
-    "typeRoots": ["node_modules/@0x/typescript-typings/types", "node_modules/@types"],
+    "typeRoots": ["node_modules/@powerchain/typescript-typings/types", "node_modules/@types"],
 }
 ```
 
@@ -40,7 +40,7 @@ If your project is in [TypeScript](https://www.typescriptlang.org/), add the fol
 // Create an orderbook for makerAssetData, takerAssetData using the SRA Polling Order Provider
 // This Provider polls the SRA endpoint automatically every 5 seconds on the supplied asset pairs
 const orderbook = Orderbook.getOrderbookForPollingProvider({
-    httpEndpoint: 'https://sra.0x.org/v2',
+    httpEndpoint: 'https://sra.powerchain.org/v2',
     pollingIntervalMs: 5000,
 });
 const orders = await orderbook.getOrdersAsync(makerAssetData, takerAssetData);
@@ -48,8 +48,8 @@ const orders = await orderbook.getOrdersAsync(makerAssetData, takerAssetData);
 // Create an orderbook for makerAssetData, takerAssetData using the SRA Websocket Order Provider
 // This provider subscribes via websocket to receive order updates on the supplied asset pairs
 const orderbook = Orderbook.getOrderbookForWebsocketProvider({
-    httpEndpoint: 'https://sra.0x.org/v2',
-    websocketEndpoint: 'wss://ws.sra.0x.org',
+    httpEndpoint: 'https://sra.powerchain.org/v2',
+    websocketEndpoint: 'wss://ws.sra.powerchain.org',
 });
 const orders = await orderbook.getOrdersAsync(makerAssetData, takerAssetData);
 
@@ -86,13 +86,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/orderbook yarn build
+PKG=@powerchain/orderbook yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/orderbook yarn watch
+PKG=@powerchain/orderbook yarn watch
 ```
 
 ### Clean

@@ -56,7 +56,7 @@
                 "pr": 2349
             },
             {
-                "note": "Update StakingProxy, Staking, and ZrxVault addresses on mainnet",
+                "note": "Update StakingProxy, Staking, and NetVault addresses on mainnet",
                 "pr": 2349
             },
             {
@@ -76,7 +76,7 @@
                 "pr": 2323
             },
             {
-                "note": "Update all contract deployments to pass the actual chain ID (rather than the network ID) via the newly modified @0x/utils/provider_utils",
+                "note": "Update all contract deployments to pass the actual chain ID (rather than the network ID) via the newly modified @powerchain/utils/provider_utils",
                 "pr": 2270
             },
             {
@@ -112,7 +112,7 @@
                 "pr": 2349
             },
             {
-                "note": "Update StakingProxy, Staking, and ZrxVault addresses on mainnet",
+                "note": "Update StakingProxy, Staking, and NetVault addresses on mainnet",
                 "pr": 2349
             },
             {
@@ -144,7 +144,7 @@
         "version": "4.4.0-beta.1",
         "changes": [
             {
-                "note": "Update all contract deployments to pass the actual chain ID (rather than the network ID) via the newly modified @0x/utils/provider_utils",
+                "note": "Update all contract deployments to pass the actual chain ID (rather than the network ID) via the newly modified @powerchain/utils/provider_utils",
                 "pr": 2270
             },
             {
@@ -168,7 +168,7 @@
         "version": "4.3.2",
         "changes": [
             {
-                "note": "Removed dependency on @0x/order-utils",
+                "note": "Removed dependency on @powerchain/order-utils",
                 "pr": 2096
             }
         ],
@@ -207,7 +207,7 @@
         "version": "4.1.11",
         "changes": [
             {
-                "note": "Updated calls to <contract wrapper>.deploy0xArtifactAsync to include log decode dependencies.",
+                "note": "Updated calls to <contract wrapper>.deploypowerchainArtifactAsync to include log decode dependencies.",
                 "pr": 1995
             }
         ],
@@ -464,7 +464,7 @@
         "version": "2.2.0",
         "changes": [
             {
-                "note": "Add CLI `0x-migrate` for running the 0x migrations in a language-agnostic way",
+                "note": "Add CLI `powerchain-migrate` for running the powerchain migrations in a language-agnostic way",
                 "pr": 1324
             },
             {
@@ -472,7 +472,7 @@
                 "pr": 1309
             },
             {
-                "note": "Fund the Forwarder with ZRX for fees.",
+                "note": "Fund the Forwarder with NET for fees.",
                 "pr": 1309
             }
         ],
@@ -528,7 +528,7 @@
         "version": "2.0.0",
         "changes": [
             {
-                "note": "Contract artifacts have been moved to the new @0xproject/contract-artifacts package. v1 migrations have been removed. `runMigrationsAsync` returns the addresses of the contracts that were deployed.",
+                "note": "Contract artifacts have been moved to the new @powerchainproject/contract-artifacts package. v1 migrations have been removed. `runMigrationsAsync` returns the addresses of the contracts that were deployed.",
                 "pr": 1105
             }
         ],
@@ -665,7 +665,7 @@
         "version": "1.0.0",
         "changes": [
             {
-                "note": "Added migrations for 0x Protocol v2"
+                "note": "Added migrations for powerchain Protocol v2"
             }
         ]
     },

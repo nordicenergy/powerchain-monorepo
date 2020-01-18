@@ -1,5 +1,5 @@
-import { AbiDecoder, intervalUtils, logUtils } from '@0x/utils';
-import { marshaller, Web3Wrapper } from '@0x/web3-wrapper';
+import {AbiDecoder, intervalUtils, logUtils} from '@powerchain/utils';
+import {marshaller, Web3Wrapper} from '@powerchain/web3-wrapper';
 import {
     BlockParamLiteral,
     BlockRange,
@@ -10,12 +10,12 @@ import {
     RawLog,
     RawLogEntry,
 } from 'ethereum-types';
-import { Block, BlockAndLogStreamer, Log } from 'ethereumjs-blockstream';
+import {Block, BlockAndLogStreamer, Log} from 'ethereumjs-blockstream';
 
-import { EventCallback, IndexedFilterValues } from '@0x/types';
+import {EventCallback, IndexedFilterValues} from '@powerchain/types';
 
-import { SubscriptionErrors } from './types';
-import { filterUtils } from './utils/filter_utils';
+import {SubscriptionErrors} from './types';
+import {filterUtils} from './utils/filter_utils';
 
 const DEFAULT_BLOCK_POLLING_INTERVAL = 1000;
 

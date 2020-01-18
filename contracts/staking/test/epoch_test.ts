@@ -1,10 +1,9 @@
-import { ERC20Wrapper } from '@0x/contracts-asset-proxy';
-import { blockchainTests, expect } from '@0x/contracts-test-utils';
-import * as _ from 'lodash';
+import {ERC20Wrapper} from '@powerchain/contracts-asset-proxy';
+import {blockchainTests, expect} from '@powerchain/contracts-test-utils';
 
-import { constants as stakingConstants } from '../src/constants';
+import {constants as stakingConstants} from '../src/constants';
 
-import { deployAndConfigureContractsAsync, StakingApiWrapper } from './utils/api_wrapper';
+import {deployAndConfigureContractsAsync, StakingApiWrapper} from './utils/api_wrapper';
 
 // tslint:disable:no-unnecessary-type-assertion
 blockchainTests('Epochs', env => {

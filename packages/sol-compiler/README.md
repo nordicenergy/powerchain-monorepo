@@ -1,4 +1,4 @@
-## @0x/sol-compiler
+## @powerchain/sol-compiler
 
 Sol-compiler is a wrapper around [solc-js](https://www.npmjs.com/package/solc) that adds:
 
@@ -8,40 +8,40 @@ Sol-compiler is a wrapper around [solc-js](https://www.npmjs.com/package/solc) t
 -   Proper parsing of Solidity version ranges
 -   Support for the standard [input description](https://solidity.readthedocs.io/en/develop/using-the-compiler.html#input-description) for what information you'd like added to the resulting `artifacts` file (i.e 100% configurable artifacts content).
 
-### Read the [Documentation](https://0x.org/docs/tools/sol-compiler).
+### Read the [Documentation](https://powerchain.org/docs/tools/sol-compiler).
 
 ## Installation
 
 #### CLI Installation
 
 ```bash
-yarn global add @0x/sol-compiler
+yarn global add @powerchain/sol-compiler
 ```
 
 #### API Installation
 
 ```bash
-yarn add @0x/sol-compiler
+yarn add @powerchain/sol-compiler
 ```
 
 If your project is in [TypeScript](https://www.typescriptlang.org/), add the following to your `tsconfig.json`:
 
 ```json
 "compilerOptions": {
-    "typeRoots": ["node_modules/@0x/typescript-typings/types", "node_modules/@types"],
+    "typeRoots": ["node_modules/@powerchain/typescript-typings/types", "node_modules/@types"],
 }
 ```
 
 **Import**
 
 ```typescript
-import { Compiler } from '@0x/sol-compiler';
+import { Compiler } from '@powerchain/sol-compiler';
 ```
 
 or
 
 ```javascript
-var Compiler = require('@0x/sol-compiler').Compiler;
+var Compiler = require('@powerchain/sol-compiler').Compiler;
 ```
 
 ## Contributing
@@ -69,13 +69,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/sol-compiler yarn build
+PKG=@powerchain/sol-compiler yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/sol-compiler yarn watch
+PKG=@powerchain/sol-compiler yarn watch
 ```
 
 ### Clean

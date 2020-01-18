@@ -1,7 +1,7 @@
-import { AssetPairsItem, SignedOrder } from '@0x/types';
+import {AssetPairsItem, SignedOrder} from '@powerchain/types';
 
-import { OrderStore } from '../order_store';
-import { AcceptedRejectedOrders, AddedRemovedOrders } from '../types';
+import {OrderStore} from '../order_store';
+import {AcceptedRejectedOrders, AddedRemovedOrders} from '../types';
 
 // AssetPairItem requires precision but some OrderProviders may not
 // enforce any precision. This is not the token decimal but the

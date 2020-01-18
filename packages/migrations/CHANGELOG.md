@@ -23,12 +23,12 @@ CHANGELOG
     * Deploy Forwarder after Exchange is configured as Staking Proxy is queried (#2368)
     * Subsequent contract addresses after the Forwarder are now modified (#2368)
     * Update Exchange, DevUtils, Coordinator, and Forwarder addresses on all networks (#2349)
-    * Update StakingProxy, Staking, and ZrxVault addresses on mainnet (#2349)
+    * Update StakingProxy, Staking, and NetVault addresses on mainnet (#2349)
     * Add UniswapBridge and Eth2DaiBridge addresses to schema, add mainnet addresses (#2349)
     * Deploy Forwarder AFTER staking is hooked up (#2350)
     * Migrations script no longer deploys DutchAuction since it is not yet upgraded for V3 of the protocol (#2324)
     * Added `Staking` and `ERC20BridgeProxy` contracts (#2323)
-    * Update all contract deployments to pass the actual chain ID (rather than the network ID) via the newly modified @0x/utils/provider_utils (#2270)
+    * Update all contract deployments to pass the actual chain ID (rather than the network ID) via the newly modified @powerchain/utils/provider_utils (#2270)
     * All references to network ID have been removed, and references to chain ID have been introduced instead (#2313)
     * Update Coordinator and Exchange deployments to pass `chainId` (#1742)
 
@@ -40,7 +40,7 @@ CHANGELOG
 ## v4.4.0-beta.3 - _November 20, 2019_
 
     * Update Exchange, DevUtils, Coordinator, and Forwarder addresses on all networks (#2349)
-    * Update StakingProxy, Staking, and ZrxVault addresses on mainnet (#2349)
+    * Update StakingProxy, Staking, and NetVault addresses on mainnet (#2349)
     * Add UniswapBridge and Eth2DaiBridge addresses to schema, add mainnet addresses (#2349)
     * Deploy Forwarder AFTER staking is hooked up (#2350)
 
@@ -51,7 +51,7 @@ CHANGELOG
 
 ## v4.4.0-beta.1 - _November 7, 2019_
 
-    * Update all contract deployments to pass the actual chain ID (rather than the network ID) via the newly modified @0x/utils/provider_utils (#2270)
+    * Update all contract deployments to pass the actual chain ID (rather than the network ID) via the newly modified @powerchain/utils/provider_utils (#2270)
     * All references to network ID have been removed, and references to chain ID have been introduced instead (#2313)
 
 ## v4.4.0-beta.0 - _October 3, 2019_
@@ -60,7 +60,7 @@ CHANGELOG
 
 ## v4.3.2 - _September 17, 2019_
 
-    * Removed dependency on @0x/order-utils (#2096)
+    * Removed dependency on @powerchain/order-utils (#2096)
 
 ## v4.3.1 - _September 3, 2019_
 
@@ -76,7 +76,7 @@ CHANGELOG
 
 ## v4.1.11 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deploy0xArtifactAsync to include log decode dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deploypowerchainArtifactAsync to include log decode dependencies. (#1995)
 
 ## v4.1.10 - _July 24, 2019_
 
@@ -143,7 +143,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.3 - _February 7, 2019_
+## v1.0.1 - _February 7, 2019_
 
     * Dependencies updated
 
@@ -155,7 +155,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _February 5, 2019_
+## v1.0.0 - _February 5, 2019_
 
     * Upgrade the bignumber.js to v8.0.2 (#1517)
     * Removed `owner` in Migrations (#1533)
@@ -184,9 +184,9 @@ CHANGELOG
 
 ## v2.2.0 - _November 28, 2018_
 
-    * Add CLI `0x-migrate` for running the 0x migrations in a language-agnostic way (#1324)
+    * Add CLI `powerchain-migrate` for running the powerchain migrations in a language-agnostic way (#1324)
     * Deploy testnet Exchange arfitact. Previously mainnet Exchange artifact was deployed. (#1309)
-    * Fund the Forwarder with ZRX for fees. (#1309)
+    * Fund the Forwarder with NET for fees. (#1309)
 
 ## v2.1.0 - _November 21, 2018_
 
@@ -210,7 +210,7 @@ CHANGELOG
 
 ## v2.0.0 - _October 18, 2018_
 
-    * Contract artifacts have been moved to the new @0xproject/contract-artifacts package. v1 migrations have been removed. `runMigrationsAsync` returns the addresses of the contracts that were deployed. (#1105)
+    * Contract artifacts have been moved to the new @powerchainproject/contract-artifacts package. v1 migrations have been removed. `runMigrationsAsync` returns the addresses of the contracts that were deployed. (#1105)
 
 ## v1.0.14 - _October 4, 2018_
 
@@ -270,7 +270,7 @@ CHANGELOG
 
 ## v1.0.0 - _July 19, 2018_
 
-    * Added migrations for 0x Protocol v2
+    * Added migrations for powerchain Protocol v2
 
 ## v0.0.10 - _July 18, 2018_
 

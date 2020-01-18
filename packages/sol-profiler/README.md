@@ -1,25 +1,25 @@
-## @0x/sol-profiler
+## @powerchain/sol-profiler
 
 Solidity line-by-line gas profiler.
 
-### Read the [Documentation](https://0x.org/docs/tools/sol-profiler).
+### Read the [Documentation](https://powerchain.org/docs/tools/sol-profiler).
 
 ## Installation
 
 ```bash
-yarn add @0x/sol-profiler
+yarn add @powerchain/sol-profiler
 ```
 
 **Import**
 
 ```javascript
-import { ProfilerSubprovider } from '@0x/sol-profiler';
+import { ProfilerSubprovider } from '@powerchain/sol-profiler';
 ```
 
 or
 
 ```javascript
-var ProfilerSubprovider = require('@0x/sol-profiler').ProfilerSubprovider;
+var ProfilerSubprovider = require('@powerchain/sol-profiler').ProfilerSubprovider;
 ```
 
 ## Contributing
@@ -47,13 +47,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/sol-profiler yarn build
+PKG=@powerchain/sol-profiler yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/sol-profiler yarn watch
+PKG=@powerchain/sol-profiler yarn watch
 ```
 
 ### Clean

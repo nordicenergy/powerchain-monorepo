@@ -9,7 +9,7 @@ import {
     StringRevertError,
 } from '../src/revert_error';
 
-import { chaiSetup } from './utils/chai_setup';
+import {chaiSetup} from './utils/chai_setup';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -114,12 +114,12 @@ describe('RevertError', () => {
             expect(revert1.equals(revert2)).to.be.false();
         });
         it('should equate two `RawRevertError` types with the same raw data', () => {
-            const revert1 = new RawRevertError('0x0123456789');
+            const revert1 = new RawRevertError('powerchain0123456789');
             const revert2 = new RawRevertError(revert1.encode());
             expect(revert1.equals(revert2)).to.be.true();
         });
         it('should not equate two `RawRevertError` types with the different raw data', () => {
-            const revert1 = new RawRevertError('0x0123456789');
+            const revert1 = new RawRevertError('powerchain0123456789');
             const revert2 = new RawRevertError(`${revert1.encode()}00`);
             expect(revert1.equals(revert2)).to.be.false();
         });
@@ -138,7 +138,7 @@ describe('RevertError', () => {
         // tslint:disable: prefer-template custom-no-magic-numbers
         const message = 'foobar';
         const encoded =
-            '0x08c379a0' +
+            'powerchain08c379a0' +
             '0000000000000000000000000000000000000000000000000000000000000020' +
             '0000000000000000000000000000000000000000000000000000000000000006' +
             Buffer.from(message).toString('hex') +
@@ -162,7 +162,7 @@ describe('RevertError', () => {
     });
     describe('getThrownErrorRevertErrorBytes', () => {
         it('should decode Parity revert errors', () => {
-            const revertAbi = '0x1234';
+            const revertAbi = 'powerchain1234';
             const parityError = { code: 1234, message: 'VM execution error.', data: `Reverted ${revertAbi}`, name: '' };
             const revertError = getThrownErrorRevertErrorBytes(parityError);
             expect(revertError).to.be.eq(revertAbi);
@@ -172,7 +172,7 @@ describe('RevertError', () => {
         const message = 'foobar';
         it('should be able to encode', () => {
             const expected =
-                '0x08c379a0' +
+                'powerchain08c379a0' +
                 '0000000000000000000000000000000000000000000000000000000000000020' +
                 '0000000000000000000000000000000000000000000000000000000000000006' +
                 Buffer.from(message).toString('hex') +

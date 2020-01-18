@@ -1,8 +1,8 @@
-import { ContractAddresses } from '@0x/contract-addresses';
-import { devConstants } from '@0x/dev-utils';
-import { Web3ProviderEngine } from '@0x/subproviders';
+import {ContractAddresses} from '@powerchain/contract-addresses';
+import {devConstants} from '@powerchain/dev-utils';
+import {Web3ProviderEngine} from '@powerchain/subproviders';
 
-import { runMigrationsOnceAsync } from './index';
+import {runMigrationsOnceAsync} from './index';
 
 /**
  * Configures and runs the migrations exactly once. Any subsequent times this is

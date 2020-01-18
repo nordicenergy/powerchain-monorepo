@@ -1,19 +1,19 @@
-import { assert } from '@0x/assert';
+import {assert} from '@powerchain/assert';
 import {
     APIOrder,
     OrdersChannel,
     ordersChannelFactory,
     OrdersChannelHandler,
     OrdersChannelSubscriptionOpts,
-} from '@0x/connect';
-import { BigNumber } from '@0x/utils';
+} from '@powerchain/connect';
+import {BigNumber} from '@powerchain/utils';
 
-import { OrderSet } from '../order_set';
-import { OrderStore } from '../order_store';
-import { AddedRemovedOrders, SRAWebsocketOrderProviderOpts } from '../types';
-import { utils } from '../utils';
+import {OrderSet} from '../order_set';
+import {OrderStore} from '../order_store';
+import {AddedRemovedOrders, SRAWebsocketOrderProviderOpts} from '../types';
+import {utils} from '../utils';
 
-import { BaseSRAOrderProvider, PER_PAGE_DEFAULT } from './base_sra_order_provider';
+import {BaseSRAOrderProvider, PER_PAGE_DEFAULT} from './base_sra_order_provider';
 
 export class SRAWebsocketOrderProvider extends BaseSRAOrderProvider {
     private readonly _websocketEndpoint: string;
@@ -23,7 +23,7 @@ export class SRAWebsocketOrderProvider extends BaseSRAOrderProvider {
     private _isConnecting = false;
 
     /**
-     * Instantiates a HTTP and WS [Standard Relayer API](https://github.com/0xProject/standard-relayer-api) Order Provider
+     * Instantiates a HTTP and WS [Standard Relayer API](https://github.com/powerchainProject/standard-relayer-api) Order Provider
      * @param opts `SRAWebsocketOrderProviderOpts` containing the websocketEndpoint and the httpEndpoint to an SRA backend.
      * @param orderStore The `OrderStore` where orders are added and removed from
      */

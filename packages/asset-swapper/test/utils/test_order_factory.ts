@@ -1,9 +1,9 @@
-import { orderFactory } from '@0x/order-utils/lib/src/order_factory';
-import { Order, SignedOrder } from '@0x/types';
+import {orderFactory} from '@powerchain/order-utils/lib/src/order_factory';
+import {Order, SignedOrder} from '@powerchain/types';
 import * as _ from 'lodash';
 
-import { constants } from '../../src/constants';
-import { SignedOrderWithFillableAmounts } from '../../src/types';
+import {constants} from '../../src/constants';
+import {SignedOrderWithFillableAmounts} from '../../src/types';
 
 const CHAIN_ID = 1337;
 const BASE_TEST_ORDER: Order = orderFactory.createOrder(

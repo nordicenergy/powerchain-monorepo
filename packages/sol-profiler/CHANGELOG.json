@@ -221,7 +221,7 @@
         "version": "3.0.0",
         "changes": [
             {
-                "note": "Big @0x/sol-profiler overhaul. It now has a bunch of new features",
+                "note": "Big @powerchain/sol-profiler overhaul. It now has a bunch of new features",
                 "pr": 1638
             },
             {
@@ -316,7 +316,7 @@
         "version": "1.0.0",
         "changes": [
             {
-                "note": "Initial release as a separate package. For historical entries see @0x/sol-tracing-utils",
+                "note": "Initial release as a separate package. For historical entries see @powerchain/sol-tracing-utils",
                 "pr": 1492
             }
         ]

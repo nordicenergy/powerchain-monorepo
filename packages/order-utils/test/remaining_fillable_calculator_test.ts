@@ -1,12 +1,12 @@
-import { SignedOrder } from '@0x/types';
-import { BigNumber } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {SignedOrder} from '@powerchain/types';
+import {BigNumber} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as chai from 'chai';
 import 'mocha';
 
-import { RemainingFillableCalculator } from '../src/remaining_fillable_calculator';
+import {RemainingFillableCalculator} from '../src/remaining_fillable_calculator';
 
-import { chaiSetup } from './utils/chai_setup';
+import {chaiSetup} from './utils/chai_setup';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -21,16 +21,16 @@ describe('RemainingFillableCalculator', () => {
     let takerAmount: BigNumber;
     let makerFeeAmount: BigNumber;
     let isPercentageFee: boolean;
-    const makerAssetData: string = '0x1';
-    const takerAssetData: string = '0x2';
-    const makerFeeAssetData: string = '0x03';
-    const takerFeeAssetData: string = '0x04';
+    const makerAssetData: string = 'powerchain1';
+    const takerAssetData: string = 'powerchain2';
+    const makerFeeAssetData: string = 'powerchain03';
+    const takerFeeAssetData: string = 'powerchain04';
     const decimals: number = 4;
     const zero: BigNumber = new BigNumber(0);
     const chainId: number = 1337;
-    const zeroAddress = '0x0';
+    const zeroAddress = 'powerchain0';
     const signature: string =
-        '0x1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351bc3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace225403';
+        'powerchain1B61a3ed31b43c8780e905a260a35faefcc527be7516aa11c0256729b5b351bc3340349190569279751135161d22529dc25add4f6069af05be04cacbda2ace225403';
     beforeEach(async () => {
         [makerAmount, takerAmount, makerFeeAmount] = [
             Web3Wrapper.toBaseUnitAmount(new BigNumber(50), decimals),

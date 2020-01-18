@@ -1,11 +1,9 @@
-import * as _ from 'lodash';
-
 import addresses from '../addresses.json';
 
 export interface ContractAddresses {
     erc20Proxy: string;
     erc721Proxy: string;
-    zrxToken: string;
+    netToken: string;
     etherToken: string;
     exchangeV2: string;
     exchange: string;
@@ -18,7 +16,7 @@ export interface ContractAddresses {
     staticCallProxy: string;
     erc1155Proxy: string;
     devUtils: string;
-    zrxVault: string;
+    NetVault: string;
     staking: string;
     stakingProxy: string;
     erc20BridgeProxy: string;
@@ -50,7 +48,7 @@ export function getContractAddressesForChainOrThrow(chainId: ChainId): ContractA
     const chainToAddresses: { [chainId: number]: ContractAddresses } = addresses;
 
     if (chainToAddresses[chainId] === undefined) {
-        throw new Error(`Unknown chain id (${chainId}). No known 0x contracts have been deployed on this chain.`);
+        throw new Error(`Unknown chain id (${chainId}). No known powerchain contracts have been deployed on this chain.`);
     }
     return chainToAddresses[chainId];
 }

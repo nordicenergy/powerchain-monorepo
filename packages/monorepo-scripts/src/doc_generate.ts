@@ -1,7 +1,7 @@
 import * as yargs from 'yargs';
 
-import { DocGenerateUtils } from './utils/doc_generate_utils';
-import { utils } from './utils/utils';
+import {DocGenerateUtils} from './utils/doc_generate_utils';
+import {utils} from './utils/utils';
 
 const args = yargs
     .option('package', {
@@ -9,7 +9,7 @@ const args = yargs
         type: 'string',
         demandOption: true,
     })
-    .example("$0 --package '0x.js'", 'Full usage example').argv;
+    .example("$0 --package 'powerchain.js'", 'Full usage example').argv;
 
 (async () => {
     const packageName = args.package;

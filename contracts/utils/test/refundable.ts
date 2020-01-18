@@ -1,9 +1,8 @@
-import { blockchainTests, constants } from '@0x/contracts-test-utils';
-import { BigNumber } from '@0x/utils';
-import * as _ from 'lodash';
+import {blockchainTests, constants} from '@powerchain/contracts-test-utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { artifacts } from './artifacts';
-import { TestRefundableContract, TestRefundableReceiverContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestRefundableContract, TestRefundableReceiverContract} from './wrappers';
 
 blockchainTests('Refundable', env => {
     let refundable: TestRefundableContract;
@@ -14,7 +13,7 @@ blockchainTests('Refundable', env => {
 
     before(async () => {
         // Create the refundable contract.
-        refundable = await TestRefundableContract.deployFrom0xArtifactAsync(
+        refundable = await TestRefundableContract.deployFrompowerchainArtifactAsync(
             artifacts.TestRefundable,
             env.provider,
             env.txDefaults,
@@ -22,7 +21,7 @@ blockchainTests('Refundable', env => {
         );
 
         // Create the receiver contract.
-        receiver = await TestRefundableReceiverContract.deployFrom0xArtifactAsync(
+        receiver = await TestRefundableReceiverContract.deployFrompowerchainArtifactAsync(
             artifacts.TestRefundableReceiver,
             env.provider,
             env.txDefaults,

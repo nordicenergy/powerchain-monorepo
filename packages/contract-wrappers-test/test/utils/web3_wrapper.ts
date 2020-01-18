@@ -1,6 +1,6 @@
-import { devConstants, web3Factory } from '@0x/dev-utils';
-import { Web3ProviderEngine } from '@0x/subproviders';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+import {devConstants, web3Factory} from '@powerchain/dev-utils';
+import {Web3ProviderEngine} from '@powerchain/subproviders';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 
 const txDefaults = {
     from: devConstants.TESTRPC_FIRST_ADDRESS,

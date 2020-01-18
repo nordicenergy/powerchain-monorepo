@@ -1,8 +1,8 @@
-import { ERC20Wrapper, ERC721Wrapper } from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { DummyERC20TokenContract } from '@0x/contracts-erc20';
-import { DummyERC721TokenContract } from '@0x/contracts-erc721';
-import { ExchangeContract } from '@0x/contracts-exchange';
+import {ERC20Wrapper, ERC721Wrapper} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {DummyERC20TokenContract} from '@powerchain/contracts-erc20';
+import {DummyERC721TokenContract} from '@powerchain/contracts-erc721';
+import {ExchangeContract} from '@powerchain/contracts-exchange';
 import {
     chaiSetup,
     constants,
@@ -13,20 +13,19 @@ import {
     provider,
     txDefaults,
     web3Wrapper,
-} from '@0x/contracts-test-utils';
-import { BlockchainLifecycle } from '@0x/dev-utils';
-import { generatePseudoRandomSalt } from '@0x/order-utils';
-import { RevertReason, SignedOrder } from '@0x/types';
-import { BigNumber, providerUtils } from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+} from '@powerchain/contracts-test-utils';
+import {BlockchainLifecycle} from '@powerchain/dev-utils';
+import {generatePseudoRandomSalt} from '@powerchain/order-utils';
+import {RevertReason, SignedOrder} from '@powerchain/types';
+import {BigNumber, providerUtils} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as chai from 'chai';
-import * as _ from 'lodash';
 
-import { DutchAuctionContract, DutchAuctionTestWrapper, WETH9Contract } from './wrappers';
+import {DutchAuctionContract, DutchAuctionTestWrapper, WETH9Contract} from './wrappers';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 
-import { encodeDutchAuctionAssetData } from './utils';
+import {encodeDutchAuctionAssetData} from './utils';
 
 chaiSetup.configure();
 const expect = chai.expect;
@@ -41,7 +40,7 @@ describe(ContractName.DutchAuction, () => {
     let feeRecipientAddress: string;
     let defaultMakerAssetAddress: string;
 
-    let zrxToken: DummyERC20TokenContract;
+    let netToken: DummyERC20TokenContract;
     let erc20TokenA: DummyERC20TokenContract;
     let erc721Token: DummyERC721TokenContract;
     let dutchAuctionContract: DutchAuctionContract;
@@ -76,7 +75,7 @@ describe(ContractName.DutchAuction, () => {
         erc20Wrapper = new ERC20Wrapper(provider, usedAddresses, owner);
 
         const numDummyErc20ToDeploy = 2;
-        [erc20TokenA, zrxToken] = await erc20Wrapper.deployDummyTokensAsync(
+        [erc20TokenA, netToken] = await erc20Wrapper.deployDummyTokensAsync(
             numDummyErc20ToDeploy,
             constants.DUMMY_TOKEN_DECIMALS,
         );
@@ -90,16 +89,16 @@ describe(ContractName.DutchAuction, () => {
         const erc721Balances = await erc721Wrapper.getBalancesAsync();
         erc721MakerAssetIds = erc721Balances[makerAddress][erc721Token.address];
 
-        wethContract = await WETH9Contract.deployFrom0xArtifactAsync(artifacts.WETH9, provider, txDefaults, artifacts);
+        wethContract = await WETH9Contract.deployFrompowerchainArtifactAsync(artifacts.WETH9, provider, txDefaults, artifacts);
         erc20Wrapper.addDummyTokenContract(wethContract as any);
 
-        const zrxAssetData = await devUtils.encodeERC20AssetData(zrxToken.address).callAsync();
-        const exchangeInstance = await ExchangeContract.deployFrom0xArtifactAsync(
+        const netAssetData = await devUtils.encodeERC20AssetData(netToken.address).callAsync();
+        const exchangeInstance = await ExchangeContract.deployFrompowerchainArtifactAsync(
             artifacts.Exchange,
             provider,
             txDefaults,
             artifacts,
-            zrxAssetData,
+            netAssetData,
             new BigNumber(chainId),
         );
         await exchangeInstance.registerAssetProxy.awaitTransactionSuccessAsync(erc20Proxy.address, {
@@ -116,7 +115,7 @@ describe(ContractName.DutchAuction, () => {
             from: owner,
         });
 
-        const dutchAuctionInstance = await DutchAuctionContract.deployFrom0xArtifactAsync(
+        const dutchAuctionInstance = await DutchAuctionContract.deployFrompowerchainArtifactAsync(
             artifacts.DutchAuction,
             provider,
             txDefaults,
@@ -142,7 +141,7 @@ describe(ContractName.DutchAuction, () => {
                 .sendTransactionAsync({ from: takerAddress }),
         );
         web3Wrapper.abiDecoder.addABI(exchangeInstance.abi);
-        web3Wrapper.abiDecoder.addABI(zrxToken.abi);
+        web3Wrapper.abiDecoder.addABI(netToken.abi);
         erc20Wrapper.addTokenOwnerAddress(dutchAuctionContract.address);
 
         currentBlockTimestamp = await getLatestBlockTimestampAsync();
@@ -263,8 +262,8 @@ describe(ContractName.DutchAuction, () => {
             expect(newBalances[makerAddress][wethContract.address]).to.be.bignumber.gte(
                 erc20Balances[makerAddress][wethContract.address].plus(afterAuctionDetails.currentAmount),
             );
-            expect(newBalances[feeRecipientAddress][zrxToken.address]).to.be.bignumber.equal(
-                erc20Balances[feeRecipientAddress][zrxToken.address].plus(sellOrder.makerFee),
+            expect(newBalances[feeRecipientAddress][netToken.address]).to.be.bignumber.equal(
+                erc20Balances[feeRecipientAddress][netToken.address].plus(sellOrder.makerFee),
             );
         });
         it('maker fees on buyOrder are paid to the fee receipient', async () => {
@@ -277,8 +276,8 @@ describe(ContractName.DutchAuction, () => {
             expect(newBalances[makerAddress][wethContract.address]).to.be.bignumber.gte(
                 erc20Balances[makerAddress][wethContract.address].plus(afterAuctionDetails.currentAmount),
             );
-            expect(newBalances[feeRecipientAddress][zrxToken.address]).to.be.bignumber.equal(
-                erc20Balances[feeRecipientAddress][zrxToken.address].plus(buyOrder.makerFee),
+            expect(newBalances[feeRecipientAddress][netToken.address]).to.be.bignumber.equal(
+                erc20Balances[feeRecipientAddress][netToken.address].plus(buyOrder.makerFee),
             );
         });
         it('should revert when auction expires', async () => {

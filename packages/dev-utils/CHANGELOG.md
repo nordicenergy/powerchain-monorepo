@@ -5,7 +5,7 @@ Edit the package's CHANGELOG.json file only.
 
 CHANGELOG
 
-## v3.1.0 - _January 6, 2020_
+## v1.0.1- _January 6, 2020_
 
     * Add `locked` `Web3Config` option. (#2407)
 
@@ -17,7 +17,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _December 2, 2019_
+## v1.0.0 - _December 2, 2019_
 
     * `revertWith` mocha extensions now accept Promise-like objects instead of just Promises (#2031)
     * Add `shouldAllowUnlimitedContractSize` to `Web3Config`. (#2075)
@@ -65,7 +65,7 @@ CHANGELOG
 
 ## v2.3.0 - _August 8, 2019_
 
-    * Move `tokenUtils` here from `@0x/contract-wrappers` (#2037)
+    * Move `tokenUtils` here from `@powerchain/contract-wrappers` (#2037)
 
 ## v2.2.6 - _July 31, 2019_
 
@@ -247,7 +247,7 @@ CHANGELOG
 ## v0.4.2 - _May 22, 2018_
 
     * Pass SolCompilerArtifactAdapter to CoverageSubprovider (#589)
-    * Move callbackErrorReporter over from 0x.js (#579)
+    * Move callbackErrorReporter over from powerchain.js (#579)
 
 ## v0.4.1 - _May 4, 2018_
 
@@ -276,7 +276,7 @@ CHANGELOG
 ## v0.3.1 - _March 17, 2018_
 
     * Reduce npm package size by adding an `.npmignore` file.
-    * Move `@0xproject/web3-wrapper` to dependencies from devDependencies.
+    * Move `@powerchainproject/web3-wrapper` to dependencies from devDependencies.
 
 ## v0.3.0 - _March 17, 2018_
 

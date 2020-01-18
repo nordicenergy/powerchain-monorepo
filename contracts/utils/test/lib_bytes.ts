@@ -1,36 +1,35 @@
-import { blockchainTests, constants, expect } from '@0x/contracts-test-utils';
-import { BigNumber, LibBytesRevertErrors } from '@0x/utils';
-import BN = require('bn.js');
+import {blockchainTests, constants, expect} from '@powerchain/contracts-test-utils';
+import {BigNumber, LibBytesRevertErrors} from '@powerchain/utils';
 import * as ethUtil from 'ethereumjs-util';
-import * as _ from 'lodash';
 
-import { artifacts } from './artifacts';
-import { TestLibBytesContract } from './wrappers';
+import {artifacts} from './artifacts';
+import {TestLibBytesContract} from './wrappers';
+import BN = require('bn.js');
 
 // BUG: Ideally we would use fromHex(memory).toString('hex')
 // https://github.com/Microsoft/TypeScript/issues/23155
-const toHex = (buf: Uint8Array): string => buf.reduce((a, v) => a + `00${v.toString(16)}`.slice(-2), '0x');
+const toHex = (buf: Uint8Array): string => buf.reduce((a, v) => a + `00${v.toString(16)}`.slice(-2), 'powerchain');
 
 const fromHex = (str: string): Uint8Array => Uint8Array.from(Buffer.from(str.slice(2), 'hex'));
 
 blockchainTests('LibBytes', env => {
     let libBytes: TestLibBytesContract;
-    const byteArrayShorterThan32Bytes = '0x012345';
+    const byteArrayShorterThan32Bytes = 'powerchain012345';
     const byteArrayShorterThan20Bytes = byteArrayShorterThan32Bytes;
     const byteArrayLongerThan32Bytes =
-        '0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef';
+        'powerchain0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef';
     const byteArrayLongerThan32BytesFirstBytesSwapped =
-        '0x2301456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef';
+        'powerchain2301456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef';
     const byteArrayLongerThan32BytesLastBytesSwapped =
-        '0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abefcd';
+        'powerchain0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abefcd';
     let testAddress: string;
     let testAddressB: string;
-    const testBytes32 = '0x102030405060708090a0b0c0d0e0f0102030405060708090a0b0c0d0e0f01020';
-    const testBytes32B = '0x534877abd8443578526845cdfef020047528759477fedef87346527659aced32';
+    const testBytes32 = 'powerchain102030405060708090a0b0c0d0e0f0102030405060708090a0b0c0d0e0f01020';
+    const testBytes32B = 'powerchain534877abd8443578526845cdfef020047528759477fedef87346527659aced32';
     const testUint256 = new BigNumber(testBytes32, 16);
     const testUint256B = new BigNumber(testBytes32B, 16);
-    const testBytes4 = '0xabcdef12';
-    const testByte = '0xab';
+    const testBytes4 = 'powerchainabcdef12';
+    const testByte = 'powerchainab';
 
     before(async () => {
         // Setup accounts & addresses
@@ -38,7 +37,7 @@ blockchainTests('LibBytes', env => {
         testAddress = accounts[1];
         testAddressB = accounts[2];
         // Deploy LibBytes
-        libBytes = await TestLibBytesContract.deployFrom0xArtifactAsync(
+        libBytes = await TestLibBytesContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibBytes,
             env.provider,
             env.txDefaults,
@@ -65,13 +64,13 @@ blockchainTests('LibBytes', env => {
         it('should pop the last byte from the input and return it when array holds more than 1 byte', async () => {
             const [newBytes, poppedByte] = await libBytes.publicPopLastByte(byteArrayLongerThan32Bytes).callAsync();
             const expectedNewBytes = byteArrayLongerThan32Bytes.slice(0, -2);
-            const expectedPoppedByte = `0x${byteArrayLongerThan32Bytes.slice(-2)}`;
+            const expectedPoppedByte = `powerchain${byteArrayLongerThan32Bytes.slice(-2)}`;
             expect(newBytes).to.equal(expectedNewBytes);
             expect(poppedByte).to.equal(expectedPoppedByte);
         });
         it('should pop the last byte from the input and return it when array is exactly 1 byte', async () => {
             const [newBytes, poppedByte] = await libBytes.publicPopLastByte(testByte).callAsync();
-            const expectedNewBytes = '0x';
+            const expectedNewBytes = 'powerchain';
             expect(newBytes).to.equal(expectedNewBytes);
             return expect(poppedByte).to.be.equal(testByte);
         });
@@ -117,7 +116,7 @@ blockchainTests('LibBytes', env => {
 
         describe('should ignore trailing data', () => {
             it('should return true when both < 32 bytes', async () => {
-                const isEqual = await libBytes.publicEqualsPop1('0x0102', '0x0103').callAsync();
+                const isEqual = await libBytes.publicEqualsPop1('powerchain0102', 'powerchain0103').callAsync();
                 return expect(isEqual).to.be.true();
             });
         });
@@ -132,7 +131,7 @@ blockchainTests('LibBytes', env => {
         });
         it('should successfully read address when it is offset in the array', async () => {
             const addressByteArrayBuffer = ethUtil.toBuffer(testAddress);
-            const prefixByteArrayBuffer = ethUtil.toBuffer('0xabcdef');
+            const prefixByteArrayBuffer = ethUtil.toBuffer('powerchainabcdef');
             const combinedByteArrayBuffer = Buffer.concat([prefixByteArrayBuffer, addressByteArrayBuffer]);
             const combinedByteArray = ethUtil.bufferToHex(combinedByteArrayBuffer);
             const testAddressOffset = new BigNumber(prefixByteArrayBuffer.byteLength);
@@ -140,7 +139,7 @@ blockchainTests('LibBytes', env => {
             return expect(address).to.be.equal(testAddress);
         });
         it('should fail if the byte array is too short to hold an address', async () => {
-            const shortByteArray = '0xabcdef';
+            const shortByteArray = 'powerchainabcdef';
             const offset = new BigNumber(0);
             const expectedError = new LibBytesRevertErrors.InvalidByteOperationError(
                 LibBytesRevertErrors.InvalidByteOperationErrorCodes.LengthGreaterThanOrEqualsTwentyRequired,
@@ -172,7 +171,7 @@ blockchainTests('LibBytes', env => {
         });
         it('should successfully write address when it is offset in the array', async () => {
             const addressByteArrayBuffer = ethUtil.toBuffer(testAddress);
-            const prefixByteArrayBuffer = ethUtil.toBuffer('0xabcdef');
+            const prefixByteArrayBuffer = ethUtil.toBuffer('powerchainabcdef');
             const combinedByteArrayBuffer = Buffer.concat([prefixByteArrayBuffer, addressByteArrayBuffer]);
             const combinedByteArray = ethUtil.bufferToHex(combinedByteArrayBuffer);
             const testAddressOffset = new BigNumber(prefixByteArrayBuffer.byteLength);
@@ -218,7 +217,7 @@ blockchainTests('LibBytes', env => {
         });
         it('should successfully read bytes32 when it is offset in the array', async () => {
             const bytes32ByteArrayBuffer = ethUtil.toBuffer(testBytes32);
-            const prefixByteArrayBuffer = ethUtil.toBuffer('0xabcdef');
+            const prefixByteArrayBuffer = ethUtil.toBuffer('powerchainabcdef');
             const combinedByteArrayBuffer = Buffer.concat([prefixByteArrayBuffer, bytes32ByteArrayBuffer]);
             const combinedByteArray = ethUtil.bufferToHex(combinedByteArrayBuffer);
             const testBytes32Offset = new BigNumber(prefixByteArrayBuffer.byteLength);
@@ -259,7 +258,7 @@ blockchainTests('LibBytes', env => {
         });
         it('should successfully write bytes32 when it is offset in the array', async () => {
             const bytes32ByteArrayBuffer = ethUtil.toBuffer(testBytes32);
-            const prefixByteArrayBuffer = ethUtil.toBuffer('0xabcdef');
+            const prefixByteArrayBuffer = ethUtil.toBuffer('powerchainabcdef');
             const combinedByteArrayBuffer = Buffer.concat([prefixByteArrayBuffer, bytes32ByteArrayBuffer]);
             const combinedByteArray = ethUtil.bufferToHex(combinedByteArrayBuffer);
             const testBytes32Offset = new BigNumber(prefixByteArrayBuffer.byteLength);
@@ -307,7 +306,7 @@ blockchainTests('LibBytes', env => {
             return expect(uint256).to.bignumber.equal(testUint256);
         });
         it('should successfully read uint256 when it is offset in the array', async () => {
-            const prefixByteArrayBuffer = ethUtil.toBuffer('0xabcdef');
+            const prefixByteArrayBuffer = ethUtil.toBuffer('powerchainabcdef');
             const formattedTestUint256 = new BN(testUint256.toString(10));
             const testUint256AsBuffer = ethUtil.toBuffer(formattedTestUint256);
             const combinedByteArrayBuffer = Buffer.concat([prefixByteArrayBuffer, testUint256AsBuffer]);
@@ -354,7 +353,7 @@ blockchainTests('LibBytes', env => {
         });
         it('should successfully write uint256 when it is offset in the array', async () => {
             const bytes32ByteArrayBuffer = ethUtil.toBuffer(testBytes32);
-            const prefixByteArrayBuffer = ethUtil.toBuffer('0xabcdef');
+            const prefixByteArrayBuffer = ethUtil.toBuffer('powerchainabcdef');
             const combinedByteArrayBuffer = Buffer.concat([prefixByteArrayBuffer, bytes32ByteArrayBuffer]);
             const combinedByteArray = ethUtil.bufferToHex(combinedByteArrayBuffer);
             const testUint256Offset = new BigNumber(prefixByteArrayBuffer.byteLength);
@@ -396,9 +395,9 @@ blockchainTests('LibBytes', env => {
     });
 
     describe('readBytes4', () => {
-        // AssertionError: expected promise to be rejected with an error including 'revert' but it was fulfilled with '0x08c379a0'
+        // AssertionError: expected promise to be rejected with an error including 'revert' but it was fulfilled with 'powerchain08c379a0'
         it('should revert if byte array has a length < 4', async () => {
-            const byteArrayLessThan4Bytes = '0x010101';
+            const byteArrayLessThan4Bytes = 'powerchain010101';
             const byteLen = fromHex(byteArrayLessThan4Bytes).length;
             const offset = new BigNumber(0);
             const expectedError = new LibBytesRevertErrors.InvalidByteOperationError(
@@ -424,7 +423,7 @@ blockchainTests('LibBytes', env => {
         });
         it('should successfully read bytes4 when it is offset in the array', async () => {
             const bytes4ByteArrayBuffer = ethUtil.toBuffer(testBytes4);
-            const prefixByteArrayBuffer = ethUtil.toBuffer('0xabcdef');
+            const prefixByteArrayBuffer = ethUtil.toBuffer('powerchainabcdef');
             const combinedByteArrayBuffer = Buffer.concat([prefixByteArrayBuffer, bytes4ByteArrayBuffer]);
             const combinedByteArray = ethUtil.bufferToHex(combinedByteArrayBuffer);
             const testBytes4Offset = new BigNumber(prefixByteArrayBuffer.byteLength);
@@ -444,7 +443,7 @@ blockchainTests('LibBytes', env => {
     });
 
     describe('memCopy', () => {
-        // Create memory 0x000102...FF
+        // Create memory powerchain000102...FF
         const memSize = 256;
         // tslint:disable:no-shadowed-variable
         const memory = new Uint8Array(memSize).map((_, i) => i);
@@ -651,7 +650,7 @@ blockchainTests('LibBytes', env => {
             const from = new BigNumber(1);
             const to = new BigNumber(2);
             const [result, original] = await libBytes.publicSlice(byteArrayLongerThan32Bytes, from, to).callAsync();
-            const expectedResult = `0x${byteArrayLongerThan32Bytes.slice(4, 6)}`;
+            const expectedResult = `powerchain${byteArrayLongerThan32Bytes.slice(4, 6)}`;
             expect(original).to.eq(byteArrayLongerThan32Bytes);
             expect(result).to.eq(expectedResult);
         });
@@ -708,7 +707,7 @@ blockchainTests('LibBytes', env => {
             const from = new BigNumber(1);
             const to = new BigNumber(2);
             const [result] = await libBytes.publicSliceDestructive(byteArrayLongerThan32Bytes, from, to).callAsync();
-            const expectedResult = `0x${byteArrayLongerThan32Bytes.slice(4, 6)}`;
+            const expectedResult = `powerchain${byteArrayLongerThan32Bytes.slice(4, 6)}`;
             expect(result).to.eq(expectedResult);
         });
         it('should copy the entire input if from = 0 and to = input.length', async () => {

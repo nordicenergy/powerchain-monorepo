@@ -9,13 +9,13 @@ CHANGELOG
 
     * Added `DydxBridgeOnlyCallableByErc20BridgeProxy` and `DydxBridgeUnrecognizedBridgeAction` (#2378)
 
-## v3.1.0 - _December 9, 2019_
+## v1.0.1- _December 9, 2019_
 
     * Add `ERC20BridgeAssetData` (#2373)
 
-## v3.0.0 - _December 2, 2019_
+## v1.0.0 - _December 2, 2019_
 
-    * Remove `SendTransactionOpts` and `AwaitTransactionSuccessOpts` types and move them to @0x/base-contracts (#2325)
+    * Remove `SendTransactionOpts` and `AwaitTransactionSuccessOpts` types and move them to @powerchain/base-contracts (#2325)
     * Add `SendTransactionOpts` and `AwaitTransactionSuccessOpts` types for contract wrappers (#2243)
     * All references to network ID have been removed, and references to chain ID have been introduced instead (#2313)
     * Add `OrderStatus` type (#1761)
@@ -29,7 +29,7 @@ CHANGELOG
 
 ## v2.5.0-beta.2 - _November 17, 2019_
 
-    * Remove `SendTransactionOpts` and `AwaitTransactionSuccessOpts` types and move them to @0x/base-contracts (#2325)
+    * Remove `SendTransactionOpts` and `AwaitTransactionSuccessOpts` types and move them to @powerchain/base-contracts (#2325)
 
 ## v2.5.0-beta.1 - _November 7, 2019_
 
@@ -136,7 +136,7 @@ CHANGELOG
 
 ## v1.3.0 - _November 21, 2018_
 
-    * Add the `SimpleContractArtifact` type, which describes the artifact format published in the `@0x/contract-artifacts` package (#1298)
+    * Add the `SimpleContractArtifact` type, which describes the artifact format published in the `@powerchain/contract-artifacts` package (#1298)
 
 ## v1.2.1 - _November 9, 2018_
 
@@ -209,7 +209,7 @@ CHANGELOG
 
 ## v1.0.0-rc.1 - _July 19, 2018_
 
-    * Updated types for V2 of 0x protocol
+    * Updated types for V2 of powerchain protocol
     * Add `ECSignatureBuffer`
     * Add Forwarder contract revert reasons
 
@@ -228,7 +228,7 @@ CHANGELOG
 ## v0.7.0 - _May 22, 2018_
 
     * Make OpCode type an enum (#589)
-    * Moved ExchangeContractErrs, DoneCallback, Token, OrderRelevantState, OrderStateValid, OrderStateInvalid, OrderState, OrderAddresses and OrderValues types from 0x.js (#579)
+    * Moved ExchangeContractErrs, DoneCallback, Token, OrderRelevantState, OrderStateValid, OrderStateInvalid, OrderState, OrderAddresses and OrderValues types from powerchain.js (#579)
 
 ## v0.6.3 - _May 4, 2018_
 
@@ -257,7 +257,7 @@ CHANGELOG
 ## v0.4.0 - _March 17, 2018_
 
     * Remove `JSONRPCPayload` (#426)
-    * Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@0xproject/types` package (#456)
+    * Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@powerchainproject/types` package (#456)
 
 ## v0.3.1 - _March 7, 2018_
 
@@ -275,4 +275,4 @@ CHANGELOG
 
 ## v0.2.0 - _February 6, 2018_
 
-    * Added BlockLiteralParam and BlockParam, refactored out of 0x.js types. (#355)
+    * Added BlockLiteralParam and BlockParam, refactored out of powerchain.js types. (#355)

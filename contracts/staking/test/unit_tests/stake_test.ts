@@ -6,13 +6,13 @@ import {
     getRandomInteger,
     Numberish,
     shortZip,
-} from '@0x/contracts-test-utils';
-import { BigNumber, hexUtils, StakingRevertErrors } from '@0x/utils';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber, hexUtils, StakingRevertErrors} from '@powerchain/utils';
 import * as _ from 'lodash';
 
-import { StakeStatus } from '../../src/types';
+import {StakeStatus} from '../../src/types';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 import {
     TestMixinStakeContract,
     TestMixinStakeDecreaseCurrentAndNextBalanceEventArgs as DecreaseCurrentAndNextBalanceEventArgs,
@@ -22,11 +22,11 @@ import {
     TestMixinStakeIncreaseNextBalanceEventArgs as IncreaseNextBalanceEventArgs,
     TestMixinStakeMoveStakeEventArgs as MoveStakeEventArgs,
     TestMixinStakeMoveStakeStorageEventArgs as MoveStakeStorageEventArgs,
+    TestMixinStakeNetVaultDepositFromEventArgs as NetVaultDepositFromEventArgs,
+    TestMixinStakeNetVaultWithdrawFromEventArgs as NetVaultWithdrawFromEventArgs,
     TestMixinStakeStakeEventArgs as StakeEventArgs,
     TestMixinStakeUnstakeEventArgs as UnstakeEventArgs,
     TestMixinStakeWithdrawAndSyncDelegatorRewardsEventArgs as WithdrawAndSyncDelegatorRewardsEventArgs,
-    TestMixinStakeZrxVaultDepositFromEventArgs as ZrxVaultDepositFromEventArgs,
-    TestMixinStakeZrxVaultWithdrawFromEventArgs as ZrxVaultWithdrawFromEventArgs,
 } from '../wrappers';
 
 blockchainTests.resets('MixinStake unit tests', env => {
@@ -37,7 +37,7 @@ blockchainTests.resets('MixinStake unit tests', env => {
 
     before(async () => {
         [staker] = await env.getAccountAddressesAsync();
-        testContract = await TestMixinStakeContract.deployFrom0xArtifactAsync(
+        testContract = await TestMixinStakeContract.deployFrompowerchainArtifactAsync(
             artifacts.TestMixinStake,
             env.provider,
             env.txDefaults,
@@ -50,10 +50,10 @@ blockchainTests.resets('MixinStake unit tests', env => {
     });
 
     describe('stake()', () => {
-        it('deposits funds into the ZRX vault', async () => {
+        it('deposits funds into the NET vault', async () => {
             const amount = getRandomInteger(0, 100e18);
             const { logs } = await testContract.stake(amount).awaitTransactionSuccessAsync();
-            const events = filterLogsToArguments<ZrxVaultDepositFromEventArgs>(logs, StakeEvents.ZrxVaultDepositFrom);
+            const events = filterLogsToArguments<NetVaultDepositFromEventArgs>(logs, StakeEvents.NetVaultDepositFrom);
             expect(events).to.be.length(1);
             expect(events[0].staker).to.eq(staker);
             expect(events[0].amount).to.bignumber.eq(amount);
@@ -132,11 +132,11 @@ blockchainTests.resets('MixinStake unit tests', env => {
             expect(events[0].amount).to.bignumber.eq(amount);
         });
 
-        it('withdraws funds from the ZRX vault', async () => {
+        it('withdraws funds from the NET vault', async () => {
             const amount = getRandomInteger(0, 100e18);
             await setUndelegatedStakeAsync(amount, amount);
             const { logs } = await testContract.unstake(amount).awaitTransactionSuccessAsync();
-            const events = filterLogsToArguments<ZrxVaultWithdrawFromEventArgs>(logs, StakeEvents.ZrxVaultWithdrawFrom);
+            const events = filterLogsToArguments<NetVaultWithdrawFromEventArgs>(logs, StakeEvents.NetVaultWithdrawFrom);
             expect(events).to.be.length(1);
             expect(events[0].staker).to.eq(staker);
             expect(events[0].amount).to.bignumber.eq(amount);

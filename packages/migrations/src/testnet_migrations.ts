@@ -1,4 +1,4 @@
-import { getContractAddressesForChainOrThrow } from '@0x/contract-addresses';
+import {getContractAddressesForChainOrThrow} from '@powerchain/contract-addresses';
 import {
     artifacts as assetProxyArtifacts,
     ChaiBridgeContract,
@@ -7,30 +7,30 @@ import {
     Eth2DaiBridgeContract,
     KyberBridgeContract,
     UniswapBridgeContract,
-} from '@0x/contracts-asset-proxy';
-import { artifacts as coordinatorArtifacts, CoordinatorContract } from '@0x/contracts-coordinator';
-import { artifacts as devUtilsArtifacts, DevUtilsContract } from '@0x/contracts-dev-utils';
-import { artifacts as exchangeArtifacts, ExchangeContract } from '@0x/contracts-exchange';
-import { artifacts as forwarderArtifacts, ForwarderContract } from '@0x/contracts-exchange-forwarder';
+} from '@powerchain/contracts-asset-proxy';
+import {artifacts as coordinatorArtifacts, CoordinatorContract} from '@powerchain/contracts-coordinator';
+import {artifacts as devUtilsArtifacts, DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {artifacts as exchangeArtifacts, ExchangeContract} from '@powerchain/contracts-exchange';
+import {artifacts as forwarderArtifacts, ForwarderContract} from '@powerchain/contracts-exchange-forwarder';
 import {
     artifacts as multisigArtifacts,
     ZeroExGovernorContract,
     ZeroExGovernorSubmissionEventArgs,
-} from '@0x/contracts-multisig';
+} from '@powerchain/contracts-multisig';
 import {
     artifacts as stakingArtifacts,
+    NetVaultContract,
     StakingContract,
     StakingProxyContract,
-    ZrxVaultContract,
-} from '@0x/contracts-staking';
-import { IAuthorizableContract, IOwnableContract } from '@0x/contracts-utils';
-import { AbiEncoder, BigNumber, logUtils, providerUtils } from '@0x/utils';
-import { LogWithDecodedArgs, SupportedProvider, TxData } from 'ethereum-types';
+} from '@powerchain/contracts-staking';
+import {IAuthorizableContract, IOwnableContract} from '@powerchain/contracts-utils';
+import {AbiEncoder, BigNumber, logUtils, providerUtils} from '@powerchain/utils';
+import {LogWithDecodedArgs, SupportedProvider, TxData} from 'ethereum-types';
 
-import { getConfigsByChainId } from './utils/configs_by_chain';
-import { constants } from './utils/constants';
-import { providerFactory } from './utils/provider_factory';
-import { getTimelockRegistrationsByChainId } from './utils/timelocks';
+import {getConfigsByChainId} from './utils/configs_by_chain';
+import {constants} from './utils/constants';
+import {providerFactory} from './utils/provider_factory';
+import {getTimelockRegistrationsByChainId} from './utils/timelocks';
 
 async function submitAndExecuteTransactionAsync(
     governor: ZeroExGovernorContract,
@@ -60,16 +60,16 @@ export async function runMigrationsAsync(supportedProvider: SupportedProvider, t
 
     // NOTE: This must be deployed before running these migrations, since its address is hard coded in the
     // staking logic contract.
-    const zrxVault = new ZrxVaultContract(deployedAddresses.zrxVault, provider, txDefaults);
+    const zrxVault = new NetVaultContract(deployedAddresses.zrxVault, provider, txDefaults);
 
-    const stakingLogic = await StakingContract.deployFrom0xArtifactAsync(
+    const stakingLogic = await StakingContract.deployFrompowerchainArtifactAsync(
         stakingArtifacts.Staking,
         provider,
         txDefaults,
         stakingArtifacts,
     );
 
-    const exchange = await ExchangeContract.deployFrom0xArtifactAsync(
+    const exchange = await ExchangeContract.deployFrompowerchainArtifactAsync(
         exchangeArtifacts.Exchange,
         provider,
         txDefaults,
@@ -77,7 +77,7 @@ export async function runMigrationsAsync(supportedProvider: SupportedProvider, t
         chainId,
     );
 
-    const stakingProxy = await StakingProxyContract.deployFrom0xArtifactAsync(
+    const stakingProxy = await StakingProxyContract.deployFrompowerchainArtifactAsync(
         stakingArtifacts.StakingProxy,
         provider,
         txDefaults,
@@ -85,42 +85,42 @@ export async function runMigrationsAsync(supportedProvider: SupportedProvider, t
         stakingLogic.address,
     );
 
-    const erc20BridgeProxy = await ERC20BridgeProxyContract.deployFrom0xArtifactAsync(
+    const erc20BridgeProxy = await ERC20BridgeProxyContract.deployFrompowerchainArtifactAsync(
         assetProxyArtifacts.ERC20BridgeProxy,
         provider,
         txDefaults,
         assetProxyArtifacts,
     );
 
-    await UniswapBridgeContract.deployFrom0xArtifactAsync(
+    await UniswapBridgeContract.deployFrompowerchainArtifactAsync(
         assetProxyArtifacts.UniswapBridge,
         provider,
         txDefaults,
         assetProxyArtifacts,
     );
 
-    await Eth2DaiBridgeContract.deployFrom0xArtifactAsync(
+    await Eth2DaiBridgeContract.deployFrompowerchainArtifactAsync(
         assetProxyArtifacts.Eth2DaiBridge,
         provider,
         txDefaults,
         assetProxyArtifacts,
     );
 
-    await KyberBridgeContract.deployFrom0xArtifactAsync(
+    await KyberBridgeContract.deployFrompowerchainArtifactAsync(
         assetProxyArtifacts.KyberBridge,
         provider,
         txDefaults,
         assetProxyArtifacts,
     );
 
-    const chaiBridge = await ChaiBridgeContract.deployFrom0xArtifactAsync(
+    const chaiBridge = await ChaiBridgeContract.deployFrompowerchainArtifactAsync(
         assetProxyArtifacts.ChaiBridge,
         provider,
         txDefaults,
         assetProxyArtifacts,
     );
 
-    await DydxBridgeContract.deployFrom0xArtifactAsync(
+    await DydxBridgeContract.deployFrompowerchainArtifactAsync(
         assetProxyArtifacts.DydxBridge,
         provider,
         txDefaults,
@@ -132,7 +132,7 @@ export async function runMigrationsAsync(supportedProvider: SupportedProvider, t
 
     const customTimeLocks = getTimelockRegistrationsByChainId(chainId.toNumber());
 
-    const governor = await ZeroExGovernorContract.deployFrom0xArtifactAsync(
+    const governor = await ZeroExGovernorContract.deployFrompowerchainArtifactAsync(
         multisigArtifacts.ZeroExGovernor,
         provider,
         txDefaults,
@@ -163,13 +163,13 @@ export async function runMigrationsAsync(supportedProvider: SupportedProvider, t
     await erc20BridgeProxy.transferOwnership(governor.address).awaitTransactionSuccessAsync();
     logUtils.log('ERC20BridgeProxy configured!');
 
-    logUtils.log('Configuring ZrxVault...');
+    logUtils.log('Configuring NetVault...');
     await zrxVault.addAuthorizedAddress(txDefaults.from).awaitTransactionSuccessAsync();
     await zrxVault.setStakingProxy(stakingProxy.address).awaitTransactionSuccessAsync();
     await zrxVault.removeAuthorizedAddress(txDefaults.from).awaitTransactionSuccessAsync();
     await zrxVault.addAuthorizedAddress(governor.address).awaitTransactionSuccessAsync();
     await zrxVault.transferOwnership(governor.address).awaitTransactionSuccessAsync();
-    logUtils.log('ZrxVault configured!');
+    logUtils.log('NetVault configured!');
 
     logUtils.log('Configuring StakingProxy...');
     await stakingProxy.addAuthorizedAddress(txDefaults.from).awaitTransactionSuccessAsync();
@@ -245,7 +245,7 @@ export async function runMigrationsAsync(supportedProvider: SupportedProvider, t
     ]);
     await submitAndExecuteTransactionAsync(governor, governor.address, batchTransactionData);
 
-    await DevUtilsContract.deployFrom0xArtifactAsync(
+    await DevUtilsContract.deployFrompowerchainArtifactAsync(
         devUtilsArtifacts.DevUtils,
         provider,
         txDefaults,
@@ -254,7 +254,7 @@ export async function runMigrationsAsync(supportedProvider: SupportedProvider, t
         chaiBridge.address,
     );
 
-    await CoordinatorContract.deployFrom0xArtifactAsync(
+    await CoordinatorContract.deployFrompowerchainArtifactAsync(
         coordinatorArtifacts.Coordinator,
         provider,
         txDefaults,
@@ -263,7 +263,7 @@ export async function runMigrationsAsync(supportedProvider: SupportedProvider, t
         chainId,
     );
 
-    await ForwarderContract.deployFrom0xArtifactAsync(
+    await ForwarderContract.deployFrompowerchainArtifactAsync(
         forwarderArtifacts.Forwarder,
         provider,
         txDefaults,
@@ -278,7 +278,7 @@ export async function runMigrationsAsync(supportedProvider: SupportedProvider, t
     const networkId = 1;
     const rpcUrl = 'https://mainnet.infura.io/v3/';
     const provider = await providerFactory.getLedgerProviderAsync(networkId, rpcUrl);
-    await runMigrationsAsync(provider, { from: '0x3b39078f2a3e1512eecc8d6792fdc7f33e1cd2cf', gasPrice: 10000000001 });
+    await runMigrationsAsync(provider, { from: 'powerchain3b39078f2a3e1512eecc8d6792fdc7f33e1cd2cf', gasPrice: 10000000001 });
 })().catch(err => {
     logUtils.log(err);
     process.exit(1);

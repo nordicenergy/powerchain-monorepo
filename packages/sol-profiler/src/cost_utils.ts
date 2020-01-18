@@ -1,7 +1,7 @@
-import { constants, TraceInfo } from '@0x/sol-tracing-utils';
-import { logUtils } from '@0x/utils';
-import { OpCode } from 'ethereum-types';
-import { stripHexPrefix } from 'ethereumjs-util';
+import {constants, TraceInfo} from '@powerchain/sol-tracing-utils';
+import {logUtils} from '@powerchain/utils';
+import {OpCode} from 'ethereum-types';
+import {stripHexPrefix} from 'ethereumjs-util';
 import * as _ from 'lodash';
 
 const ZERO_BYTE_CALL_DATA_COST = 4;

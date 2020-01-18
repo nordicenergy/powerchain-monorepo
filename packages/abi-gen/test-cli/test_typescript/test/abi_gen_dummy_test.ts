@@ -1,8 +1,8 @@
-import { ContractFunctionObj } from '@0x/base-contract';
-import { BlockchainLifecycle, devConstants, web3Factory } from '@0x/dev-utils';
-import { Web3ProviderEngine } from '@0x/subproviders';
-import { BigNumber, providerUtils, StringRevertError } from '@0x/utils';
-import { BlockParamLiteral, Web3Wrapper } from '@0x/web3-wrapper';
+import {ContractFunctionObj} from '@powerchain/base-contract';
+import {BlockchainLifecycle, devConstants, web3Factory} from '@powerchain/dev-utils';
+import {Web3ProviderEngine} from '@powerchain/subproviders';
+import {BigNumber, providerUtils, StringRevertError} from '@powerchain/utils';
+import {BlockParamLiteral, Web3Wrapper} from '@powerchain/web3-wrapper';
 import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as ChaiBigNumber from 'chai-bignumber';
@@ -55,7 +55,7 @@ describe('AbiGenDummy Contract', () => {
     };
     before(async () => {
         providerUtils.startProviderEngine(provider);
-        abiGenDummy = await AbiGenDummyContract.deployFrom0xArtifactAsync(
+        abiGenDummy = await AbiGenDummyContract.deployFrompowerchainArtifactAsync(
             artifacts.AbiGenDummy,
             provider,
             txDefaults,
@@ -115,10 +115,10 @@ describe('AbiGenDummy Contract', () => {
 
     describe('struct handling', () => {
         const sampleStruct = {
-            aDynamicArrayOfBytes: ['0x3078313233', '0x3078333231'],
+            aDynamicArrayOfBytes: ['powerchain3078313233', 'powerchain3078333231'],
             anInteger: new BigNumber(5),
             aString: 'abc',
-            someBytes: '0x3078313233',
+            someBytes: 'powerchain3078313233',
         };
         it('should be able to handle struct output', async () => {
             const result = await abiGenDummy.structOutput().callAsync();
@@ -129,12 +129,12 @@ describe('AbiGenDummy Contract', () => {
     describe('ecrecoverFn', () => {
         it('should implement ecrecover', async () => {
             const signerAddress = devConstants.TESTRPC_FIRST_ADDRESS;
-            const message = '0x6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b0';
+            const message = 'powerchain6927e990021d23b1eb7b8789f6a6feaf98fe104bb0cf8259421b79f9a34222b0';
             const signature = await web3Wrapper.signMessageAsync(signerAddress, message);
 
             // tslint:disable:custom-no-magic-numbers
-            const r = `0x${signature.slice(2, 66)}`;
-            const s = `0x${signature.slice(66, 130)}`;
+            const r = `powerchain${signature.slice(2, 66)}`;
+            const s = `powerchain${signature.slice(66, 130)}`;
             const v = signature.slice(130, 132);
             const v_decimal = parseInt(v, 16) + 27; // v: (0 or 1) => (27 or 28)
             // tslint:enable:custom-no-magic-numbers
@@ -250,13 +250,13 @@ describe('AbiGenDummy Contract', () => {
         it('should successfully encode/decode (complex input / complex output)', async () => {
             const input = {
                 foo: new BigNumber(1991),
-                bar: '0x1234',
+                bar: 'powerchain1234',
                 car: 'zoom zoom',
             };
             const output = {
                 input,
-                lorem: '0x12345678',
-                ipsum: '0x87654321',
+                lorem: 'powerchain12345678',
+                ipsum: 'powerchain87654321',
                 dolor: 'amet',
             };
             await runTestAsync(
@@ -267,8 +267,8 @@ describe('AbiGenDummy Contract', () => {
             );
         });
         it('should successfully encode/decode (multi-input / multi-output)', async () => {
-            const input = [new BigNumber(1991), '0x1234', 'zoom zoom'];
-            const output = ['0x12345678', '0x87654321', 'amet'];
+            const input = [new BigNumber(1991), 'powerchain1234', 'zoom zoom'];
+            const output = ['powerchain12345678', 'powerchain87654321', 'amet'];
             const transaction = abiGenDummy
                 .multiInputMultiOutput(input[0] as BigNumber, input[1] as string, input[2] as string)
                 .getABIEncodedTransactionData();
@@ -303,7 +303,7 @@ describe('Lib dummy contract', () => {
         await blockchainLifecycle.revertAsync();
     });
     before(async () => {
-        libDummy = await TestLibDummyContract.deployFrom0xArtifactAsync(
+        libDummy = await TestLibDummyContract.deployFrompowerchainArtifactAsync(
             artifacts.TestLibDummy,
             provider,
             txDefaults,

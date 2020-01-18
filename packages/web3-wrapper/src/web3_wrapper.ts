@@ -1,6 +1,6 @@
-import { assert } from '@0x/assert';
-import { schemas } from '@0x/json-schemas';
-import { AbiDecoder, addressUtils, BigNumber, intervalUtils, promisify, providerUtils } from '@0x/utils';
+import {assert} from '@powerchain/assert';
+import {schemas} from '@powerchain/json-schemas';
+import {AbiDecoder, addressUtils, BigNumber, intervalUtils, promisify, providerUtils} from '@powerchain/utils';
 import {
     BlockParam,
     BlockParamLiteral,
@@ -23,7 +23,7 @@ import {
 } from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { marshaller } from './marshaller';
+import {marshaller} from './marshaller';
 import {
     BlockWithoutTransactionDataRPC,
     BlockWithTransactionDataRPC,
@@ -32,7 +32,7 @@ import {
     TransactionRPC,
     Web3WrapperErrors,
 } from './types';
-import { utils } from './utils';
+import {utils} from './utils';
 
 const BASE_TEN = 10;
 
@@ -281,8 +281,8 @@ export class Web3Wrapper {
     public async doesContractExistAtAddressAsync(address: string): Promise<boolean> {
         assert.isETHAddressHex('address', address);
         const code = await this.getContractCodeAsync(address);
-        // Regex matches 0x0, 0x00, 0x in order to accommodate poorly implemented clients
-        const isCodeEmpty = /^0x0{0,40}$/i.test(code);
+        // Regex matches powerchain0, powerchain00, powerchain in order to accommodate poorly implemented clients
+        const isCodeEmpty = /^powerchain0{0,40}$/i.test(code);
         return !isCodeEmpty;
     }
     /**

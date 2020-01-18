@@ -5,7 +5,7 @@ Edit the package's CHANGELOG.json file only.
 
 CHANGELOG
 
-## v3.0.3 - _January 6, 2020_
+## v1.0.1 - _January 6, 2020_
 
     * Dependencies updated
 
@@ -17,7 +17,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _December 2, 2019_
+## v1.0.0 - _December 2, 2019_
 
     * Drastically reduced bundle size by adding .npmignore, only exporting specific artifacts/wrappers/utils (#2330)
     * Add `decimals()` to `LibERC20Token`. (#2344)
@@ -64,7 +64,7 @@ CHANGELOG
 
 ## v2.2.10 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deployFrom0xArtifactAsync to include artifact dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deployFrompowerchainArtifactAsync to include artifact dependencies. (#1995)
 
 ## v2.2.9 - _July 24, 2019_
 

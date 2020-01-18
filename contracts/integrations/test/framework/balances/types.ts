@@ -1,7 +1,7 @@
-import { ERC1155MintableContract } from '@0x/contracts-erc1155';
-import { DummyERC20TokenContract, DummyNoReturnERC20TokenContract, WETH9Contract } from '@0x/contracts-erc20';
-import { DummyERC721TokenContract } from '@0x/contracts-erc721';
-import { BigNumber } from '@0x/utils';
+import {ERC1155MintableContract} from '@powerchain/contracts-erc1155';
+import {DummyERC20TokenContract, DummyNoReturnERC20TokenContract, WETH9Contract} from '@powerchain/contracts-erc20';
+import {DummyERC721TokenContract} from '@powerchain/contracts-erc721';
+import {BigNumber} from '@powerchain/utils';
 
 // alias for clarity
 type address = string;

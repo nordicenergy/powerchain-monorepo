@@ -1,5 +1,5 @@
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { blockchainTests, constants, describe, provider } from '@0x/contracts-test-utils';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {blockchainTests, constants, describe, provider} from '@powerchain/contracts-test-utils';
 import * as _ from 'lodash';
 
 import {

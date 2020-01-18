@@ -1,18 +1,18 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 import * as chai from 'chai';
 import 'mocha';
 
-import { sortingUtils } from '../src';
+import {sortingUtils} from '../src';
 
-import { chaiSetup } from './utils/chai_setup';
-import { testOrderFactory } from './utils/test_order_factory';
+import {chaiSetup} from './utils/chai_setup';
+import {testOrderFactory} from './utils/test_order_factory';
 
 chaiSetup.configure();
 const expect = chai.expect;
 
 describe('sortingUtils', () => {
     describe('#sortOrdersByFeeAdjustedRate', () => {
-        const feeRate = new BigNumber(1); // ZRX costs 1 unit of takerAsset per 1 unit of ZRX
+        const feeRate = new BigNumber(1); // NET costs 1 unit of takerAsset per 1 unit of NET
         // rate: 2 takerAsset / makerAsset
         const testOrder1 = testOrderFactory.generateTestSignedOrder({
             makerAssetAmount: new BigNumber(100),

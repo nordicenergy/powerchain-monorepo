@@ -1,13 +1,13 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
 export const constants = {
-    NULL_ADDRESS: '0x0000000000000000000000000000000000000000',
+    NULL_ADDRESS: 'powerchain0000000000000000000000000000000000000000',
     ROPSTEN_CHAIN_ID: 3,
     KOVAN_CHAIN_ID: 42,
     AWAIT_TRANSACTION_MINED_MS: 0,
     KOVAN_RPC_URL: 'https://kovan.infura.io/',
     ROPSTEN_RPC_URL: 'https://ropsten.infura.io/',
-    ZRX_DECIMALS: 18,
+    NET_DECIMALS: 18,
     DUMMY_TOKEN_NAME: '',
     DUMMY_TOKEN_SYMBOL: '',
     DUMMY_TOKEN_DECIMALS: 18,

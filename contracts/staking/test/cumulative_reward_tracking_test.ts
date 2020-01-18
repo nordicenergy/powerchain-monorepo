@@ -1,9 +1,8 @@
-import { ERC20Wrapper } from '@0x/contracts-asset-proxy';
-import { blockchainTests, describe } from '@0x/contracts-test-utils';
-import * as _ from 'lodash';
+import {ERC20Wrapper} from '@powerchain/contracts-asset-proxy';
+import {blockchainTests, describe} from '@powerchain/contracts-test-utils';
 
-import { deployAndConfigureContractsAsync, StakingApiWrapper } from './utils/api_wrapper';
-import { CumulativeRewardTrackingSimulation, TestAction } from './utils/cumulative_reward_tracking_simulation';
+import {deployAndConfigureContractsAsync, StakingApiWrapper} from './utils/api_wrapper';
+import {CumulativeRewardTrackingSimulation, TestAction} from './utils/cumulative_reward_tracking_simulation';
 
 // tslint:disable:no-unnecessary-type-assertion
 // tslint:disable:max-file-line-count

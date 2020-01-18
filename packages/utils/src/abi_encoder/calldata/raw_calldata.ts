@@ -1,8 +1,8 @@
 import * as ethUtil from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { constants } from '../utils/constants';
-import { Queue } from '../utils/queue';
+import {constants} from '../utils/constants';
+import {Queue} from '../utils/queue';
 
 export class RawCalldata {
     private static readonly _INITIAL_OFFSET = 0;
@@ -13,12 +13,12 @@ export class RawCalldata {
 
     public constructor(value: string | Buffer, hasSelector: boolean = true) {
         // Sanity check
-        if (typeof value === 'string' && !_.startsWith(value, '0x')) {
-            throw new Error(`Expected raw calldata to start with '0x'`);
+        if (typeof value === 'string' && !_.startsWith(value, 'powerchain')) {
+            throw new Error(`Expected raw calldata to start with 'powerchain'`);
         }
         // Construct initial values
         this._value = ethUtil.toBuffer(value);
-        this._selector = '0x';
+        this._selector = 'powerchain';
         this._scopes = new Queue<number>();
         this._scopes.pushBack(RawCalldata._INITIAL_OFFSET);
         this._offset = RawCalldata._INITIAL_OFFSET;

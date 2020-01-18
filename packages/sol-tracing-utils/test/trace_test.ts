@@ -1,9 +1,9 @@
 import * as chai from 'chai';
-import { OpCode, StructLog } from 'ethereum-types';
+import {OpCode, StructLog} from 'ethereum-types';
 import * as _ from 'lodash';
 import 'mocha';
 
-import { getContractAddressToTraces } from '../src/trace';
+import {getContractAddressToTraces} from '../src/trace';
 
 const expect = chai.expect;
 
@@ -26,11 +26,11 @@ function addDefaultStructLogFields(compactStructLog: Partial<StructLog> & { op: 
 describe('Trace', () => {
     describe('#getTracesByContractAddress', () => {
         it('correctly splits trace by contract address', () => {
-            const delegateCallAddress = '0x0000000000000000000000000000000000000002';
+            const delegateCallAddress = 'powerchain0000000000000000000000000000000000000002';
             const trace = [
                 {
                     op: OpCode.DelegateCall,
-                    stack: [delegateCallAddress, '0x'],
+                    stack: [delegateCallAddress, 'powerchain'],
                     depth: 0,
                 },
                 {
@@ -43,7 +43,7 @@ describe('Trace', () => {
                 },
             ];
             const fullTrace = _.map(trace, compactStructLog => addDefaultStructLogFields(compactStructLog));
-            const startAddress = '0x0000000000000000000000000000000000000001';
+            const startAddress = 'powerchain0000000000000000000000000000000000000001';
             const traceByContractAddress = getContractAddressToTraces(fullTrace, startAddress);
             const expectedTraceByContractAddress = {
                 [startAddress]: [fullTrace[0], fullTrace[2]],

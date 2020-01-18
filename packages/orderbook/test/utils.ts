@@ -1,29 +1,29 @@
-import { APIOrder } from '@0x/connect';
-import { BigNumber } from '@0x/utils';
+import {APIOrder} from '@powerchain/connect';
+import {BigNumber} from '@powerchain/utils';
 
 export const createOrder = (makerAssetData: string, takerAssetData: string): APIOrder => {
     return {
         order: {
-            makerAddress: '0x00',
-            takerAddress: '0x00',
+            makerAddress: 'powerchain00',
+            takerAddress: 'powerchain00',
             makerAssetData,
             takerAssetData,
             makerFeeAssetData: makerAssetData,
             takerFeeAssetData: takerAssetData,
             chainId: 0,
-            exchangeAddress: '0x00',
-            senderAddress: '0x00',
+            exchangeAddress: 'powerchain00',
+            senderAddress: 'powerchain00',
             makerAssetAmount: new BigNumber(1),
             takerAssetAmount: new BigNumber(1),
-            feeRecipientAddress: '0x00',
+            feeRecipientAddress: 'powerchain00',
             makerFee: new BigNumber(0),
             takerFee: new BigNumber(0),
             salt: new BigNumber(0),
             expirationTimeSeconds: new BigNumber(0),
-            signature: '0xsig',
+            signature: 'powerchainsig',
         },
         metaData: {
-            orderHash: '0x12345',
+            orderHash: 'powerchain12345',
             remainingFillableTakerAssetAmount: new BigNumber(1),
         },
     };

@@ -1,6 +1,6 @@
-import { ERC20ProxyContract, ERC20Wrapper } from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { DummyERC20TokenContract } from '@0x/contracts-erc20';
+import {ERC20ProxyContract, ERC20Wrapper} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {DummyERC20TokenContract} from '@powerchain/contracts-erc20';
 import {
     blockchainTests,
     constants,
@@ -12,19 +12,19 @@ import {
     randomAddress,
     TransactionFactory,
     transactionHashUtils,
-} from '@0x/contracts-test-utils';
-import { SignatureType, SignedOrder, SignedZeroExTransaction } from '@0x/types';
-import { BigNumber, ExchangeRevertErrors, hexUtils, StringRevertError } from '@0x/utils';
-import { LogWithDecodedArgs } from 'ethereum-types';
-import ethUtil = require('ethereumjs-util');
+} from '@powerchain/contracts-test-utils';
+import {SignatureType, SignedOrder, SignedZeroExTransaction} from '@powerchain/types';
+import {BigNumber, ExchangeRevertErrors, hexUtils, StringRevertError} from '@powerchain/utils';
+import {LogWithDecodedArgs} from 'ethereum-types';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 import {
     ExchangeContract,
     ExchangeSignatureValidatorApprovalEventArgs,
     IEIP1271DataContract,
     TestValidatorWalletContract,
 } from './wrappers';
+import ethUtil = require('ethereumjs-util');
 
 enum ValidatorWalletAction {
     Reject = 0,
@@ -58,14 +58,14 @@ blockchainTests.resets('MixinSignatureValidator', env => {
         chainId = await env.getChainIdAsync();
         accounts = await env.getAccountAddressesAsync();
         [owner, signerAddress, notSignerAddress, makerAddress, takerAddress, feeRecipientAddress] = accounts;
-        exchange = await ExchangeContract.deployFrom0xArtifactAsync(
+        exchange = await ExchangeContract.deployFrompowerchainArtifactAsync(
             artifacts.Exchange,
             env.provider,
             env.txDefaults,
             {},
             new BigNumber(chainId),
         );
-        validatorWallet = await TestValidatorWalletContract.deployFrom0xArtifactAsync(
+        validatorWallet = await TestValidatorWalletContract.deployFrompowerchainArtifactAsync(
             artifacts.TestValidatorWallet,
             env.provider,
             env.txDefaults,
@@ -154,7 +154,7 @@ blockchainTests.resets('MixinSignatureValidator', env => {
 
         it('should revert when SignatureType=Invalid and signature length is non-zero', async () => {
             const hashHex = getCurrentHashHex();
-            const signatureHex = hexUtils.concat('0xdeadbeef', SignatureType.Invalid);
+            const signatureHex = hexUtils.concat('powerchaindeadbeef', SignatureType.Invalid);
             const expectedError = new ExchangeRevertErrors.SignatureError(
                 ExchangeRevertErrors.SignatureErrorCode.InvalidLength,
                 hashHex,
@@ -389,13 +389,13 @@ blockchainTests.resets('MixinSignatureValidator', env => {
         });
 
         it('should return true when message was signed by a Trezor One (firmware version 1.6.2)', async () => {
-            // messageHash translates to 0x2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b
+            // messageHash translates to powerchain2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b
             const messageHash = ethUtil.bufferToHex(ethUtil.toBuffer('++++++++++++++++++++++++++++++++'));
-            const signer = '0xc28b145f10f0bcf0fc000e778615f8fd73490bad';
-            const v = ethUtil.toBuffer('0x1c');
-            const r = ethUtil.toBuffer('0x7b888b596ccf87f0bacab0dcb483124973f7420f169b4824d7a12534ac1e9832');
-            const s = ethUtil.toBuffer('0x0c8e14f7edc01459e13965f1da56e0c23ed11e2cca932571eee1292178f90424');
-            const trezorSignatureType = ethUtil.toBuffer(`0x${SignatureType.EthSign}`);
+            const signer = 'powerchainc28b145f10f0bcf0fc000e778615f8fd73490bad';
+            const v = ethUtil.toBuffer('powerchain1c');
+            const r = ethUtil.toBuffer('powerchain7b888b596ccf87f0bacab0dcb483124973f7420f169b4824d7a12534ac1e9832');
+            const s = ethUtil.toBuffer('powerchain0c8e14f7edc01459e13965f1da56e0c23ed11e2cca932571eee1292178f90424');
+            const trezorSignatureType = ethUtil.toBuffer(`powerchain${SignatureType.EthSign}`);
             const signature = Buffer.concat([v, r, s, trezorSignatureType]);
             const signatureHex = ethUtil.bufferToHex(signature);
             const isValidSignature = await exchange.isValidHashSignature(messageHash, signer, signatureHex).callAsync();
@@ -403,13 +403,13 @@ blockchainTests.resets('MixinSignatureValidator', env => {
         });
 
         it('should return true when message was signed by a Trezor Model T (firmware version 2.0.7)', async () => {
-            // messageHash translates to 0x2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b
+            // messageHash translates to powerchain2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b
             const messageHash = ethUtil.bufferToHex(ethUtil.toBuffer('++++++++++++++++++++++++++++++++'));
-            const signer = '0x98ce6d9345e8ffa7d99ee0822272fae9d2c0e895';
-            const v = ethUtil.toBuffer('0x1c');
-            const r = ethUtil.toBuffer('0x423b71062c327f0ec4fe199b8da0f34185e59b4c1cb4cc23df86cac4a601fb3f');
-            const s = ethUtil.toBuffer('0x53810d6591b5348b7ee08ee812c874b0fdfb942c9849d59512c90e295221091f');
-            const trezorSignatureType = ethUtil.toBuffer(`0x${SignatureType.EthSign}`);
+            const signer = 'powerchain98ce6d9345e8ffa7d99ee0822272fae9d2c0e895';
+            const v = ethUtil.toBuffer('powerchain1c');
+            const r = ethUtil.toBuffer('powerchain423b71062c327f0ec4fe199b8da0f34185e59b4c1cb4cc23df86cac4a601fb3f');
+            const s = ethUtil.toBuffer('powerchain53810d6591b5348b7ee08ee812c874b0fdfb942c9849d59512c90e295221091f');
+            const trezorSignatureType = ethUtil.toBuffer(`powerchain${SignatureType.EthSign}`);
             const signature = Buffer.concat([v, r, s, trezorSignatureType]);
             const signatureHex = ethUtil.bufferToHex(signature);
             const isValidSignature = await exchange.isValidHashSignature(messageHash, signer, signatureHex).callAsync();

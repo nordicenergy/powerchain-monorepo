@@ -1,12 +1,12 @@
-import { StakingRevertErrors, StoredBalance } from '@0x/contracts-staking';
-import { expect } from '@0x/contracts-test-utils';
-import { BigNumber, hexUtils } from '@0x/utils';
-import { TxData } from 'ethereum-types';
+import {StakingRevertErrors, StoredBalance} from '@powerchain/contracts-staking';
+import {expect} from '@powerchain/contracts-test-utils';
+import {BigNumber, hexUtils} from '@powerchain/utils';
+import {TxData} from 'ethereum-types';
 
-import { DeploymentManager } from '../deployment_manager';
-import { SimulationEnvironment } from '../simulation';
+import {DeploymentManager} from '../deployment_manager';
+import {SimulationEnvironment} from '../simulation';
 
-import { FunctionAssertion, FunctionResult } from './function_assertion';
+import {FunctionAssertion, FunctionResult} from './function_assertion';
 
 // tslint:disable:no-unnecessary-type-assertion
 

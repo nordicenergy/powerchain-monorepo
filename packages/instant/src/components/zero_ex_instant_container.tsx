@@ -1,24 +1,24 @@
-import { AssetProxyId } from '@0x/types';
+import {AssetProxyId} from '@powerchain/types';
 import * as React from 'react';
 
-import PoweredByLogo from '../assets/powered_by_0x.svg';
-import { ZERO_EX_SITE_URL } from '../constants';
-import { AvailableERC20TokenSelector } from '../containers/available_erc20_token_selector';
-import { ConnectedBuyOrderProgressOrPaymentMethod } from '../containers/connected_buy_order_progress_or_payment_method';
-import { CurrentStandardSlidingPanel } from '../containers/current_standard_sliding_panel';
-import { LatestBuyQuoteOrderDetails } from '../containers/latest_buy_quote_order_details';
-import { LatestError } from '../containers/latest_error';
-import { SelectedAssetBuyOrderStateButtons } from '../containers/selected_asset_buy_order_state_buttons';
-import { SelectedAssetInstantHeading } from '../containers/selected_asset_instant_heading';
-import { ColorOption } from '../style/theme';
-import { zIndex } from '../style/z_index';
-import { Asset, SlideAnimationState } from '../types';
-import { analytics, TokenSelectorClosedVia } from '../util/analytics';
+import PoweredByLogo from '../assets/powered_by_powerchain.svg';
+import {ZERO_EX_SITE_URL} from '../constants';
+import {AvailableERC20TokenSelector} from '../containers/available_erc20_token_selector';
+import {ConnectedBuyOrderProgressOrPaymentMethod} from '../containers/connected_buy_order_progress_or_payment_method';
+import {CurrentStandardSlidingPanel} from '../containers/current_standard_sliding_panel';
+import {LatestBuyQuoteOrderDetails} from '../containers/latest_buy_quote_order_details';
+import {LatestError} from '../containers/latest_error';
+import {SelectedAssetBuyOrderStateButtons} from '../containers/selected_asset_buy_order_state_buttons';
+import {SelectedAssetInstantHeading} from '../containers/selected_asset_instant_heading';
+import {ColorOption} from '../style/theme';
+import {zIndex} from '../style/z_index';
+import {Asset, SlideAnimationState} from '../types';
+import {analytics, TokenSelectorClosedVia} from '../util/analytics';
 
-import { CSSReset } from './css_reset';
-import { SlidingPanel } from './sliding_panel';
-import { Container } from './ui/container';
-import { Flex } from './ui/flex';
+import {CSSReset} from './css_reset';
+import {SlidingPanel} from './sliding_panel';
+import {Container} from './ui/container';
+import {Flex} from './ui/flex';
 
 export interface ZeroExInstantContainerProps {}
 export interface ZeroExInstantContainerState {

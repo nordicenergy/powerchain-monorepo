@@ -33,7 +33,7 @@ CHANGELOG
     * Add `SignatureOrderValidatorError` type to `ExchangeRevertErrors` (#1774)
     * Add `SignatureWalletOrderValidatorError` type to `ExchangeRevertErrors` (#1774)
     * Reorder parameters of some `RevertError` types to match smart contracts. (#1790)
-    * Use arbitrary fee tokens instead of ZRX (ZEIP-28) for tools needed by contracts packages. (#1819)
+    * Use arbitrary fee tokens instead of NET (ZEIP-28) for tools needed by contracts packages. (#1819)
     * Update `RevertError` types for new base constructor (#1819)
     * Add `Expired` TransactionErrorCode (#1832)
     * Add `expirationTimeSeconds` to `ZeroExTransaction` parameters used for hashing (#1832)
@@ -85,7 +85,7 @@ CHANGELOG
     * Add `SignatureOrderValidatorError` type to `ExchangeRevertErrors` (#1774)
     * Add `SignatureWalletOrderValidatorError` type to `ExchangeRevertErrors` (#1774)
     * Reorder parameters of some `RevertError` types to match smart contracts. (#1790)
-    * Use arbitrary fee tokens instead of ZRX (ZEIP-28) for tools needed by contracts packages. (#1819)
+    * Use arbitrary fee tokens instead of NET (ZEIP-28) for tools needed by contracts packages. (#1819)
     * Update `RevertError` types for new base constructor (#1819)
     * Add `Expired` TransactionErrorCode (#1832)
     * Add `expirationTimeSeconds` to `ZeroExTransaction` parameters used for hashing (#1832)
@@ -127,7 +127,7 @@ CHANGELOG
 
 ## v8.2.4 - _July 31, 2019_
 
-    * Updated calls to <contract wrapper>.deploy0xArtifactAsync to include log decode dependencies. (#1995)
+    * Updated calls to <contract wrapper>.deploypowerchainArtifactAsync to include log decode dependencies. (#1995)
 
 ## v8.2.3 - _July 24, 2019_
 
@@ -192,7 +192,7 @@ CHANGELOG
 
 ## v6.1.0 - _February 9, 2019_
 
-    * Updated implementation of `generatePseudoRandomSalt` to use generator from @0x/utils (#1569)
+    * Updated implementation of `generatePseudoRandomSalt` to use generator from @powerchain/utils (#1569)
 
 ## v6.0.1 - _February 7, 2019_
 
@@ -221,7 +221,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.1.0 - _January 9, 2019_
+## v1.0.1- _January 9, 2019_
 
     * Use new ABI encoder, add encoding/decoding logic for MultiAsset assetData, and add information to return values in orderStateUtils (#1363)
 
@@ -241,7 +241,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.3 - _November 21, 2018_
+## v1.0.1 - _November 21, 2018_
 
     * Dependencies updated
 
@@ -253,7 +253,7 @@ CHANGELOG
 
     * Dependencies updated
 
-## v3.0.0 - _November 12, 2018_
+## v1.0.0 - _November 12, 2018_
 
     * Add signature validation, regular cancellation and `cancelledUpTo` checks to `validateOrderFillableOrThrowAsync` (#1235)
     * Improved the errors thrown by `validateOrderFillableOrThrowAsync` by making them more descriptive (#1235)
@@ -343,7 +343,7 @@ CHANGELOG
 
 ## v1.0.0-rc.1 - _July 19, 2018_
 
-    * Refactor to work with V2 of 0x protocol (#636)
+    * Refactor to work with V2 of powerchain protocol (#636)
     * Export parseECSignature method (#684)
     * Handle Typed Arrays when hashing data (#894)
 

@@ -1,13 +1,13 @@
-import { blockchainTests, constants, expect, getLatestBlockTimestampAsync } from '@0x/contracts-test-utils';
-import { LibBytesRevertErrors } from '@0x/contracts-utils';
-import { RevertReason } from '@0x/types';
-import { BigNumber, hexUtils } from '@0x/utils';
-import { LogEntry, LogWithDecodedArgs } from 'ethereum-types';
+import {blockchainTests, constants, expect, getLatestBlockTimestampAsync} from '@powerchain/contracts-test-utils';
+import {LibBytesRevertErrors} from '@powerchain/contracts-utils';
+import {RevertReason} from '@powerchain/types';
+import {BigNumber, hexUtils} from '@powerchain/utils';
+import {LogEntry, LogWithDecodedArgs} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { ZeroExGovernorWrapper } from './utils/zero_ex_governor_wrapper';
+import {ZeroExGovernorWrapper} from './utils/zero_ex_governor_wrapper';
 
-import { artifacts } from './artifacts';
+import {artifacts} from './artifacts';
 import {
     ContractCallReceiverContract,
     ContractCallReceiverEventArgs,
@@ -33,7 +33,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
         const accounts = await env.web3Wrapper.getAvailableAddressesAsync();
         signerAddresses = accounts.slice(0, TOTAL_SIGNERS);
         notSignerAddress = accounts[TOTAL_SIGNERS];
-        governor = await TestZeroExGovernorContract.deployFrom0xArtifactAsync(
+        governor = await TestZeroExGovernorContract.deployFrompowerchainArtifactAsync(
             artifacts.TestZeroExGovernor,
             env.provider,
             env.txDefaults,
@@ -53,7 +53,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
             }),
         );
         governorWrapper = new ZeroExGovernorWrapper(governor);
-        receiver = await ContractCallReceiverContract.deployFrom0xArtifactAsync(
+        receiver = await ContractCallReceiverContract.deployFrompowerchainArtifactAsync(
             artifacts.ContractCallReceiver,
             env.provider,
             env.txDefaults,
@@ -84,7 +84,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
     blockchainTests.resets('constructor', () => {
         it('should fail if destinations.length != functionSelectors.length', async () => {
             const reg = createFunctionRegistration(1, 2, 1);
-            const tx = TestZeroExGovernorContract.deployFrom0xArtifactAsync(
+            const tx = TestZeroExGovernorContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestZeroExGovernor,
                 env.provider,
                 env.txDefaults,
@@ -100,7 +100,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
         });
         it('should fail if functionCallTimeLockSeconds.length != functionSelectors.length', async () => {
             const reg = createFunctionRegistration(1, 1, 2);
-            const tx = TestZeroExGovernorContract.deployFrom0xArtifactAsync(
+            const tx = TestZeroExGovernorContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestZeroExGovernor,
                 env.provider,
                 env.txDefaults,
@@ -116,7 +116,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
         });
         it('should fail if functionCallTimeLockSeconds.length != destinations.length', async () => {
             const reg = createFunctionRegistration(2, 1, 1);
-            const tx = TestZeroExGovernorContract.deployFrom0xArtifactAsync(
+            const tx = TestZeroExGovernorContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestZeroExGovernor,
                 env.provider,
                 env.txDefaults,
@@ -131,7 +131,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
             await expect(tx).to.revertWith(RevertReason.EqualLengthsRequired);
         });
         it('should allow no function calls to be registered', async () => {
-            const tx = TestZeroExGovernorContract.deployFrom0xArtifactAsync(
+            const tx = TestZeroExGovernorContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestZeroExGovernor,
                 env.provider,
                 env.txDefaults,
@@ -147,7 +147,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
         });
         it('should register a single functon call', async () => {
             const reg = createFunctionRegistration(1, 1, 1);
-            const governorContract = await TestZeroExGovernorContract.deployFrom0xArtifactAsync(
+            const governorContract = await TestZeroExGovernorContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestZeroExGovernor,
                 env.provider,
                 env.txDefaults,
@@ -167,7 +167,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
         });
         it('should register multiple function calls', async () => {
             const reg = createFunctionRegistration(2, 2, 2);
-            const governorContract = await TestZeroExGovernorContract.deployFrom0xArtifactAsync(
+            const governorContract = await TestZeroExGovernorContract.deployFrompowerchainArtifactAsync(
                 artifacts.TestZeroExGovernor,
                 env.provider,
                 env.txDefaults,
@@ -495,7 +495,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
             assertReceiverCalledFromLogs(results.executionTxReceipt.logs, data, destinations, results.txId);
         });
         it('should be able to call multiple functions with different destinations and values', async () => {
-            const receiver2 = await ContractCallReceiverContract.deployFrom0xArtifactAsync(
+            const receiver2 = await ContractCallReceiverContract.deployFrompowerchainArtifactAsync(
                 artifacts.ContractCallReceiver,
                 env.provider,
                 env.txDefaults,
@@ -615,7 +615,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
             expect(tx).to.revertWith(RevertReason.TxAlreadyExecuted);
         });
         it('should revert if the only call is unsuccessful', async () => {
-            const alwaysRevertSelector = '0xF1F2F3F4';
+            const alwaysRevertSelector = 'powerchainF1F2F3F4';
             const data = [alwaysRevertSelector];
             const destinations = [receiver.address];
             const tx = governorWrapper.submitConfirmAndExecuteTransactionAsync(
@@ -627,7 +627,7 @@ blockchainTests.resets('ZeroExGovernor', env => {
             expect(tx).to.revertWith(RevertReason.FailedExecution);
         });
         it('should revert if the any call is unsuccessful', async () => {
-            const alwaysRevertSelector = '0xF1F2F3F4';
+            const alwaysRevertSelector = 'powerchainF1F2F3F4';
             const data = [hexUtils.random(), alwaysRevertSelector];
             const destinations = [receiver.address, receiver.address];
             const tx = governorWrapper.submitConfirmAndExecuteTransactionAsync(

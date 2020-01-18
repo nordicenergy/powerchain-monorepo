@@ -1,6 +1,6 @@
-import { hexUtils } from '@0x/utils';
+import {hexUtils} from '@powerchain/utils';
 
-import { constants } from './constants';
+import {constants} from './constants';
 
 /**
  * Generates a random address.

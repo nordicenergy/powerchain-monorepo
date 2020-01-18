@@ -1,13 +1,12 @@
-import { BigNumber } from '@0x/utils';
-import * as _ from 'lodash';
+import {BigNumber} from '@powerchain/utils';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { oc } from 'ts-optchain';
+import {connect} from 'react-redux';
+import {oc} from 'ts-optchain';
 
-import { State } from '../redux/reducer';
-import { Asset, AsyncProcessState, OrderState } from '../types';
+import {State} from '../redux/reducer';
+import {Asset, AsyncProcessState, OrderState} from '../types';
 
-import { InstantHeading } from '../components/instant_heading';
+import {InstantHeading} from '../components/instant_heading';
 
 export interface InstantHeadingProps {
     onSelectAssetClick?: (asset?: Asset) => void;

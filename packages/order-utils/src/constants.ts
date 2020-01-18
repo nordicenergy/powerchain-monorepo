@@ -1,5 +1,5 @@
-import { BigNumber, NULL_ADDRESS, NULL_BYTES } from '@0x/utils';
-import { MethodAbi } from 'ethereum-types';
+import {BigNumber, NULL_ADDRESS, NULL_BYTES} from '@powerchain/utils';
+import {MethodAbi} from 'ethereum-types';
 
 const ERC20_METHOD_ABI: MethodAbi = {
     constant: false,
@@ -87,7 +87,7 @@ export const constants = {
     NULL_ADDRESS,
     FAKED_PROVIDER: { isEIP1193: true },
     NULL_BYTES,
-    NULL_ERC20_ASSET_DATA: '0xf47261b00000000000000000000000000000000000000000000000000000000000000000',
+    NULL_ERC20_ASSET_DATA: 'powerchainf47261b00000000000000000000000000000000000000000000000000000000000000000',
     // tslint:disable-next-line:custom-no-magic-numbers
     UNLIMITED_ALLOWANCE_IN_BASE_UNITS: new BigNumber(2).pow(256).minus(1),
     TESTRPC_CHAIN_ID: 1337,
@@ -100,7 +100,7 @@ export const constants = {
     SELECTOR_CHAR_LENGTH_WITH_PREFIX: 10, // 4 bytes
     INFINITE_TIMESTAMP_SEC: new BigNumber(2524604400), // Close to infinite
     ZERO_AMOUNT: new BigNumber(0),
-    EXCHANGE_DOMAIN_NAME: '0x Protocol',
+    EXCHANGE_DOMAIN_NAME: 'powerchain Protocol',
     EXCHANGE_DOMAIN_VERSION: '3.0.0',
     DEFAULT_DOMAIN_SCHEMA: {
         name: 'EIP712Domain',
@@ -140,7 +140,7 @@ export const constants = {
             { name: 'data', type: 'bytes' },
         ],
     },
-    COORDINATOR_DOMAIN_NAME: '0x Protocol Coordinator',
+    COORDINATOR_DOMAIN_NAME: 'powerchain Protocol Coordinator',
     COORDINATOR_DOMAIN_VERSION: '3.0.0',
     COORDINATOR_APPROVAL_SCHEMA: {
         name: 'CoordinatorApproval',
@@ -155,6 +155,6 @@ export const constants = {
     MULTI_ASSET_METHOD_ABI,
     ERC1155_METHOD_ABI,
     STATIC_CALL_METHOD_ABI,
-    IS_VALID_WALLET_SIGNATURE_MAGIC_VALUE: '0xb0671381',
-    IS_VALID_VALIDATOR_SIGNATURE_MAGIC_VALUE: '0x42b38674',
+    IS_VALID_WALLET_SIGNATURE_MAGIC_VALUE: 'powerchainb0671381',
+    IS_VALID_VALIDATOR_SIGNATURE_MAGIC_VALUE: 'powerchain42b38674',
 };

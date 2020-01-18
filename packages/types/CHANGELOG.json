@@ -23,7 +23,7 @@
         "version": "3.0.0",
         "changes": [
             {
-                "note": "Remove `SendTransactionOpts` and `AwaitTransactionSuccessOpts` types and move them to @0x/base-contracts",
+                "note": "Remove `SendTransactionOpts` and `AwaitTransactionSuccessOpts` types and move them to @powerchain/base-contracts",
                 "pr": 2325
             },
             {
@@ -66,7 +66,7 @@
         "version": "2.5.0-beta.2",
         "changes": [
             {
-                "note": "Remove `SendTransactionOpts` and `AwaitTransactionSuccessOpts` types and move them to @0x/base-contracts",
+                "note": "Remove `SendTransactionOpts` and `AwaitTransactionSuccessOpts` types and move them to @powerchain/base-contracts",
                 "pr": 2325
             }
         ],
@@ -356,7 +356,7 @@
         "version": "1.3.0",
         "changes": [
             {
-                "note": "Add the `SimpleContractArtifact` type, which describes the artifact format published in the `@0x/contract-artifacts` package",
+                "note": "Add the `SimpleContractArtifact` type, which describes the artifact format published in the `@powerchain/contract-artifacts` package",
                 "pr": 1298
             }
         ],
@@ -537,7 +537,7 @@
         "version": "1.0.0-rc.1",
         "changes": [
             {
-                "note": "Updated types for V2 of 0x protocol"
+                "note": "Updated types for V2 of powerchain protocol"
             },
             {
                 "note": "Add `ECSignatureBuffer`"
@@ -583,7 +583,7 @@
                 "pr": 589
             },
             {
-                "note": "Moved ExchangeContractErrs, DoneCallback, Token, OrderRelevantState, OrderStateValid, OrderStateInvalid, OrderState, OrderAddresses and OrderValues types from 0x.js",
+                "note": "Moved ExchangeContractErrs, DoneCallback, Token, OrderRelevantState, OrderStateValid, OrderStateInvalid, OrderState, OrderAddresses and OrderValues types from powerchain.js",
                 "pr": 579
             }
         ],
@@ -653,7 +653,7 @@
                 "pr": 426
             },
             {
-                "note": "Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@0xproject/types` package",
+                "note": "Consolidate `Order`, `SignedOrder`, and `ECSignature` into the `@powerchainproject/types` package",
                 "pr": 456
             }
         ],
@@ -700,7 +700,7 @@
         "version": "0.2.0",
         "changes": [
             {
-                "note": "Added BlockLiteralParam and BlockParam, refactored out of 0x.js types.",
+                "note": "Added BlockLiteralParam and BlockParam, refactored out of powerchain.js types.",
                 "pr": 355
             }
         ],

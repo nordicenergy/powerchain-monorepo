@@ -48,7 +48,7 @@ export {
     ZeroExTransaction,
     SignedZeroExTransaction,
     ValidatorSignature,
-} from '@0x/types';
+} from '@powerchain/types';
 
 export {
     TypedDataError,

@@ -1,16 +1,16 @@
 {
-    "name": "@0x/orderbook",
+    "name": "@powerchain/orderbook",
     "version": "2.0.1",
     "description": "Library for retrieving and syncing a remote orderbook locally",
     "main": "lib/src/index.js",
     "types": "lib/src/index.d.ts",
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/orderbook/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/orderbook/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "publishConfig": {
         "access": "public"
@@ -31,9 +31,9 @@
     "author": "Jacob Evans",
     "license": "Apache-2.0",
     "devDependencies": {
-        "@0x/ts-doc-gen": "^0.0.22",
-        "@0x/tslint-config": "^4.0.0",
-        "@0x/types": "^3.1.1",
+        "@powerchain/ts-doc-gen": "^0.0.22",
+        "@powerchain/tslint-config": "^4.0.0",
+        "@powerchain/types": "^3.1.1",
         "@types/jest": "^24.0.17",
         "@types/sinon": "^2.2.2",
         "@types/websocket": "^0.0.39",
@@ -46,11 +46,11 @@
         "websocket": "^1.0.26"
     },
     "dependencies": {
-        "@0x/assert": "^3.0.3",
-        "@0x/connect": "^6.0.3",
-        "@0x/contracts-dev-utils": "^1.0.3",
-        "@0x/mesh-rpc-client": "^7.0.4-beta-0xv3",
-        "@0x/order-utils": "^10.1.0",
-        "@0x/utils": "^5.1.2"
+        "@powerchain/assert": "^3.0.3",
+        "@powerchain/connect": "^6.0.3",
+        "@powerchain/contracts-dev-utils": "^1.0.3",
+        "@powerchain/mesh-rpc-client": "^7.0.4-beta-powerchainv3",
+        "@powerchain/order-utils": "^10.1.0",
+        "@powerchain/utils": "^5.1.2"
     }
 }

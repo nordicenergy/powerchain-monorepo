@@ -1,5 +1,5 @@
-import { assert } from '@0x/assert';
-import { schemas } from '@0x/json-schemas';
+import {assert} from '@powerchain/assert';
+import {schemas} from '@powerchain/json-schemas';
 import {
     AbiEncoder,
     abiUtils,
@@ -9,8 +9,8 @@ import {
     providerUtils,
     RevertError,
     StringRevertError,
-} from '@0x/utils';
-import { Web3Wrapper } from '@0x/web3-wrapper';
+} from '@powerchain/utils';
+import {Web3Wrapper} from '@powerchain/web3-wrapper';
 import {
     AbiDefinition,
     AbiType,
@@ -27,13 +27,12 @@ import {
 } from 'ethereum-types';
 import Account from 'ethereumjs-account';
 import * as util from 'ethereumjs-util';
-import { default as VM } from 'ethereumjs-vm';
+import {default as VM} from 'ethereumjs-vm';
 import PStateManager from 'ethereumjs-vm/dist/state/promisified';
+import {AwaitTransactionSuccessOpts} from './types';
+import {formatABIDataItem} from './utils';
 
 export { methodAbiToFunctionSignature } from './utils';
-
-import { AwaitTransactionSuccessOpts } from './types';
-import { formatABIDataItem } from './utils';
 
 export { SubscriptionManager } from './subscription_manager';
 
@@ -157,7 +156,7 @@ export class BaseContract {
         // 1. The function has no return value.
         // 2. The contract reverts without data.
         // 3. The contract reverts with an invalid opcode (`assert(false)` or `invalid()`).
-        if (!rawCallResult || rawCallResult === '0x') {
+        if (!rawCallResult || rawCallResult === 'powerchain') {
             const returnValueDataItem = methodAbi.getReturnValueDataItem();
             if (returnValueDataItem.components === undefined || returnValueDataItem.components.length === 0) {
                 // Expected no result (which makes it hard to tell if the call reverted).
@@ -287,7 +286,7 @@ export class BaseContract {
                 origin: this._evmAccountIfExists,
                 data: encodedDataBytes,
             });
-            rawCallResult = `0x${result.execResult.returnValue.toString('hex')}`;
+            rawCallResult = `powerchain${result.execResult.returnValue.toString('hex')}`;
         } catch (err) {
             BaseContract._throwIfThrownErrorIsRevertError(err);
             throw err;

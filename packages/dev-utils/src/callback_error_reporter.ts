@@ -1,7 +1,6 @@
 import * as chai from 'chai';
-import * as _ from 'lodash';
 
-import { DoneCallback } from '@0x/types';
+import {DoneCallback} from '@powerchain/types';
 
 const expect = chai.expect;
 

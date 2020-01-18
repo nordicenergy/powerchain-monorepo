@@ -1,10 +1,10 @@
 {
-    "name": "@0x/utils",
+    "name": "@powerchain/utils",
     "version": "5.1.2",
     "engines": {
         "node": ">=6.12"
     },
-    "description": "0x TS utils",
+    "description": "powerchain TS utils",
     "main": "lib/src/index.js",
     "types": "lib/src/index.d.ts",
     "scripts": {
@@ -22,14 +22,14 @@
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/0xProject/0x-monorepo.git"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git"
     },
     "bugs": {
-        "url": "https://github.com/0xProject/0x-monorepo/issues"
+        "url": "https://github.com/nordicenergy/powerchain-protocol-dev-kit.git/issues"
     },
-    "homepage": "https://github.com/0xProject/0x-monorepo/packages/utils/README.md",
+    "homepage": "https://github.com/nordicenergy/powerchain-protocol-dev-kit/packages/utils/README.md",
     "devDependencies": {
-        "@0x/tslint-config": "^4.0.0",
+        "@powerchain/tslint-config": "^4.0.0",
         "@types/detect-node": "2.0.0",
         "@types/lodash": "4.14.104",
         "@types/mocha": "^5.2.7",
@@ -45,8 +45,8 @@
         "typescript": "3.0.1"
     },
     "dependencies": {
-        "@0x/types": "^3.1.1",
-        "@0x/typescript-typings": "^5.0.1",
+        "@powerchain/types": "^3.1.1",
+        "@powerchain/typescript-typings": "^5.0.1",
         "@types/node": "*",
         "abortcontroller-polyfill": "^1.1.9",
         "bignumber.js": "~9.0.0",

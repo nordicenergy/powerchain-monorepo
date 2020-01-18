@@ -1,6 +1,6 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
 
-import { constants } from './constants';
+import {constants} from './constants';
 
 export interface ConfigsByChain {
     zeroExGovernor: { owners: string[]; secondsTimeLocked: BigNumber; required: BigNumber };
@@ -22,9 +22,9 @@ export function getConfigsByChainId(chainId: number): ConfigsByChain {
     const mainnetConfigs = {
         zeroExGovernor: {
             owners: [
-                '0x257619b7155d247e43c8b6d90c8c17278ae481f0',
-                '0x5ee2a00f8f01d099451844af7f894f26a57fcbf2',
-                '0x894d623e0e0e8ed12c4a73dada999e275684a37d',
+                'powerchain257619b7155d247e43c8b6d90c8c17278ae481f0',
+                'powerchain5ee2a00f8f01d099451844af7f894f26a57fcbf2',
+                'powerchain894d623e0e0e8ed12c4a73dada999e275684a37d',
             ],
             secondsTimeLocked: constants.TWO_WEEKS_IN_SEC,
             required: new BigNumber(2),
@@ -40,9 +40,9 @@ export function getConfigsByChainId(chainId: number): ConfigsByChain {
     const testnetConfigs = {
         zeroExGovernor: {
             owners: [
-                '0x9df8137872ac09a8fee71d0da5c7539923fb9bf0',
-                '0xcf34d44db312d188789f43a63d11cf2bebb4da15',
-                '0x73fd50f2a6beac9cdac9fe87ef68a18edc415831',
+                'powerchain9df8137872ac09a8fee71d0da5c7539923fb9bf0',
+                'powerchaincf34d44db312d188789f43a63d11cf2bebb4da15',
+                'powerchain73fd50f2a6beac9cdac9fe87ef68a18edc415831',
             ],
             secondsTimeLocked: constants.ZERO_AMOUNT,
             required: new BigNumber(1),

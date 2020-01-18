@@ -7,7 +7,7 @@ export {
     LibCoordinatorRichErrorsContract,
     LibEIP712CoordinatorDomainContract,
 } from './wrappers';
-export { CoordinatorRevertErrors } from '@0x/utils';
+export { CoordinatorRevertErrors } from '@powerchain/utils';
 export { CoordinatorServerCancellationResponse } from './client/index';
 export { ApprovalFactory } from './approval_factory';
 export { SignedCoordinatorApproval } from './types';
@@ -18,8 +18,8 @@ export {
     SignedZeroExTransaction,
     EIP712DomainWithDefaultSchema,
     ZeroExTransaction,
-} from '@0x/types';
-export { AwaitTransactionSuccessOpts, SendTransactionOpts } from '@0x/base-contract';
+} from '@powerchain/types';
+export { AwaitTransactionSuccessOpts, SendTransactionOpts } from '@powerchain/base-contract';
 export {
     ContractArtifact,
     ContractChains,

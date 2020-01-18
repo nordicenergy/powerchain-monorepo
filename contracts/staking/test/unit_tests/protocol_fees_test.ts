@@ -6,12 +6,12 @@ import {
     getRandomInteger,
     Numberish,
     randomAddress,
-} from '@0x/contracts-test-utils';
-import { BigNumber, hexUtils, StakingRevertErrors } from '@0x/utils';
-import { LogEntry } from 'ethereum-types';
+} from '@powerchain/contracts-test-utils';
+import {BigNumber, hexUtils, StakingRevertErrors} from '@powerchain/utils';
+import {LogEntry} from 'ethereum-types';
 import * as _ from 'lodash';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 import {
     IStakingEventsEvents,
     IStakingEventsStakingPoolEarnedRewardsInEpochEventArgs,
@@ -31,7 +31,7 @@ blockchainTests('Protocol Fees unit tests', env => {
         [ownerAddress, exchangeAddress, notExchangeAddress] = await env.web3Wrapper.getAvailableAddressesAsync();
 
         // Deploy the protocol fees contract.
-        testContract = await TestProtocolFeesContract.deployFrom0xArtifactAsync(
+        testContract = await TestProtocolFeesContract.deployFrompowerchainArtifactAsync(
             artifacts.TestProtocolFees,
             env.provider,
             {

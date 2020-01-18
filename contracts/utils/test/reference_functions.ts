@@ -1,7 +1,7 @@
-import { constants, describe, expect } from '@0x/contracts-test-utils';
-import { SafeMathRevertErrors } from '@0x/utils';
+import {constants, describe, expect} from '@powerchain/contracts-test-utils';
+import {SafeMathRevertErrors} from '@powerchain/utils';
 
-import { safeAdd, safeDiv, safeMul, safeSub } from '../src/reference_functions';
+import {safeAdd, safeDiv, safeMul, safeSub} from '../src/reference_functions';
 
 describe('Reference Functions', () => {
     const { ONE_ETHER, MAX_UINT256, ZERO_AMOUNT } = constants;

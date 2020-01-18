@@ -1,25 +1,25 @@
-## @0x/sol-trace
+## @powerchain/sol-trace
 
 Prints a stack trace when a revert is encountered.
 
-### Read the [Documentation](https://0x.org/docs/tools/sol-trace).
+### Read the [Documentation](https://powerchain.org/docs/tools/sol-trace).
 
 ## Installation
 
 ```bash
-yarn add @0x/sol-trace
+yarn add @powerchain/sol-trace
 ```
 
 **Import**
 
 ```javascript
-import { RevertTraceSubprovider } from '@0x/sol-trace';
+import { RevertTraceSubprovider } from '@powerchain/sol-trace';
 ```
 
 or
 
 ```javascript
-var RevertTraceSubprovider = require('@0x/sol-trace').RevertTraceSubprovider;
+var RevertTraceSubprovider = require('@powerchain/sol-trace').RevertTraceSubprovider;
 ```
 
 ## Contributing
@@ -47,13 +47,13 @@ yarn install
 To build this package and all other monorepo packages that it depends on, run the following from the monorepo root directory:
 
 ```bash
-PKG=@0x/sol-trace yarn build
+PKG=@powerchain/sol-trace yarn build
 ```
 
 Or continuously rebuild on change:
 
 ```bash
-PKG=@0x/sol-trace yarn watch
+PKG=@powerchain/sol-trace yarn watch
 ```
 
 ### Clean

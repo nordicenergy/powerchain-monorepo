@@ -19,7 +19,7 @@ fi
 PYTHON_POST_PROCESS_FILE="black --line-length 79" \
     java -jar openapi-generator-cli-3.3.4.jar \
         generate \
-        --input-spec http://unpkg.com/@0x/sra-spec@1.0.11/lib/api.json \
+        --input-spec http://unpkg.com/@powerchain/sra-spec@1.0.11/lib/api.json \
         --output . \
         --generator-name python \
         --config openapi-generator-cli-config.json \

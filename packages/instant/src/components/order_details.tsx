@@ -1,20 +1,19 @@
-import { SwapQuoteInfo } from '@0x/asset-swapper';
-import { BigNumber } from '@0x/utils';
-import * as _ from 'lodash';
+import {SwapQuoteInfo} from '@powerchain/asset-swapper';
+import {BigNumber} from '@powerchain/utils';
 import * as React from 'react';
-import { oc } from 'ts-optchain';
+import {oc} from 'ts-optchain';
 
-import { BIG_NUMBER_ZERO, DEFAULT_UNKOWN_ASSET_NAME } from '../constants';
-import { ColorOption } from '../style/theme';
-import { BaseCurrency } from '../types';
-import { format } from '../util/format';
+import {BIG_NUMBER_ZERO, DEFAULT_UNKOWN_ASSET_NAME} from '../constants';
+import {ColorOption} from '../style/theme';
+import {BaseCurrency} from '../types';
+import {format} from '../util/format';
 
-import { AmountPlaceholder } from './amount_placeholder';
-import { SectionHeader } from './section_header';
+import {AmountPlaceholder} from './amount_placeholder';
+import {SectionHeader} from './section_header';
 
-import { Container } from './ui/container';
-import { Flex } from './ui/flex';
-import { Text, TextProps } from './ui/text';
+import {Container} from './ui/container';
+import {Flex} from './ui/flex';
+import {Text, TextProps} from './ui/text';
 
 export interface OrderDetailsProps {
     swapQuoteInfo?: SwapQuoteInfo;

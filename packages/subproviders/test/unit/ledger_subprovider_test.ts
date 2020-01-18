@@ -1,24 +1,24 @@
-import { providerUtils } from '@0x/utils';
+import {providerUtils} from '@powerchain/utils';
 import * as chai from 'chai';
-import { JSONRPCResponsePayload } from 'ethereum-types';
+import {JSONRPCResponsePayload} from 'ethereum-types';
 import * as ethUtils from 'ethereumjs-util';
 import * as _ from 'lodash';
 
-import { LedgerSubprovider, Web3ProviderEngine } from '../../src';
+import {LedgerSubprovider, Web3ProviderEngine} from '../../src';
 import {
     DoneCallback,
     LedgerCommunicationClient,
     LedgerSubproviderErrors,
     WalletSubproviderErrors,
 } from '../../src/types';
-import { chaiSetup } from '../chai_setup';
-import { fixtureData } from '../utils/fixture_data';
-import { ganacheSubprovider } from '../utils/ganache_subprovider';
-import { reportCallbackErrors } from '../utils/report_callback_errors';
+import {chaiSetup} from '../chai_setup';
+import {fixtureData} from '../utils/fixture_data';
+import {ganacheSubprovider} from '../utils/ganache_subprovider';
+import {reportCallbackErrors} from '../utils/report_callback_errors';
 
 chaiSetup.configure();
 const expect = chai.expect;
-const FAKE_ADDRESS = '0xb088a3bc93f71b4de97b9de773e9647645983688';
+const FAKE_ADDRESS = 'powerchainb088a3bc93f71b4de97b9de773e9647645983688';
 const DEFAULT_NUM_ACCOUNTS = 10;
 
 describe('LedgerSubprovider', () => {
@@ -32,7 +32,7 @@ describe('LedgerSubprovider', () => {
                     const publicKey =
                         '04f428290f4c5ed6a198f71b8205f488141dbb3f0840c923bbfa798ecbee6370986c03b5575d94d506772fb48a6a44e345e4ebd4f028a6f609c44b655d6d3e71a1';
                     const chainCode = 'ac055a5537c0c7e9e02d14a197cad6b857836da2a12043b46912a37d959b5ae8';
-                    const address = '0xBa388BA5e5EEF2c6cE42d831c2B3A28D3c99bdB1';
+                    const address = 'powerchainBa388BA5e5EEF2c6cE42d831c2B3A28D3c99bdB1';
                     return {
                         publicKey,
                         address,
@@ -84,7 +84,7 @@ describe('LedgerSubprovider', () => {
                 const data = ethUtils.bufferToHex(ethUtils.toBuffer(fixtureData.PERSONAL_MESSAGE_STRING));
                 const ecSignatureHex = await ledgerSubprovider.signPersonalMessageAsync(data, FAKE_ADDRESS);
                 expect(ecSignatureHex).to.be.equal(
-                    '0xa6cc284bff14b42bdf5e9286730c152be91719d478605ec46b3bebcd0ae491480652a1a7b742ceb0213d1e744316e285f41f878d8af0b8e632cbca4c279132d001',
+                    'powerchaina6cc284bff14b42bdf5e9286730c152be91719d478605ec46b3bebcd0ae491480652a1a7b742ceb0213d1e744316e285f41f878d8af0b8e632cbca4c279132d001',
                 );
             });
         });
@@ -135,7 +135,7 @@ describe('LedgerSubprovider', () => {
                 const callback = reportCallbackErrors(done)((err: Error, response: JSONRPCResponsePayload) => {
                     expect(err).to.be.a('null');
                     expect(response.result).to.be.equal(
-                        '0xa6cc284bff14b42bdf5e9286730c152be91719d478605ec46b3bebcd0ae491480652a1a7b742ceb0213d1e744316e285f41f878d8af0b8e632cbca4c279132d001',
+                        'powerchaina6cc284bff14b42bdf5e9286730c152be91719d478605ec46b3bebcd0ae491480652a1a7b742ceb0213d1e744316e285f41f878d8af0b8e632cbca4c279132d001',
                     );
                     done();
                 });
@@ -152,7 +152,7 @@ describe('LedgerSubprovider', () => {
                 const callback = reportCallbackErrors(done)((err: Error, response: JSONRPCResponsePayload) => {
                     expect(err).to.be.a('null');
                     expect(response.result).to.be.equal(
-                        '0xa6cc284bff14b42bdf5e9286730c152be91719d478605ec46b3bebcd0ae491480652a1a7b742ceb0213d1e744316e285f41f878d8af0b8e632cbca4c279132d001',
+                        'powerchaina6cc284bff14b42bdf5e9286730c152be91719d478605ec46b3bebcd0ae491480652a1a7b742ceb0213d1e744316e285f41f878d8af0b8e632cbca4c279132d001',
                     );
                     done();
                 });
@@ -160,11 +160,11 @@ describe('LedgerSubprovider', () => {
             });
             it('signs a transaction', (done: DoneCallback) => {
                 const tx = {
-                    to: '0xafa3f8684e54059998bc3a7b0d2b0da075154d66',
-                    value: '0x00',
-                    gasPrice: '0x00',
-                    nonce: '0x00',
-                    gas: '0x00',
+                    to: 'powerchainafa3f8684e54059998bc3a7b0d2b0da075154d66',
+                    value: 'powerchain00',
+                    gasPrice: 'powerchain00',
+                    nonce: 'powerchain00',
+                    gas: 'powerchain00',
                     from: FAKE_ADDRESS,
                 };
                 const payload = {
@@ -177,7 +177,7 @@ describe('LedgerSubprovider', () => {
                     expect(err).to.be.a('null');
                     const rawTxLength = 192;
                     expect(response.result.raw.length).to.be.equal(rawTxLength);
-                    expect(response.result.raw.substr(0, 2)).to.be.equal('0x');
+                    expect(response.result.raw.substr(0, 2)).to.be.equal('powerchain');
                     done();
                 });
                 provider.sendAsync(payload, callback);
@@ -216,8 +216,8 @@ describe('LedgerSubprovider', () => {
             });
             it('should throw if `from` param missing when calling eth_sendTransaction', (done: DoneCallback) => {
                 const tx = {
-                    to: '0xafa3f8684e54059998bc3a7b0d2b0da075154d66',
-                    value: '0xde0b6b3a7640000',
+                    to: 'powerchainafa3f8684e54059998bc3a7b0d2b0da075154d66',
+                    value: 'powerchainde0b6b3a7640000',
                 };
                 const payload = {
                     jsonrpc: '2.0',
@@ -234,9 +234,9 @@ describe('LedgerSubprovider', () => {
             });
             it('should throw if `from` param invalid address when calling eth_sendTransaction', (done: DoneCallback) => {
                 const tx = {
-                    to: '0xafa3f8684e54059998bc3a7b0d2b0da075154d66',
-                    from: '0xIncorrectEthereumAddress',
-                    value: '0xde0b6b3a7640000',
+                    to: 'powerchainafa3f8684e54059998bc3a7b0d2b0da075154d66',
+                    from: 'powerchainIncorrectEthereumAddress',
+                    value: 'powerchainde0b6b3a7640000',
                 };
                 const payload = {
                     jsonrpc: '2.0',

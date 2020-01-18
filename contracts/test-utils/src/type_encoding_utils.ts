@@ -1,8 +1,8 @@
-import { BigNumber } from '@0x/utils';
+import {BigNumber} from '@powerchain/utils';
+
+import {constants} from './constants';
 import BN = require('bn.js');
 import ethUtil = require('ethereumjs-util');
-
-import { constants } from './constants';
 
 export const typeEncodingUtils = {
     encodeUint256(value: BigNumber): Buffer {

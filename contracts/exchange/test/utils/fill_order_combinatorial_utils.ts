@@ -4,22 +4,36 @@ import {
     ERC20Wrapper,
     ERC721Wrapper,
     MultiAssetProxyContract,
-} from '@0x/contracts-asset-proxy';
-import { DevUtilsContract } from '@0x/contracts-dev-utils';
-import { constants, expect, LogDecoder, orderHashUtils, orderUtils, signingUtils } from '@0x/contracts-test-utils';
-import { FillResults, Order, SignatureType, SignedOrder } from '@0x/types';
-import { BigNumber, errorUtils, ExchangeRevertErrors, providerUtils, RevertError, StringRevertError } from '@0x/utils';
-import { SupportedProvider, Web3Wrapper } from '@0x/web3-wrapper';
-import { LogWithDecodedArgs, TxData } from 'ethereum-types';
+} from '@powerchain/contracts-asset-proxy';
+import {DevUtilsContract} from '@powerchain/contracts-dev-utils';
+import {
+    constants,
+    expect,
+    LogDecoder,
+    orderHashUtils,
+    orderUtils,
+    signingUtils
+} from '@powerchain/contracts-test-utils';
+import {FillResults, Order, SignatureType, SignedOrder} from '@powerchain/types';
+import {
+    BigNumber,
+    errorUtils,
+    ExchangeRevertErrors,
+    providerUtils,
+    RevertError,
+    StringRevertError
+} from '@powerchain/utils';
+import {SupportedProvider, Web3Wrapper} from '@powerchain/web3-wrapper';
+import {LogWithDecodedArgs, TxData} from 'ethereum-types';
 import * as _ from 'lodash';
 import 'make-promises-safe';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 
-import { ExchangeContract, ExchangeFillEventArgs } from '../wrappers';
+import {ExchangeContract, ExchangeFillEventArgs} from '../wrappers';
 
-import { AssetWrapper } from './asset_wrapper';
-import { ExchangeWrapper } from './exchange_wrapper';
+import {AssetWrapper} from './asset_wrapper';
+import {ExchangeWrapper} from './exchange_wrapper';
 import {
     AllowanceAmountScenario,
     AssetDataScenario,
@@ -33,10 +47,10 @@ import {
     TakerAssetFillAmountScenario,
     TakerScenario,
 } from './fill_order_scenarios';
-import { FillOrderError, FillOrderSimulator } from './fill_order_simulator';
-import { OrderFactoryFromScenario } from './order_factory_from_scenario';
-import { SimpleAssetBalanceAndProxyAllowanceFetcher } from './simple_asset_balance_and_proxy_allowance_fetcher';
-import { BalanceAndProxyAllowanceLazyStore } from './store/balance_and_proxy_allowance_lazy_store';
+import {FillOrderError, FillOrderSimulator} from './fill_order_simulator';
+import {OrderFactoryFromScenario} from './order_factory_from_scenario';
+import {SimpleAssetBalanceAndProxyAllowanceFetcher} from './simple_asset_balance_and_proxy_allowance_fetcher';
+import {BalanceAndProxyAllowanceLazyStore} from './store/balance_and_proxy_allowance_lazy_store';
 
 const EMPTY_FILL_RESULTS = {
     takerAssetFilledAmount: constants.ZERO_AMOUNT,
@@ -102,7 +116,7 @@ export async function fillOrderCombinatorialUtilsFactoryAsync(
     await erc1155Wrapper.setBalancesAndAllowancesAsync();
     const erc1155Holdings = await erc1155Wrapper.getBalancesAsync();
 
-    const multiAssetProxy = await MultiAssetProxyContract.deployFrom0xArtifactAsync(
+    const multiAssetProxy = await MultiAssetProxyContract.deployFrompowerchainArtifactAsync(
         assetProxyArtifacts.MultiAssetProxy,
         provider,
         txDefaults,
@@ -112,7 +126,7 @@ export async function fillOrderCombinatorialUtilsFactoryAsync(
     const devUtils = new DevUtilsContract(constants.NULL_ADDRESS, provider);
     const assetWrapper = new AssetWrapper([erc20Wrapper, erc721Wrapper, erc1155Wrapper], burnerAddress, devUtils);
 
-    const exchangeContract = await ExchangeContract.deployFrom0xArtifactAsync(
+    const exchangeContract = await ExchangeContract.deployFrompowerchainArtifactAsync(
         artifacts.Exchange,
         provider,
         txDefaults,
@@ -505,7 +519,7 @@ export class FillOrderCombinatorialUtils {
         const signature = signingUtils.signMessage(orderHashBuff, this.makerPrivateKey, SignatureType.EthSign);
         const signedOrder = {
             ...order,
-            signature: `0x${signature.toString('hex')}`,
+            signature: `powerchain${signature.toString('hex')}`,
         };
         return signedOrder;
     }

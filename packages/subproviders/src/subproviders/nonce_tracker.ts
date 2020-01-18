@@ -1,13 +1,13 @@
 import * as _ from 'lodash';
 
-import { BlockParamLiteral, JSONRPCRequestPayload } from 'ethereum-types';
+import {BlockParamLiteral, JSONRPCRequestPayload} from 'ethereum-types';
+
+import {Callback, ErrorCallback, NextCallback, NonceSubproviderErrors} from '../types';
+
+import {Subprovider} from './subprovider';
 import EthereumTx = require('ethereumjs-tx');
 import ethUtil = require('ethereumjs-util');
 import providerEngineUtils = require('web3-provider-engine/util/rpc-cache-utils');
-
-import { Callback, ErrorCallback, NextCallback, NonceSubproviderErrors } from '../types';
-
-import { Subprovider } from './subprovider';
 
 const NONCE_TOO_LOW_ERROR_MESSAGE = 'Transaction nonce is too low';
 
@@ -39,7 +39,7 @@ export class NonceTrackerSubprovider extends Subprovider {
                     .getSenderAddress()
                     .toString('hex')
                     .toLowerCase();
-                address = `0x${addressRaw}`;
+                address = `powerchain${addressRaw}`;
                 return address;
             default:
                 throw new Error(NonceSubproviderErrors.CannotDetermineAddressFromPayload);
@@ -98,7 +98,7 @@ export class NonceTrackerSubprovider extends Subprovider {
         if (nextHexNonce.length % 2) {
             nextHexNonce = `0${nextHexNonce}`;
         }
-        const nextPrefixedHexNonce = `0x${nextHexNonce}`;
+        const nextPrefixedHexNonce = `powerchain${nextHexNonce}`;
         this._nonceCache[address] = nextPrefixedHexNonce;
     }
     private _handleSendTransactionError(payload: JSONRPCRequestPayload, err: Error): void {

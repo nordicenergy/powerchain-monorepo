@@ -1,6 +1,6 @@
 // tslint:disable:max-file-line-count
 
-import { BigNumber } from 'bignumber.js';
+import {BigNumber} from 'bignumber.js';
 import {
     ContractAbi,
     ContractChains,
@@ -39,7 +39,7 @@ export enum MarketOperation {
 }
 
 /**
- * ZeroExTransaction for use with 0x Exchange executeTransaction
+ * ZeroExTransaction for use with powerchain Exchange executeTransaction
  */
 export interface ZeroExTransaction {
     salt: BigNumber;
@@ -72,7 +72,7 @@ export interface ValidatorSignature {
 }
 
 /**
- * Errors originating from the 0x exchange contract
+ * Errors originating from the powerchain exchange contract
  */
 export enum ExchangeContractErrs {
     OrderFillExpired = 'ORDER_FILL_EXPIRED',
@@ -98,7 +98,7 @@ export enum ExchangeContractErrs {
     BatchOrdersMustHaveAtLeastOneItem = 'BATCH_ORDERS_MUST_HAVE_AT_LEAST_ONE_ITEM',
 }
 
-export type ArtifactContractName = 'ZRX' | 'TokenTransferProxy' | 'TokenRegistry' | 'Token' | 'Exchange' | 'EtherToken';
+export type ArtifactContractName = 'NET' | 'TokenTransferProxy' | 'TokenRegistry' | 'Token' | 'Exchange' | 'EtherToken';
 
 export interface Artifact {
     contract_name: ArtifactContractName;
@@ -160,12 +160,12 @@ export enum SignatureType {
 }
 
 export enum AssetProxyId {
-    ERC20 = '0xf47261b0',
-    ERC721 = '0x02571792',
-    MultiAsset = '0x94cfcdd7',
-    ERC1155 = '0xa7cb5fb7',
-    StaticCall = '0xc339d10a',
-    ERC20Bridge = '0xdc1600f3',
+    ERC20 = 'powerchainf47261b0',
+    ERC721 = 'powerchain02571792',
+    MultiAsset = 'powerchain94cfcdd7',
+    ERC1155 = 'powerchaina7cb5fb7',
+    StaticCall = 'powerchainc339d10a',
+    ERC20Bridge = 'powerchaindc1600f3',
 }
 
 export interface ERC20AssetData {
@@ -372,8 +372,8 @@ export interface ObjectMap<T> {
  * makerAssetData: Subscribes to new orders with the specified `makerAssetData`
  * takerAssetData: subscribes to new orders with the specified `takerAssetData`
  * traderAssetData: subscribes to new orders where either `makerAssetData` or `takerAssetData` has the value specified
- * makerAssetProxyId: returns orders where the maker asset is of certain asset proxy id (example: `0xf47261b0` for ERC20, `0x02571792` for ERC721)
- * takerAssetProxyId: returns orders where the taker asset is of certain asset proxy id(example: `0xf47261b0` for ERC20, `0x02571792` for ERC721)
+ * makerAssetProxyId: returns orders where the maker asset is of certain asset proxy id (example: `powerchainf47261b0` for ERC20, `powerchain02571792` for ERC721)
+ * takerAssetProxyId: returns orders where the taker asset is of certain asset proxy id(example: `powerchainf47261b0` for ERC20, `powerchain02571792` for ERC721)
  * makerAssetAddress: subscribes to new orders where the contract address for the maker asset matches the value specified
  * takerAssetAddress: subscribes to new orders where the contract address for the taker asset matches the value specified
  */

@@ -1,10 +1,10 @@
-import { blockchainTests, constants, expect, verifyEventsFromLogs } from '@0x/contracts-test-utils';
-import { BigNumber, StakingRevertErrors } from '@0x/utils';
-import { LogWithDecodedArgs } from 'ethereum-types';
+import {blockchainTests, constants, expect, verifyEventsFromLogs} from '@powerchain/contracts-test-utils';
+import {BigNumber, StakingRevertErrors} from '@powerchain/utils';
+import {LogWithDecodedArgs} from 'ethereum-types';
 
-import { constants as stakingConstants } from '../../src/constants';
+import {constants as stakingConstants} from '../../src/constants';
 
-import { artifacts } from '../artifacts';
+import {artifacts} from '../artifacts';
 import {
     TestMixinSchedulerContract,
     TestMixinSchedulerEvents,
@@ -16,7 +16,7 @@ blockchainTests.resets('MixinScheduler unit tests', env => {
 
     before(async () => {
         // Deploy contracts
-        testContract = await TestMixinSchedulerContract.deployFrom0xArtifactAsync(
+        testContract = await TestMixinSchedulerContract.deployFrompowerchainArtifactAsync(
             artifacts.TestMixinScheduler,
             env.provider,
             env.txDefaults,
