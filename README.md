@@ -1,10 +1,10 @@
 
+<img src="https://github.com/nordicenergy/powerchain/docs/branding/powerchain-Logo.png" width="150px">
+
+
 # PowerChain Protocol Development-kit
 
 #### PowerChain protocol reposity - includes our smart contracts and many developer tools
-
-<img src="https://github.com/nordicenergy/powerchain/docs/branding/powerchain-Logo.png" width="150px" >
-
 ---
 
 [powerchain][website-url] is an open protocol that facilitates trustless, low friction exchange of Ethereum-based assets. For more information on how it works, check out the [powerchain protocol specification](https://github.com/powerchainProject/powerchain-protocol-specification/blob/master/v2/v2-specification.md).
